@@ -6,6 +6,7 @@ import Tab from "@material-ui/core/Tab";
 import Grid from "@material-ui/core/Grid";
 import TabPanel from "../../components/tab-panel/TabPanel";
 import LikertScale from "../../components/likert-scale/LikertScale";
+import TrueOrFalse from "../../components/true-or-false/TrueOrFalse";
 
 const a11yProps = index => {
   return {
@@ -57,6 +58,8 @@ const ProfilerApp = () => {
     window.props.skills[index].tests.map((test, index) => {
       if (test.type === "likert") {
         return <LikertScale key={index} />;
+      } else if (test.type === "true-or-false") {
+        return <TrueOrFalse key={index} question={test.question} />;
       }
       return null;
     });
@@ -65,7 +68,12 @@ const ProfilerApp = () => {
     return window.props.skills.map((skill, index) => {
       return (
         <TabPanel value={value} index={index} key={index}>
-          <Grid container alignItems="center" justify="center">
+          <Grid
+            container
+            direction="column"
+            alignItems="center"
+            justify="center"
+          >
             {renderTestType(index)}
           </Grid>
         </TabPanel>

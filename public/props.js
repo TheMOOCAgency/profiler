@@ -4,7 +4,22 @@ window.props = {
       name: "Empathy",
       tests: [
         { type: "likert", questions: [], answers: [] },
-        { type: "true-or-false", questions: [], answers: [true, false] },
+        {
+          type: "true-or-false",
+          question: "Ce type de composant est fonctionnel ?",
+          answers: [true, false]
+        },
+        { type: "free-field" }
+      ]
+    },
+    {
+      name: "Test",
+      tests: [
+        { type: "true-or-false", question: "", answers: [true, false] },
+        { type: "true-or-false", question: "", answers: [true, false] },
+        { type: "true-or-false", question: "", answers: [true, false] },
+        { type: "true-or-false", question: "", answers: [true, false] },
+        { type: "true-or-false", question: "", answers: [true, false] },
         { type: "free-field" }
       ]
     },
@@ -12,15 +27,7 @@ window.props = {
       name: "Social",
       tests: [
         { type: "likert", questions: [], answers: [] },
-        { type: "true-or-false", questions: [], answers: [true, false] },
-        { type: "free-field" }
-      ]
-    },
-    {
-      name: "Social",
-      tests: [
-        { type: "likert", questions: [], answers: [] },
-        { type: "true-or-false", questions: [], answers: [true, false] },
+        { type: "true-or-false", question: "", answers: [true, false] },
         { type: "free-field" }
       ]
     },
@@ -28,7 +35,7 @@ window.props = {
       name: "Logistic",
       tests: [
         { type: "likert", questions: [], answers: [] },
-        { type: "true-or-false", questions: [], answers: [true, false] },
+        { type: "true-or-false", question: "", answers: [true, false] },
         { type: "free-field" }
       ]
     },
@@ -36,7 +43,7 @@ window.props = {
       name: "Organization",
       tests: [
         { type: "likert", questions: [], answers: [] },
-        { type: "true-or-false", questions: [], answers: [true, false] },
+        { type: "true-or-false", question: "", answers: [true, false] },
         { type: "free-field" }
       ]
     },
@@ -44,7 +51,7 @@ window.props = {
       name: "Language",
       tests: [
         { type: "likert", questions: [], answers: [] },
-        { type: "true-or-false", questions: [], answers: [true, false] },
+        { type: "true-or-false", question: "", answers: [true, false] },
         { type: "free-field" }
       ]
     },
@@ -52,7 +59,7 @@ window.props = {
       name: "One More Test",
       tests: [
         { type: "likert", questions: [], answers: [] },
-        { type: "true-or-false", questions: [], answers: [true, false] },
+        { type: "true-or-false", question: "", answers: [true, false] },
         { type: "free-field" }
       ]
     }

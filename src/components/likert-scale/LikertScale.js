@@ -11,8 +11,10 @@ import QuestionLine from "./question-line/QuestionLine";
 /* TABLE */
 const useStyles = makeStyles({
   root: {
+    margin: "20px 0",
     width: "60%",
-    overflowX: "auto"
+    overflowX: "auto",
+    padding: "20px"
   },
   table: {
     minWidth: 650
