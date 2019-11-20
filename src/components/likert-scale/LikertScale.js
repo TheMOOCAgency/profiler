@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -7,6 +7,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import QuestionLine from "./question-line/QuestionLine";
+import BarChart from "./bar-chart/BarChart";
 
 /* TABLE */
 const useStyles = makeStyles({
@@ -21,46 +22,79 @@ const useStyles = makeStyles({
   }
 });
 
-const createData = (name, answer1, answer2, answer3, answer4, answer5) => {
-  return { name, answer1, answer2, answer3, answer4, answer5 };
-};
-
-const rows = [
-  createData("Question 1", 0, 1, 2, 3, 4),
-  createData("Question 2", 0, 1, 2, 3, 4),
-  createData("Question 3", 0, 1, 2, 3, 4),
-  createData("Question 4", 0, 1, 2, 3, 4),
-  createData("Question 5", 0, 1, 2, 3, 4)
-];
-
-const SimpleTable = () => {
+const LikertScale = ({ topicIndex, topic, questions, answers }) => {
   const classes = useStyles();
+  const [results, setResults] = useState({});
+
+  // GET AN OBJECT WILL ALL RESULTS BY DRIVER
+  const collectResults = (question, driver, value) => {
+    setResults({
+      ...results,
+      [driver]: { ...results[driver], [`id${question.id}`]: value }
+    });
+    console.log(results);
+  };
+
+  const getTotalPerDriver = () => {};
+
+  const renderTableHead = () => {
+    return (
+      <TableHead>
+        <TableRow>
+          <TableCell></TableCell>
+          {answers.map(answer => {
+            return (
+              <TableCell
+                align="center"
+                key={answer.value}
+                style={{ width: "100px" }}
+              >
+                {answer.name}
+              </TableCell>
+            );
+          })}
+        </TableRow>
+      </TableHead>
+    );
+  };
+
+  const renderTableBody = () => {
+    return (
+      <TableBody>
+        {Object.keys(questions).map(driver =>
+          questions[driver].map(question => {
+            return (
+              <QuestionLine
+                driver={driver}
+                question={question}
+                answers={answers}
+                key={question.id}
+                collectResults={collectResults}
+              />
+            );
+          })
+        )}
+      </TableBody>
+    );
+  };
 
   return (
     <Paper className={classes.root}>
-      <Table className={classes.table} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell></TableCell>
-            <TableCell align="center">0</TableCell>
-            <TableCell align="center">1</TableCell>
-            <TableCell align="center">2</TableCell>
-            <TableCell align="center">3</TableCell>
-            <TableCell align="center">4</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row, index) => (
-            <QuestionLine row={row} key={index} />
-          ))}
-        </TableBody>
-      </Table>
+      <form onSubmit={getTotalPerDriver}>
+        <h3
+          style={{ margin: "0 0 10px 10px", fontSize: "16px", fontWeight: 500 }}
+        >
+          {topicIndex + ". " + topic}
+        </h3>
+        <Table className={classes.table} aria-label="simple table">
+          {renderTableHead()}
+          {renderTableBody()}
+        </Table>
+      </form>
+      <button type="submit" />
+      <BarChart />
     </Paper>
   );
-};
-
-const LikertScale = () => {
-  return <SimpleTable />;
 };
 
 export default LikertScale;

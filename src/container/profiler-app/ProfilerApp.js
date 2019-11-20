@@ -7,6 +7,7 @@ import Grid from "@material-ui/core/Grid";
 import TabPanel from "../../components/tab-panel/TabPanel";
 import LikertScale from "../../components/likert-scale/LikertScale";
 import TrueOrFalse from "../../components/true-or-false/TrueOrFalse";
+import FreeField from "../../components/free-field/FreeField";
 
 const a11yProps = index => {
   return {
@@ -19,7 +20,8 @@ const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     width: "100%",
-    backgroundColor: theme.palette.background.paper
+    backgroundColor: theme.palette.background.paper,
+    primaryColor: "red"
   }
 }));
 
@@ -31,12 +33,11 @@ const ProfilerApp = () => {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    console.log(newValue);
   };
 
   const renderTabs = () => {
     return (
-      <AppBar position="static" color="default">
+      <AppBar position="fixed" color="default">
         <Tabs
           value={value}
           onChange={handleChange}
@@ -57,9 +58,26 @@ const ProfilerApp = () => {
   const renderTestType = index =>
     window.props.skills[index].tests.map((test, index) => {
       if (test.type === "likert") {
-        return <LikertScale key={index} />;
+        return (
+          <LikertScale
+            key={index}
+            topicIndex={index + 1}
+            topic={test.topic}
+            questions={test.questions}
+            answers={test.answers}
+          />
+        );
       } else if (test.type === "true-or-false") {
-        return <TrueOrFalse key={index} question={test.question} />;
+        return (
+          <TrueOrFalse
+            key={index}
+            questionIndex={index + 1}
+            question={test.question}
+            answers={test.answers}
+          />
+        );
+      } else if (test.type === "free-field") {
+        return <FreeField key={index} questionIndex={index + 1} />;
       }
       return null;
     });
@@ -73,6 +91,7 @@ const ProfilerApp = () => {
             direction="column"
             alignItems="center"
             justify="center"
+            style={{ paddingTop: "40px" }}
           >
             {renderTestType(index)}
           </Grid>
