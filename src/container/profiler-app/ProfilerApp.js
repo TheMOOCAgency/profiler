@@ -5,7 +5,10 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Grid from "@material-ui/core/Grid";
 import TabPanel from "../../components/tab-panel/TabPanel";
+import Paper from "@material-ui/core/Grid";
 import LikertScale from "../../components/likert-scale/LikertScale";
+import TrueOrFalse from "../../components/true-or-false/TrueOrFalse";
+import FreeField from "../../components/free-field/FreeField";
 
 const a11yProps = index => {
   return {
@@ -16,10 +19,11 @@ const a11yProps = index => {
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1,
+    // flexGrow: 1,
     width: "100%",
-    backgroundColor: theme.palette.background.paper
-  }
+    backgroundColor: "white"
+  },
+  paper: { margin: "0", width: "80%", overflowX: "auto", padding: "20px 0" }
 }));
 
 /* MAIN COMPONENT */
@@ -30,20 +34,22 @@ const ProfilerApp = () => {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    console.log(newValue);
   };
 
   const renderTabs = () => {
     return (
-      <AppBar position="static" color="default">
+      <AppBar position="fixed" color="default">
         <Tabs
           value={value}
           onChange={handleChange}
-          indicatorColor="primary"
-          textColor="primary"
           variant="scrollable"
           scrollButtons="auto"
           aria-label="scrollable auto tabs example"
+          TabIndicatorProps={{
+            style: {
+              backgroundColor: "#b71b53"
+            }
+          }}
         >
           {window.props.skills.map((skill, index) => {
             return <Tab key={index} label={skill.name} {...a11yProps(index)} />;
@@ -56,7 +62,30 @@ const ProfilerApp = () => {
   const renderTestType = index =>
     window.props.skills[index].tests.map((test, index) => {
       if (test.type === "likert") {
-        return <LikertScale key={index} />;
+        return (
+          <LikertScale
+            key={index}
+            topic={test.topic}
+            questions={test.questions}
+            answers={test.answers}
+            drivers={test.drivers}
+          />
+        );
+      } else if (test.type === "true-or-false") {
+        return (
+          <TrueOrFalse
+            key={index}
+            questionIndex={index + 1}
+            questions={test.questions}
+            answers={test.answers}
+          />
+        );
+      } else if (test.type === "free-field") {
+        return (
+          <Paper className={classes.paper} key={index}>
+            <FreeField questionIndex={index + 1} question={test.question} />
+          </Paper>
+        );
       }
       return null;
     });
@@ -65,7 +94,13 @@ const ProfilerApp = () => {
     return window.props.skills.map((skill, index) => {
       return (
         <TabPanel value={value} index={index} key={index}>
-          <Grid container alignItems="center" justify="center">
+          <Grid
+            container
+            direction="column"
+            alignItems="center"
+            justify="center"
+            style={{ paddingTop: "40px" }}
+          >
             {renderTestType(index)}
           </Grid>
         </TabPanel>
@@ -74,10 +109,12 @@ const ProfilerApp = () => {
   };
 
   return (
-    <div className={classes.root}>
+    <Grid container className={classes.root} justify="center">
       {renderTabs()}
-      {renderPanel()}
-    </div>
+      <Grid item lg={8} md={12} sm={12} xs={12}>
+        {renderPanel()}
+      </Grid>
+    </Grid>
   );
 };
 
