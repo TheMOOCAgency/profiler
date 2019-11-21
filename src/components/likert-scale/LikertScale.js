@@ -1,41 +1,36 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
+import Paper from "@material-ui/core/Paper";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
 import QuestionLine from "./question-line/QuestionLine";
 import BarChart from "./bar-chart/BarChart";
-import Button from "@material-ui/core/Button";
+import SubmitButton from "../submit-button/SubmitButton";
 
 /* TABLE */
 const useStyles = makeStyles(theme => ({
   root: {
     margin: "20px 0",
-    width: "70%",
+    width: "100%",
     overflowX: "auto",
-    padding: "20px"
+    padding: "20px",
+    color: "#353535"
   },
-  button: {
-    margin: "30px 0",
-    backgroundColor: "black",
-    color: "white",
-    "&:hover": {
-      color: "black"
-    }
-  },
+  paper: { padding: "30px" },
   table: {
     minWidth: 650
   }
 }));
 
-const LikertScale = ({ topicIndex, topic, questions, answers }) => {
+const LikertScale = ({ topic, questions, answers, drivers }) => {
   const classes = useStyles();
   const [results, setResults] = useState({});
   const [totals, setTotals] = useState({});
   const [data, setData] = useState([]);
+  // const [isDisplayed, setDisplay] = useState(false);
 
   // GET AN OBJECT WILL ALL RESULTS BY DRIVER
   const collectResults = (question, driver, value) => {
@@ -48,36 +43,40 @@ const LikertScale = ({ topicIndex, topic, questions, answers }) => {
   const sum = values => {
     let total = 0;
     for (let i = 0; i < values.length; i++) {
-      if (isNaN(values[i])) {
-        continue;
-      }
       total += Number(values[i]);
     }
     return total;
   };
 
   const getTotalPerDriver = () => {
+    // console.log(results);
     Object.keys(results).map(driver => {
       return setTotals({
         ...totals,
         [driver]: sum(Object.values(results[driver]))
       });
     });
-    console.log(totals);
+    getData();
   };
 
   const getData = () => {
     let newData = [];
     Object.entries(totals).map(key => {
-      newData.push({ name: key[0], uv: key[1] });
-      return setData(newData);
+      return newData.push({
+        name: drivers[key[0]],
+        uv: key[1],
+        pv: key[1] / 2,
+        av: key[1] / 3
+      });
     });
+    console.log(newData, "new");
+    return setData(newData);
     // console.log(data, "data");
   };
 
-  useEffect(() => {
-    getData();
-  }, [totals]);
+  // useEffect(() => {
+  //   getData();
+  // }, [results]);
 
   const renderTableHead = () => {
     return (
@@ -121,24 +120,17 @@ const LikertScale = ({ topicIndex, topic, questions, answers }) => {
   };
 
   return (
-    <Paper className={classes.root}>
-      <h3
-        style={{ margin: "0 0 10px 10px", fontSize: "16px", fontWeight: 500 }}
-      >
-        {topicIndex + ". " + topic}
-      </h3>
+    <Paper className={classes.paper}>
+      <h3>{topic}</h3>
       <Table className={classes.table} aria-label="simple table">
         {renderTableHead()}
         {renderTableBody()}
       </Table>
-      <Button
-        variant="outlined"
-        size="large"
-        className={classes.button}
-        onClick={getTotalPerDriver}
-      >
-        Soumettre
-      </Button>
+      <SubmitButton
+        text="Visualisez vos resultats"
+        onSubmit={getTotalPerDriver}
+      />
+
       <BarChart data={data} />
     </Paper>
   );

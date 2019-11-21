@@ -5,7 +5,14 @@ window.props = {
       tests: [
         {
           type: "likert",
-          topic: "Les 5 niveaux de personnalité :",
+          topic: "LES 5 NIVEAUX DE PERSONNALITE :",
+          drivers: {
+            driver1: "Sois parfait",
+            driver2: "Sois fort",
+            driver3: "Dépêche toi",
+            driver4: "Fais plaisir",
+            driver5: "Fais des efforts"
+          },
           questions: {
             driver1: [
               {
@@ -146,18 +153,18 @@ window.props = {
             { name: "Oui, souvent", value: 4 },
             { name: "Oui, presque toujours", value: 5 }
           ]
-        },
-        {
-          type: "true-or-false",
-          question: "Ce type de composant est fonctionnel ?",
-          answers: [true, false]
-        },
-        {
-          type: "true-or-false",
-          question: "Etes-vous sur ?",
-          answers: [true, false]
-        },
-        { type: "free-field" }
+        }
+        // {
+        //   type: "true-or-false",
+        //   question: "Ce type de composant est fonctionnel ?",
+        //   answers: [true, false]
+        // },
+        // {
+        //   type: "true-or-false",
+        //   question: "Etes-vous sur ?",
+        //   answers: [true, false]
+        // },
+        // { type: "free-field" }
       ]
     },
     {
@@ -165,49 +172,139 @@ window.props = {
       tests: [
         {
           type: "free-field",
-          question:
-            "Quelles sont les compétences essentielles du manager selon vous ?"
+          question: {
+            id: 0,
+            text:
+              "Quelles sont les compétences essentielles du manager selon vous ?"
+          }
         },
         {
           type: "free-field",
-          question:
-            "Quelles sont les compétences essentielles du manager en communication interpersonnelle selon vous ?"
+          question: {
+            id: 1,
+            text:
+              "Quelles sont les compétences essentielles du manager en communication interpersonnelle selon vous ?"
+          }
         },
         {
           type: "free-field",
-          question: "Quelles sont les compétences que vous pensez posséder ?"
+          question: {
+            id: 2,
+            text: "Quelles sont les compétences que vous pensez posséder ?"
+          }
         },
         {
           type: "free-field",
-          question:
-            "Quelles sont les compétences que vous pensez devoir acquérir ?"
+          question: {
+            id: 3,
+            text:
+              "Quelles sont les compétences que vous pensez devoir acquérir ?"
+          }
         },
         {
           type: "free-field",
-          question:
-            "Quelles sont les types de situation professionnelle qui vous posent problème ?"
+          question: {
+            id: 4,
+            text:
+              "Quelles sont les types de situation professionnelle qui vous posent problème ?"
+          }
         },
         {
           type: "free-field",
-          question:
-            "De quoi avez-vous besoin pour vous sentir bien en situation de communication managériale ?"
+          question: {
+            id: 5,
+            text:
+              "De quoi avez-vous besoin pour vous sentir bien en situation de communication managériale ?"
+          }
         }
       ]
     },
     {
       name: "Cadre de référence",
-      tests: [
-        { type: "likert", topic: "", questions: [], answers: [] },
-        { type: "true-or-false", question: "", answers: [true, false] },
-        { type: "free-field" }
-      ]
+      tests: []
     },
     {
       name: "Intelligence émotionnelle",
       tests: [
-        { type: "likert", topic: "", questions: [], answers: [] },
-        { type: "true-or-false", question: "", answers: [true, false] },
-        { type: "free-field" }
+        {
+          type: "true-or-false",
+          questions: [
+            {
+              id: 1,
+              text:
+                "Si j'ai un petit désaccord avec un ami ou avec mon conjoint, je reste en général sur les nerfs pendant des heures, voire davantage.",
+              true: 1,
+              false: 0
+            },
+            {
+              id: 2,
+              text:
+                "Si un automobiliste roule sur le talus pour doubler tous les autres dans une file d'attente, je hausse les épaules au lieu de m'énerver durablement.",
+              true: 0,
+              false: 1
+            },
+            {
+              id: 3,
+              text:
+                "Quand je ressens un profond chagrin, comme lors de la mort d'un proche, cela perturbe mon fonctionnement pendant plusieurs mois.",
+              true: 1,
+              false: 0
+            },
+            {
+              id: 4,
+              text:
+                "Si je commets une erreur au travail et qu'on m'en fait reproche, je suis capable de passer outre et d'y voir une occasion de progresser.",
+              true: 0,
+              false: 1
+            },
+            {
+              id: 5,
+              text:
+                "Si j'essaye un nouveau restaurant où le repas est infect ct le service détestable, cela gâche toute ma soirée.",
+              true: 1,
+              false: 0
+            },
+            {
+              id: 6,
+              text:
+                "Après avoir été coincé(e) dans un embouteillage causé par un accident, j'accélère pour évacuer mon agacement dès que je peux enfin m'échapper, mais je continue à bouillonner intérieurement.",
+              true: 1,
+              false: 0
+            },
+            {
+              id: 7,
+              text:
+                "Si mon chauffe-eau tombe en panne, cela n'a pas grand effet sur mon humeur, car je sais qu'il suffit d'appeler un plombier pour le faire réparer.",
+              true: 0,
+              false: 1
+            },
+            {
+              id: 8,
+              text:
+                "Si je rencontre un homme/une femme formidable avec lui j'ai très envie de sortir, une réponse négative me met en général de mauvaise humeur pendant plusieurs heures, ou même plusieurs jours.",
+              true: 1,
+              false: 0
+            },
+            {
+              id: 9,
+              text:
+                "Si l'on pense à moi pour une promotion ou une importante récompense professionnelle, finalement accordée à quelqu'un qui me semble moins qualifié, je rebondis en général assez vite.",
+              true: 0,
+              false: 1
+            },
+            {
+              id: 10,
+              text:
+                "Lors d'une soirée, au cours d'une conversation avec un(e) passionnant(e) inconnu(e), si je garde le silence lorsqu'il/elle m'interroge à mon sujet, j'ai tendance à me rejouer mentalement tout l'entretien - en imaginant cette fois ce que j'aurais dû dire- pendant des heures ct des heures, et même des jours entiers.",
+              true: 1,
+              false: 0
+            }
+          ],
+          answers: [
+            { value: true, text: "Vrai" },
+            { value: false, text: "Faux" }
+          ]
+        }
       ]
     },
     {

@@ -4,9 +4,9 @@ import Radio from "@material-ui/core/Radio";
 
 const CustomRadio = withStyles({
   root: {
-    color: "black",
+    color: "#b71b53",
     "&$checked": {
-      color: "black"
+      color: "#b71b53"
     }
   },
   checked: {}
@@ -14,12 +14,12 @@ const CustomRadio = withStyles({
 
 const RadioButton = ({ value, selectedValue, handleSelect }) => {
   return (
-    <div>
+    <div style={{ opacity: `${0.5 + value / 15}` }}>
       <CustomRadio
         checked={selectedValue === value}
         onChange={handleSelect}
         value={value}
-        name={`radio-button-demo${Math.random * 100}`}
+        name={`radio-button-demo${Math.random() * 100}`}
         inputProps={{ "aria-label": value }}
       />
     </div>

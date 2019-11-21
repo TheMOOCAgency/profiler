@@ -1,19 +1,20 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
+import TableBody from "@material-ui/core/TableBody";
 import RadioButton from "../radio-button/RadioButton";
+import SubmitButton from "../submit-button/SubmitButton";
 
 const useStyles = makeStyles({
   root: {
     margin: "20px 0",
-    width: "60%",
+    width: "100%",
     overflowX: "auto",
     padding: "20px"
   }
 });
 
-const TrueOrFalse = ({ question, answers, questionIndex }) => {
+const TrueOrFalse = ({ questions, answers, questionIndex }) => {
   const classes = useStyles();
 
   const [selectedValue, setSelectedValue] = useState(true);
@@ -24,33 +25,57 @@ const TrueOrFalse = ({ question, answers, questionIndex }) => {
   };
 
   const renderButtons = () => {
-    return answers.map((answer, index) => {
-      return (
-        <div
-          key={index}
-          onClick={() => console.log(answer, "erfef")}
-          index={index}
-          style={{ display: "flex", alignItems: "center" }}
-        >
-          <RadioButton
-            value={answer}
-            selectedValue={selectedValue}
-            handleSelect={handleSelect}
-          />
-          <div>{answer.toString()}</div>
-        </div>
-      );
-    });
+    return (
+      <div style={{ marginBottom: "30px" }}>
+        {answers.map((answer, index) => {
+          return (
+            <div
+              key={index}
+              index={index}
+              style={{ display: "flex", alignItems: "center" }}
+            >
+              <RadioButton
+                value={answer.value}
+                selectedValue={selectedValue}
+                handleSelect={handleSelect}
+              />
+              <div>{answer.text}</div>
+            </div>
+          );
+        })}
+      </div>
+    );
+  };
+
+  const renderQuestions = () => {
+    return (
+      <TableBody>
+        {questions &&
+          questions.map(question => {
+            return (
+              <div key={question.id}>
+                <h3
+                  style={{
+                    margin: "0 0 10px 10px",
+                    fontSize: "16px",
+                    fontWeight: 500,
+                    width: "80%"
+                  }}
+                >
+                  {questionIndex + ". " + question.text}
+                </h3>
+                <div>{renderButtons()}</div>
+              </div>
+            );
+          })}
+      </TableBody>
+    );
   };
 
   return (
-    <Paper p={5} mt={5} className={classes.root}>
-      <h3
-        style={{ margin: "0 0 10px 10px", fontSize: "16px", fontWeight: 500 }}
-      >
-        {questionIndex + ". " + question}
-      </h3>
-      <Grid>{renderButtons()}</Grid>
+    <Paper p={5} mt={5} mx="auto" className={classes.root}>
+      <>{renderQuestions()}</>
+      <SubmitButton text="Visualisez vos resultats" />
     </Paper>
   );
 };
