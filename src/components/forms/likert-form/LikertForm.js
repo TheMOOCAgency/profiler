@@ -138,6 +138,11 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
     );
   };
 
+  const onSubmit = formValues => {
+    // no need e.preventdefault as handleSubmit handles it
+    this.props.onSubmit(formValues);
+  };
+
   return (
     <Fragment>
       <h3>{topic}</h3>
@@ -152,10 +157,10 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
       >
         {wording}
       </p>
-      <FormGroup onSubmit={handleSubmit}>
+      <FormGroup onSubmit={handleSubmit(onSubmit)}>
         <Fragment>{renderHeader()}</Fragment>
         <Fragment>{renderQuestions()}</Fragment>
-        <SubmitButton text={button} onSubmit={""} type="submit" />
+        <SubmitButton text={button} />
         {/* <button type="submit" disabled={pristine || submitting}>
           Submit
         </button> */}
