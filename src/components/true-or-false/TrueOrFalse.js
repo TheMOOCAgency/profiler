@@ -4,6 +4,7 @@ import Paper from "@material-ui/core/Paper";
 import TableBody from "@material-ui/core/TableBody";
 import RadioButton from "../radio-button/RadioButton";
 import SubmitButton from "../submit-button/SubmitButton";
+import { TableRow, TableCell, Table } from "@material-ui/core";
 
 const useStyles = makeStyles({
   root: {
@@ -14,25 +15,34 @@ const useStyles = makeStyles({
   }
 });
 
-const TrueOrFalse = ({ questions, answers, questionIndex }) => {
+const TrueOrFalse = ({ test, questionIndex }) => {
+  const { questions, answers, topic, wording } = test;
   const classes = useStyles();
 
   const [selectedValue, setSelectedValue] = useState(true);
 
   const handleSelect = event => {
     console.log(event.target.value, selectedValue);
-    setSelectedValue(parseInt(event.target.value));
+    if (event.target.value === "false") {
+      setSelectedValue(false);
+    } else {
+      setSelectedValue(true);
+    }
   };
 
   const renderButtons = () => {
     return (
-      <div style={{ marginBottom: "30px" }}>
+      <div style={{ marginLeft: "30px", display: "flex" }}>
         {answers.map((answer, index) => {
           return (
             <div
               key={index}
               index={index}
-              style={{ display: "flex", alignItems: "center" }}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                width: "100px"
+              }}
             >
               <RadioButton
                 value={answer.value}
@@ -51,21 +61,21 @@ const TrueOrFalse = ({ questions, answers, questionIndex }) => {
     return (
       <TableBody>
         {questions &&
-          questions.map(question => {
+          questions.map((question, index) => {
             return (
-              <div key={question.id}>
-                <h3
+              <TableRow key={question.id} style={{ margin: "20px 0" }}>
+                <TableCell
                   style={{
-                    margin: "0 0 10px 10px",
-                    fontSize: "16px",
-                    fontWeight: 500,
-                    width: "80%"
+                    fontSize: "14px",
+                    fontWeight: 400,
+                    width: "60%",
+                    textAlign: "justify"
                   }}
                 >
-                  {questionIndex + ". " + question.text}
-                </h3>
-                <div>{renderButtons()}</div>
-              </div>
+                  {index + 1 + ". " + question.text}
+                </TableCell>
+                <TableCell>{renderButtons()}</TableCell>
+              </TableRow>
             );
           })}
       </TableBody>
@@ -74,7 +84,19 @@ const TrueOrFalse = ({ questions, answers, questionIndex }) => {
 
   return (
     <Paper p={5} mt={5} mx="auto" className={classes.root}>
-      <>{renderQuestions()}</>
+      <h3>{topic}</h3>
+      <p
+        style={{
+          width: "60%",
+          textAlign: "justify",
+          marginBottom: "30px",
+          fontStyle: "italic",
+          fontSize: "14px"
+        }}
+      >
+        {wording}
+      </p>
+      <Table>{renderQuestions()}</Table>
       <SubmitButton text="Visualisez vos resultats" />
     </Paper>
   );
