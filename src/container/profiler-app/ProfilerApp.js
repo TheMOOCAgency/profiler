@@ -6,7 +6,7 @@ import Tab from "@material-ui/core/Tab";
 import Grid from "@material-ui/core/Grid";
 import TabPanel from "../../components/tab-panel/TabPanel";
 import Paper from "@material-ui/core/Grid";
-import LikertScale from "../../components/likert-scale/LikertScale";
+import LikertForm from "../../components/likert-form/LikertForm";
 import TrueOrFalse from "../../components/true-or-false/TrueOrFalse";
 import FreeField from "../../components/free-field/FreeField";
 
@@ -17,19 +17,21 @@ const a11yProps = index => {
   };
 };
 
+const language = "fr";
+
 const useStyles = makeStyles(theme => ({
   root: {
     // flexGrow: 1,
     width: "100%",
     backgroundColor: "white"
   },
-  paper: { margin: "0", width: "80%", overflowX: "auto", padding: "20px 0" }
+  paper: { margin: "0", width: "100%", overflowX: "auto", padding: "20px 0" }
 }));
 
 /* MAIN COMPONENT */
 const ProfilerApp = () => {
+  const { skills } = window.props[language];
   const classes = useStyles();
-
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
@@ -51,7 +53,7 @@ const ProfilerApp = () => {
             }
           }}
         >
-          {window.props.skills.map((skill, index) => {
+          {skills.map((skill, index) => {
             return <Tab key={index} label={skill.name} {...a11yProps(index)} />;
           })}
         </Tabs>
@@ -60,26 +62,15 @@ const ProfilerApp = () => {
   };
 
   const renderTestType = index =>
-    window.props.skills[index].tests.map((test, index) => {
+    skills[index].tests.map((test, index) => {
       if (test.type === "likert") {
         return (
-          <LikertScale
-            key={index}
-            topic={test.topic}
-            questions={test.questions}
-            answers={test.answers}
-            drivers={test.drivers}
-          />
+          <Paper className={classes.paper} key={index}>
+            <LikertForm test={test} />
+          </Paper>
         );
       } else if (test.type === "true-or-false") {
-        return (
-          <TrueOrFalse
-            key={index}
-            questionIndex={index + 1}
-            questions={test.questions}
-            answers={test.answers}
-          />
-        );
+        return <TrueOrFalse key={index} test={test} />;
       } else if (test.type === "free-field") {
         return (
           <Paper className={classes.paper} key={index}>
@@ -91,7 +82,7 @@ const ProfilerApp = () => {
     });
 
   const renderPanel = () => {
-    return window.props.skills.map((skill, index) => {
+    return skills.map((skill, index) => {
       return (
         <TabPanel value={value} index={index} key={index}>
           <Grid

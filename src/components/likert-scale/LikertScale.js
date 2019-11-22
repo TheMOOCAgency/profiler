@@ -25,7 +25,8 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const LikertScale = ({ topic, questions, answers, drivers }) => {
+const LikertScale = ({ test }) => {
+  const { topic, questions, answers, drivers, wording } = test;
   const classes = useStyles();
   const [results, setResults] = useState({});
   const [totals, setTotals] = useState({});
@@ -122,6 +123,17 @@ const LikertScale = ({ topic, questions, answers, drivers }) => {
   return (
     <Paper className={classes.paper}>
       <h3>{topic}</h3>
+      <p
+        style={{
+          width: "60%",
+          textAlign: "justify",
+          marginBottom: "30px",
+          fontStyle: "italic",
+          fontSize: "14px"
+        }}
+      >
+        {wording}
+      </p>
       <Table className={classes.table} aria-label="simple table">
         {renderTableHead()}
         {renderTableBody()}
