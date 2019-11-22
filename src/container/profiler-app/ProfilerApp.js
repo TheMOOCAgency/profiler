@@ -6,9 +6,9 @@ import Tab from "@material-ui/core/Tab";
 import Grid from "@material-ui/core/Grid";
 import TabPanel from "../../components/tab-panel/TabPanel";
 import Paper from "@material-ui/core/Grid";
-import LikertForm from "../../components/likert-form/LikertForm";
-import TrueOrFalse from "../../components/true-or-false/TrueOrFalse";
-import FreeField from "../../components/free-field/FreeField";
+import LikertForm from "../../components/forms/likert-form/LikertForm";
+import TrueOrFalse from "../../components/forms/true-or-false/TrueOrFalse";
+import FreeField from "../../components/forms/free-field/FreeField";
 
 const a11yProps = index => {
   return {

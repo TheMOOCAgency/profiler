@@ -15,14 +15,14 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const SubmitButton = ({ onSubmit, type, text }) => {
+const SubmitButton = ({ text }) => {
   const classes = useStyles();
   return (
     <Button
       variant="outlined"
       className={classes.root}
-      onClick={onSubmit}
-      type={type}
+      // onClick={onSubmit}
+      type="submit"
     >
       {text}
     </Button>

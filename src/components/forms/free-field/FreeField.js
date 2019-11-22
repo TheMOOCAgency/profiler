@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
@@ -26,7 +27,7 @@ const CssTextField = withStyles({
   }
 })(TextField);
 
-const FreeField = ({ questionIndex, question }) => {
+const FreeField = ({ questionIndex, question, results }) => {
   const [value, setValue] = React.useState("");
 
   const handleChange = event => {
@@ -51,4 +52,8 @@ const FreeField = ({ questionIndex, question }) => {
   );
 };
 
-export default FreeField;
+const mapStateToProps = state => {
+  return { results: state.form.test1.values };
+};
+
+export default connect(mapStateToProps)(FreeField);
