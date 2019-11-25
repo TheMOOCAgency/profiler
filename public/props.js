@@ -5,7 +5,7 @@ window.props = {
         name: "Les drivers",
         tests: [
           {
-            id: "test1",
+            name: "test1",
             type: "likert",
             topic: "LES 5 DRIVERS :",
             button: "VISUALISEZ VOS RESULTATS",
@@ -22,167 +22,167 @@ window.props = {
               {
                 text:
                   "Pour prendre une décision, aimez-vous avoir beaucoup d’informations ?",
-                id: "0",
+                id: "question0",
                 driver: "driver1"
               },
               {
                 text: "Vous reprochez-vous vos erreurs ?",
-                id: "1",
+                id: "question1",
                 driver: "driver1"
               },
               {
                 text:
                   "Vérifiez-vous plusieurs fois les paroles des autres de crainte d’une erreur de compréhension?",
-                id: "2",
+                id: "question2",
                 driver: "driver1"
               },
               {
                 text: "Recherchez-vous la perfection ?",
-                id: "3",
+                id: "question3",
                 driver: "driver1"
               },
               {
                 text:
                   "Aimez-vous être particulièrement précis dans votre discours ?",
-                id: "4",
+                id: "question4",
                 driver: "driver1"
               },
               {
                 text: "Avez-vous tendance à « pinailler » ?",
-                id: "5",
+                id: "question5",
                 driver: "driver1"
               },
               {
                 text: "Il vaut mieux ne pas reconnaître ses faiblesses.",
-                id: "6",
+                id: "question6",
                 driver: "driver2"
               },
               {
                 text: "Vous savez vous dégager du jugement de l’autre",
-                id: "7",
+                id: "question7",
                 driver: "driver2"
               },
               {
                 text:
                   "Dites-vous aux autres : « il n’y a pas de quoi se lamenter dans votre situation » ?",
-                id: "8",
+                id: "question8",
                 driver: "driver2"
               },
               {
                 text: "Vous avez repéré vos lacunes… elles ne vous gênent pas",
-                id: "9",
+                id: "question9",
                 driver: "driver2"
               },
               {
                 text: "Maîtrisez-vous vos sentiments, vos émotions ?",
-                id: "10",
+                id: "question10",
                 driver: "driver2"
               },
               {
                 text:
                   "Pouvez-vous réagir face à un problème en disant : « pas de commentaires » ou encore « ça n’a pas d’importance », « je m’en fous » ?",
-                id: "11",
+                id: "question11",
                 driver: "driver2"
               },
               {
                 text:
                   "Ressentez-vous de l’irritation lorsque votre interlocuteur est lent ?",
-                id: "12",
+                id: "question12",
                 driver: "driver3"
               },
               {
                 text:
                   "Arrivez-vous en retard même quand vous vous arrangez pour arriver à temps ?",
-                id: "13",
+                id: "question13",
                 driver: "driver3"
               },
               {
                 text: "Pensez-vous que vous devriez vous dépêcher ?",
-                id: "14",
+                id: "question14",
                 driver: "driver3"
               },
               {
                 text: "Etes-vous impatient lorsque vous devez attendre ?",
-                id: "15",
+                id: "question15",
                 driver: "driver3"
               },
               {
                 text:
                   "Remettez-vous à plus tard pour ensuite vous précipiter à la dernière minute ?",
-                id: "16",
+                id: "question16",
                 driver: "driver3"
               },
               {
                 text: "Le silence vous met-il mal à l’aise ?",
-                id: "17",
+                id: "question17",
                 driver: "driver3"
               },
               {
                 text: "Vous sentez-vous tenu de rendre service ?",
-                id: "18",
+                id: "question18",
                 driver: "driver4"
               },
               {
                 text:
                   "Offrez-vous de rendre service même si on ne vous le demande pas ?",
-                id: "19",
+                id: "question19",
                 driver: "driver4"
               },
               {
                 text:
                   "Utilisez-vous des expressions comme « vous savez… » « pourriez-vous… » « pouvez-vous… » « voudriez vous » ?",
-                id: "20",
+                id: "question20",
                 driver: "driver4"
               },
               {
                 text:
                   "Eprouvez-vous le besoin de vérifier si les autres sont contents de vous et de vos actes ?",
-                id: "21",
+                id: "question21",
                 driver: "driver4"
               },
               {
                 text: "Pensez-vous que vous devez faire plaisir aux autres ?",
-                id: "22",
+                id: "question22",
                 driver: "driver4"
               },
               {
                 text:
                   "Pensez-vous que ce que vous faites n’a de valeur que si quelqu’un l’approuve ?",
-                id: "23",
+                id: "question23",
                 driver: "driver4"
               },
               {
                 text: "Faites-vous des efforts pour atteindre vos objectifs ?",
-                id: "24",
+                id: "question24",
                 driver: "driver5"
               },
               {
                 text:
                   "Le plus souvent, vous réussissez en luttant et en surmontant les difficultés",
-                id: "25",
+                id: "question25",
                 driver: "driver5"
               },
               {
                 text: "Au travail, vous n’avez pas le temps de vous détendre",
-                id: "26",
+                id: "question26",
                 driver: "driver5"
               },
               {
                 text:
                   "Utilisez-vous des tournures comme « j’essaierai, je n’y arrive pas, c’est difficile » ?",
-                id: "27",
+                id: "question27",
                 driver: "driver5"
               },
               {
                 text:
                   "Vous dites-vous ou dites-vous aux autres : « au moins j’ai essayé » ou des phrases semblables ?",
-                id: "28",
+                id: "question28",
                 driver: "driver5"
               },
               {
                 text:
                   "Etes-vous adepte de la maxime : « essayez, essayez, essayez encore, jusqu’à ce que vous réussissiez »",
-                id: "29",
+                id: "question29",
                 driver: "driver5"
               }
             ],

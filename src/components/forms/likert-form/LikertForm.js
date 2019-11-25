@@ -8,6 +8,7 @@ import FormGroup from "@material-ui/core/FormGroup";
 import Grid from "@material-ui/core/Grid";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import SubmitButton from "../submit-button/SubmitButton";
+import BarChart from "../../results/bar-chart/BarChart";
 
 const CustomRadio = withStyles({
   root: {
@@ -28,24 +29,13 @@ const useStyles = makeStyles(theme => ({
 }));
 const validate = values => {
   const errors = {};
-  const requiredFields = [
-    "firstName",
-    "lastName",
-    "email",
-    "favoriteColor",
-    "notes"
-  ];
+  const requiredFields = ["question0"];
   requiredFields.forEach(field => {
     if (!values[field]) {
       errors[field] = "Required";
     }
   });
-  if (
-    values.email &&
-    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
-  ) {
-    errors.email = "Invalid email address";
-  }
+
   return errors;
 };
 
@@ -128,7 +118,7 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
           <Grid item md={1} />
           <Grid item md={7}>
             <Field
-              name={`question${question.id}`}
+              name={question.id}
               answers={answers}
               component={radioButtons}
             />
@@ -140,7 +130,8 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
 
   const onSubmit = formValues => {
     // no need e.preventdefault as handleSubmit handles it
-    this.props.onSubmit(formValues);
+    console.log("545");
+    return formValues;
   };
 
   return (
@@ -160,11 +151,15 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
       <FormGroup onSubmit={handleSubmit(onSubmit)}>
         <Fragment>{renderHeader()}</Fragment>
         <Fragment>{renderQuestions()}</Fragment>
-        <SubmitButton text={button} />
-        {/* <button type="submit" disabled={pristine || submitting}>
-          Submit
-        </button> */}
+        <SubmitButton
+
+        // type="submit"
+        // disabled={pristine || submitting}
+        >
+          {button}
+        </SubmitButton>
       </FormGroup>
+      <BarChart test={test} />
     </Fragment>
   );
 };
