@@ -15,16 +15,11 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const SubmitButton = ({ text }) => {
+const SubmitButton = ({ children }) => {
   const classes = useStyles();
   return (
-    <Button
-      variant="outlined"
-      className={classes.root}
-      // onClick={onSubmit}
-      type="submit"
-    >
-      {text}
+    <Button variant="outlined" className={classes.root} type="submit">
+      {children}
     </Button>
   );
 };
