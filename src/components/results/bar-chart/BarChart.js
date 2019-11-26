@@ -13,33 +13,33 @@ import Grid from "@material-ui/core/Grid";
 
 const BarChart = ({ results, test }) => {
   const { questions, drivers } = test;
-
   const [data, setData] = useState([]);
 
-  let rawData = {};
-  let formatedData = [];
-
-  const formatResults = () => {
-    // console.log(results);
-    results &&
-      questions.map(question => {
-        if (!rawData[question.driver]) {
-          return (rawData[question.driver] = {
-            name: drivers[question.driver],
-            value: Number(0)
-          });
-        } else {
-          return (rawData[question.driver].value += 0);
-        }
-      });
-    formatedData = Object.values(rawData);
-    console.log(formatedData);
-    return formatedData;
-  };
-
+  // FORMAT THE DATA SO IT MATCHES WITH BARCHART FORMAT
   useEffect(() => {
-    setData(formatResults());
-  }, [results]);
+    let rawData = {};
+    let formatedData = [];
+    const formatResults = () => {
+      results &&
+        questions.map(question => {
+          if (!rawData[question.driver]) {
+            return (rawData[question.driver] = {
+              name: drivers[question.driver],
+              testTotal: Number(results[question.id]),
+              selfTotal: 15,
+              othersTotal: 18
+            });
+          } else {
+            return (rawData[question.driver].testTotal += Number(
+              results[question.id]
+            ));
+          }
+        });
+      formatedData = Object.values(rawData);
+      setData(formatedData);
+    };
+    formatResults();
+  }, [results, drivers, questions]);
 
   return (
     <Grid container mt={5} justify="center">
@@ -62,7 +62,7 @@ const BarChart = ({ results, test }) => {
 };
 
 const mapStateToProps = state => {
-  return { results: state.form.test1.values };
+  return { results: state.form.likert.values };
 };
 
 export default connect(mapStateToProps)(BarChart);

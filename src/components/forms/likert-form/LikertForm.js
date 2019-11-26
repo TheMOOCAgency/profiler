@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { Field, reduxForm } from "redux-form";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
 }));
 const validate = values => {
   const errors = {};
-  const requiredFields = ["question0"];
+  const requiredFields = [];
   requiredFields.forEach(field => {
     if (!values[field]) {
       errors[field] = "Required";
@@ -66,6 +66,9 @@ const radioButtons = ({ answers, salut, input, ...rest }) => (
 /* MAIN COMPONENT */
 const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
   const { questions, answers, topic, wording, button } = test;
+
+  const [isCompleted, setCompletion] = useState(false);
+
   const classes = useStyles();
 
   const renderHeader = () => {
@@ -130,10 +133,13 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
 
   const onSubmit = formValues => {
     // no need e.preventdefault as handleSubmit handles it
-    console.log("545");
+    setCompletion(true);
     return formValues;
   };
 
+  if (isCompleted) {
+    return <BarChart test={test} />;
+  }
   return (
     <Fragment>
       <h3>{topic}</h3>
@@ -148,23 +154,20 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
       >
         {wording}
       </p>
-      <FormGroup onSubmit={handleSubmit(onSubmit)}>
-        <Fragment>{renderHeader()}</Fragment>
-        <Fragment>{renderQuestions()}</Fragment>
-        <SubmitButton
-
-        // type="submit"
-        // disabled={pristine || submitting}
-        >
-          {button}
-        </SubmitButton>
-      </FormGroup>
-      <BarChart test={test} />
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <FormGroup>
+          <Fragment>{renderHeader()}</Fragment>
+          <Fragment>{renderQuestions()}</Fragment>
+          <SubmitButton disabled={pristine || submitting}>
+            <Fragment>{button}</Fragment>
+          </SubmitButton>
+        </FormGroup>
+      </form>
     </Fragment>
   );
 };
 
 export default reduxForm({
-  form: "test1",
+  form: "likert",
   validate
 })(LikertForm);
