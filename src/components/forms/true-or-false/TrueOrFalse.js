@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import TableBody from "@material-ui/core/TableBody";
 import RadioButton from "../radio-button/RadioButton";
-import SubmitButton from "../submit-button/SubmitButton";
+// import SubmitButton from "../submit-button/SubmitButton";
 import { TableRow, TableCell, Table } from "@material-ui/core";
 
 const useStyles = makeStyles({
@@ -97,7 +97,7 @@ const TrueOrFalse = ({ test, questionIndex }) => {
         {wording}
       </p>
       <Table>{renderQuestions()}</Table>
-      <SubmitButton text="Visualisez vos resultats" />
+      {/* <SubmitButton>"TEMPORAIRE"</SubmitButton> */}
     </Paper>
   );
 };
