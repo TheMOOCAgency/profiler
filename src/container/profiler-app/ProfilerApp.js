@@ -6,9 +6,7 @@ import Tab from "@material-ui/core/Tab";
 import Grid from "@material-ui/core/Grid";
 import TabPanel from "../../components/tab-panel/TabPanel";
 import Paper from "@material-ui/core/Grid";
-import LikertForm from "../../components/forms/likert-form/LikertForm";
-import TrueOrFalse from "../../components/forms/true-or-false/TrueOrFalse";
-import FreeField from "../../components/forms/free-field/FreeField";
+import ExercisePage from "../../components/exercise-page/ExercisePage";
 
 const a11yProps = index => {
   return {
@@ -24,6 +22,11 @@ const useStyles = makeStyles(theme => ({
     // flexGrow: 1,
     width: "100%",
     backgroundColor: "white"
+  },
+  tab: {
+    "&:last-child": {
+      color: "#b71b53"
+    }
   },
   paper: { margin: "0", width: "100%", overflowX: "auto", padding: "20px 0" }
 }));
@@ -54,45 +57,28 @@ const ProfilerApp = () => {
           }}
         >
           {skills.map((skill, index) => {
-            return <Tab key={index} label={skill.name} {...a11yProps(index)} />;
+            return (
+              <Tab
+                key={index}
+                label={skill.name}
+                {...a11yProps(index)}
+                className={classes.tab}
+              />
+            );
           })}
         </Tabs>
       </AppBar>
     );
   };
 
-  const renderTestType = index =>
-    skills[index].tests.map((test, index) => {
-      if (test.type === "likert") {
-        return (
-          <Paper className={classes.paper} key={index}>
-            <LikertForm test={test} />
-          </Paper>
-        );
-      } else if (test.type === "true-or-false") {
-        return <TrueOrFalse key={index} test={test} />;
-      } else if (test.type === "free-field") {
-        return (
-          <Paper className={classes.paper} key={index}>
-            <FreeField questionIndex={index + 1} question={test.question} />
-          </Paper>
-        );
-      }
-      return null;
-    });
-
   const renderPanel = () => {
     return skills.map((skill, index) => {
       return (
         <TabPanel value={value} index={index} key={index}>
-          <Grid
-            container
-            direction="column"
-            alignItems="center"
-            justify="center"
-            style={{ paddingTop: "40px" }}
-          >
-            {renderTestType(index)}
+          <Grid style={{ paddingTop: "40px" }}>
+            <Paper className={classes.paper}>
+              <ExercisePage skill={skill} skills={skills} parentIndex={index} />
+            </Paper>
           </Grid>
         </TabPanel>
       );
@@ -101,7 +87,7 @@ const ProfilerApp = () => {
 
   return (
     <Grid container className={classes.root} justify="center">
-      {renderTabs()}
+      <Grid item>{renderTabs()}</Grid>
       <Grid item lg={8} md={12} sm={12} xs={12}>
         {renderPanel()}
       </Grid>

@@ -3,14 +3,19 @@ window.props = {
     skills: [
       {
         name: "Les drivers",
+        topic: "LES 5 DRIVERS :",
+        button: "VISUALISEZ VOS RESULTATS",
+        result: "histogram",
+        wording:
+          "Lisez avec attention chacun des énoncés et indiquez à quelle fréquence cela vous correspond. Essayez de répondre le plus spontanément possible. Ne répondez pas ce que vous croyez devoir répondre pour avoir de bons résultats à ce test, il n’y a pas de bonnes ou de mauvaises réponses, ni de bons ou de mauvais résultats.",
         tests: [
           {
-            name: "test1",
+            name: "likert1-1",
             type: "likert",
             topic: "LES 5 DRIVERS :",
             button: "VISUALISEZ VOS RESULTATS",
-            wording:
-              "Lisez avec attention chacun des énoncés et indiquez à quelle fréquence cela vous correspond. Essayez de répondre le plus spontanément possible. Ne répondez pas ce que vous croyez devoir répondre pour avoir de bons résultats à ce test, il n’y a pas de bonnes ou de mauvaises réponses, ni de bons ou de mauvais résultats.",
+            result: "histogram",
+            wording: "",
             drivers: {
               driver1: "Sois parfait",
               driver2: "Sois fort",
@@ -193,6 +198,49 @@ window.props = {
               { name: "Oui, souvent", value: 4 },
               { name: "Oui, presque toujours", value: 5 }
             ]
+          },
+          {
+            name: "likert1-2",
+            type: "likert",
+            topic: "",
+            button: "",
+            wording: "",
+            drivers: {
+              driver1: "Sois parfait",
+              driver2: "Sois fort",
+              driver3: "Dépêche toi",
+              driver4: "Fais plaisir",
+              driver5: "Fais des efforts"
+            },
+            questions: [
+              {
+                text: "Sois parfait",
+                id: "driver1"
+              },
+              {
+                text: "Sois fort",
+                id: "driver2"
+              },
+              {
+                text: "Dépêche toi",
+                id: "driver3"
+              },
+              {
+                text: "Fais plaisir",
+                id: "driver4"
+              },
+              {
+                text: "Fais des efforts",
+                id: "driver5"
+              }
+            ],
+            answers: [
+              { name: "Rarement", value: 1 },
+              { name: "Parfois", value: 2 },
+              { name: "D’ordinaire oui", value: 3 },
+              { name: "Oui, souvent", value: 4 },
+              { name: "Oui, presque toujours", value: 5 }
+            ]
           }
         ]
       },
@@ -201,50 +249,39 @@ window.props = {
         tests: [
           {
             type: "free-field",
-            question: {
-              id: 0,
-              text:
-                "Quelles sont les compétences essentielles du manager selon vous ?"
-            }
-          },
-          {
-            type: "free-field",
-            question: {
-              id: 1,
-              text:
-                "Quelles sont les compétences essentielles du manager en communication interpersonnelle selon vous ?"
-            }
-          },
-          {
-            type: "free-field",
-            question: {
-              id: 2,
-              text: "Quelles sont les compétences que vous pensez posséder ?"
-            }
-          },
-          {
-            type: "free-field",
-            question: {
-              id: 3,
-              text:
-                "Quelles sont les compétences que vous pensez devoir acquérir ?"
-            }
-          },
-          {
-            type: "free-field",
-            question: {
-              id: 4,
-              text:
-                "Quelles sont les types de situation professionnelle qui vous posent problème ?"
-            }
-          },
-          {
-            type: "free-field",
-            question: {
-              id: 5,
-              text:
-                "De quoi avez-vous besoin pour vous sentir bien en situation de communication managériale ?"
-            }
+            name: "freeField2",
+            button: "ENREGISTREZ VOTRE REPONSE",
+            questions: [
+              {
+                id: "field0",
+                text:
+                  "Quelles sont les compétences essentielles du manager selon vous ?"
+              },
+              {
+                id: "field1",
+                text:
+                  "Quelles sont les compétences essentielles du manager en communication interpersonnelle selon vous ?"
+              },
+              {
+                id: "field2",
+                text: "Quelles sont les compétences que vous pensez posséder ?"
+              },
+              {
+                id: "field3",
+                text:
+                  "Quelles sont les compétences que vous pensez devoir acquérir ?"
+              },
+              {
+                id: "field4",
+                text:
+                  "Quelles sont les types de situation professionnelle qui vous posent problème ?"
+              },
+              {
+                id: "field5",
+                text:
+                  "De quoi avez-vous besoin pour vous sentir bien en situation de communication managériale ?"
+              }
+            ]
           }
         ]
       },
@@ -341,35 +378,19 @@ window.props = {
       },
       {
         name: "Comportement",
-        tests: [
-          { type: "likert", topic: "", questions: [], answers: [] },
-          { type: "true-or-false", question: "", answers: [true, false] },
-          { type: "free-field" }
-        ]
+        tests: []
       },
       {
         name: "Style de leadership",
-        tests: [
-          { type: "likert", topic: "", questions: [], answers: [] },
-          { type: "true-or-false", question: "", answers: [true, false] },
-          { type: "free-field" }
-        ]
+        tests: []
       },
       {
         name: "Compétences",
-        tests: [
-          { type: "likert", topic: "", questions: [], answers: [] },
-          { type: "true-or-false", question: "", answers: [true, false] },
-          { type: "free-field" }
-        ]
+        tests: []
       },
       {
         name: "Bloc personnel",
-        tests: [
-          { type: "likert", topic: "", questions: [], answers: [] },
-          { type: "true-or-false", question: "", answers: [true, false] },
-          { type: "free-field" }
-        ]
+        tests: []
       }
     ]
   }

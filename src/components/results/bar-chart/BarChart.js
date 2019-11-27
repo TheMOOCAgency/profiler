@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 
 import {
   BarChart as Chart,
@@ -11,9 +11,14 @@ import {
 } from "recharts";
 import Grid from "@material-ui/core/Grid";
 
-const BarChart = ({ results, test }) => {
+const BarChart = ({ test }) => {
   const { questions, drivers } = test;
   const [data, setData] = useState([]);
+
+  // REACT-REDUX WITH HOOKS, REPLACE MAPSTATETOPROPS
+  const { results } = useSelector(state => ({
+    results: state.form.likert.values
+  }));
 
   // FORMAT THE DATA SO IT MATCHES WITH BARCHART FORMAT
   useEffect(() => {
@@ -61,8 +66,4 @@ const BarChart = ({ results, test }) => {
   );
 };
 
-const mapStateToProps = state => {
-  return { results: state.form.likert.values };
-};
-
-export default connect(mapStateToProps)(BarChart);
+export default BarChart;

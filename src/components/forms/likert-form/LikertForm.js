@@ -27,9 +27,18 @@ const useStyles = makeStyles(theme => ({
     padding: "20px 0"
   }
 }));
-const validate = values => {
+
+let requiredFields = [];
+
+const validate = (values, props) => {
   const errors = {};
-  const requiredFields = [];
+  props.test.questions.map(question => {
+    if (requiredFields.indexOf(question.id) === -1) {
+      requiredFields.push(question.id);
+    }
+    return requiredFields;
+  });
+
   requiredFields.forEach(field => {
     if (!values[field]) {
       errors[field] = "Required";
@@ -64,8 +73,8 @@ const radioButtons = ({ answers, salut, input, ...rest }) => (
 );
 
 /* MAIN COMPONENT */
-const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
-  const { questions, answers, topic, wording, button } = test;
+const LikertForm = ({ handleSubmit, pristine, submitting, test, form }) => {
+  const { questions, answers, button } = test;
 
   const [isCompleted, setCompletion] = useState(false);
 
@@ -74,11 +83,11 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
   const renderHeader = () => {
     return (
       <Grid container direction="row" justify="flex-end">
-        <Grid item md={4} />
-        <Grid item md={1} />
+        <Grid item md={5} sm={false} />
         <Grid
           item
           md={7}
+          sm={12}
           style={{ display: "flex", justifyContent: "flex-end" }}
         >
           <Grid container direction="row">
@@ -115,11 +124,11 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
           justify="space-between"
           className={classes.questionLine}
         >
-          <Grid item md={4} style={{ fontSize: "14px" }}>
+          <Grid item md={4} sm={12} style={{ fontSize: "14px" }}>
             {question.text}
           </Grid>
-          <Grid item md={1} />
-          <Grid item md={7}>
+          <Grid item md={1} sm={false} />
+          <Grid item md={7} sm={12}>
             <Field
               name={question.id}
               answers={answers}
@@ -137,23 +146,8 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
     return formValues;
   };
 
-  if (isCompleted) {
-    return <BarChart test={test} />;
-  }
   return (
     <Fragment>
-      <h3>{topic}</h3>
-      <p
-        style={{
-          width: "60%",
-          textAlign: "justify",
-          marginBottom: "30px",
-          fontStyle: "italic",
-          fontSize: "14px"
-        }}
-      >
-        {wording}
-      </p>
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormGroup>
           <Fragment>{renderHeader()}</Fragment>
@@ -163,11 +157,9 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
           </SubmitButton>
         </FormGroup>
       </form>
+      <Fragment>{isCompleted && <BarChart test={test} />}</Fragment>
     </Fragment>
   );
 };
 
-export default reduxForm({
-  form: "likert",
-  validate
-})(LikertForm);
+export default reduxForm({ form: "", validate })(LikertForm);

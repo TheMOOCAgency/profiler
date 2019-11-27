@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import TableBody from "@material-ui/core/TableBody";
-import RadioButton from "../radio-button/RadioButton";
 // import SubmitButton from "../submit-button/SubmitButton";
 import { TableRow, TableCell, Table } from "@material-ui/core";
 
@@ -19,17 +18,6 @@ const TrueOrFalse = ({ test, questionIndex }) => {
   const { questions, answers, topic, wording } = test;
   const classes = useStyles();
 
-  const [selectedValue, setSelectedValue] = useState(true);
-
-  const handleSelect = event => {
-    console.log(event.target.value, selectedValue);
-    if (event.target.value === "false") {
-      setSelectedValue(false);
-    } else {
-      setSelectedValue(true);
-    }
-  };
-
   const renderButtons = () => {
     return (
       <div style={{ marginLeft: "30px", display: "flex" }}>
@@ -44,11 +32,11 @@ const TrueOrFalse = ({ test, questionIndex }) => {
                 width: "100px"
               }}
             >
-              <RadioButton
+              {/* <RadioButton
                 value={answer.value}
                 selectedValue={selectedValue}
                 handleSelect={handleSelect}
-              />
+              /> */}
               <div>{answer.text}</div>
             </div>
           );

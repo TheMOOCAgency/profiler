@@ -4,9 +4,9 @@ import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    margin: "30px 0",
+    margin: "10px 0 50px 0",
     backgroundColor: "#353535",
-    width: "100%",
+    width: "300px",
     color: "white",
     border: "none",
     "&:hover": {
