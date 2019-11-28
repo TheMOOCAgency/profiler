@@ -251,7 +251,7 @@ window.props = {
         tests: [
           {
             type: "free-field",
-            name: "freeField2",
+            name: "freeField2-1",
             button: "ENREGISTREZ VOTRE REPONSE",
             questions: [
               {
@@ -289,7 +289,184 @@ window.props = {
       },
       {
         name: "Mon cadre de référence",
-        tests: []
+        topic: "",
+        button: "VISUALISEZ VOS RESULTATS",
+        result: "histogram",
+        wording: "",
+        tests: [
+          {
+            name: "likert3-1",
+            type: "likert",
+            topic: "",
+            button: "VISUALISEZ VOS RESULTATS",
+            result: "histogram",
+            wording: "",
+            drivers: {
+              driver1: "Savoir",
+              driver2: "Faire",
+              driver3: "Être"
+            },
+            questions: [
+              {
+                text: "J’ai un bon sens de la logique.",
+                id: "question0",
+                driver: "driver1"
+              },
+              {
+                text: "Je suis quelqu’un de rationnel.",
+                id: "question1",
+                driver: "driver1"
+              },
+              {
+                text: "J’ai un esprit analytique.",
+                id: "question2",
+                driver: "driver1"
+              },
+              {
+                text: "Je suis doué pour résoudre des problème.",
+                id: "question3",
+                driver: "driver1"
+              },
+              {
+                text: "J’apprécie les aspects théoriques.",
+                id: "question4",
+                driver: "driver1"
+              },
+              {
+                text: "Je suis orienté performance.",
+                id: "question5",
+                driver: "driver1"
+              },
+              {
+                text: "J’aime respecter les règles et les procédures.",
+                id: "question6",
+                driver: "driver1"
+              },
+              {
+                text: "Je suis en contrôle de moi même.",
+                id: "question7",
+                driver: "driver1"
+              },
+              {
+                text: "Je suis capable de m’auto-discipliner.",
+                id: "question8",
+                driver: "driver1"
+              },
+              {
+                text: "J’agis avec méthode.",
+                id: "question9",
+                driver: "driver1"
+              },
+              {
+                text: "Je suis quelqu’un de créatif.",
+                id: "question10",
+                driver: "driver2"
+              },
+              {
+                text: "J’ai une vision à long terme.",
+                id: "question11",
+                driver: "driver2"
+              },
+              {
+                text: "J’ai un esprit de synthèse.",
+                id: "question12",
+                driver: "driver2"
+              },
+              {
+                text: "Je suis quelqu’un de spontané.",
+                id: "question13",
+                driver: "driver2"
+              },
+              {
+                text: "J’aime expérimenter.",
+                id: "question14",
+                driver: "driver2"
+              },
+              {
+                text: "J’ai le sens de l’esthétique.",
+                id: "question15",
+                driver: "driver2"
+              },
+              {
+                text: "J’aime prendre des risques.",
+                id: "question16",
+                driver: "driver2"
+              },
+              {
+                text: "Je suis aventureux.",
+                id: "question17",
+                driver: "driver2"
+              },
+              {
+                text: "J’aime la nouveauté.",
+                id: "question18",
+                driver: "driver2"
+              },
+              {
+                text: "J’agis avec intuition.",
+                id: "question19",
+                driver: "driver2"
+              },
+              {
+                text: "Je suis quelqu’un d’assez émotionnel.",
+                id: "question20",
+                driver: "driver3"
+              },
+              {
+                text: "J’apprécie les relations humaines.",
+                id: "question21",
+                driver: "driver3"
+              },
+              {
+                text: "J’ai besoin de contact avec les autres.",
+                id: "question22",
+                driver: "driver3"
+              },
+              {
+                text: "Je suis altruiste.",
+                id: "question23",
+                driver: "driver3"
+              },
+              {
+                text: "J’aime enseigner ce que je connais.",
+                id: "question24",
+                driver: "driver3"
+              },
+              {
+                text: "J’agis avec feeling.",
+                id: "question25",
+                driver: "driver3"
+              },
+              {
+                text: "J’aime contribuer à une cause.",
+                id: "question26",
+                driver: "driver3"
+              },
+              {
+                text: "Je suis à l’écoute des autres.",
+                id: "question27",
+                driver: "driver3"
+              },
+              {
+                text: "Je recherche la satisfaction personnelle.",
+                id: "question28",
+                driver: "driver3"
+              },
+              {
+                text: "J’ai une très bonne qualité relationnelle.",
+                id: "question29",
+                driver: "driver3"
+              }
+            ],
+            answers: [
+              { name: "Pas du tout d’accord", value: 1 },
+              { name: "Plutôt en désaccord", value: 2 },
+              { name: "Ni en accord ni en désaccord", value: 3 },
+              { name: "Plutôt en accord", value: 4 },
+              { name: "Totalement d’accord", value: 5 }
+            ]
+          }
+        ]
       },
       {
         name: "Mon profil émotionnel",
