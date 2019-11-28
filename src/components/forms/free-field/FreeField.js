@@ -32,12 +32,12 @@ const CssTextField = withStyles({
 
 const validate = (formValues, props) => {
   const errors = {};
-  if (!formValues.title) {
-    errors.title = "You must enter a title";
-  }
-  if (!formValues.description) {
-    errors.description = "You  enter a description";
-  }
+  // if (!formValues.title) {
+  //   errors.title = "You must enter a title";
+  // }
+  // if (!formValues.description) {
+  //   errors.description = "You  enter a description";
+  // }
   return errors;
 };
 
@@ -74,7 +74,9 @@ const FreeField = ({ test, handleSubmit, pristine, submitting }) => {
   };
 
   const onSubmit = formValues => {
-    onSubmit(formValues);
+    // SEND TO API
+    let values = { name: test.name, values: formValues };
+    console.log(values);
   };
 
   return (

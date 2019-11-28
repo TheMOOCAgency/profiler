@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import LikertForm from "../../components/forms/likert-form/LikertForm";
-import TrueOrFalse from "../../components/forms/true-or-false/TrueOrFalse";
 import FreeField from "../../components/forms/free-field/FreeField";
 import Grid from "@material-ui/core/Grid";
 import { FormName } from "redux-form";
@@ -19,7 +18,7 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
       } else if (test.type === "true-or-false") {
         return (
           <FormName key={index}>
-            {() => <TrueOrFalse test={test} form={test.name} />}
+            {() => <LikertForm test={test} form={test.name} />}
           </FormName>
         );
       } else if (test.type === "free-field") {
