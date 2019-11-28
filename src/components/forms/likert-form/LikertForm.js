@@ -200,9 +200,25 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
 
   const renderSubmitButton = () => {
     return (
-      <SubmitButton disabled={pristine || submitting}>
-        <Fragment>{button}</Fragment>
-      </SubmitButton>
+      <Fragment>
+        {result ? (
+          <SubmitButton disabled={pristine || submitting}>
+            <Fragment>{button}</Fragment>
+          </SubmitButton>
+        ) : (
+          <div
+            item
+            md={12}
+            style={{
+              height: "10px",
+              backgroundColor: "#b71b53",
+              borderRadius: "5px",
+              margin: "50px 0",
+              opacity: "0.5"
+            }}
+          />
+        )}
+      </Fragment>
     );
   };
 
@@ -210,13 +226,13 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
     if (result === "histogram") {
       return (
         <Fragment>
-          {isCompleted && <BarChart test={test} data={data} />}
+          {isCompleted && result && <BarChart test={test} data={data} />}
         </Fragment>
       );
     } else if (result === "stackedBarChart") {
       return (
         <Fragment>
-          {isCompleted && <StackedBarChart test={test} data={data} />}
+          {isCompleted && result && <StackedBarChart test={test} data={data} />}
         </Fragment>
       );
     }

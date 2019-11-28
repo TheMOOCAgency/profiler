@@ -14,7 +14,6 @@ window.props = {
             type: "likert",
             topic: "",
             button: "VISUALISEZ VOS RESULTATS",
-            result: "histogram",
             wording: "",
             drivers: {
               driver1: "Sois parfait",
@@ -241,6 +240,13 @@ window.props = {
               { name: "Oui, souvent", value: 4 },
               { name: "Oui, presque toujours", value: 5 }
             ]
+          },
+          {
+            name: "multi1",
+            type: "multiple-source-result",
+            topic: "",
+            button: "VISUALISEZ VOS RESULTATS",
+            sources: ["likert1-1", "likert1-2"]
           }
         ]
       },
@@ -994,7 +1000,21 @@ window.props = {
       },
       {
         name: "Mon Bloc-Notes",
-        tests: []
+        wording:
+          "Dans ce bloc, il n’y a qu’un espace de saisie libre sans consigne particulière :",
+        tests: [
+          {
+            type: "free-field",
+            name: "freeField8-1",
+            button: "ENREGISTREZ VOTRE REPONSE",
+            questions: [
+              {
+                id: "field0",
+                text: "Exprimez-vous !"
+              }
+            ]
+          }
+        ]
       }
     ]
   }

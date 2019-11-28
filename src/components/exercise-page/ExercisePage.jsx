@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import LikertForm from "../../components/forms/likert-form/LikertForm";
 import FreeField from "../../components/forms/free-field/FreeField";
+import BarChart from "../../components/results/bar-chart/BarChart";
 import Grid from "@material-ui/core/Grid";
 import { FormName } from "redux-form";
 
@@ -27,6 +28,8 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
             {() => <FreeField test={test} form={test.name} />}
           </FormName>
         );
+      } else if (test.type === "multiple-source-result") {
+        return <BarChart test={test} form={test.name} />;
       }
       return null;
     });
