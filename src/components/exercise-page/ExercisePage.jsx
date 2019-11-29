@@ -1,16 +1,18 @@
 import React, { Fragment } from "react";
-import jsPDF from "jspdf";
-import html2canvas from "html2canvas";
+// import jsPDF from "jspdf";
+// import html2canvas from "html2canvas";
 import LikertForm from "../../components/forms/likert-form/LikertForm";
 import FreeField from "../../components/forms/free-field/FreeField";
-import BarChart from "../../components/results/bar-chart/BarChart";
+import MultiInputBarChart from "../../components/results/multi-input-bar-chart/MultiInputBarChart";
 import Grid from "@material-ui/core/Grid";
 import { FormName } from "redux-form";
 
 const ExercisePage = ({ skills, skill, parentIndex }) => {
   const { topic, wording } = skills[parentIndex];
 
-  let initialValues = { question0: "3", question1: "true" };
+  // let initialValues = {
+  //   question0: "3"
+  // };
 
   const renderTestType = index =>
     skill.tests.map((test, index) => {
@@ -21,7 +23,7 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
               <LikertForm
                 test={test}
                 form={test.name}
-                initialValues={initialValues}
+                // initialValues={initialValues}
               />
             )}
           </FormName>
@@ -33,7 +35,7 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
               <LikertForm
                 test={test}
                 form={test.name}
-                initialValues={initialValues}
+                // initialValues={initialValues}
               />
             )}
           </FormName>
@@ -45,13 +47,20 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
               <FreeField
                 test={test}
                 form={test.name}
-                initialValues={initialValues}
+                // initialValues={initialValues}
               />
             )}
           </FormName>
         );
       } else if (test.type === "multiple-source-result") {
-        return <BarChart key={index} test={test} form={test.name} />;
+        return (
+          <MultiInputBarChart
+            key={index}
+            test={test}
+            form={test.name}
+            tests={skill.tests}
+          />
+        );
       }
       return null;
     });

@@ -264,9 +264,7 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
           if (!rawData[question.driver]) {
             return (rawData[question.driver] = {
               name: drivers[question.driver],
-              testTotal: Number(results[question.id]),
-              selfTotal: 15,
-              othersTotal: 18
+              testTotal: Number(results[question.id])
             });
           } else {
             return (rawData[question.driver].testTotal += Number(
