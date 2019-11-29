@@ -117,7 +117,7 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
         {topic ||
           (wording && (
             <Fragment>
-              <h3>{topic}</h3>
+              {topic && <h3>{topic.toUpperCase()}</h3>}
               <Grid
                 item
                 md={7}
@@ -206,7 +206,7 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
             <Fragment>{button}</Fragment>
           </SubmitButton>
         ) : (
-          <div
+          <Grid
             item
             md={12}
             style={{
@@ -264,9 +264,7 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
           if (!rawData[question.driver]) {
             return (rawData[question.driver] = {
               name: drivers[question.driver],
-              testTotal: Number(results[question.id]),
-              selfTotal: 15,
-              othersTotal: 18
+              testTotal: Number(results[question.id])
             });
           } else {
             return (rawData[question.driver].testTotal += Number(
@@ -302,4 +300,6 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
 };
 
 // FORM NAME IS DEFINED IN FORMNAME PARENT ON EXERCISE PAGE
-export default reduxForm({ form: "", validate })(LikertForm);
+export default reduxForm({ form: "", enableReinitialize: true, validate })(
+  LikertForm
+);
