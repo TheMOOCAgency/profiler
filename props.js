@@ -191,11 +191,11 @@ window.props = {
               }
             ],
             answers: [
-              { name: "Rarement", value: 1 },
-              { name: "Parfois", value: 2 },
-              { name: "D’ordinaire oui", value: 3 },
-              { name: "Oui, souvent", value: 4 },
-              { name: "Oui, presque toujours", value: 5 }
+              { name: "Rarement", value: "1" },
+              { name: "Parfois", value: "2" },
+              { name: "D’ordinaire oui", value: "3" },
+              { name: "Oui, souvent", value: "4" },
+              { name: "Oui, presque toujours", value: "5" }
             ]
           },
           {
@@ -214,31 +214,36 @@ window.props = {
             questions: [
               {
                 text: "Sois parfait",
-                id: "driver1"
+                id: "question0",
+                driver: "driver1"
               },
               {
                 text: "Sois fort",
-                id: "driver2"
+                id: "question1",
+                driver: "driver2"
               },
               {
                 text: "Dépêche toi",
-                id: "driver3"
+                id: "question2",
+                driver: "driver3"
               },
               {
                 text: "Fais plaisir",
-                id: "driver4"
+                id: "question3",
+                driver: "driver4"
               },
               {
                 text: "Fais des efforts",
-                id: "driver5"
+                id: "question4",
+                driver: "driver5"
               }
             ],
             answers: [
-              { name: "Rarement", value: 1 },
-              { name: "Parfois", value: 2 },
-              { name: "D’ordinaire oui", value: 3 },
-              { name: "Oui, souvent", value: 4 },
-              { name: "Oui, presque toujours", value: 5 }
+              { name: "Rarement", value: "6" },
+              { name: "Parfois", value: "12" },
+              { name: "D’ordinaire oui", value: "18" },
+              { name: "Oui, souvent", value: "24" },
+              { name: "Oui, presque toujours", value: "30" }
             ]
           },
           {
@@ -246,7 +251,10 @@ window.props = {
             type: "multiple-source-result",
             topic: "",
             button: "VISUALISEZ VOS RESULTATS",
-            sources: ["likert1-1", "likert1-2"]
+            sources: [
+              { id: "likert1-1", name: "Test driver" },
+              { id: "likert1-2", name: "Autopositionnement" }
+            ]
           }
         ]
       },
