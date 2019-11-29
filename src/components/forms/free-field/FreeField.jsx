@@ -42,7 +42,7 @@ const validate = (formValues, props) => {
 };
 
 const FreeField = ({ test, handleSubmit, pristine, submitting }) => {
-  const { questions, button } = test;
+  const { questions, button, topic } = test;
 
   const renderCustomInput = formProps => {
     return (
@@ -82,6 +82,7 @@ const FreeField = ({ test, handleSubmit, pristine, submitting }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <FormGroup>
+        {topic && <h3>{topic.toUpperCase()}</h3>}
         <Fragment>{renderInputs()}</Fragment>
       </FormGroup>
     </form>
@@ -90,5 +91,6 @@ const FreeField = ({ test, handleSubmit, pristine, submitting }) => {
 
 export default reduxForm({
   form: "",
+  enableReinitialize: true,
   validate
 })(FreeField);

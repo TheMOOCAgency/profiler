@@ -471,6 +471,187 @@ window.props = {
               { name: "Plutôt en accord", value: 4 },
               { name: "Totalement d’accord", value: 5 }
             ]
+          },
+          {
+            type: "free-field",
+            name: "freeField3-2",
+            topic: "Valeurs",
+            button: "ENREGISTREZ VOTRE REPONSE",
+            questions: [
+              {
+                id: "field0",
+                text:
+                  "Lisez attentivement cette liste de valeur \n\nÉGALITÉ (opportunités égales pour tous)\nHARMONIE INTÉRIEURE (en paix avec soi-même)\nPOUVOIR SOCIAL (contrôle d'autrui, dominance)\nPLAISIR (satisfaction des désirs)\nLIBERTÉ (liberté de pensée et d'action)\nUNE VIE SPIRITUELLE (accent mis sur les aspects spirituels et non matériels)\nSENTIMENT DE NE PAS ÊTRE ISOLÉ (sentiment que les autres se soucient de moi)\nORDRE SOCIAL (stabilité de la société)\nUNE VIE EXCITANTE (expériences stimulantes)\nSENS DE LA VIE (un objectif dans la vie)\nPOLITESSE (courtoisie, bonnes manières)\nRICHESSE (biens matériels, argent)\nSÉCURITÉ NATIONALE (protection de mon pays contre ses ennemis)\nRESPECT DE SOI (croyance en sa propre valeur)\nRÉCIPROCITÉ DES FAVEURS (éviter d'être en dettes)\nCRÉATIVITÉ (originalité, imagination)\nUN MONDE EN PAIX (libéré des guerres et des conflits)\nRESPECT DE LA TRADITION (préserver les coutumes consacrées par le temps)\nAMOUR ADULTE (intimité profonde, émotionnelle et spirituelle)\nAUTO DISCIPLINE (auto limitation, résistance aux tentations)\nDROIT A UNE VIE PRIVÉE (non exposée aux regards indiscrets)\nSÉCURITÉ FAMILIALE (sécurité pour ceux que l'on aime)\nRECONNAISSANCE SOCIALE (respect, approbation émanant des autres)\nUNITÉ AVEC LA NATURE (adéquation à la nature)\nUNE VIE VARIÉE (remplie de défis, de nouveautés, de changements)\nSAGESSE (compréhension adulte de la vie)\nAUTORITÉ (le droit de diriger ou de commander)\nAMITIÉ VRAIE (des amis proches et sur qui l'on peut compter)\nUN MONDE DE BEAUTÉ (beauté de la nature et des arts)\nJUSTICE SOCIALE (corriger les injustices, secourir les faibles)\n\nSelon vous, parmi cette liste, quelle est la valeur la plus importante ? Donnez un exemple de situation personnelle ou vous avez appliqué cette valeur."
+              },
+              {
+                id: "field1",
+                text:
+                  "Selon vous, parmi cette liste, quelle est la valeur la moins importante ? Donnez un exemple de situation personnelle ou vous n’avez pas appliqué cette valeur."
+              },
+              {
+                id: "field2",
+                text: "Quelles sont les compétences que vous pensez posséder ?"
+              },
+              {
+                id: "field3",
+                text:
+                  "Selon vous, parmi cette seconde liste, quelle est la valeur la moins importante ? Donnez un exemple de situation personnelle ou vous n’avez pas appliqué cette valeur."
+              }
+            ]
+          },
+          {
+            name: "likert3-3",
+            type: "likert",
+            topic: "Besoin",
+            button: "VISUALISEZ VOS RESULTATS",
+            result: "histogram",
+            wording: "",
+            drivers: {
+              driver1: "dvf"
+            },
+            questions: [
+              {
+                text:
+                  "A quel point le besoin « Subsistance » est-t-il important pour vous ?",
+                id: "question0",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "A quel point le besoin « Protection » est-t-il important pour vous ?",
+                id: "question1",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "A quel point le besoin «Participation » est-t-il important pour vous ?",
+                id: "question2",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "A quel point le besoin « Oisiveté» est-t-il important pour vous ?",
+                id: "question3",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "A quel point le besoin « Affection » est-t-il important pour vous ?",
+                id: "question4",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "A quel point le besoin « Compréhension » est-t-il important pour vous ?",
+                id: "question5",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "A quel point le besoin « Créativité » est-t-il important pour vous ?",
+                id: "question6",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "A quel point le besoin « Identité » est-t-il important pour vous ?",
+                id: "question7",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "A quel point le besoin « Liberté » est-t-il important pour vous ?",
+                id: "question8",
+                driver: "driver1"
+              }
+            ],
+            answers: [
+              { name: "Pas du tout important", value: 1 },
+              { name: "Peu important", value: 2 },
+              { name: "Assez important", value: 3 },
+              { name: "Très important", value: 4 },
+              { name: "Fondamental", value: 5 }
+            ]
+          },
+          {
+            type: "free-field",
+            name: "freeField3-4",
+            button: "ENREGISTREZ VOTRE REPONSE",
+            questions: [
+              {
+                id: "field0",
+                text:
+                  "Citez vos peurs les plus importantes et les situations dans lesquelles elles se manifestent le plus :"
+              }
+            ]
+          },
+          {
+            type: "free-field",
+            name: "freeField3-5",
+            topic: "Croyances",
+            button: "ENREGISTREZ VOTRE REPONSE",
+            questions: [
+              {
+                id: "field0",
+                text:
+                  "Listez trois croyances personnelles que vous considérez comme aidantes :"
+              },
+              {
+                id: "field1",
+                text:
+                  "Donnez des exemples de situation ou ces croyances vous ont aidés :"
+              },
+              {
+                id: "field2",
+                text:
+                  "Listez trois croyances personnelles que vous considérez comme limitantes :"
+              },
+              {
+                id: "field3",
+                text:
+                  "Donnez des exemples de situation ou ces croyances vous ont limité :"
+              }
+            ]
+          },
+          {
+            type: "free-field",
+            name: "freeField3-6",
+            topic: "Emotions",
+            button: "ENREGISTREZ VOTRE REPONSE",
+            questions: [
+              {
+                id: "field0",
+                text:
+                  "Vous considérez vous comme quelqu’un qui exprime beaucoup ses émotions ? Donnez un exemple :"
+              },
+              {
+                id: "field1",
+                text:
+                  "Listez les 3 émotions les plus fréquemment ressenties en vous basant sur la roue des émotions. Donnez des exemples de situation pour chaque émotion :"
+              }
+            ]
+          },
+          {
+            type: "free-field",
+            name: "freeField3-7",
+            topic: "Synthèse cadre de référence",
+            button: "ENREGISTREZ VOTRE REPONSE",
+            questions: [
+              {
+                id: "field0",
+                text:
+                  "Est-ce que vous avez étés surpris par certains résultats ?"
+              },
+              {
+                id: "field1",
+                text: "Etiez-vous conscient de vos modes de fonctionnement ?"
+              },
+              {
+                id: "field2",
+                text:
+                  "Y’a-t-il des choses auxquelles vous ne vous attendiez pas dont vous avez pris conscience ?"
+              }
+            ]
           }
         ]
       },
