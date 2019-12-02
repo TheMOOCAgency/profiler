@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const SubmitButton = ({ children, onClick }) => {
+const SubmitButton = ({ children, onClick, disabled }) => {
   const classes = useStyles();
   return (
     <Button
@@ -23,6 +23,7 @@ const SubmitButton = ({ children, onClick }) => {
       onClick={onClick}
       className={classes.root}
       type="submit"
+      disabled={disabled}
     >
       {children}
     </Button>

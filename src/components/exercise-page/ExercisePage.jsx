@@ -3,7 +3,7 @@ import React, { Fragment } from "react";
 // import html2canvas from "html2canvas";
 import LikertForm from "../../components/forms/likert-form/LikertForm";
 import FreeField from "../../components/forms/free-field/FreeField";
-import MultiInputBarChart from "../../components/results/multi-input-bar-chart/MultiInputBarChart";
+// import MultiInputBarChart from "../../components/results/multi-input-bar-chart/MultiInputBarChart";
 import Grid from "@material-ui/core/Grid";
 import { FormName } from "redux-form";
 
@@ -52,17 +52,19 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
             )}
           </FormName>
         );
-      } else if (test.type === "multiple-source-result") {
-        return (
-          <MultiInputBarChart
-            key={index}
-            test={test}
-            form={test.name}
-            tests={skill.tests}
-          />
-        );
       }
       return null;
+
+      // else if (test.type === "multiple-source-result") {
+      //   return (
+      //     <MultiInputBarChart
+      //       key={index}
+      //       test={test}
+      //       form={test.name}
+      //       tests={skill.tests}
+      //     />
+      //   );
+      // }
     });
 
   // const printPdf = () => {

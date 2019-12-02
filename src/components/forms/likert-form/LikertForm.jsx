@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
 
 let requiredFields = [];
 
-const validate = (values, props) => {
+const validate = (formValues, props) => {
   const errors = {};
   props.test.questions.map(question => {
     if (requiredFields.indexOf(question.id) === -1) {
@@ -42,8 +42,8 @@ const validate = (values, props) => {
   });
 
   requiredFields.forEach(field => {
-    if (!values[field]) {
-      errors[field] = "Required";
+    if (!formValues[field]) {
+      errors[field] = "Champ requis";
     }
   });
 
@@ -51,26 +51,37 @@ const validate = (values, props) => {
 };
 
 /* BUTTON LINE */
-const radioButtons = ({ answers, salut, input, ...rest }) => (
+const radioButtons = ({
+  answers,
+  salut,
+  input,
+  meta: { error, touched },
+  ...rest
+}) => (
   <FormControl>
-    <RadioGroup {...input} {...rest} row>
-      {answers.map(answer => {
-        return (
-          <FormControlLabel
-            style={{
-              opacity: `${0.5 + answer.value / 15}`,
-              width: "100px",
-              display: "flex",
-              margin: "0 auto",
-              justifyContent: "space-around"
-            }}
-            key={answer.value}
-            value={answer.value.toString()}
-            control={<CustomRadio />}
-          />
-        );
-      })}
-    </RadioGroup>
+    <Grid container direction="row" alignItems="center">
+      <RadioGroup {...input} {...rest} row>
+        {answers.map(answer => {
+          return (
+            <FormControlLabel
+              style={{
+                opacity: `${0.5 + answer.value / 15}`,
+                width: "100px",
+                display: "flex",
+                margin: "0 auto",
+                justifyContent: "space-around"
+              }}
+              key={answer.value}
+              value={answer.value.toString()}
+              control={<CustomRadio />}
+            />
+          );
+        })}
+      </RadioGroup>
+      <h4 style={{ color: "#b71b53", fontSize: "12px", margin: 0 }}>
+        {touched && error}
+      </h4>
+    </Grid>
   </FormControl>
 );
 
@@ -85,7 +96,8 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
     type,
     result,
     name,
-    drivers
+    drivers,
+    requiredForms
   } = test;
 
   const [isCompleted, setCompletion] = useState(false);
@@ -103,7 +115,7 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
     // ADAPT SIZE WHETHER IT'S A LIKERT SCALE OR A TRUE/FALSE
     const resize = () => {
       if (type === "likert") {
-        setSize({ questions: 5, blank: 1, answers: 6 });
+        setSize({ questions: 4, blank: 1, answers: 7 });
       } else if (type === "true-or-false") {
         setSize({ questions: 7, blank: 1, answers: 4 });
       }
@@ -114,25 +126,24 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
   const renderWording = () => {
     return (
       <Fragment>
-        {topic ||
-          (wording && (
-            <Fragment>
-              {topic && <h3>{topic.toUpperCase()}</h3>}
-              <Grid
-                item
-                md={7}
-                sm={12}
-                style={{
-                  textAlign: "justify",
-                  marginBottom: "30px",
-                  fontStyle: "italic",
-                  fontSize: "14px"
-                }}
-              >
-                {wording}
-              </Grid>
-            </Fragment>
-          ))}
+        {(topic || wording) && (
+          <Fragment>
+            {topic && <h3>{topic.toUpperCase()}</h3>}
+            <Grid
+              item
+              md={7}
+              sm={12}
+              style={{
+                textAlign: "justify",
+                marginBottom: "30px",
+                fontStyle: "italic",
+                fontSize: "14px"
+              }}
+            >
+              {wording}
+            </Grid>
+          </Fragment>
+        )}
       </Fragment>
     );
   };
@@ -173,28 +184,44 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
   const renderQuestions = () => {
     return (
       questions &&
-      questions.map((question, index) => (
-        <Grid
-          key={question.id}
-          container
-          direction="row"
-          alignItems="center"
-          justify="space-between"
-          className={classes.questionLine}
-        >
-          <Grid item md={size.questions} sm={12} style={{ fontSize: "14px" }}>
-            {index + 1 + ". " + question.text}
-          </Grid>
-          <Grid item md={size.blank} sm={false} />
-          <Grid item md={size.answers} sm={12}>
-            <Field
-              name={question.id}
-              answers={answers}
-              component={radioButtons}
-            />
-          </Grid>
-        </Grid>
-      ))
+      questions.map(question => {
+        if (!question.subTopic) {
+          return (
+            <Grid
+              key={question.id}
+              container
+              direction="row"
+              alignItems="center"
+              justify="space-between"
+              className={classes.questionLine}
+            >
+              <Grid
+                item
+                md={size.questions}
+                sm={12}
+                style={{ fontSize: "14px" }}
+              >
+                {question.text}
+              </Grid>
+              <Grid item md={size.blank} sm={false} />
+              <Grid item md={size.answers} sm={12}>
+                <Field
+                  name={question.id}
+                  answers={answers}
+                  component={radioButtons}
+                />
+              </Grid>
+            </Grid>
+          );
+        } else {
+          return (
+            <Grid key={question.id}>
+              <h3>{question.subTopic.toUpperCase()}</h3>
+              <Fragment>{renderHeader()}</Fragment>
+            </Grid>
+          );
+        }
+      })
     );
   };
 
@@ -248,31 +275,58 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
         mark: 0,
         rest: 100
       };
-      results &&
-        questions.map(question => {
-          console.log(question[results[question.id]]);
-          rawData.mark += question[results[question.id]] * 10;
-          rawData.rest -= question[results[question.id]] * 10;
-          return rawData;
-        });
-      console.log(rawData);
+      // results &&
+      questions.map(question => {
+        console.log(question[results[question.id]]);
+        rawData.mark += question[results[question.id]] * 10;
+        rawData.rest -= question[results[question.id]] * 10;
+        return rawData;
+      });
       formatedData.push(rawData);
       setData(formatedData);
-    } else if (type === "likert") {
-      results &&
-        questions.map(question => {
-          if (!rawData[question.driver]) {
-            return (rawData[question.driver] = {
-              name: drivers[question.driver],
-              testTotal: Number(results[question.id])
-            });
-          } else {
-            return (rawData[question.driver].testTotal += Number(
-              results[question.id]
-            ));
-          }
-        });
+    } else if (type === "likert" && !requiredForms) {
+      // results &&
+      questions.map(question => {
+        if (!rawData[question.driver]) {
+          return (rawData[question.driver] = {
+            name: drivers[question.driver],
+            testTotal: Number(results[question.id])
+          });
+        } else {
+          return (rawData[question.driver].testTotal += Number(
+            results[question.id]
+          ));
+        }
+      });
       formatedData = Object.values(rawData);
+      setData(formatedData);
+    } else if (type === "likert" && requiredForms) {
+      // results &&
+      requiredForms.map(form => {
+        return questions.map(question => {
+          if (!question.subTopic) {
+            if (!rawData[question.driver]) {
+              return (rawData[question.driver] = {
+                name: drivers[question.driver],
+                [question.form.id]:
+                  Number(results[question.id]) * Number(question.form.coef)
+              });
+            } else {
+              if (!rawData[question.driver][question.form.id]) {
+                return (rawData[question.driver][question.form.id] =
+                  Number(results[question.id]) * Number(question.form.coef));
+              } else {
+                return (rawData[question.driver][question.form.id] +=
+                  Number(results[question.id]) * Number(question.form.coef));
+              }
+            }
+          }
+          return rawData;
+        });
+      });
+
+      formatedData = Object.values(rawData);
+      console.log(formatedData);
       setData(formatedData);
     }
   };
@@ -289,7 +343,6 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
       <Fragment>{renderWording()}</Fragment>
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormGroup>
-          <Fragment>{renderHeader()}</Fragment>
           <Fragment>{renderQuestions()}</Fragment>
           <Fragment>{renderSubmitButton()}</Fragment>
         </FormGroup>
