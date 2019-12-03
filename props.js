@@ -523,7 +523,15 @@ window.props = {
             result: "histogram",
             wording: "",
             drivers: {
-              driver1: "dvf"
+              driver1: "Subsistance",
+              driver2: "Protection",
+              driver3: "Participation",
+              driver4: "Oisiveté",
+              driver5: "Affection",
+              driver6: "Compréhension",
+              driver7: "Créativité",
+              driver8: "Identité",
+              driver9: "Liberté"
             },
             questions: [
               {
@@ -536,49 +544,49 @@ window.props = {
                 text:
                   "A quel point le besoin « Protection » est-t-il important pour vous ?",
                 id: "question1",
-                driver: "driver1"
+                driver: "driver2"
               },
               {
                 text:
                   "A quel point le besoin «Participation » est-t-il important pour vous ?",
                 id: "question2",
-                driver: "driver1"
+                driver: "driver3"
               },
               {
                 text:
                   "A quel point le besoin « Oisiveté» est-t-il important pour vous ?",
                 id: "question3",
-                driver: "driver1"
+                driver: "driver4"
               },
               {
                 text:
                   "A quel point le besoin « Affection » est-t-il important pour vous ?",
                 id: "question4",
-                driver: "driver1"
+                driver: "driver5"
               },
               {
                 text:
                   "A quel point le besoin « Compréhension » est-t-il important pour vous ?",
                 id: "question5",
-                driver: "driver1"
+                driver: "driver6"
               },
               {
                 text:
                   "A quel point le besoin « Créativité » est-t-il important pour vous ?",
                 id: "question6",
-                driver: "driver1"
+                driver: "driver7"
               },
               {
                 text:
                   "A quel point le besoin « Identité » est-t-il important pour vous ?",
                 id: "question7",
-                driver: "driver1"
+                driver: "driver8"
               },
               {
                 text:
                   "A quel point le besoin « Liberté » est-t-il important pour vous ?",
                 id: "question8",
-                driver: "driver1"
+                driver: "driver9"
               }
             ],
             answers: [
