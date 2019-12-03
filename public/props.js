@@ -12,10 +12,8 @@ window.props = {
           {
             name: "likert1-1",
             type: "likert",
-            topic: "",
             button: "VISUALISEZ VOS RESULTATS",
             result: "histogram",
-            wording: "",
             drivers: {
               driver1: "Sois parfait",
               driver2: "Sois fort",
@@ -28,7 +26,6 @@ window.props = {
               { id: "form2", name: "Auto-positionnement" }
             ],
             questions: [
-              ,
               { subTopic: "Test-driver", id: "form1" },
               {
                 text:
@@ -266,68 +263,11 @@ window.props = {
               { name: "Oui, presque toujours", value: "5" }
             ]
           }
-          // {
-          //   name: "likert1-2",
-          //   type: "likert",
-          //   topic: "",
-          //   button: "",
-          //   wording: "",
-          //   drivers: {
-          //     driver1: "Sois parfait",
-          //     driver2: "Sois fort",
-          //     driver3: "Dépêche toi",
-          //     driver4: "Fais plaisir",
-          //     driver5: "Fais des efforts"
-          //   },
-          //   questions: [
-          //     {
-          //       text: "Sois parfait",
-          //       id: "question0",
-          //       driver: "driver1"
-          //     },
-          //     {
-          //       text: "Sois fort",
-          //       id: "question1",
-          //       driver: "driver2"
-          //     },
-          //     {
-          //       text: "Dépêche toi",
-          //       id: "question2",
-          //       driver: "driver3"
-          //     },
-          //     {
-          //       text: "Fais plaisir",
-          //       id: "question3",
-          //       driver: "driver4"
-          //     },
-          //     {
-          //       text: "Fais des efforts",
-          //       id: "question4",
-          //       driver: "driver5"
-          //     }
-          //   ],
-          //   answers: [
-          //     { name: "Rarement", value: "6" },
-          //     { name: "Parfois", value: "12" },
-          //     { name: "D’ordinaire oui", value: "18" },
-          //     { name: "Oui, souvent", value: "24" },
-          //     { name: "Oui, presque toujours", value: "30" }
-          //   ]
-          // },
-          // {
-          //   name: "multi1",
-          //   type: "multiple-source-result",
-          //   topic: "",
-          //   button: "VISUALISEZ VOS RESULTATS",
-          //   sources: [
-          //     { id: "likert1-1", name: "Test driver" },
-          //     { id: "likert1-2", name: "Autopositionnement" }
-          //   ]
-          // }
         ]
       },
       {
         name: "Mes compétences de manager",
+        topic: "Mes compétences de manager",
         wording:
           "Dans ce bloc, les apprenants doivent répondre en saisie libre aux questions suivantes :",
         tests: [
@@ -371,7 +311,7 @@ window.props = {
       },
       {
         name: "Mon cadre de référence",
-        topic: "",
+        topic: "Mon cadre de référence",
         button: "VISUALISEZ VOS RESULTATS",
         result: "histogram",
         wording: "",
@@ -583,7 +523,15 @@ window.props = {
             result: "histogram",
             wording: "",
             drivers: {
-              driver1: "dvf"
+              driver1: "Subsistance",
+              driver2: "Protection",
+              driver3: "Participation",
+              driver4: "Oisiveté",
+              driver5: "Affection",
+              driver6: "Compréhension",
+              driver7: "Créativité",
+              driver8: "Identité",
+              driver9: "Liberté"
             },
             questions: [
               {
@@ -596,49 +544,49 @@ window.props = {
                 text:
                   "A quel point le besoin « Protection » est-t-il important pour vous ?",
                 id: "question1",
-                driver: "driver1"
+                driver: "driver2"
               },
               {
                 text:
                   "A quel point le besoin «Participation » est-t-il important pour vous ?",
                 id: "question2",
-                driver: "driver1"
+                driver: "driver3"
               },
               {
                 text:
                   "A quel point le besoin « Oisiveté» est-t-il important pour vous ?",
                 id: "question3",
-                driver: "driver1"
+                driver: "driver4"
               },
               {
                 text:
                   "A quel point le besoin « Affection » est-t-il important pour vous ?",
                 id: "question4",
-                driver: "driver1"
+                driver: "driver5"
               },
               {
                 text:
                   "A quel point le besoin « Compréhension » est-t-il important pour vous ?",
                 id: "question5",
-                driver: "driver1"
+                driver: "driver6"
               },
               {
                 text:
                   "A quel point le besoin « Créativité » est-t-il important pour vous ?",
                 id: "question6",
-                driver: "driver1"
+                driver: "driver7"
               },
               {
                 text:
                   "A quel point le besoin « Identité » est-t-il important pour vous ?",
                 id: "question7",
-                driver: "driver1"
+                driver: "driver8"
               },
               {
                 text:
                   "A quel point le besoin « Liberté » est-t-il important pour vous ?",
                 id: "question8",
-                driver: "driver1"
+                driver: "driver9"
               }
             ],
             answers: [
@@ -1294,7 +1242,7 @@ window.props = {
             questions: [
               {
                 text:
-                  "Je me montre généralement ferme dans la poursuite de mes objectifs0",
+                  "Je me montre généralement ferme dans la poursuite de mes objectifs",
                 id: "question0",
                 driver: "driver4"
               },

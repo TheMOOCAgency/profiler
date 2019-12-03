@@ -51,7 +51,7 @@ const validate = (formValues, props) => {
 };
 
 const FreeField = ({ test, handleSubmit, pristine, submitting }) => {
-  const { questions, button, topic } = test;
+  const { questions, button } = test;
 
   const renderCustomInput = ({ input }) => {
     return (
@@ -72,7 +72,7 @@ const FreeField = ({ test, handleSubmit, pristine, submitting }) => {
     return questions.map((question, index) => {
       return (
         <Grid container key={question.id}>
-          <div style={{ marginBottom: "10px" }}>
+          <div style={{ margin: "30px 0 10px 0" }}>
             {index + 1 + ". " + question.text}
           </div>
           <Field name={question.id} component={renderCustomInput} />
@@ -93,7 +93,7 @@ const FreeField = ({ test, handleSubmit, pristine, submitting }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <FormGroup>
-        {topic && <h3>{topic.toUpperCase()}</h3>}
+        {/* {topic && <h3>{topic.toUpperCase()}</h3>} */}
         <Fragment>{renderInputs()}</Fragment>
       </FormGroup>
     </form>

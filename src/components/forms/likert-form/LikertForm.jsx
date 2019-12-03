@@ -78,7 +78,15 @@ const radioButtons = ({
           );
         })}
       </RadioGroup>
-      <h4 style={{ color: "#b71b53", fontSize: "12px", margin: 0 }}>
+      <h4
+        style={{
+          color: "#353535",
+          fontSize: "12px",
+          margin: 0,
+          fontStyle: "italic",
+          opacity: "0.6"
+        }}
+      >
         {touched && error}
       </h4>
     </Grid>
@@ -91,8 +99,6 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
     questions,
     answers,
     button,
-    wording,
-    topic,
     type,
     result,
     name,
@@ -123,34 +129,19 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
     resize();
   }, [type]);
 
-  const renderWording = () => {
-    return (
-      <Fragment>
-        {(topic || wording) && (
-          <Fragment>
-            {topic && <h3>{topic.toUpperCase()}</h3>}
-            <Grid
-              item
-              md={7}
-              sm={12}
-              style={{
-                textAlign: "justify",
-                marginBottom: "30px",
-                fontStyle: "italic",
-                fontSize: "14px"
-              }}
-            >
-              {wording}
-            </Grid>
-          </Fragment>
-        )}
-      </Fragment>
-    );
-  };
-
   const renderHeader = () => {
     return (
-      <Grid container direction="row" justify="flex-end">
+      <Grid
+        container
+        direction="row"
+        justify="flex-end"
+        style={{
+          borderRadius: "5px",
+          padding: "10px",
+          color: "#353535",
+          border: "2px solid #b71b53"
+        }}
+      >
         <Grid item md={size.questions} sm={false} />
         <Grid item md={size.blank} sm={false} />
         <Grid
@@ -159,7 +150,7 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
           sm={12}
           style={{ display: "flex", justifyContent: "flex-end" }}
         >
-          <Grid container direction="row">
+          <Grid container direction="row" alignItems="center">
             {answers &&
               answers.map(answer => {
                 return (
@@ -167,11 +158,12 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
                     key={answer.value}
                     style={{
                       width: "100px",
-                      fontSize: "14px",
-                      textAlign: "center"
+                      fontSize: "12px",
+                      textAlign: "center",
+                      fontWeight: "600"
                     }}
                   >
-                    {answer.name}
+                    {answer.name.toUpperCase()}
                   </div>
                 );
               })}
@@ -215,9 +207,35 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
           );
         } else {
           return (
-            <Grid key={question.id}>
-              <h3>{question.subTopic.toUpperCase()}</h3>
-              <Fragment>{renderHeader()}</Fragment>
+            <Grid
+              container
+              direction="column"
+              key={question.subTopic}
+              style={{
+                color: "#353535",
+                margin: "30px 0 20px 0"
+              }}
+            >
+              <Grid item sm={12}>
+                <h4 style={{ margin: "10px 0" }}>
+                  {question.subTopic.toUpperCase()}
+                </h4>
+              </Grid>
+              <Grid
+                item
+                md={7}
+                sm={12}
+                style={{
+                  textAlign: "justify",
+                  fontStyle: "italic",
+                  fontSize: "14px"
+                }}
+              >
+                {question.wording}
+              </Grid>
+              <Grid item sm={12}>
+                {renderHeader()}
+              </Grid>
             </Grid>
           );
         }
@@ -269,13 +287,13 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
   const formatResults = () => {
     let rawData = {};
     let formatedData = [];
+    // TRUE OR FALSE CASE
     if (type === "true-or-false") {
       rawData = {
         name: test.topic,
         mark: 0,
         rest: 100
       };
-      // results &&
       questions.map(question => {
         console.log(question[results[question.id]]);
         rawData.mark += question[results[question.id]] * 10;
@@ -284,8 +302,8 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
       });
       formatedData.push(rawData);
       setData(formatedData);
+      // LIKERT - SINGLE FORM CASE
     } else if (type === "likert" && !requiredForms) {
-      // results &&
       questions.map(question => {
         if (!rawData[question.driver]) {
           return (rawData[question.driver] = {
@@ -299,9 +317,10 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
         }
       });
       formatedData = Object.values(rawData);
+      console.log(formatedData);
       setData(formatedData);
+      // LIKERT - MULTIPLE FORM CASE
     } else if (type === "likert" && requiredForms) {
-      // results &&
       requiredForms.map(form => {
         return questions.map(question => {
           if (!question.subTopic) {
@@ -339,16 +358,18 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
   };
 
   return (
-    <Fragment>
-      <Fragment>{renderWording()}</Fragment>
+    <Grid errostyle={{ marginBottom: "30px" }}>
       <form onSubmit={handleSubmit(onSubmit)}>
+        {!requiredForms && (
+          <div style={{ marginTop: "30px" }}>{renderHeader()}</div>
+        )}
         <FormGroup>
           <Fragment>{renderQuestions()}</Fragment>
           <Fragment>{renderSubmitButton()}</Fragment>
         </FormGroup>
       </form>
       <Fragment>{renderResult()}</Fragment>
-    </Fragment>
+    </Grid>
   );
 };
 

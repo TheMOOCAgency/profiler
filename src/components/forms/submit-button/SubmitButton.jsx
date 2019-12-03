@@ -4,14 +4,15 @@ import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    margin: "10px 0 50px 0",
-    backgroundColor: "#353535",
+    margin: "10px 0 30px 0",
+    backgroundColor: "#b71b53",
     width: "300px",
     color: "white",
     border: "none",
     "&:hover": {
-      backgroundColor: "#b71b53"
-    }
+      backgroundColor: "#353535"
+    },
+    "&:disabled": { backgroundColor: "#353535", color: "white" }
   }
 }));
 
