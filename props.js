@@ -12,9 +12,8 @@ window.props = {
           {
             name: "likert1-1",
             type: "likert",
-            topic: "",
             button: "VISUALISEZ VOS RESULTATS",
-            wording: "",
+            result: "histogram",
             drivers: {
               driver1: "Sois parfait",
               driver2: "Sois fort",
@@ -22,172 +21,238 @@ window.props = {
               driver4: "Fais plaisir",
               driver5: "Fais des efforts"
             },
+            requiredForms: [
+              { id: "form1", name: "Test-driver" },
+              { id: "form2", name: "Auto-positionnement" }
+            ],
             questions: [
+              { subTopic: "Test-driver", id: "form1" },
               {
                 text:
                   "Pour prendre une décision, aimez-vous avoir beaucoup d’informations ?",
                 id: "question0",
-                driver: "driver1"
+                driver: "driver1",
+                form: { id: "form1", coef: 1 }
               },
               {
                 text: "Vous reprochez-vous vos erreurs ?",
                 id: "question1",
-                driver: "driver1"
+                driver: "driver1",
+                form: { id: "form1", coef: 1 }
               },
               {
                 text:
                   "Vérifiez-vous plusieurs fois les paroles des autres de crainte d’une erreur de compréhension?",
                 id: "question2",
-                driver: "driver1"
+                driver: "driver1",
+                form: { id: "form1", coef: 1 }
               },
               {
                 text: "Recherchez-vous la perfection ?",
                 id: "question3",
-                driver: "driver1"
+                driver: "driver1",
+                form: { id: "form1", coef: 1 }
               },
               {
                 text:
                   "Aimez-vous être particulièrement précis dans votre discours ?",
                 id: "question4",
-                driver: "driver1"
+                driver: "driver1",
+                form: { id: "form1", coef: 1 }
               },
               {
                 text: "Avez-vous tendance à « pinailler » ?",
                 id: "question5",
-                driver: "driver1"
+                driver: "driver1",
+                form: { id: "form1", coef: 1 }
               },
               {
                 text: "Il vaut mieux ne pas reconnaître ses faiblesses.",
                 id: "question6",
-                driver: "driver2"
+                driver: "driver2",
+                form: { id: "form1", coef: 1 }
               },
               {
                 text: "Vous savez vous dégager du jugement de l’autre",
                 id: "question7",
-                driver: "driver2"
+                driver: "driver2",
+                form: { id: "form1", coef: 1 }
               },
               {
                 text:
                   "Dites-vous aux autres : « il n’y a pas de quoi se lamenter dans votre situation » ?",
                 id: "question8",
-                driver: "driver2"
+                driver: "driver2",
+                form: { id: "form1", coef: 1 }
               },
               {
                 text: "Vous avez repéré vos lacunes… elles ne vous gênent pas",
                 id: "question9",
-                driver: "driver2"
+                driver: "driver2",
+                form: { id: "form1", coef: 1 }
               },
               {
                 text: "Maîtrisez-vous vos sentiments, vos émotions ?",
                 id: "question10",
-                driver: "driver2"
+                driver: "driver2",
+                form: { id: "form1", coef: 1 }
               },
               {
                 text:
                   "Pouvez-vous réagir face à un problème en disant : « pas de commentaires » ou encore « ça n’a pas d’importance », « je m’en fous » ?",
                 id: "question11",
-                driver: "driver2"
+                driver: "driver2",
+                form: { id: "form1", coef: 1 }
               },
               {
                 text:
                   "Ressentez-vous de l’irritation lorsque votre interlocuteur est lent ?",
                 id: "question12",
-                driver: "driver3"
+                driver: "driver3",
+                form: { id: "form1", coef: 1 }
               },
               {
                 text:
                   "Arrivez-vous en retard même quand vous vous arrangez pour arriver à temps ?",
                 id: "question13",
-                driver: "driver3"
+                driver: "driver3",
+                form: { id: "form1", coef: 1 }
               },
               {
                 text: "Pensez-vous que vous devriez vous dépêcher ?",
                 id: "question14",
-                driver: "driver3"
+                driver: "driver3",
+                form: { id: "form1", coef: 1 }
               },
               {
                 text: "Etes-vous impatient lorsque vous devez attendre ?",
                 id: "question15",
-                driver: "driver3"
+                driver: "driver3",
+                form: { id: "form1", coef: 1 }
               },
               {
                 text:
                   "Remettez-vous à plus tard pour ensuite vous précipiter à la dernière minute ?",
                 id: "question16",
-                driver: "driver3"
+                driver: "driver3",
+                form: { id: "form1", coef: 1 }
               },
               {
                 text: "Le silence vous met-il mal à l’aise ?",
                 id: "question17",
-                driver: "driver3"
+                driver: "driver3",
+                form: { id: "form1", coef: 1 }
               },
               {
                 text: "Vous sentez-vous tenu de rendre service ?",
                 id: "question18",
-                driver: "driver4"
+                driver: "driver4",
+                form: { id: "form1", coef: 1 }
               },
               {
                 text:
                   "Offrez-vous de rendre service même si on ne vous le demande pas ?",
                 id: "question19",
-                driver: "driver4"
+                driver: "driver4",
+                form: { id: "form1", coef: 1 }
               },
               {
                 text:
                   "Utilisez-vous des expressions comme « vous savez… » « pourriez-vous… » « pouvez-vous… » « voudriez vous » ?",
                 id: "question20",
-                driver: "driver4"
+                driver: "driver4",
+                form: { id: "form1", coef: 1 }
               },
               {
                 text:
                   "Eprouvez-vous le besoin de vérifier si les autres sont contents de vous et de vos actes ?",
                 id: "question21",
-                driver: "driver4"
+                driver: "driver4",
+                form: { id: "form1", coef: 1 }
               },
               {
                 text: "Pensez-vous que vous devez faire plaisir aux autres ?",
                 id: "question22",
-                driver: "driver4"
+                driver: "driver4",
+                form: { id: "form1", coef: 1 }
               },
               {
                 text:
                   "Pensez-vous que ce que vous faites n’a de valeur que si quelqu’un l’approuve ?",
                 id: "question23",
-                driver: "driver4"
+                driver: "driver4",
+                form: { id: "form1", coef: 1 }
               },
               {
                 text: "Faites-vous des efforts pour atteindre vos objectifs ?",
                 id: "question24",
-                driver: "driver5"
+                driver: "driver5",
+                form: { id: "form1", coef: 1 }
               },
               {
                 text:
                   "Le plus souvent, vous réussissez en luttant et en surmontant les difficultés",
                 id: "question25",
-                driver: "driver5"
+                driver: "driver5",
+                form: { id: "form1", coef: 1 }
               },
               {
                 text: "Au travail, vous n’avez pas le temps de vous détendre",
                 id: "question26",
-                driver: "driver5"
+                driver: "driver5",
+                form: { id: "form1", coef: 1 }
               },
               {
                 text:
                   "Utilisez-vous des tournures comme « j’essaierai, je n’y arrive pas, c’est difficile » ?",
                 id: "question27",
-                driver: "driver5"
+                driver: "driver5",
+                form: { id: "form1", coef: 1 }
               },
               {
                 text:
                   "Vous dites-vous ou dites-vous aux autres : « au moins j’ai essayé » ou des phrases semblables ?",
                 id: "question28",
-                driver: "driver5"
+                driver: "driver5",
+                form: { id: "form1", coef: 1 }
               },
               {
                 text:
                   "Etes-vous adepte de la maxime : « essayez, essayez, essayez encore, jusqu’à ce que vous réussissiez »",
                 id: "question29",
-                driver: "driver5"
+                driver: "driver5",
+                form: { id: "form1", coef: 1 }
+              },
+              { subTopic: "Auto-positionnement", id: "form2" },
+              {
+                text: "Sois parfait",
+                id: "question30",
+                driver: "driver1",
+                form: { id: "form2", coef: 6 }
+              },
+              {
+                text: "Sois fort",
+                id: "question31",
+                driver: "driver2",
+                form: { id: "form2", coef: 6 }
+              },
+              {
+                text: "Dépêche toi",
+                id: "question32",
+                driver: "driver3",
+                form: { id: "form2", coef: 6 }
+              },
+              {
+                text: "Fais plaisir",
+                id: "question33",
+                driver: "driver4",
+                form: { id: "form2", coef: 6 }
+              },
+              {
+                text: "Fais des efforts",
+                id: "question34",
+                driver: "driver5",
+                form: { id: "form2", coef: 6 }
               }
             ],
             answers: [
@@ -197,69 +262,12 @@ window.props = {
               { name: "Oui, souvent", value: "4" },
               { name: "Oui, presque toujours", value: "5" }
             ]
-          },
-          {
-            name: "likert1-2",
-            type: "likert",
-            topic: "",
-            button: "",
-            wording: "",
-            drivers: {
-              driver1: "Sois parfait",
-              driver2: "Sois fort",
-              driver3: "Dépêche toi",
-              driver4: "Fais plaisir",
-              driver5: "Fais des efforts"
-            },
-            questions: [
-              {
-                text: "Sois parfait",
-                id: "question0",
-                driver: "driver1"
-              },
-              {
-                text: "Sois fort",
-                id: "question1",
-                driver: "driver2"
-              },
-              {
-                text: "Dépêche toi",
-                id: "question2",
-                driver: "driver3"
-              },
-              {
-                text: "Fais plaisir",
-                id: "question3",
-                driver: "driver4"
-              },
-              {
-                text: "Fais des efforts",
-                id: "question4",
-                driver: "driver5"
-              }
-            ],
-            answers: [
-              { name: "Rarement", value: "6" },
-              { name: "Parfois", value: "12" },
-              { name: "D’ordinaire oui", value: "18" },
-              { name: "Oui, souvent", value: "24" },
-              { name: "Oui, presque toujours", value: "30" }
-            ]
-          },
-          {
-            name: "multi1",
-            type: "multiple-source-result",
-            topic: "",
-            button: "VISUALISEZ VOS RESULTATS",
-            sources: [
-              { id: "likert1-1", name: "Test driver" },
-              { id: "likert1-2", name: "Autopositionnement" }
-            ]
           }
         ]
       },
       {
         name: "Mes compétences de manager",
+        topic: "Mes compétences de manager",
         wording:
           "Dans ce bloc, les apprenants doivent répondre en saisie libre aux questions suivantes :",
         tests: [
@@ -303,7 +311,7 @@ window.props = {
       },
       {
         name: "Mon cadre de référence",
-        topic: "",
+        topic: "Mon cadre de référence",
         button: "VISUALISEZ VOS RESULTATS",
         result: "histogram",
         wording: "",
@@ -1177,7 +1185,166 @@ window.props = {
       },
       {
         name: "Mon comportement",
-        tests: []
+        tests: [
+          {
+            type: "free-field",
+            name: "freeField5-1",
+            topic: "Gestion des conflits",
+            button: "ENREGISTREZ VOTRE REPONSE",
+            questions: [
+              {
+                id: "field0",
+                text: "Etes-vous à l’aise avec les conflits ?"
+              },
+              {
+                id: "field1",
+                text:
+                  "Selon vous quel est votre mode de gestion des conflits ? Donnez un exemple de situation ou vous avez utilisé ce mode de gestion."
+              },
+              {
+                id: "field2",
+                text: "De quoi avez-vous peur dans les conflits ?"
+              },
+              {
+                id: "field3",
+                text: "Quelles sont vos ressources en cas de conflit ?"
+              },
+              {
+                id: "field4",
+                text:
+                  "Quels sont vos mécanismes de défenses privilégiés ? Donner des exemples de situations ou vous avez mis en œuvre ces mécanismes"
+              }
+            ]
+          },
+          {
+            name: "likert5-2",
+            type: "likert",
+            result: "histogram",
+            topic: "Quel est mon mode de gestion des conflits ?",
+            button: "VISUALISEZ VOS RESULTATS",
+            wording:
+              "Réfléchissez à votre façon d'agir en situation de conflit, c'est à dire lorsqu'une ou plusieurs personnes vont à l'encontre de ce que vous désirez. Pour chacune des affirmations ci-dessous, inscrivez dans l'espace prévu à cette fin le chiffre qui correspond le mieux à la probabilité que vous adoptiez la réaction mentionnée, dans une situation de conflit.z",
+            drivers: {
+              driver1: "Compromis",
+              driver2: "Evitement",
+              driver3: "Accommodation",
+              driver4: "Affrontement",
+              driver5: "Résolution de problème"
+            },
+            questions: [
+              {
+                text:
+                  "Je me montre généralement ferme dans la poursuite de mes objectifs0",
+                id: "question0",
+                driver: "driver4"
+              },
+              {
+                text: "J'essaie d'imposer mon point de vue.",
+                id: "question1",
+                driver: "driver4"
+              },
+              {
+                text: "Je suis prêt à faire des concessions.",
+                id: "question2",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "J'estime qu'il ne vaut pas la peine de s'inquiéter des différences d'opinions.",
+                id: "question3",
+                driver: "driver2"
+              },
+              {
+                text:
+                  "J'essaie de parvenir à une position intermédiaire entre la mienne et celle de ma vis à vis.",
+                id: "question4",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Lorsque j'entame une négociation, j'essaie de tenir compte des désirs de l'autre partie.",
+                id: "question5",
+                driver: "driver3"
+              },
+              {
+                text:
+                  "J'essaie de démontrer la logique et les avantages de mes points de vue.",
+                id: "question6",
+                driver: "driver4"
+              },
+              {
+                text:
+                  "Je préfère toujours discuter franchement et ouvertement d'un problème.",
+                id: "question7",
+                driver: "driver5"
+              },
+              {
+                text:
+                  "J'essaie d'aboutir à une combinaison équitable de gains et de pertes pour les deux parties.",
+                id: "question8",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Je tente de résoudre immédiatement les divergences qui apparaissent.",
+                id: "question9",
+                driver: "driver5"
+              },
+              {
+                text:
+                  "J'essaie d'éviter de me retrouver dans une situation désagréable.",
+                id: "question10",
+                driver: "driver2"
+              },
+              {
+                text:
+                  "J'essaie d'apaiser les sentiments de mon interlocuteur pour préserver nos bonnes relations.",
+                id: "question11",
+                driver: "driver3"
+              },
+              {
+                text:
+                  "Je m'efforce de mettre rapidement en lumière toutes les préoccupations et inquiétudes.",
+                id: "question12",
+                driver: "driver5"
+              },
+              {
+                text:
+                  "J'évite parfois d'avancer des opinions susceptibles de créer des controverses.",
+                id: "question13",
+                driver: "driver2"
+              },
+              {
+                text: "J'essaie de ne pas froisser autrui.",
+                id: "question14",
+                driver: "driver3"
+              }
+            ],
+            answers: [
+              { name: "Très peu probable", value: "1" },
+              { name: "Peu probable", value: "2" },
+              { name: "Probable", value: "3" },
+              { name: "Très probable", value: "4" }
+            ]
+          },
+          {
+            type: "free-field",
+            topic: "Gestion du stress",
+            name: "freeField5-3",
+            button: "ENREGISTREZ VOTRE REPONSE",
+            questions: [
+              {
+                id: "field0",
+                text: "Lister mes sources de stress :"
+              },
+              {
+                id: "field1",
+                text:
+                  "Lister mes types de réactions à chaque source de stress :"
+              }
+            ]
+          }
+        ]
       },
       {
         name: "Mon style de leadership",
