@@ -1234,7 +1234,7 @@ window.props = {
             questions: [
               {
                 text:
-                  "Je me montre généralement ferme dans la poursuite de mes objectifs0",
+                  "Je me montre généralement ferme dans la poursuite de mes objectifs",
                 id: "question0",
                 driver: "driver4"
               },
