@@ -544,8 +544,8 @@ window.props = {
             questions: [
               {
                 id: "field0",
-                text:
-                  "Lisez attentivement cette liste de valeur \n\nÉGALITÉ (opportunités égales pour tous)\nHARMONIE INTÉRIEURE (en paix avec soi-même)\nPOUVOIR SOCIAL (contrôle d'autrui, dominance)\nPLAISIR (satisfaction des désirs)\nLIBERTÉ (liberté de pensée et d'action)\nUNE VIE SPIRITUELLE (accent mis sur les aspects spirituels et non matériels)\nSENTIMENT DE NE PAS ÊTRE ISOLÉ (sentiment que les autres se soucient de moi)\nORDRE SOCIAL (stabilité de la société)\nUNE VIE EXCITANTE (expériences stimulantes)\nSENS DE LA VIE (un objectif dans la vie)\nPOLITESSE (courtoisie, bonnes manières)\nRICHESSE (biens matériels, argent)\nSÉCURITÉ NATIONALE (protection de mon pays contre ses ennemis)\nRESPECT DE SOI (croyance en sa propre valeur)\nRÉCIPROCITÉ DES FAVEURS (éviter d'être en dettes)\nCRÉATIVITÉ (originalité, imagination)\nUN MONDE EN PAIX (libéré des guerres et des conflits)\nRESPECT DE LA TRADITION (préserver les coutumes consacrées par le temps)\nAMOUR ADULTE (intimité profonde, émotionnelle et spirituelle)\nAUTO DISCIPLINE (auto limitation, résistance aux tentations)\nDROIT A UNE VIE PRIVÉE (non exposée aux regards indiscrets)\nSÉCURITÉ FAMILIALE (sécurité pour ceux que l'on aime)\nRECONNAISSANCE SOCIALE (respect, approbation émanant des autres)\nUNITÉ AVEC LA NATURE (adéquation à la nature)\nUNE VIE VARIÉE (remplie de défis, de nouveautés, de changements)\nSAGESSE (compréhension adulte de la vie)\nAUTORITÉ (le droit de diriger ou de commander)\nAMITIÉ VRAIE (des amis proches et sur qui l'on peut compter)\nUN MONDE DE BEAUTÉ (beauté de la nature et des arts)\nJUSTICE SOCIALE (corriger les injustices, secourir les faibles)\n\nSelon vous, parmi cette liste, quelle est la valeur la plus importante ? Donnez un exemple de situation personnelle ou vous avez appliqué cette valeur."
+                html:
+                  "Lisez attentivement cette liste de valeurs : <br><br>ÉGALITÉ (opportunités égales pour tous)<br>HARMONIE INTÉRIEURE (en paix avec soi-même)<br>POUVOIR SOCIAL (contrôle d'autrui, dominance)<br>PLAISIR (satisfaction des désirs)<br>LIBERTÉ (liberté de pensée et d'action)<br>UNE VIE SPIRITUELLE (accent mis sur les aspects spirituels et non matériels)<br>SENTIMENT DE NE PAS ÊTRE ISOLÉ (sentiment que les autres se soucient de moi)<br>ORDRE SOCIAL (stabilité de la société)<br>UNE VIE EXCITANTE (expériences stimulantes)<br>SENS DE LA VIE (un objectif dans la vie)<br>POLITESSE (courtoisie, bonnes manières)<br>RICHESSE (biens matériels, argent)<br>SÉCURITÉ NATIONALE (protection de mon pays contre ses ennemis)<br>RESPECT DE SOI (croyance en sa propre valeur)<br>RÉCIPROCITÉ DES FAVEURS (éviter d'être en dettes)<br>CRÉATIVITÉ (originalité, imagination)<br>UN MONDE EN PAIX (libéré des guerres et des conflits)<br>RESPECT DE LA TRADITION (préserver les coutumes consacrées par le temps)<br>AMOUR ADULTE (intimité profonde, émotionnelle et spirituelle)<br>AUTO DISCIPLINE (auto limitation, résistance aux tentations)<br>DROIT A UNE VIE PRIVÉE (non exposée aux regards indiscrets)<br>SÉCURITÉ FAMILIALE (sécurité pour ceux que l'on aime)<br>RECONNAISSANCE SOCIALE (respect, approbation émanant des autres)<br>UNITÉ AVEC LA NATURE (adéquation à la nature)<br>UNE VIE VARIÉE (remplie de défis, de nouveautés, de changements)<br>SAGESSE (compréhension adulte de la vie)<br>AUTORITÉ (le droit de diriger ou de commander)<br>AMITIÉ VRAIE (des amis proches et sur qui l'on peut compter)<br>UN MONDE DE BEAUTÉ (beauté de la nature et des arts)<br>JUSTICE SOCIALE (corriger les injustices, secourir les faibles)<br><br>Selon vous, parmi cette liste, quelle est la valeur la plus importante ? Donnez un exemple de situation personnelle ou vous avez appliqué cette valeur."
               },
               {
                 id: "field1",
@@ -1609,7 +1609,7 @@ window.props = {
         tests: [
           {
             type: "free-field",
-            name: "freeField6-1",
+            name: "freeField6-2",
             button: "ENREGISTRER MA REPONSE",
             questions: [
               {
@@ -1626,6 +1626,37 @@ window.props = {
                 text:
                   "Quel type de management vous mettriez en œuvre si vous étiez manager ?"
               }
+            ]
+          },
+          {
+            name: "likert6-1",
+            type: "likert",
+            // result: "histogram",
+            topic: "<-- Remarque dev. : 'sera intégré pour vendredi' -->",
+            button: "VISUALISEZ VOS RESULTATS",
+            wording: "",
+            drivers: {
+              driver1: "x",
+              driver2: "y"
+            },
+            questions: [
+              {
+                text:
+                  "J’encourage mon équipe à participer aux décisions et j’essaye de mettre en pratique leurs idées et suggestions.",
+                id: "question0",
+                driver: "driver4"
+              }
+            ],
+            answers: [
+              { name: "Jamais", value: "1" },
+              { name: "Rarement", value: "2" },
+              { name: "Parfois", value: "3" },
+              {
+                name: "Souvent",
+                value: "4"
+              },
+              { name: "Tres souvent", value: "5" },
+              { name: "Toujours", value: "6" }
             ]
           }
         ]
