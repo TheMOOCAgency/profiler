@@ -3,7 +3,7 @@ window.props = {
     skills: [
       {
         name: "Mes drivers",
-        topic: "Mes drivers :",
+        topic: "Mes drivers",
         button: "VISUALISEZ VOS RESULTATS",
         result: "histogram",
         wording:
