@@ -78,7 +78,7 @@ const radioButtons = ({
           );
         })}
       </RadioGroup>
-      <h4
+      <h5
         style={{
           color: "#353535",
           fontSize: "12px",
@@ -88,7 +88,7 @@ const radioButtons = ({
         }}
       >
         {touched && error}
-      </h4>
+      </h5>
     </Grid>
   </FormControl>
 );
@@ -103,7 +103,8 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
     result,
     name,
     drivers,
-    requiredForms
+    requiredForms,
+    topic
   } = test;
 
   const [isCompleted, setCompletion] = useState(false);
@@ -217,7 +218,17 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
               }}
             >
               <Grid item sm={12}>
-                <h4 style={{ margin: "10px 0" }}>
+                <h4
+                  style={{
+                    margin: "0 0 10px 0",
+                    fontStyle: "italic",
+                    padding: "10px",
+                    backgroundColor: "#b71b60",
+                    color: "white",
+                    borderRadius: "5px",
+                    fontSize: "14px"
+                  }}
+                >
                   {question.subTopic.toUpperCase()}
                 </h4>
               </Grid>
@@ -228,7 +239,8 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
                 style={{
                   textAlign: "justify",
                   fontStyle: "italic",
-                  fontSize: "14px"
+                  fontSize: "14px",
+                  paddingLeft: "10px"
                 }}
               >
                 {question.wording}
@@ -358,11 +370,30 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
   };
 
   return (
-    <Grid errostyle={{ marginBottom: "30px" }}>
+    <Grid style={{ marginBottom: "30px" }}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        {!requiredForms && (
-          <div style={{ marginTop: "30px" }}>{renderHeader()}</div>
-        )}
+        <Fragment>
+          {topic && (
+            <h4
+              style={{
+                margin: "0",
+                fontStyle: "italic",
+                padding: "10px",
+                backgroundColor: "#b71b60",
+                color: "white",
+                borderRadius: "5px",
+                fontSize: "14px"
+              }}
+            >
+              {topic.toUpperCase()}
+            </h4>
+          )}
+        </Fragment>
+        <Fragment>
+          {!requiredForms && (
+            <div style={{ marginTop: "10px" }}>{renderHeader()}</div>
+          )}
+        </Fragment>
         <FormGroup>
           <Fragment>{renderQuestions()}</Fragment>
           <Fragment>{renderSubmitButton()}</Fragment>

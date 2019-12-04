@@ -3,7 +3,7 @@ window.props = {
     skills: [
       {
         name: "Mes drivers",
-        topic: "LES 5 DRIVERS :",
+        topic: "Mes drivers",
         button: "VISUALISEZ VOS RESULTATS",
         result: "histogram",
         wording:
@@ -22,11 +22,15 @@ window.props = {
               driver5: "Fais des efforts"
             },
             requiredForms: [
-              { id: "form1", name: "Test-driver" },
-              { id: "form2", name: "Auto-positionnement" }
+              { id: "form1", name: "Test" },
+              {
+                id: "form2",
+                name: "Auto-positionnement"
+              },
+              { id: "form3", name: "Evaluation par les pairs" }
             ],
             questions: [
-              { subTopic: "Test-driver", id: "form1" },
+              { subTopic: "Déterminer mes drivers", id: "form1" },
               {
                 text:
                   "Pour prendre une décision, aimez-vous avoir beaucoup d’informations ?",
@@ -225,34 +229,79 @@ window.props = {
               },
               { subTopic: "Auto-positionnement", id: "form2" },
               {
-                text: "Sois parfait",
+                text:
+                  "J’ai l’impression que mon comportement correspond au driver « sois parfait »",
                 id: "question30",
                 driver: "driver1",
                 form: { id: "form2", coef: 6 }
               },
               {
-                text: "Sois fort",
+                text:
+                  "J’ai l’impression que mon comportement correspond au driver « sois fort »",
                 id: "question31",
                 driver: "driver2",
                 form: { id: "form2", coef: 6 }
               },
               {
-                text: "Dépêche toi",
+                text:
+                  "J’ai l’impression que mon comportement correspond au driver « dépêche-toi »",
                 id: "question32",
                 driver: "driver3",
                 form: { id: "form2", coef: 6 }
               },
               {
-                text: "Fais plaisir",
+                text:
+                  "J’ai l’impression que mon comportement correspond au driver « fais plaisir »",
                 id: "question33",
                 driver: "driver4",
                 form: { id: "form2", coef: 6 }
               },
               {
-                text: "Fais des efforts",
+                text:
+                  "J’ai l’impression que mon comportement correspond au driver « fais des efforts »",
                 id: "question34",
                 driver: "driver5",
                 form: { id: "form2", coef: 6 }
+              },
+              {
+                subTopic:
+                  "Evaluation par les pairs <-- Remarque dev. : 'sera optionnel vendredi' -->",
+                id: "form3"
+              },
+              {
+                text:
+                  "Mes camarades perçoivent mon comportement comme correspondant au driver « sois parfait »",
+                id: "question35",
+                driver: "driver1",
+                form: { id: "form3", coef: 6 }
+              },
+              {
+                text:
+                  "Mes camarades perçoivent mon comportement comme correspondant au driver « sois fort »",
+                id: "question36",
+                driver: "driver2",
+                form: { id: "form3", coef: 6 }
+              },
+              {
+                text:
+                  "Mes camarades perçoivent mon comportement comme correspondant au driver « dépêche-toi »",
+                id: "question37",
+                driver: "driver3",
+                form: { id: "form3", coef: 6 }
+              },
+              {
+                text:
+                  "Mes camarades perçoivent mon comportement comme correspondant au driver « fais plaisir »",
+                id: "question38",
+                driver: "driver4",
+                form: { id: "form3", coef: 6 }
+              },
+              {
+                text:
+                  "Mes camarades perçoivent mon comportement comme correspondant au driver « fais des efforts »",
+                id: "question39",
+                driver: "driver5",
+                form: { id: "form3", coef: 6 }
               }
             ],
             answers: [
@@ -268,13 +317,12 @@ window.props = {
       {
         name: "Mes compétences de manager",
         topic: "Mes compétences de manager",
-        wording:
-          "Dans ce bloc, les apprenants doivent répondre en saisie libre aux questions suivantes :",
+        wording: "Répondez librement aux questions suivantes :",
         tests: [
           {
             type: "free-field",
             name: "freeField2-1",
-            button: "ENREGISTREZ VOTRE REPONSE",
+            button: "ENREGISTRER MA REPONSE",
             questions: [
               {
                 id: "field0",
@@ -319,7 +367,7 @@ window.props = {
           {
             name: "likert3-1",
             type: "likert",
-            topic: "",
+            topic: "Mes filtres de perception",
             button: "VISUALISEZ VOS RESULTATS",
             result: "histogram",
             wording: "",
@@ -491,13 +539,13 @@ window.props = {
           {
             type: "free-field",
             name: "freeField3-2",
-            topic: "Valeurs",
-            button: "ENREGISTREZ VOTRE REPONSE",
+            topic: "Mes valeurs",
+            button: "ENREGISTRER MA REPONSE",
             questions: [
               {
                 id: "field0",
-                text:
-                  "Lisez attentivement cette liste de valeur \n\nÉGALITÉ (opportunités égales pour tous)\nHARMONIE INTÉRIEURE (en paix avec soi-même)\nPOUVOIR SOCIAL (contrôle d'autrui, dominance)\nPLAISIR (satisfaction des désirs)\nLIBERTÉ (liberté de pensée et d'action)\nUNE VIE SPIRITUELLE (accent mis sur les aspects spirituels et non matériels)\nSENTIMENT DE NE PAS ÊTRE ISOLÉ (sentiment que les autres se soucient de moi)\nORDRE SOCIAL (stabilité de la société)\nUNE VIE EXCITANTE (expériences stimulantes)\nSENS DE LA VIE (un objectif dans la vie)\nPOLITESSE (courtoisie, bonnes manières)\nRICHESSE (biens matériels, argent)\nSÉCURITÉ NATIONALE (protection de mon pays contre ses ennemis)\nRESPECT DE SOI (croyance en sa propre valeur)\nRÉCIPROCITÉ DES FAVEURS (éviter d'être en dettes)\nCRÉATIVITÉ (originalité, imagination)\nUN MONDE EN PAIX (libéré des guerres et des conflits)\nRESPECT DE LA TRADITION (préserver les coutumes consacrées par le temps)\nAMOUR ADULTE (intimité profonde, émotionnelle et spirituelle)\nAUTO DISCIPLINE (auto limitation, résistance aux tentations)\nDROIT A UNE VIE PRIVÉE (non exposée aux regards indiscrets)\nSÉCURITÉ FAMILIALE (sécurité pour ceux que l'on aime)\nRECONNAISSANCE SOCIALE (respect, approbation émanant des autres)\nUNITÉ AVEC LA NATURE (adéquation à la nature)\nUNE VIE VARIÉE (remplie de défis, de nouveautés, de changements)\nSAGESSE (compréhension adulte de la vie)\nAUTORITÉ (le droit de diriger ou de commander)\nAMITIÉ VRAIE (des amis proches et sur qui l'on peut compter)\nUN MONDE DE BEAUTÉ (beauté de la nature et des arts)\nJUSTICE SOCIALE (corriger les injustices, secourir les faibles)\n\nSelon vous, parmi cette liste, quelle est la valeur la plus importante ? Donnez un exemple de situation personnelle ou vous avez appliqué cette valeur."
+                html:
+                  "Lisez attentivement cette liste de valeurs : <br><br>ÉGALITÉ (opportunités égales pour tous)<br>HARMONIE INTÉRIEURE (en paix avec soi-même)<br>POUVOIR SOCIAL (contrôle d'autrui, dominance)<br>PLAISIR (satisfaction des désirs)<br>LIBERTÉ (liberté de pensée et d'action)<br>UNE VIE SPIRITUELLE (accent mis sur les aspects spirituels et non matériels)<br>SENTIMENT DE NE PAS ÊTRE ISOLÉ (sentiment que les autres se soucient de moi)<br>ORDRE SOCIAL (stabilité de la société)<br>UNE VIE EXCITANTE (expériences stimulantes)<br>SENS DE LA VIE (un objectif dans la vie)<br>POLITESSE (courtoisie, bonnes manières)<br>RICHESSE (biens matériels, argent)<br>SÉCURITÉ NATIONALE (protection de mon pays contre ses ennemis)<br>RESPECT DE SOI (croyance en sa propre valeur)<br>RÉCIPROCITÉ DES FAVEURS (éviter d'être en dettes)<br>CRÉATIVITÉ (originalité, imagination)<br>UN MONDE EN PAIX (libéré des guerres et des conflits)<br>RESPECT DE LA TRADITION (préserver les coutumes consacrées par le temps)<br>AMOUR ADULTE (intimité profonde, émotionnelle et spirituelle)<br>AUTO DISCIPLINE (auto limitation, résistance aux tentations)<br>DROIT A UNE VIE PRIVÉE (non exposée aux regards indiscrets)<br>SÉCURITÉ FAMILIALE (sécurité pour ceux que l'on aime)<br>RECONNAISSANCE SOCIALE (respect, approbation émanant des autres)<br>UNITÉ AVEC LA NATURE (adéquation à la nature)<br>UNE VIE VARIÉE (remplie de défis, de nouveautés, de changements)<br>SAGESSE (compréhension adulte de la vie)<br>AUTORITÉ (le droit de diriger ou de commander)<br>AMITIÉ VRAIE (des amis proches et sur qui l'on peut compter)<br>UN MONDE DE BEAUTÉ (beauté de la nature et des arts)<br>JUSTICE SOCIALE (corriger les injustices, secourir les faibles)<br><br>Selon vous, parmi cette liste, quelle est la valeur la plus importante ? Donnez un exemple de situation personnelle ou vous avez appliqué cette valeur."
               },
               {
                 id: "field1",
@@ -518,7 +566,7 @@ window.props = {
           {
             name: "likert3-3",
             type: "likert",
-            topic: "Besoin",
+            topic: "Mes besoins",
             button: "VISUALISEZ VOS RESULTATS",
             result: "histogram",
             wording: "",
@@ -600,7 +648,7 @@ window.props = {
           {
             type: "free-field",
             name: "freeField3-4",
-            button: "ENREGISTREZ VOTRE REPONSE",
+            button: "ENREGISTRER MA REPONSE",
             questions: [
               {
                 id: "field0",
@@ -612,8 +660,8 @@ window.props = {
           {
             type: "free-field",
             name: "freeField3-5",
-            topic: "Croyances",
-            button: "ENREGISTREZ VOTRE REPONSE",
+            topic: "Mes croyances",
+            button: "ENREGISTRER MA REPONSE",
             questions: [
               {
                 id: "field0",
@@ -640,8 +688,8 @@ window.props = {
           {
             type: "free-field",
             name: "freeField3-6",
-            topic: "Emotions",
-            button: "ENREGISTREZ VOTRE REPONSE",
+            topic: "Mes émotions",
+            button: "ENREGISTRER MA REPONSE",
             questions: [
               {
                 id: "field0",
@@ -658,8 +706,8 @@ window.props = {
           {
             type: "free-field",
             name: "freeField3-7",
-            topic: "Synthèse cadre de référence",
-            button: "ENREGISTREZ VOTRE REPONSE",
+            topic: "Synthèse",
+            button: "ENREGISTRER MA REPONSE",
             questions: [
               {
                 id: "field0",
@@ -1188,17 +1236,218 @@ window.props = {
               { value: true, name: "Vrai" },
               { value: false, name: "Faux" }
             ]
+          },
+          {
+            name: "likert4-7",
+            type: "likert",
+            topic:
+              "Testez votre intelligence émotionnelle  <-- Remarque dev. : 'histogramme fonctionnel pour vendredi' -->",
+            wording:
+              "Ne répondez pas ce que vous croyez devoir répondre pour avoir de bons résultats à ce test, cela ne vous donnerait pas une vision fiable de la réalité. Lisez avec attention chacun des énoncés et indiquez s’il s’applique ou non à vous (encerclez la réponse). Le but est de vous donner une idée générale de vos manières de vivre vos émotions. Il se peut que vous sentiez que certaines questions ne sont pas pertinentes et ne décrivent pas des situations que vous vivez. Si c’est le cas, ne répondez pas et retranchez quatre points du chiffre maximum présenté dans l’interprétation (à la fin) pour chaque question à laquelle vous n’aurez pas répondu.",
+            button: "VISUALISEZ VOS RESULTATS",
+            result: "stackedBarChart",
+            result: "histogram",
+            drivers: {
+              driver1: "Score"
+            },
+            questions: [
+              {
+                text:
+                  "Je sens que la colère monte rapidement lorsque l’on m’attaque verbalement.",
+                id: "question0",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "J’ai beaucoup de difficulté à recevoir les critiques, même constructives, qui viennent des autres.",
+                id: "question1",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Je panique lorsque je dois faire face à un conflit interpersonnel.",
+                id: "question2",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Quand j’ai un problème professionnel ou personnel, je ne peux penser à rien d’autre.",
+                id: "question3",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "J’ai tendance à ruminer les difficultés que j’ai vécues dans le passé.",
+                id: "question4",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Je ressens parfois de l’angoisse sans savoir véritablement pourquoi.",
+                id: "question5",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "J’ai de la difficulté à nommer plusieurs émotions, surtout lorsque je les vis.",
+                id: "question6",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Je trouve difficile les occasions où je dois exprimer mes émotions (ex.: de l’affection).",
+                id: "question7",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Peu importe ce que j’accomplis, j’ai toujours l’impression que j’aurais pu faire plus.",
+                id: "question8",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Je fais de mon mieux surtout lorsqu’il y a quelqu’un pour voir les résultats.",
+                id: "question9",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Je fais habituellement tout ce que je peux pour me retenir de pleurer en public.",
+                id: "question10",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Lorsque les autres vivent des difficultés, je ne sais pas quoi leur dire.",
+                id: "question11",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Quand j’échoue quelque chose, je me tiens un discours intérieur autodénigrant (ex.: « Je ne réussirai jamais. »)",
+                id: "question12",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Je trouve qu’il y a plusieurs choses qui clochent en moi et j’ai peur du jugement des autres.",
+                id: "question13",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Selon moi, il est préférable de rester neutre et détaché envers les autres tant que je ne les connais pas suffisamment.",
+                id: "question14",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Lorsqu’une personne me partage ses difficultés, j’ai tendance à vouloir l’aider à régler ses problèmes plutôt que de seulement l’écouter.",
+                id: "question15",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "J’ai souvent de la difficulté à comprendre le langage non verbal des autres.",
+                id: "question16",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "J’ai besoin que les autres m’encouragent pour rester motivé(e).",
+                id: "question17",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Je réagis très fortement à la suite de problèmes mineurs.",
+                id: "question18",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Les obstacles qui se dressent sur ma route m’empêchent souvent de réaliser mes objectifs.",
+                id: "question19",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Je ne suis pas satisfait(e) de mon travail tant qu’une autre personne ne m’a pas félicité(e).",
+                id: "question20",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Je me sens coupable à propos des choses que je ne fais pas parfaitement même lorsque je fais de mon mieux.",
+                id: "question21",
+                driver: "driver1"
+              },
+              {
+                text: "Je ressens souvent une bonne dose d’anxiété.",
+                id: "question22",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Lorsque j’ai un problème avec une personne, je vis longtemps de la rancune envers elle.",
+                id: "question23",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "J’ai de la difficulté à accepter les choses que je ne peux pas changer.",
+                id: "question24",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Les personnes qui expriment ouvertement leurs émotions me font sentir mal à l’aise.",
+                id: "question25",
+                driver: "driver1"
+              },
+              {
+                text: "J’ai me sens plus souvent déprimé(e) qu’heureux(se).",
+                id: "question26",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Lorsque j’ai un problème avec une personne, je vis longtemps de la rancune envers elle.",
+                id: "question27",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "J’ai de la difficulté à accepter les choses que je ne peux pas changer.",
+                id: "question28",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "J’ai l’impression que mes émotions négatives (tristesse, colère, etc.) sont impossibles à contrôler.",
+                id: "question29",
+                driver: "driver1"
+              }
+            ],
+            answers: [
+              { name: "Souvent", value: 1 },
+              { name: "Parfois", value: 2 },
+              { name: "Occasionnellement", value: 3 },
+              { name: "Rarement", value: 4 }
+            ]
           }
         ]
       },
       {
         name: "Mon comportement",
+        topic: "Mon comportement",
         tests: [
           {
             type: "free-field",
             name: "freeField5-1",
             topic: "Gestion des conflits",
-            button: "ENREGISTREZ VOTRE REPONSE",
+            button: "ENREGISTRER MA REPONSE",
             questions: [
               {
                 id: "field0",
@@ -1228,7 +1477,7 @@ window.props = {
             name: "likert5-2",
             type: "likert",
             result: "histogram",
-            topic: "Quel est mon mode de gestion des conflits ?",
+            topic: "Mon mode de gestion des conflits",
             button: "VISUALISEZ VOS RESULTATS",
             wording:
               "Réfléchissez à votre façon d'agir en situation de conflit, c'est à dire lorsqu'une ou plusieurs personnes vont à l'encontre de ce que vous désirez. Pour chacune des affirmations ci-dessous, inscrivez dans l'espace prévu à cette fin le chiffre qui correspond le mieux à la probabilité que vous adoptiez la réaction mentionnée, dans une situation de conflit.z",
@@ -1339,7 +1588,7 @@ window.props = {
             type: "free-field",
             topic: "Gestion du stress",
             name: "freeField5-3",
-            button: "ENREGISTREZ VOTRE REPONSE",
+            button: "ENREGISTRER MA REPONSE",
             questions: [
               {
                 id: "field0",
@@ -1356,21 +1605,111 @@ window.props = {
       },
       {
         name: "Mon style de leadership",
-        tests: []
+        topic: "Mon style de leadership",
+        tests: [
+          {
+            type: "free-field",
+            name: "freeField6-2",
+            button: "ENREGISTRER MA REPONSE",
+            questions: [
+              {
+                id: "field0",
+                text: "Quelles sont vos attentes par rapport à la hiérarchie ?"
+              },
+              {
+                id: "field1",
+                text:
+                  "Quel type de management vous attendez de la part d’un manager ?"
+              },
+              {
+                id: "field2",
+                text:
+                  "Quel type de management vous mettriez en œuvre si vous étiez manager ?"
+              }
+            ]
+          },
+          {
+            name: "likert6-1",
+            type: "likert",
+            // result: "histogram",
+            topic: "<-- Remarque dev. : 'sera intégré pour vendredi' -->",
+            button: "VISUALISEZ VOS RESULTATS",
+            wording: "",
+            drivers: {
+              driver1: "x",
+              driver2: "y"
+            },
+            questions: [
+              {
+                text:
+                  "J’encourage mon équipe à participer aux décisions et j’essaye de mettre en pratique leurs idées et suggestions.",
+                id: "question0",
+                driver: "driver4"
+              }
+            ],
+            answers: [
+              { name: "Jamais", value: "1" },
+              { name: "Rarement", value: "2" },
+              { name: "Parfois", value: "3" },
+              {
+                name: "Souvent",
+                value: "4"
+              },
+              { name: "Tres souvent", value: "5" },
+              { name: "Toujours", value: "6" }
+            ]
+          }
+        ]
       },
       {
         name: "Mes atouts",
-        tests: []
+        topic: "Mes atouts",
+        wording: "Répondez librement aux questions suivantes :",
+        tests: [
+          {
+            type: "free-field",
+            name: "freeField7-1",
+            button: "ENREGISTRER MA REPONSE",
+            questions: [
+              {
+                id: "field0",
+                text:
+                  "Quels sont les points de progrès que vous avez identifiés à mettre en œuvre dans votre communication managériale au quotidien ?"
+              },
+              {
+                id: "field1",
+                text:
+                  "Quels sont les outils que vous avez retenus et que vous souhaiteriez mettre en œuvre?"
+              },
+              {
+                id: "field2",
+                text:
+                  "Quelles compétences managériales souhaitez-vous acquérir ? "
+              },
+              {
+                id: "field3",
+                text:
+                  "Définissez un plan d’action à mettre en œuvre pour la suite en entreprise sur le modèle QQOQCCP (Qui ? Quoi ? Ou ? Quand ? Comment ? Combien ? Pourquoi ? )"
+              },
+              {
+                id: "field4",
+                text:
+                  "Quels sont les atouts dont vous avez pris conscience et sur lesquels vous pouvez vous appuyer ?"
+              }
+            ]
+          }
+        ]
       },
       {
         name: "Mon Bloc-Notes",
+        topic: "Mon Bloc-Notes",
         wording:
-          "Dans ce bloc, il n’y a qu’un espace de saisie libre sans consigne particulière :",
+          "Cet espace vous est dédié, vous pouvez vous y exprimer librement.",
         tests: [
           {
             type: "free-field",
             name: "freeField8-1",
-            button: "ENREGISTREZ VOTRE REPONSE",
+            button: "ENREGISTRER MA REPONSE",
             questions: [
               {
                 id: "field0",

@@ -51,7 +51,11 @@ const validate = (formValues, props) => {
 };
 
 const FreeField = ({ test, handleSubmit, pristine, submitting }) => {
-  const { questions, button } = test;
+  const { questions, button, topic } = test;
+
+  const createMarkup = element => {
+    return { __html: element };
+  };
 
   const renderCustomInput = ({ input }) => {
     return (
@@ -73,12 +77,18 @@ const FreeField = ({ test, handleSubmit, pristine, submitting }) => {
       return (
         <Grid container key={question.id}>
           <div style={{ margin: "30px 0 10px 0" }}>
-            {index + 1 + ". " + question.text}
+            {question.text && questions.length > 1
+              ? index + 1 + ". " + question.text
+              : question.text}
+            {question.html && (
+              <div
+                dangerouslySetInnerHTML={createMarkup(
+                  index + 1 + ". " + question.html
+                )}
+              />
+            )}
           </div>
           <Field name={question.id} component={renderCustomInput} />
-          <SubmitButton disabled={pristine || submitting}>
-            <Fragment>{button}</Fragment>
-          </SubmitButton>
         </Grid>
       );
     });
@@ -93,8 +103,25 @@ const FreeField = ({ test, handleSubmit, pristine, submitting }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <FormGroup>
-        {/* {topic && <h3>{topic.toUpperCase()}</h3>} */}
+        {topic && (
+          <h4
+            style={{
+              margin: "0",
+              fontStyle: "italic",
+              padding: "10px",
+              backgroundColor: "#b71b60",
+              color: "white",
+              borderRadius: "5px",
+              fontSize: "14px"
+            }}
+          >
+            {topic.toUpperCase()}
+          </h4>
+        )}
         <Fragment>{renderInputs()}</Fragment>
+        <SubmitButton disabled={pristine || submitting}>
+          <Fragment>{button}</Fragment>
+        </SubmitButton>
       </FormGroup>
     </form>
   );
