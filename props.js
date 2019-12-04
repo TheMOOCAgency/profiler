@@ -3,7 +3,7 @@ window.props = {
     skills: [
       {
         name: "Mes drivers",
-        topic: "LES 5 DRIVERS :",
+        topic: "Mes drivers :",
         button: "VISUALISEZ VOS RESULTATS",
         result: "histogram",
         wording:
@@ -23,10 +23,14 @@ window.props = {
             },
             requiredForms: [
               { id: "form1", name: "Test-driver" },
-              { id: "form2", name: "Auto-positionnement" }
+              {
+                id: "form2",
+                name: "Auto-positionnement"
+              },
+              { id: "form3", name: "Evaluation par les pairs" }
             ],
             questions: [
-              { subTopic: "Test-driver", id: "form1" },
+              { subTopic: "Déterminer mes drivers", id: "form1" },
               {
                 text:
                   "Pour prendre une décision, aimez-vous avoir beaucoup d’informations ?",
@@ -225,34 +229,75 @@ window.props = {
               },
               { subTopic: "Auto-positionnement", id: "form2" },
               {
-                text: "Sois parfait",
+                text:
+                  "J’ai l’impression que mon comportement correspond au driver « sois parfait »",
                 id: "question30",
                 driver: "driver1",
                 form: { id: "form2", coef: 6 }
               },
               {
-                text: "Sois fort",
+                text:
+                  "J’ai l’impression que mon comportement correspond au driver « sois fort »",
                 id: "question31",
                 driver: "driver2",
                 form: { id: "form2", coef: 6 }
               },
               {
-                text: "Dépêche toi",
+                text:
+                  "J’ai l’impression que mon comportement correspond au driver « dépêche-toi »",
                 id: "question32",
                 driver: "driver3",
                 form: { id: "form2", coef: 6 }
               },
               {
-                text: "Fais plaisir",
+                text:
+                  "J’ai l’impression que mon comportement correspond au driver « fais plaisir »",
                 id: "question33",
                 driver: "driver4",
                 form: { id: "form2", coef: 6 }
               },
               {
-                text: "Fais des efforts",
+                text:
+                  "J’ai l’impression que mon comportement correspond au driver « fais des efforts »",
                 id: "question34",
                 driver: "driver5",
                 form: { id: "form2", coef: 6 }
+              },
+              { subTopic: "Evaluation par les pairs", id: "form3" },
+              {
+                text:
+                  "Mes camarades perçoivent mon comportement comme correspondant au driver « sois parfait »",
+                id: "question35",
+                driver: "driver1",
+                form: { id: "form3", coef: 6 }
+              },
+              {
+                text:
+                  "Mes camarades perçoivent mon comportement comme correspondant au driver « sois fort »",
+                id: "question36",
+                driver: "driver2",
+                form: { id: "form3", coef: 6 }
+              },
+              {
+                text:
+                  "Mes camarades perçoivent mon comportement comme correspondant au driver « dépêche-toi »",
+                id: "question37",
+                driver: "driver3",
+                form: { id: "form3", coef: 6 }
+              },
+              {
+                text:
+                  "Mes camarades perçoivent mon comportement comme correspondant au driver « fais plaisir »",
+                id: "question38",
+                driver: "driver4",
+                form: { id: "form3", coef: 6 }
+              },
+              {
+                text:
+                  "Mes camarades perçoivent mon comportement comme correspondant au driver « fais des efforts »",
+                id: "question39",
+                driver: "driver5",
+                form: { id: "form3", coef: 6 }
               }
             ],
             answers: [
@@ -268,13 +313,12 @@ window.props = {
       {
         name: "Mes compétences de manager",
         topic: "Mes compétences de manager",
-        wording:
-          "Dans ce bloc, les apprenants doivent répondre en saisie libre aux questions suivantes :",
+        wording: "Répondez librement aux questions suivantes :",
         tests: [
           {
             type: "free-field",
             name: "freeField2-1",
-            button: "ENREGISTREZ VOTRE REPONSE",
+            button: "ENREGISTRER MA REPONSE",
             questions: [
               {
                 id: "field0",
@@ -319,7 +363,7 @@ window.props = {
           {
             name: "likert3-1",
             type: "likert",
-            topic: "",
+            topic: "Mes filtres de perception",
             button: "VISUALISEZ VOS RESULTATS",
             result: "histogram",
             wording: "",
@@ -491,8 +535,8 @@ window.props = {
           {
             type: "free-field",
             name: "freeField3-2",
-            topic: "Valeurs",
-            button: "ENREGISTREZ VOTRE REPONSE",
+            topic: "Mes valeurs",
+            button: "ENREGISTRER MA REPONSE",
             questions: [
               {
                 id: "field0",
@@ -518,7 +562,7 @@ window.props = {
           {
             name: "likert3-3",
             type: "likert",
-            topic: "Besoin",
+            topic: "Mes besoins",
             button: "VISUALISEZ VOS RESULTATS",
             result: "histogram",
             wording: "",
@@ -600,7 +644,7 @@ window.props = {
           {
             type: "free-field",
             name: "freeField3-4",
-            button: "ENREGISTREZ VOTRE REPONSE",
+            button: "ENREGISTRER MA REPONSE",
             questions: [
               {
                 id: "field0",
@@ -612,8 +656,8 @@ window.props = {
           {
             type: "free-field",
             name: "freeField3-5",
-            topic: "Croyances",
-            button: "ENREGISTREZ VOTRE REPONSE",
+            topic: "Mes croyances",
+            button: "ENREGISTRER MA REPONSE",
             questions: [
               {
                 id: "field0",
@@ -640,8 +684,8 @@ window.props = {
           {
             type: "free-field",
             name: "freeField3-6",
-            topic: "Emotions",
-            button: "ENREGISTREZ VOTRE REPONSE",
+            topic: "Mes émotions",
+            button: "ENREGISTRER MA REPONSE",
             questions: [
               {
                 id: "field0",
@@ -658,8 +702,8 @@ window.props = {
           {
             type: "free-field",
             name: "freeField3-7",
-            topic: "Synthèse cadre de référence",
-            button: "ENREGISTREZ VOTRE REPONSE",
+            topic: "Synthèse",
+            button: "ENREGISTRER MA REPONSE",
             questions: [
               {
                 id: "field0",
@@ -1198,7 +1242,7 @@ window.props = {
             type: "free-field",
             name: "freeField5-1",
             topic: "Gestion des conflits",
-            button: "ENREGISTREZ VOTRE REPONSE",
+            button: "ENREGISTRER MA REPONSE",
             questions: [
               {
                 id: "field0",
@@ -1228,7 +1272,7 @@ window.props = {
             name: "likert5-2",
             type: "likert",
             result: "histogram",
-            topic: "Quel est mon mode de gestion des conflits ?",
+            topic: "Mon mode de gestion des conflits",
             button: "VISUALISEZ VOS RESULTATS",
             wording:
               "Réfléchissez à votre façon d'agir en situation de conflit, c'est à dire lorsqu'une ou plusieurs personnes vont à l'encontre de ce que vous désirez. Pour chacune des affirmations ci-dessous, inscrivez dans l'espace prévu à cette fin le chiffre qui correspond le mieux à la probabilité que vous adoptiez la réaction mentionnée, dans une situation de conflit.z",
@@ -1339,7 +1383,7 @@ window.props = {
             type: "free-field",
             topic: "Gestion du stress",
             name: "freeField5-3",
-            button: "ENREGISTREZ VOTRE REPONSE",
+            button: "ENREGISTRER MA REPONSE",
             questions: [
               {
                 id: "field0",
@@ -1356,21 +1400,79 @@ window.props = {
       },
       {
         name: "Mon style de leadership",
-        tests: []
+        tests: [
+          {
+            type: "free-field",
+            name: "freeField6-1",
+            button: "ENREGISTRER MA REPONSE",
+            questions: [
+              {
+                id: "field0",
+                text: "Quelles sont vos attentes par rapport à la hiérarchie ?"
+              },
+              {
+                id: "field1",
+                text:
+                  "Quel type de management vous attendez de la part d’un manager ?"
+              },
+              {
+                id: "field2",
+                text:
+                  "Quel type de management vous mettriez en œuvre si vous étiez manager ?"
+              }
+            ]
+          }
+        ]
       },
       {
         name: "Mes atouts",
-        tests: []
+        topic: "Mes atouts",
+        wording: "Répondez librement aux questions suivantes :",
+        tests: [
+          {
+            type: "free-field",
+            name: "freeField7-1",
+            button: "ENREGISTRER MA REPONSE",
+            questions: [
+              {
+                id: "field0",
+                text:
+                  "Quels sont les points de progrès que vous avez identifiés à mettre en œuvre dans votre communication managériale au quotidien ?"
+              },
+              {
+                id: "field1",
+                text:
+                  "Quels sont les outils que vous avez retenus et que vous souhaiteriez mettre en œuvre?"
+              },
+              {
+                id: "field2",
+                text:
+                  "Quelles compétences managériales souhaitez-vous acquérir ? "
+              },
+              {
+                id: "field3",
+                text:
+                  "Définissez un plan d’action à mettre en œuvre pour la suite en entreprise sur le modèle QQOQCCP (Qui ? Quoi ? Ou ? Quand ? Comment ? Combien ? Pourquoi ? )"
+              },
+              {
+                id: "field4",
+                text:
+                  "Quels sont les atouts dont vous avez pris conscience et sur lesquels vous pouvez vous appuyer ?"
+              }
+            ]
+          }
+        ]
       },
       {
         name: "Mon Bloc-Notes",
+        topic: "Mon Bloc-Notes",
         wording:
-          "Dans ce bloc, il n’y a qu’un espace de saisie libre sans consigne particulière :",
+          "Cet espace vous est dédié, vous pouvez vous y exprimer librement.",
         tests: [
           {
             type: "free-field",
             name: "freeField8-1",
-            button: "ENREGISTREZ VOTRE REPONSE",
+            button: "ENREGISTRER MA REPONSE",
             questions: [
               {
                 id: "field0",
