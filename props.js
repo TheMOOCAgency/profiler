@@ -263,7 +263,11 @@ window.props = {
                 driver: "driver5",
                 form: { id: "form2", coef: 6 }
               },
-              { subTopic: "Evaluation par les pairs", id: "form3" },
+              {
+                subTopic:
+                  "Evaluation par les pairs <-- Remarque dev. : 'sera optionnel vendredi' -->",
+                id: "form3"
+              },
               {
                 text:
                   "Mes camarades perçoivent mon comportement comme correspondant au driver « sois parfait »",
@@ -1236,7 +1240,8 @@ window.props = {
           {
             name: "likert4-7",
             type: "likert",
-            topic: "Testez votre intelligence émotionnelle",
+            topic:
+              "Testez votre intelligence émotionnelle  <-- Remarque dev. : 'histogramme fonctionnel pour vendredi' -->",
             wording:
               "Ne répondez pas ce que vous croyez devoir répondre pour avoir de bons résultats à ce test, cela ne vous donnerait pas une vision fiable de la réalité. Lisez avec attention chacun des énoncés et indiquez s’il s’applique ou non à vous (encerclez la réponse). Le but est de vous donner une idée générale de vos manières de vivre vos émotions. Il se peut que vous sentiez que certaines questions ne sont pas pertinentes et ne décrivent pas des situations que vous vivez. Si c’est le cas, ne répondez pas et retranchez quatre points du chiffre maximum présenté dans l’interprétation (à la fin) pour chaque question à laquelle vous n’aurez pas répondu.",
             button: "VISUALISEZ VOS RESULTATS",
