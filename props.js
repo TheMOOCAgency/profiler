@@ -1237,6 +1237,7 @@ window.props = {
       },
       {
         name: "Mon comportement",
+        topic: "Mon comportement",
         tests: [
           {
             type: "free-field",
@@ -1400,6 +1401,7 @@ window.props = {
       },
       {
         name: "Mon style de leadership",
+        topic: "Mon style de leadership",
         tests: [
           {
             type: "free-field",
