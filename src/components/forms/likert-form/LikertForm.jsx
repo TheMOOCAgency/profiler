@@ -78,7 +78,7 @@ const radioButtons = ({
           );
         })}
       </RadioGroup>
-      <h4
+      <h5
         style={{
           color: "#353535",
           fontSize: "12px",
@@ -88,7 +88,7 @@ const radioButtons = ({
         }}
       >
         {touched && error}
-      </h4>
+      </h5>
     </Grid>
   </FormControl>
 );
@@ -220,12 +220,13 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
               <Grid item sm={12}>
                 <h4
                   style={{
-                    margin: "10px 0",
+                    margin: "0 0 10px 0",
                     fontStyle: "italic",
                     padding: "10px",
                     backgroundColor: "#b71b60",
                     color: "white",
-                    borderRadius: "5px"
+                    borderRadius: "5px",
+                    fontSize: "14px"
                   }}
                 >
                   {question.subTopic.toUpperCase()}
@@ -238,7 +239,8 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
                 style={{
                   textAlign: "justify",
                   fontStyle: "italic",
-                  fontSize: "14px"
+                  fontSize: "14px",
+                  paddingLeft: "10px"
                 }}
               >
                 {question.wording}
@@ -368,7 +370,7 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
   };
 
   return (
-    <Grid errostyle={{ marginBottom: "30px" }}>
+    <Grid style={{ marginBottom: "30px" }}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Fragment>
           {topic && (
@@ -379,7 +381,8 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
                 padding: "10px",
                 backgroundColor: "#b71b60",
                 color: "white",
-                borderRadius: "5px"
+                borderRadius: "5px",
+                fontSize: "14px"
               }}
             >
               {topic.toUpperCase()}
@@ -388,7 +391,7 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
         </Fragment>
         <Fragment>
           {!requiredForms && (
-            <div style={{ marginTop: "30px" }}>{renderHeader()}</div>
+            <div style={{ marginTop: "10px" }}>{renderHeader()}</div>
           )}
         </Fragment>
         <FormGroup>

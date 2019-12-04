@@ -18,7 +18,20 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
       <Fragment>
         {(topic || wording) && (
           <Fragment>
-            {topic && <h3>{topic.toUpperCase()}</h3>}
+            {topic && (
+              <h3
+                style={{
+                  backgroundColor: "#353535",
+                  color: "white",
+                  padding: "10px",
+                  borderRadius: "5px",
+                  margin: "0 0 10px 0",
+                  fontSize: "16px"
+                }}
+              >
+                {topic.toUpperCase()}
+              </h3>
+            )}
             {wording && (
               <Grid
                 item
@@ -27,8 +40,8 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
                 style={{
                   textAlign: "justify",
                   fontStyle: "italic",
-                  // marginBottom: "30px",
-                  fontSize: "14px"
+                  fontSize: "14px",
+                  margin: "20px 0"
                 }}
               >
                 {wording}

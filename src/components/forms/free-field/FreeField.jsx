@@ -53,6 +53,10 @@ const validate = (formValues, props) => {
 const FreeField = ({ test, handleSubmit, pristine, submitting }) => {
   const { questions, button, topic } = test;
 
+  const createMarkup = element => {
+    return { __html: element };
+  };
+
   const renderCustomInput = ({ input }) => {
     return (
       <Fragment>
@@ -73,9 +77,16 @@ const FreeField = ({ test, handleSubmit, pristine, submitting }) => {
       return (
         <Grid container key={question.id}>
           <div style={{ margin: "30px 0 10px 0" }}>
-            {questions.length > 1
+            {question.text && questions.length > 1
               ? index + 1 + ". " + question.text
               : question.text}
+            {question.html && (
+              <div
+                dangerouslySetInnerHTML={createMarkup(
+                  index + 1 + ". " + question.html
+                )}
+              />
+            )}
           </div>
           <Field name={question.id} component={renderCustomInput} />
         </Grid>
@@ -100,7 +111,8 @@ const FreeField = ({ test, handleSubmit, pristine, submitting }) => {
               padding: "10px",
               backgroundColor: "#b71b60",
               color: "white",
-              borderRadius: "5px"
+              borderRadius: "5px",
+              fontSize: "14px"
             }}
           >
             {topic.toUpperCase()}
