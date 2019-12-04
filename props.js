@@ -22,7 +22,7 @@ window.props = {
               driver5: "Fais des efforts"
             },
             requiredForms: [
-              { id: "form1", name: "Test-driver" },
+              { id: "form1", name: "Test" },
               {
                 id: "form2",
                 name: "Auto-positionnement"
@@ -1231,6 +1231,205 @@ window.props = {
             answers: [
               { value: true, name: "Vrai" },
               { value: false, name: "Faux" }
+            ]
+          },
+          {
+            name: "likert4-7",
+            type: "likert",
+            topic: "Testez votre intelligence émotionnelle",
+            wording:
+              "Ne répondez pas ce que vous croyez devoir répondre pour avoir de bons résultats à ce test, cela ne vous donnerait pas une vision fiable de la réalité. Lisez avec attention chacun des énoncés et indiquez s’il s’applique ou non à vous (encerclez la réponse). Le but est de vous donner une idée générale de vos manières de vivre vos émotions. Il se peut que vous sentiez que certaines questions ne sont pas pertinentes et ne décrivent pas des situations que vous vivez. Si c’est le cas, ne répondez pas et retranchez quatre points du chiffre maximum présenté dans l’interprétation (à la fin) pour chaque question à laquelle vous n’aurez pas répondu.",
+            button: "VISUALISEZ VOS RESULTATS",
+            result: "stackedBarChart",
+            result: "histogram",
+            drivers: {
+              driver1: "Score"
+            },
+            questions: [
+              {
+                text:
+                  "Je sens que la colère monte rapidement lorsque l’on m’attaque verbalement.",
+                id: "question0",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "J’ai beaucoup de difficulté à recevoir les critiques, même constructives, qui viennent des autres.",
+                id: "question1",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Je panique lorsque je dois faire face à un conflit interpersonnel.",
+                id: "question2",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Quand j’ai un problème professionnel ou personnel, je ne peux penser à rien d’autre.",
+                id: "question3",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "J’ai tendance à ruminer les difficultés que j’ai vécues dans le passé.",
+                id: "question4",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Je ressens parfois de l’angoisse sans savoir véritablement pourquoi.",
+                id: "question5",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "J’ai de la difficulté à nommer plusieurs émotions, surtout lorsque je les vis.",
+                id: "question6",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Je trouve difficile les occasions où je dois exprimer mes émotions (ex.: de l’affection).",
+                id: "question7",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Peu importe ce que j’accomplis, j’ai toujours l’impression que j’aurais pu faire plus.",
+                id: "question8",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Je fais de mon mieux surtout lorsqu’il y a quelqu’un pour voir les résultats.",
+                id: "question9",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Je fais habituellement tout ce que je peux pour me retenir de pleurer en public.",
+                id: "question10",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Lorsque les autres vivent des difficultés, je ne sais pas quoi leur dire.",
+                id: "question11",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Quand j’échoue quelque chose, je me tiens un discours intérieur autodénigrant (ex.: « Je ne réussirai jamais. »)",
+                id: "question12",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Je trouve qu’il y a plusieurs choses qui clochent en moi et j’ai peur du jugement des autres.",
+                id: "question13",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Selon moi, il est préférable de rester neutre et détaché envers les autres tant que je ne les connais pas suffisamment.",
+                id: "question14",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Lorsqu’une personne me partage ses difficultés, j’ai tendance à vouloir l’aider à régler ses problèmes plutôt que de seulement l’écouter.",
+                id: "question15",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "J’ai souvent de la difficulté à comprendre le langage non verbal des autres.",
+                id: "question16",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "J’ai besoin que les autres m’encouragent pour rester motivé(e).",
+                id: "question17",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Je réagis très fortement à la suite de problèmes mineurs.",
+                id: "question18",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Les obstacles qui se dressent sur ma route m’empêchent souvent de réaliser mes objectifs.",
+                id: "question19",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Je ne suis pas satisfait(e) de mon travail tant qu’une autre personne ne m’a pas félicité(e).",
+                id: "question20",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Je me sens coupable à propos des choses que je ne fais pas parfaitement même lorsque je fais de mon mieux.",
+                id: "question21",
+                driver: "driver1"
+              },
+              {
+                text: "Je ressens souvent une bonne dose d’anxiété.",
+                id: "question22",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Lorsque j’ai un problème avec une personne, je vis longtemps de la rancune envers elle.",
+                id: "question23",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "J’ai de la difficulté à accepter les choses que je ne peux pas changer.",
+                id: "question24",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Les personnes qui expriment ouvertement leurs émotions me font sentir mal à l’aise.",
+                id: "question25",
+                driver: "driver1"
+              },
+              {
+                text: "J’ai me sens plus souvent déprimé(e) qu’heureux(se).",
+                id: "question26",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Lorsque j’ai un problème avec une personne, je vis longtemps de la rancune envers elle.",
+                id: "question27",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "J’ai de la difficulté à accepter les choses que je ne peux pas changer.",
+                id: "question28",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "J’ai l’impression que mes émotions négatives (tristesse, colère, etc.) sont impossibles à contrôler.",
+                id: "question29",
+                driver: "driver1"
+              }
+            ],
+            answers: [
+              { name: "Souvent", value: 1 },
+              { name: "Parfois", value: 2 },
+              { name: "Occasionnellement", value: 3 },
+              { name: "Rarement", value: 4 }
             ]
           }
         ]
