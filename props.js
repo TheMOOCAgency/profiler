@@ -26,6 +26,13 @@ window.props = {
               {
                 id: "form2",
                 name: "Auto-positionnement"
+              }
+            ],
+            dataForms: [
+              { id: "form1", name: "Test" },
+              {
+                id: "form2",
+                name: "Auto-positionnement"
               },
               { id: "form3", name: "Evaluation par les pairs" }
             ],
@@ -264,8 +271,7 @@ window.props = {
                 form: { id: "form2", coef: 6 }
               },
               {
-                subTopic:
-                  "Evaluation par les pairs <-- Remarque dev. : 'sera optionnel vendredi' -->",
+                subTopic: "Evaluation par les pairs",
                 id: "form3"
               },
               {
