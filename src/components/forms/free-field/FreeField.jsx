@@ -30,30 +30,41 @@ const CssTextField = withStyles({
   }
 })(TextField);
 
+let requiredFields = [];
+
 const validate = (formValues, props) => {
   const errors = {};
-  // if (!formValues.title) {
-  //   errors.title = "You must enter a title";
-  // }
-  // if (!formValues.description) {
-  //   errors.description = "You  enter a description";
-  // }
+  props.test.questions.map(question => {
+    if (requiredFields.indexOf(question.id) === -1) {
+      requiredFields.push(question.id);
+    }
+    return requiredFields;
+  });
+
+  requiredFields.forEach(field => {
+    if (!formValues[field]) {
+      errors[field] = "";
+    }
+  });
+
   return errors;
 };
 
 const FreeField = ({ test, handleSubmit, pristine, submitting }) => {
-  const { questions, button, topic } = test;
+  const { questions, button } = test;
 
-  const renderCustomInput = formProps => {
+  const renderCustomInput = ({ input }) => {
     return (
-      <CssTextField
-        id="outlined-multiline-static"
-        multiline
-        rows="6"
-        variant="outlined"
-        autoComplete="off"
-        {...formProps.input}
-      />
+      <Fragment>
+        <CssTextField
+          id="outlined-multiline-static"
+          multiline
+          rows="6"
+          variant="outlined"
+          autoComplete="off"
+          {...input}
+        />
+      </Fragment>
     );
   };
 
@@ -61,7 +72,7 @@ const FreeField = ({ test, handleSubmit, pristine, submitting }) => {
     return questions.map((question, index) => {
       return (
         <Grid container key={question.id}>
-          <div style={{ marginBottom: "10px" }}>
+          <div style={{ margin: "30px 0 10px 0" }}>
             {index + 1 + ". " + question.text}
           </div>
           <Field name={question.id} component={renderCustomInput} />
@@ -82,7 +93,7 @@ const FreeField = ({ test, handleSubmit, pristine, submitting }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <FormGroup>
-        {topic && <h3>{topic.toUpperCase()}</h3>}
+        {/* {topic && <h3>{topic.toUpperCase()}</h3>} */}
         <Fragment>{renderInputs()}</Fragment>
       </FormGroup>
     </form>

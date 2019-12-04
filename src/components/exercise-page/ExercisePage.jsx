@@ -3,7 +3,6 @@ import React, { Fragment } from "react";
 // import html2canvas from "html2canvas";
 import LikertForm from "../../components/forms/likert-form/LikertForm";
 import FreeField from "../../components/forms/free-field/FreeField";
-import MultiInputBarChart from "../../components/results/multi-input-bar-chart/MultiInputBarChart";
 import Grid from "@material-ui/core/Grid";
 import { FormName } from "redux-form";
 
@@ -14,8 +13,35 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
   //   question0: "3"
   // };
 
-  const renderTestType = index =>
-    skill.tests.map((test, index) => {
+  const renderWording = () => {
+    return (
+      <Fragment>
+        {(topic || wording) && (
+          <Fragment>
+            {topic && <h3>{topic.toUpperCase()}</h3>}
+            {wording && (
+              <Grid
+                item
+                md={7}
+                sm={12}
+                style={{
+                  textAlign: "justify",
+                  fontStyle: "italic",
+                  // marginBottom: "30px",
+                  fontSize: "14px"
+                }}
+              >
+                {wording}
+              </Grid>
+            )}
+          </Fragment>
+        )}
+      </Fragment>
+    );
+  };
+
+  const renderTestType = () => {
+    return skill.tests.map((test, index) => {
       if (test.type === "likert") {
         return (
           <FormName key={index}>
@@ -52,18 +78,10 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
             )}
           </FormName>
         );
-      } else if (test.type === "multiple-source-result") {
-        return (
-          <MultiInputBarChart
-            key={index}
-            test={test}
-            form={test.name}
-            tests={skill.tests}
-          />
-        );
       }
       return null;
     });
+  };
 
   // const printPdf = () => {
   //   const input = document.getElementById("to-print");
@@ -80,21 +98,10 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
   return (
     <Fragment>
       <div id="to-print">
-        <h3>{topic}</h3>
-        <Grid
-          item
-          md={7}
-          sm={12}
-          style={{
-            textAlign: "justify",
-            marginBottom: "30px",
-            fontStyle: "italic",
-            fontSize: "14px"
-          }}
-        >
-          {wording}
+        <Grid>
+          <Fragment>{renderWording()}</Fragment>
+          <Fragment>{renderTestType()}</Fragment>
         </Grid>
-        <Fragment>{renderTestType()}</Fragment>
       </div>
       {/* <button onClick={() => printPdf()}>Print</button> */}
     </Fragment>
