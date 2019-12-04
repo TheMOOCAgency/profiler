@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/profiler/static/css/main.6ffec623.chunk.css",
+    "main.css": "/profiler/static/css/main.479f2423.chunk.css",
     "main.js": "/profiler/static/js/main.4e147fbe.chunk.js",
     "main.js.map": "/profiler/static/js/main.4e147fbe.chunk.js.map",
     "runtime-main.js": "/profiler/static/js/runtime-main.acf7f400.js",
@@ -8,14 +8,14 @@
     "static/js/2.133eedee.chunk.js": "/profiler/static/js/2.133eedee.chunk.js",
     "static/js/2.133eedee.chunk.js.map": "/profiler/static/js/2.133eedee.chunk.js.map",
     "index.html": "/profiler/index.html",
-    "precache-manifest.4ebdffdf81c3982f5b0c745cef6d52e1.js": "/profiler/precache-manifest.4ebdffdf81c3982f5b0c745cef6d52e1.js",
+    "precache-manifest.353320504e87b508f4b706e9485511f8.js": "/profiler/precache-manifest.353320504e87b508f4b706e9485511f8.js",
     "service-worker.js": "/profiler/service-worker.js",
-    "static/css/main.6ffec623.chunk.css.map": "/profiler/static/css/main.6ffec623.chunk.css.map"
+    "static/css/main.479f2423.chunk.css.map": "/profiler/static/css/main.479f2423.chunk.css.map"
   },
   "entrypoints": [
     "static/js/runtime-main.acf7f400.js",
     "static/js/2.133eedee.chunk.js",
-    "static/css/main.6ffec623.chunk.css",
+    "static/css/main.479f2423.chunk.css",
     "static/js/main.4e147fbe.chunk.js"
   ]
 }
