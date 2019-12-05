@@ -1637,7 +1637,7 @@ window.props = {
             type: "likert",
             result: "histogram",
             topic:
-              "Déterminer mon style de leadership <-- Remarque dev. : 'sera intégré pour vendredi' -->",
+              "Déterminer mon style de leadership <-- Remarque dev. : 'le rendu sera intégré dans les prochains jours' -->",
             button: "VISUALISEZ VOS RESULTATS",
             wording: "",
             drivers: {
