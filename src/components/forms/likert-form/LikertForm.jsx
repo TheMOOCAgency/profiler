@@ -34,12 +34,27 @@ let requiredFields = [];
 
 const validate = (formValues, props) => {
   const errors = {};
-  props.test.questions.map(question => {
-    if (requiredFields.indexOf(question.id) === -1) {
-      requiredFields.push(question.id);
-    }
-    return requiredFields;
-  });
+  const { questions, requiredForms } = props.test;
+  let findForm = null;
+  if (requiredForms) {
+    questions.map(question => {
+      if (!question.subTopic) {
+        findForm = requiredForms.find(form => form.id === question.form.id);
+      }
+      if (requiredFields.indexOf(question.id) === -1 && findForm) {
+        requiredFields.push(question.id);
+      }
+      findForm = null;
+      return requiredFields;
+    });
+  } else {
+    questions.map(async question => {
+      if (requiredFields.indexOf(question.id) === -1) {
+        requiredFields.push(question.id);
+      }
+      return requiredFields;
+    });
+  }
 
   requiredFields.forEach(field => {
     if (!formValues[field]) {
@@ -104,7 +119,8 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
     name,
     drivers,
     requiredForms,
-    topic
+    topic,
+    dataForms
   } = test;
 
   const [isCompleted, setCompletion] = useState(false);
@@ -307,15 +323,32 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
         rest: 100
       };
       questions.map(question => {
-        console.log(question[results[question.id]]);
         rawData.mark += question[results[question.id]] * 10;
         rawData.rest -= question[results[question.id]] * 10;
         return rawData;
       });
       formatedData.push(rawData);
       setData(formatedData);
+      // LIKERT - SINGLE FORM CASE - STACKED BAR
+    } else if (type === "likert" && result === "stackedBarChart") {
+      rawData = {
+        name: test.drivers.driver1,
+        mark: 0,
+        rest: questions.length * answers.length
+      };
+
+      questions.map(question => {
+        console.log(question[results[question.id]]);
+        rawData.mark += Number(results[question.id]);
+        rawData.rest -= Number(results[question.id]);
+        return rawData;
+      });
+      formatedData.push(rawData);
+      console.log(formatedData);
+      setData(formatedData);
       // LIKERT - SINGLE FORM CASE
     } else if (type === "likert" && !requiredForms) {
+      console.log("ojkfoewjfk");
       questions.map(question => {
         if (!rawData[question.driver]) {
           return (rawData[question.driver] = {
@@ -329,11 +362,10 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
         }
       });
       formatedData = Object.values(rawData);
-      console.log(formatedData);
       setData(formatedData);
       // LIKERT - MULTIPLE FORM CASE
-    } else if (type === "likert" && requiredForms) {
-      requiredForms.map(form => {
+    } else if (type === "likert" && dataForms) {
+      dataForms.map(form => {
         return questions.map(question => {
           if (!question.subTopic) {
             if (!rawData[question.driver]) {

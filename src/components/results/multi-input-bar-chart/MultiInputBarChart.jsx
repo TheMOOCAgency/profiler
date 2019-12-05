@@ -20,9 +20,9 @@ const MultiInputBarChart = ({ test, tests }) => {
     results: state.form
   }));
 
-  //   useEffect(() => {
-  //     console.log(data);
-  //   }, [data]);
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
 
   const onSubmit = async () => {
     let formatedData = [];
