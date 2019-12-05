@@ -1252,7 +1252,6 @@ window.props = {
               "Ne répondez pas ce que vous croyez devoir répondre pour avoir de bons résultats à ce test, cela ne vous donnerait pas une vision fiable de la réalité. Lisez avec attention chacun des énoncés et indiquez s’il s’applique ou non à vous (encerclez la réponse). Le but est de vous donner une idée générale de vos manières de vivre vos émotions. Il se peut que vous sentiez que certaines questions ne sont pas pertinentes et ne décrivent pas des situations que vous vivez. Si c’est le cas, ne répondez pas et retranchez quatre points du chiffre maximum présenté dans l’interprétation (à la fin) pour chaque question à laquelle vous n’aurez pas répondu.",
             button: "VISUALISEZ VOS RESULTATS",
             result: "stackedBarChart",
-            result: "histogram",
             drivers: {
               driver1: "Score"
             },
