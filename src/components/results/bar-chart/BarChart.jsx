@@ -12,16 +12,16 @@ import {
 import Grid from "@material-ui/core/Grid";
 
 const BarChart = ({ data, test }) => {
-  const { requiredForms, topic } = test;
+  const { dataForms, topic } = test;
   const [chartHeight, setChartHeight] = useState(200);
 
   useEffect(() => {
-    if (requiredForms) {
-      setChartHeight(200 + requiredForms.length * 100);
+    if (dataForms) {
+      setChartHeight(200 + dataForms.length * 100);
     } else {
       setChartHeight(200);
     }
-  }, [chartHeight, requiredForms]);
+  }, [chartHeight, dataForms]);
 
   const renderBars = () => {
     const colors = [
@@ -38,9 +38,9 @@ const BarChart = ({ data, test }) => {
       "#353535",
       "#949b9f"
     ];
-    if (requiredForms) {
+    if (dataForms) {
       // MULTIPLE FORMS CASE
-      return requiredForms.map((form, index) => (
+      return dataForms.map((form, index) => (
         <Bar
           dataKey={form.id}
           name={form.name}
