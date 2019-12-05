@@ -1613,7 +1613,7 @@ window.props = {
         tests: [
           {
             type: "free-field",
-            name: "freeField6-2",
+            name: "freeField6-1",
             button: "ENREGISTRER MA REPONSE",
             questions: [
               {
@@ -1633,10 +1633,11 @@ window.props = {
             ]
           },
           {
-            name: "likert6-1",
+            name: "likert6-2",
             type: "likert",
-            // result: "histogram",
-            topic: "<-- Remarque dev. : 'sera intégré pour vendredi' -->",
+            result: "histogram",
+            topic:
+              "Déterminer mon style de leadership <-- Remarque dev. : 'sera intégré pour vendredi' -->",
             button: "VISUALISEZ VOS RESULTATS",
             wording: "",
             drivers: {
@@ -1648,17 +1649,113 @@ window.props = {
                 text:
                   "J’encourage mon équipe à participer aux décisions et j’essaye de mettre en pratique leurs idées et suggestions.",
                 id: "question0",
-                driver: "driver4"
+                driver: "driver2"
+              },
+              {
+                text:
+                  "Rien n’est plus important que d’accomplir une tâche ou d’atteindre un objectif.",
+                id: "question1",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Je surveille le planning pour assurer que la réalisation des projets se fait dans les limites du calendrier.",
+                id: "question2",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "J’aime bien encadrer les gens et leur enseigner de nouvelles procédures et de nouvelles tâches.",
+                id: "question3",
+                driver: "driver2"
+              },
+              {
+                text: "Plus la tâche est compliquée et plus elle me passionne.",
+                id: "question4",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "J’encourage mes employés à être créatifs dans leur travail.",
+                id: "question5",
+                driver: "driver2"
+              },
+              {
+                text:
+                  "Lorsque je supervise l’accomplissement d’une tâche complexe, j’en vérifie chaque détail.",
+                id: "question6",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Il m’est aisé de mener de front plusieurs tâches complexes.",
+                id: "question7",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "J’aime lire articles, livres et revues spécialisées sur la formation, le leadership et la psychologie, et ensuite appliquer mes connaissances nouvellement acquises",
+                id: "question8",
+                driver: "driver2"
+              },
+              {
+                text:
+                  "Lorsque je rectifie une erreur, je me soucie de l’avenir de mes relations avec mes collègues.",
+                id: "question9",
+                driver: "driver2"
+              },
+              {
+                text: "Je sais gérer mon temps de manière très efficace.",
+                id: "question10",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Je prends plaisir à expliquer à mes employés une tâche ou un projet dans ses moindres détails.",
+                id: "question11",
+                driver: "driver2"
+              },
+              {
+                text:
+                  "Il m’est très facile de diviser un projet important en plusieurs tâches aisément gérables.",
+                id: "question12",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Rien n’est plus important que de s’entourer d’une bonne équipe.",
+                id: "question13",
+                driver: "driver1"
+              },
+              {
+                text: "J’aime analyser les problèmes.",
+                id: "question14",
+                driver: "driver1"
+              },
+              {
+                text:
+                  "Je respecte l’expertise et la responsabilité des autres.",
+                id: "question15",
+                driver: "driver2"
+              },
+              {
+                text:
+                  "Conseiller mes employés sur la meilleure façon d’améliorer leur résultat et leur attitude n’a jamais été un problème pour moi.",
+                id: "question16",
+                driver: "driver2"
+              },
+              {
+                text:
+                  "J’aime lire des articles, des livres et des revues spécialisées qui me permettent d’apprendre de nouvelles procédures que je peux ensuite mettre en pratique.",
+                id: "question17",
+                driver: "driver1"
               }
             ],
             answers: [
               { name: "Jamais", value: "1" },
               { name: "Rarement", value: "2" },
               { name: "Parfois", value: "3" },
-              {
-                name: "Souvent",
-                value: "4"
-              },
+              { name: "Souvent", value: "4" },
               { name: "Tres souvent", value: "5" },
               { name: "Toujours", value: "6" }
             ]
