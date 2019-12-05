@@ -1,17 +1,52 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 // import jsPDF from "jspdf";
 // import html2canvas from "html2canvas";
 import LikertForm from "../../components/forms/likert-form/LikertForm";
 import FreeField from "../../components/forms/free-field/FreeField";
 import Grid from "@material-ui/core/Grid";
 import { FormName } from "redux-form";
+import XYChart from "../results/xy-chart/XYChart";
 
 const ExercisePage = ({ skills, skill, parentIndex }) => {
+  const [initialValues, setInitialValues] = useState({});
   const { topic, wording } = skills[parentIndex];
 
-  // let initialValues = {
-  //   question0: "3"
-  // };
+  useEffect(() => {
+    const renderInitialValues = () => {
+      return skill.tests.map(test => {
+        initialValues[test.name] = {};
+        if (test.type === "likert") {
+          test.questions.map(question => {
+            if (!question.subTopic) {
+              setInitialValues(prevState => ({
+                ...prevState,
+                [test.name]: {
+                  ...prevState[test.name],
+                  [question.id]: "3"
+                }
+              }));
+            }
+            return null;
+          });
+          // console.log(initialValues);
+        } else if (test.type === "true-or-false") {
+          test.questions.map(question => {
+            setInitialValues(prevState => ({
+              ...prevState,
+              [test.name]: {
+                ...prevState[test.name],
+                [question.id]: "true"
+              }
+            }));
+            return null;
+          });
+          console.log(initialValues);
+        }
+        return null;
+      });
+    };
+    renderInitialValues();
+  }, []);
 
   const renderWording = () => {
     return (
@@ -56,25 +91,27 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
   const renderTestType = () => {
     return skill.tests.map((test, index) => {
       if (test.type === "likert") {
+        console.log(initialValues[test.name]);
         return (
           <FormName key={index}>
             {() => (
               <LikertForm
                 test={test}
                 form={test.name}
-                // initialValues={initialValues}
+                initialValues={initialValues[test.name]}
               />
             )}
           </FormName>
         );
       } else if (test.type === "true-or-false") {
+        // console.log(initialValues);
         return (
           <FormName key={index}>
             {() => (
               <LikertForm
                 test={test}
                 form={test.name}
-                // initialValues={initialValues}
+                initialValues={initialValues[test.name]}
               />
             )}
           </FormName>
@@ -108,9 +145,16 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
   //   });
   // };
 
+  const newData = { name: "style", x: 32, y: 24 };
+
+  const tests = {
+    questions: ["", "", "", "", "", "", ""]
+  };
+
   return (
     <Fragment>
       <div id="to-print">
+        <XYChart test={tests} date={newData} />
         <Grid>
           <Fragment>{renderWording()}</Fragment>
           <Fragment>{renderTestType()}</Fragment>
