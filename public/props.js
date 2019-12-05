@@ -21,13 +21,7 @@ window.props = {
               driver4: "Fais plaisir",
               driver5: "Fais des efforts"
             },
-            requiredForms: [
-              { id: "form1", name: "Test" },
-              {
-                id: "form2",
-                name: "Auto-positionnement"
-              }
-            ],
+            requiredForms: [{ id: "form1", name: "Test" }],
             dataForms: [
               { id: "form1", name: "Test" },
               {
@@ -1635,7 +1629,7 @@ window.props = {
           {
             name: "likert6-2",
             type: "likert",
-            result: "histogram",
+            result: "xyChart",
             topic:
               "Déterminer mon style de leadership <-- Remarque dev. : 'le rendu sera intégré dans les prochains jours' -->",
             button: "VISUALISEZ VOS RESULTATS",
@@ -1759,6 +1753,31 @@ window.props = {
               { name: "Tres souvent", value: "5" },
               { name: "Toujours", value: "6" }
             ]
+          },
+          {
+            type: "free-field",
+            name: "freeField6-3",
+            button: "ENREGISTRER MA REPONSE",
+            questions: [
+              {
+                id: "field0",
+                text: "Êtes-vous surpris par les résultats ?"
+              },
+              {
+                id: "field1",
+                text: "Êtes-vous surpris par les résultats ?"
+              },
+              {
+                id: "field2",
+                text:
+                  "Selon vous, à quel type de situation votre style de management est-il adapté ?"
+              },
+              {
+                id: "field3",
+                text:
+                  "Selon vous, à quel type de collaborateur votre style de management est-il adapté ?"
+              }
+            ]
           }
         ]
       },
@@ -1769,7 +1788,7 @@ window.props = {
         tests: [
           {
             type: "free-field",
-            name: "freeField7-1",
+            name: "freeField7-3",
             button: "ENREGISTRER MA REPONSE",
             questions: [
               {

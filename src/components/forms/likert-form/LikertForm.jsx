@@ -11,6 +11,7 @@ import { withStyles, makeStyles } from "@material-ui/core/styles";
 import SubmitButton from "../submit-button/SubmitButton";
 import BarChart from "../../results/bar-chart/BarChart";
 import StackedBarChart from "../../results/stacked-bar-chart/StackedBarChart";
+import XYChart from "../../results/xy-chart/XYChart";
 
 const CustomRadio = withStyles({
   root: {
@@ -308,6 +309,12 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
           {isCompleted && result && <StackedBarChart test={test} data={data} />}
         </Fragment>
       );
+    } else if (result === "xyChart") {
+      return (
+        <Fragment>
+          {isCompleted && result && <XYChart test={test} data={data} />}
+        </Fragment>
+      );
     }
   };
 
@@ -348,7 +355,6 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test }) => {
       setData(formatedData);
       // LIKERT - SINGLE FORM CASE
     } else if (type === "likert" && !requiredForms) {
-      console.log("ojkfoewjfk");
       questions.map(question => {
         if (!rawData[question.driver]) {
           return (rawData[question.driver] = {
