@@ -5,7 +5,7 @@ import LikertForm from "../../components/forms/likert-form/LikertForm";
 import FreeField from "../../components/forms/free-field/FreeField";
 import Grid from "@material-ui/core/Grid";
 import { FormName } from "redux-form";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/logo.jpeg";
 // import XYChart from "../results/xy-chart/XYChart";
 
 const ExercisePage = ({ skills, skill, parentIndex }) => {
@@ -167,7 +167,7 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
           alignItems: "center"
         }}
       >
-        <img src={logo} alt="logo" />
+        <img src={logo} alt="logo" style={{ height: "100px" }} />
         <div style={{ fontSize: "8px", marginTop: "8px" }}>
           © Association Groupe Kedge Business School, 2019
         </div>
