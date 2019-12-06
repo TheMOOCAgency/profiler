@@ -7,6 +7,9 @@ const useStyles = makeStyles(theme => ({
     margin: "10px 0 50px 0",
     backgroundColor: "#b71b53",
     width: "300px",
+    "@media (max-width: 800px)": {
+      width: "100%"
+    },
     color: "white",
     border: "none",
     "&:hover": {
