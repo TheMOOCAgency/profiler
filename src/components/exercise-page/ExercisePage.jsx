@@ -5,7 +5,8 @@ import LikertForm from "../../components/forms/likert-form/LikertForm";
 import FreeField from "../../components/forms/free-field/FreeField";
 import Grid from "@material-ui/core/Grid";
 import { FormName } from "redux-form";
-import XYChart from "../results/xy-chart/XYChart";
+import logo from "../../assets/logo.png";
+// import XYChart from "../results/xy-chart/XYChart";
 
 const ExercisePage = ({ skills, skill, parentIndex }) => {
   const [initialValues, setInitialValues] = useState({});
@@ -40,7 +41,6 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
             }));
             return null;
           });
-          console.log(initialValues);
         }
         return null;
       });
@@ -70,7 +70,7 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
             {wording && (
               <Grid
                 item
-                md={7}
+                md={12}
                 sm={12}
                 style={{
                   textAlign: "justify",
@@ -91,14 +91,13 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
   const renderTestType = () => {
     return skill.tests.map((test, index) => {
       if (test.type === "likert") {
-        console.log(initialValues[test.name]);
         return (
           <FormName key={index}>
             {() => (
               <LikertForm
                 test={test}
                 form={test.name}
-                initialValues={initialValues[test.name]}
+                // initialValues={initialValues[test.name]}
               />
             )}
           </FormName>
@@ -111,7 +110,7 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
               <LikertForm
                 test={test}
                 form={test.name}
-                initialValues={initialValues[test.name]}
+                // initialValues={initialValues[test.name]}
               />
             )}
           </FormName>
@@ -154,13 +153,25 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
   return (
     <Fragment>
       <div id="to-print">
-        <XYChart test={tests} date={newData} />
+        {/* <XYChart test={tests} date={newData} /> */}
         <Grid>
           <Fragment>{renderWording()}</Fragment>
           <Fragment>{renderTestType()}</Fragment>
         </Grid>
       </div>
-      {/* <button onClick={() => printPdf()}>Print</button> */}
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center"
+        }}
+      >
+        <img src={logo} alt="logo" />
+        <div style={{ fontSize: "8px", marginTop: "8px" }}>
+          © Association Groupe Kedge Business School, 2019
+        </div>
+      </div>
     </Fragment>
   );
 };
