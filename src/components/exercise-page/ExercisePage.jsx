@@ -1,51 +1,57 @@
-import React, { Fragment, useState, useEffect } from "react";
-// import jsPDF from "jspdf";
-// import html2canvas from "html2canvas";
+import React, { Fragment, useEffect } from "react";
+import { useSelector } from "react-redux";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 import LikertForm from "../../components/forms/likert-form/LikertForm";
 import FreeField from "../../components/forms/free-field/FreeField";
 import Grid from "@material-ui/core/Grid";
 import { FormName } from "redux-form";
 import logo from "../../assets/logo.jpeg";
+import Scorm from "../../scorm/Scorm";
 // import XYChart from "../results/xy-chart/XYChart";
 
 const ExercisePage = ({ skills, skill, parentIndex }) => {
-  const [initialValues, setInitialValues] = useState({});
+  // const [initialValues, setInitialValues] = useState({});
   const { topic, wording } = skills[parentIndex];
+  const formResults = useSelector(state => state.form);
+  console.log(formResults, "results");
 
   useEffect(() => {
-    const renderInitialValues = () => {
-      return skill.tests.map(test => {
-        initialValues[test.name] = {};
-        if (test.type === "likert") {
-          test.questions.map(question => {
-            if (!question.subTopic) {
-              setInitialValues(prevState => ({
-                ...prevState,
-                [test.name]: {
-                  ...prevState[test.name],
-                  [question.id]: "3"
-                }
-              }));
-            }
-            return null;
-          });
-          // console.log(initialValues);
-        } else if (test.type === "true-or-false") {
-          test.questions.map(question => {
-            setInitialValues(prevState => ({
-              ...prevState,
-              [test.name]: {
-                ...prevState[test.name],
-                [question.id]: "true"
-              }
-            }));
-            return null;
-          });
-        }
-        return null;
-      });
-    };
-    renderInitialValues();
+    Scorm.init();
+    console.log(Scorm.init(), "ggg");
+    // const renderInitialValues = () => {
+    //   return skill.tests.map(test => {
+    //     initialValues[test.name] = {};
+    //     if (test.type === "likert") {
+    //       test.questions.map(question => {
+    //         if (!question.subTopic) {
+    //           setInitialValues(prevState => ({
+    //             ...prevState,
+    //             [test.name]: {
+    //               ...prevState[test.name],
+    //               [question.id]: "3"
+    //             }
+    //           }));
+    //         }
+    //         return null;
+    //       });
+    //       // console.log(initialValues);
+    //     } else if (test.type === "true-or-false") {
+    //       test.questions.map(question => {
+    //         setInitialValues(prevState => ({
+    //           ...prevState,
+    //           [test.name]: {
+    //             ...prevState[test.name],
+    //             [question.id]: "true"
+    //           }
+    //         }));
+    //         return null;
+    //       });
+    //     }
+    //     return null;
+    //   });
+    // };
+    // renderInitialValues();
   }, []);
 
   const renderWording = () => {
@@ -132,23 +138,27 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
     });
   };
 
-  // const printPdf = () => {
-  //   const input = document.getElementById("to-print");
+  const printPdf = () => {
+    const input = document.getElementById("to-print");
 
-  //   html2canvas(input).then(canvas => {
-  //     const imgData = canvas.toDataURL("image/png");
-  //     const pdf = new jsPDF("p", "pt", "a4", true);
+    html2canvas(input).then(canvas => {
+      document.body.appendChild(canvas);
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF("p", "pt", "a4", true);
+      let width = input.clientWidth * 0.5;
+      let height = input.clientHeight * 0.5;
+      //  pdf.internal.pageSize.getHeight();
 
-  //     pdf.addImage(imgData, "PNG", 0, 0, 270, 270);
-  //     pdf.save(`${skill.name}.pdf`);
-  //   });
-  // };
-
-  const newData = { name: "style", x: 32, y: 24 };
-
-  const tests = {
-    questions: ["", "", "", "", "", "", ""]
+      pdf.addImage(imgData, "PNG", 45, -1380, width, height);
+      pdf.save(`${skill.name}.pdf`);
+    });
   };
+
+  // const newData = { name: "style", x: 32, y: 24 };
+
+  // const tests = {
+  //   questions: ["", "", "", "", "", "", ""]
+  // };
 
   return (
     <Fragment>
@@ -166,6 +176,7 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
           flexDirection: "column",
           alignItems: "center"
         }}
+        onClick={() => printPdf()}
       >
         <img src={logo} alt="logo" style={{ height: "100px" }} />
         <div style={{ fontSize: "8px", marginTop: "8px" }}>
