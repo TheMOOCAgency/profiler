@@ -37,7 +37,6 @@ const ProfilerApp = () => {
   const { skills } = window.props[language];
   const classes = useStyles();
   const [value, setValue] = useState(0);
-  // const [popUp, setPopUp] = useState(true);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -89,14 +88,6 @@ const ProfilerApp = () => {
 
   return (
     <Grid container className={classes.root} justify="center" id="app">
-      {/* {popUp && (
-        <div id="pop-up">
-          <div className="content">
-            <i className="fas fa-times" onClick={() => setPopUp(false)}></i>
-            <div>Le responsive mobile est en cours d'optimisation.</div>
-          </div>
-        </div>
-      )} */}
       <Grid item>{renderTabs()}</Grid>
       <Grid item lg={9} md={12} sm={12} xs={12}>
         {renderPanel()}
