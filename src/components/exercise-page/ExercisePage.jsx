@@ -103,6 +103,7 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
                 test={test}
                 form={test.name}
                 initialValues={initialValues[test.name]}
+                parentIndex={parentIndex}
               />
             )}
           </FormName>
@@ -116,6 +117,7 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
                 test={test}
                 form={test.name}
                 initialValues={initialValues[test.name]}
+                parentIndex={parentIndex}
               />
             )}
           </FormName>
@@ -127,7 +129,7 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
               <FreeField
                 test={test}
                 form={test.name}
-                // initialValues={initialValues}
+                parentIndex={parentIndex}
               />
             )}
           </FormName>
@@ -163,45 +165,56 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
   //   });
   // };
 
-  const printPdf = () => {
-    let position_y = 20;
-    let position_x = 15;
-    const input = document.getElementsByClassName("questions-block");
-    console.log(input[0].clientWidth, ":Efefefe");
-    const pdf = new jsPDF("l", "pt", "a4", true);
+  const printPdf = async () => {
+    // const mainBlock = document.getElementById("print-main-block");
+    // const mainHeight = mainBlock.clientHeight;
+    // const mainWidth = mainBlock.clientWidth;
 
+    const input = document.getElementsByClassName(`to-print-${parentIndex}`);
+    // console.log(input[0], ":Efefefe");
+    // let position_y = 20;
+    // let position_x = 15;
+    let inputWidth = 0;
+    let inputHeight = 0;
+    let y = 220;
+    let imgData = "";
+    const pdf = new jsPDF("p", "mm", "a4", true);
     for (let i = 0; i < input.length; i++) {
-      let inputWidth = input[0].clientWidth + 1000;
-      let inputHeight = input[0].clientHeight;
+      inputWidth = input[i].clientWidth;
+      inputHeight = input[i].clientHeight;
 
-      html2canvas(input[0], {
-        x: 0,
-        y: 0,
-        width: inputWidth,
-        height: inputHeight
-      }).then(canvas => {
-        const imgData = canvas.toDataURL("image/png");
-
-        pdf.addImage(
-          imgData,
-          "PNG",
-          position_x,
-          position_y,
-          inputWidth * 0.5,
-          inputHeight * 0.5
-        );
-        position_y += inputHeight;
-        position_x += 0;
-      });
-      pdf.addPage("l", "pt", "a4", true);
+      const printBlock = async () => {
+        await html2canvas(input[i], {
+          x: 196,
+          y: i === 0 ? y : y + inputHeight,
+          width: inputWidth,
+          height: inputHeight
+        }).then(canvas => {
+          imgData = canvas.toDataURL("image/jpeg");
+          pdf.addImage(
+            imgData,
+            "JPEG",
+            10,
+            10,
+            inputWidth * 0.18,
+            inputHeight * 0.18
+          );
+          pdf.addPage();
+          console.log(imgData);
+        });
+      };
+      await printBlock();
     }
+
+    // pdf.addPage("l", "pt", "a4", true);
+    // }
 
     pdf.save(`${skill.name}.pdf`);
   };
 
   return (
     <Fragment>
-      <Grid id="to-print">
+      <Grid id="print-main-block">
         <Fragment>{renderWording()}</Fragment>
         <Fragment>{renderTestType()}</Fragment>
       </Grid>

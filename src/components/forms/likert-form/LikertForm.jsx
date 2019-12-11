@@ -185,7 +185,14 @@ const radioButtons = ({
 );
 
 /* MAIN COMPONENT */
-const LikertForm = ({ handleSubmit, pristine, submitting, test, theme }) => {
+const LikertForm = ({
+  handleSubmit,
+  pristine,
+  submitting,
+  test,
+  theme,
+  parentIndex
+}) => {
   const {
     questions,
     answers,
@@ -494,7 +501,10 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test, theme }) => {
 
   return (
     <Grid style={{ marginBottom: "30px" }}>
-      <form onSubmit={handleSubmit(onSubmit)} className="questions-block">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className={`to-print-${parentIndex}`}
+      >
         <Fragment>
           {topic && (
             <h4
@@ -522,7 +532,7 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test, theme }) => {
           <Fragment>{renderSubmitButton()}</Fragment>
         </FormGroup>
       </form>
-      <Fragment>{renderResult()}</Fragment>
+      <Grid className="to-print">{renderResult()}</Grid>
     </Grid>
   );
 };

@@ -101,7 +101,7 @@ const FreeField = ({ test, handleSubmit, pristine, submitting }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className="to-print">
       <FormGroup>
         {topic && (
           <h4
