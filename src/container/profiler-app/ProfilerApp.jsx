@@ -90,7 +90,9 @@ const ProfilerApp = () => {
     <Grid container className={classes.root} justify="center" id="app">
       <Grid item>{renderTabs()}</Grid>
       <Grid item lg={9} md={12} sm={12} xs={12}>
-        {renderPanel()}
+        <div item lg={12} md={12} sm={12} xs={12}>
+          {renderPanel()}
+        </div>
       </Grid>
     </Grid>
   );

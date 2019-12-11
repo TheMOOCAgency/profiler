@@ -12,6 +12,7 @@ import SubmitButton from "../submit-button/SubmitButton";
 import BarChart from "../../results/bar-chart/BarChart";
 import StackedBarChart from "../../results/stacked-bar-chart/StackedBarChart";
 import XYChart from "../../results/xy-chart/XYChart";
+import Scorm from "../../../scorm/Scorm";
 
 const CustomRadio = withStyles({
   root: {
@@ -201,6 +202,7 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test, theme }) => {
   const [isCompleted, setCompletion] = useState(false);
   const [size, setSize] = useState({});
   const [data, setData] = useState([]);
+  const allResults = useSelector(state => state.form);
 
   // REACT-REDUX WITH HOOKS, REPLACE MAPSTATETOPROPS
   const { results } = useSelector(state => ({
@@ -484,13 +486,15 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test, theme }) => {
   const onSubmit = async formValues => {
     // no need e.preventdefault as handleSubmit handles it
     await formatResults();
+    Scorm.setSuspendData(allResults);
+    console.log("set");
     setCompletion(true);
     return formValues;
   };
 
   return (
     <Grid style={{ marginBottom: "30px" }}>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className="questions-block">
         <Fragment>
           {topic && (
             <h4

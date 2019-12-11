@@ -6,15 +6,19 @@ let Scorm = {
     let lmsConnected = SCORM.init();
     console.log("after init");
 
-    const tryScorm = () => {
-      console.log("is connected");
-    };
-
     if (lmsConnected) {
-      tryScorm();
-    } else {
-      console.log("is not connected");
+      SCORM.set("cmi.completion_status", "incomplete");
+      SCORM.set("cmi.core.lesson_status", "incomplete");
+      SCORM.set("cmi.success_status", "failed");
+      SCORM.set("cmi.objectives.n.success_status", "failed");
     }
+  },
+  getSuspendData() {
+    return SCORM.get("cmi.suspend_data");
+  },
+
+  setSuspendData(data) {
+    SCORM.set("cmi.suspend_data", data);
   }
 };
 

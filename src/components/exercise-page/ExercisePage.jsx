@@ -1,5 +1,4 @@
-import React, { Fragment, useEffect } from "react";
-import { useSelector } from "react-redux";
+import React, { Fragment, useEffect, useState } from "react";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import LikertForm from "../../components/forms/likert-form/LikertForm";
@@ -11,14 +10,14 @@ import Scorm from "../../scorm/Scorm";
 // import XYChart from "../results/xy-chart/XYChart";
 
 const ExercisePage = ({ skills, skill, parentIndex }) => {
-  // const [initialValues, setInitialValues] = useState({});
+  const [initialValues, setInitialValues] = useState({});
   const { topic, wording } = skills[parentIndex];
-  const formResults = useSelector(state => state.form);
-  console.log(formResults, "results");
 
   useEffect(() => {
     Scorm.init();
-    console.log(Scorm.init(), "ggg");
+    const scormData = Scorm.getSuspendData();
+    console.log(scormData, "scormData");
+    setInitialValues(scormData);
     // const renderInitialValues = () => {
     //   return skill.tests.map(test => {
     //     initialValues[test.name] = {};
@@ -103,7 +102,7 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
               <LikertForm
                 test={test}
                 form={test.name}
-                // initialValues={initialValues[test.name]}
+                initialValues={initialValues[test.name]}
               />
             )}
           </FormName>
@@ -116,7 +115,7 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
               <LikertForm
                 test={test}
                 form={test.name}
-                // initialValues={initialValues[test.name]}
+                initialValues={initialValues[test.name]}
               />
             )}
           </FormName>
@@ -138,37 +137,74 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
     });
   };
 
-  const printPdf = () => {
-    const input = document.getElementById("to-print");
-
-    html2canvas(input).then(canvas => {
-      document.body.appendChild(canvas);
-      const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF("p", "pt", "a4", true);
-      let width = input.clientWidth * 0.5;
-      let height = input.clientHeight * 0.5;
-      //  pdf.internal.pageSize.getHeight();
-
-      pdf.addImage(imgData, "PNG", 45, -1380, width, height);
-      pdf.save(`${skill.name}.pdf`);
-    });
-  };
-
   // const newData = { name: "style", x: 32, y: 24 };
 
   // const tests = {
   //   questions: ["", "", "", "", "", "", ""]
   // };
 
+  // const printPdf = () => {
+  //   const input = document.getElementById("to-print");
+  //   let inputWidth = input.clientWidth + 1000;
+  //   let inputHeight = input.clientHeight + 1000;
+  //   const pdf = new jsPDF("l", "pt", "a4", true);
+  //   html2canvas(input, {
+  //     x: 0,
+  //     y: 0,
+  //     width: inputWidth,
+  //     height: inputHeight
+  //   }).then(canvas => {
+  //     const imgData = canvas.toDataURL("image/png");
+
+  //     pdf.addImage(imgData, "PNG", -40, 0, inputWidth * 0.5, inputHeight * 0.5);
+  //     pdf.addPage("l", "pt", "a4", true);
+
+  //     pdf.save(`${skill.name}.pdf`);
+  //   });
+  // };
+
+  const printPdf = () => {
+    let position_y = 20;
+    let position_x = 15;
+    const input = document.getElementsByClassName("questions-block");
+    console.log(input[0].clientWidth, ":Efefefe");
+    const pdf = new jsPDF("l", "pt", "a4", true);
+
+    for (let i = 0; i < input.length; i++) {
+      let inputWidth = input[0].clientWidth + 1000;
+      let inputHeight = input[0].clientHeight;
+
+      html2canvas(input[0], {
+        x: 0,
+        y: 0,
+        width: inputWidth,
+        height: inputHeight
+      }).then(canvas => {
+        const imgData = canvas.toDataURL("image/png");
+
+        pdf.addImage(
+          imgData,
+          "PNG",
+          position_x,
+          position_y,
+          inputWidth * 0.5,
+          inputHeight * 0.5
+        );
+        position_y += inputHeight;
+        position_x += 0;
+      });
+      pdf.addPage("l", "pt", "a4", true);
+    }
+
+    pdf.save(`${skill.name}.pdf`);
+  };
+
   return (
     <Fragment>
-      <div id="to-print">
-        {/* <XYChart test={tests} date={newData} /> */}
-        <Grid>
-          <Fragment>{renderWording()}</Fragment>
-          <Fragment>{renderTestType()}</Fragment>
-        </Grid>
-      </div>
+      <Grid id="to-print">
+        <Fragment>{renderWording()}</Fragment>
+        <Fragment>{renderTestType()}</Fragment>
+      </Grid>
       <div
         style={{
           width: "100%",
