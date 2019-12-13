@@ -5,6 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import SubmitButton from "../submit-button/SubmitButton";
 import FormGroup from "@material-ui/core/FormGroup";
+import { FormControl } from "@material-ui/core";
 
 const CssTextField = withStyles({
   root: {
@@ -50,7 +51,13 @@ const validate = (formValues, props) => {
   return errors;
 };
 
-const FreeField = ({ test, handleSubmit, pristine, submitting }) => {
+const FreeField = ({
+  test,
+  handleSubmit,
+  pristine,
+  submitting,
+  setLocalStorage
+}) => {
   const { questions, button, topic } = test;
 
   const createMarkup = element => {
@@ -75,27 +82,30 @@ const FreeField = ({ test, handleSubmit, pristine, submitting }) => {
   const renderInputs = () => {
     return questions.map((question, index) => {
       return (
-        <Grid container key={question.id}>
-          <div style={{ margin: "30px 0 10px 0" }}>
-            {question.text && questions.length > 1
-              ? index + 1 + ". " + question.text
-              : question.text}
-            {question.html && (
-              <div
-                dangerouslySetInnerHTML={createMarkup(
-                  index + 1 + ". " + question.html
-                )}
-              />
-            )}
-          </div>
-          <Field name={question.id} component={renderCustomInput} />
-        </Grid>
+        <FormControl>
+          <Grid container key={question.id}>
+            <div style={{ margin: "30px 0 10px 0" }}>
+              {question.text && questions.length > 1
+                ? index + 1 + ". " + question.text
+                : question.text}
+              {question.html && (
+                <div
+                  dangerouslySetInnerHTML={createMarkup(
+                    index + 1 + ". " + question.html
+                  )}
+                />
+              )}
+            </div>
+            <Field name={question.id} component={renderCustomInput} />
+          </Grid>
+        </FormControl>
       );
     });
   };
 
   const onSubmit = formValues => {
     // SEND TO API
+    setLocalStorage();
     let values = { name: test.name, values: formValues };
     console.log(values);
   };
