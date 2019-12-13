@@ -185,7 +185,15 @@ const radioButtons = ({
 );
 
 /* MAIN COMPONENT */
-const LikertForm = ({ handleSubmit, pristine, submitting, test, theme }) => {
+const LikertForm = ({
+  handleSubmit,
+  pristine,
+  submitting,
+  test,
+  theme,
+  setLocalStorage,
+  initialValues
+}) => {
   const {
     questions,
     answers,
@@ -218,6 +226,13 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test, theme }) => {
     answerBlock,
     answerIndex
   } = useStyles(theme);
+
+  useEffect(() => {
+    if (initialValues && initialValues.question0) {
+      formatResults();
+      setCompletion(true);
+    }
+  }, [initialValues]);
 
   useEffect(() => {
     // ADAPT SIZE WHETHER IT'S A LIKERT SCALE OR A TRUE/FALSE
@@ -487,7 +502,7 @@ const LikertForm = ({ handleSubmit, pristine, submitting, test, theme }) => {
     // no need e.preventdefault as handleSubmit handles it
     await formatResults();
     Scorm.setSuspendData(allResults);
-    console.log("set");
+    setLocalStorage();
     setCompletion(true);
     return formValues;
   };
