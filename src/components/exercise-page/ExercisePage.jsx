@@ -7,10 +7,14 @@ import Grid from "@material-ui/core/Grid";
 import { FormName } from "redux-form";
 import logo from "../../assets/logo.jpeg";
 import Scorm from "../../scorm/Scorm";
+import button from "../../assets/radioButton.png";
+import checkedButton from "../../assets/checkedRadioButton.png";
+
 // import XYChart from "../results/xy-chart/XYChart";
 
 const ExercisePage = ({ skills, skill, parentIndex }) => {
   const [initialValues, setInitialValues] = useState({});
+  const [isPrinted, setIsPrinted] = useState(false);
   const { topic, wording } = skills[parentIndex];
 
   useEffect(() => {
@@ -53,9 +57,16 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
     // renderInitialValues();
   }, []);
 
+  useEffect(() => {
+    if (isPrinted === true) {
+      setIsPrinted(false);
+      console.log("isprinted");
+    }
+  }, [isPrinted]);
+
   const renderWording = () => {
     return (
-      <Fragment>
+      <Grid id={`print-wording-${parentIndex}`}>
         {(topic || wording) && (
           <Fragment>
             {topic && (
@@ -89,7 +100,7 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
             )}
           </Fragment>
         )}
-      </Fragment>
+      </Grid>
     );
   };
 
@@ -103,7 +114,6 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
                 test={test}
                 form={test.name}
                 initialValues={initialValues[test.name]}
-                parentIndex={parentIndex}
               />
             )}
           </FormName>
@@ -117,7 +127,6 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
                 test={test}
                 form={test.name}
                 initialValues={initialValues[test.name]}
-                parentIndex={parentIndex}
               />
             )}
           </FormName>
@@ -145,79 +154,85 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
   //   questions: ["", "", "", "", "", "", ""]
   // };
 
-  // const printPdf = () => {
-  //   const input = document.getElementById("to-print");
-  //   let inputWidth = input.clientWidth + 1000;
-  //   let inputHeight = input.clientHeight + 1000;
-  //   const pdf = new jsPDF("l", "pt", "a4", true);
-  //   html2canvas(input, {
-  //     x: 0,
-  //     y: 0,
-  //     width: inputWidth,
-  //     height: inputHeight
-  //   }).then(canvas => {
-  //     const imgData = canvas.toDataURL("image/png");
-
-  //     pdf.addImage(imgData, "PNG", -40, 0, inputWidth * 0.5, inputHeight * 0.5);
-  //     pdf.addPage("l", "pt", "a4", true);
-
-  //     pdf.save(`${skill.name}.pdf`);
-  //   });
-  // };
-
   const printPdf = async () => {
-    // const mainBlock = document.getElementById("print-main-block");
-    // const mainHeight = mainBlock.clientHeight;
-    // const mainWidth = mainBlock.clientWidth;
-
-    const input = document.getElementsByClassName(`to-print-${parentIndex}`);
-    // console.log(input[0], ":Efefefe");
-    // let position_y = 20;
-    // let position_x = 15;
-    let inputWidth = 0;
-    let inputHeight = 0;
-    let y = 220;
-    let imgData = "";
-    const pdf = new jsPDF("p", "mm", "a4", true);
-    for (let i = 0; i < input.length; i++) {
-      inputWidth = input[i].clientWidth;
-      inputHeight = input[i].clientHeight;
-
-      const printBlock = async () => {
-        await html2canvas(input[i], {
-          x: 196,
-          y: i === 0 ? y : y + inputHeight,
-          width: inputWidth,
-          height: inputHeight
-        }).then(canvas => {
-          imgData = canvas.toDataURL("image/jpeg");
-          pdf.addImage(
-            imgData,
-            "JPEG",
-            10,
-            10,
-            inputWidth * 0.18,
-            inputHeight * 0.18
-          );
-          pdf.addPage();
-          console.log(imgData);
-        });
-      };
-      await printBlock();
+    const input = document.getElementById(`to-print${parentIndex}`);
+    // CONVERT ALL SVG IN PICTURES
+    // GET ALL RADIO BUTTONS INPUT IN ORDER TO GET THEIR STATUS
+    let inputElem = [
+      ...input.getElementsByClassName("PrivateSwitchBase-input-232")
+    ];
+    // GET ALL RADIO BUTTONS IN ORDER TO REPLACE THEM
+    let svgElem = [...input.getElementsByClassName("radioSVG")];
+    let originalTag = [];
+    for (let i = 0; i < svgElem.length; i++) {
+      if (inputElem[i].checked) {
+        // STORE ORIGINAL HTML IN ORDER TO RE-USE IT
+        originalTag.push(svgElem[i].innerHTML);
+        // REPLACE ORIGINAL HTML WITH BUTTON PICTURE
+        svgElem[
+          i
+        ].innerHTML = `<img src=${checkedButton} style={{height:'100%', width:'100%'}} ></img>`;
+      } else {
+        originalTag.push(svgElem[i].innerHTML);
+        svgElem[
+          i
+        ].innerHTML = `<img src=${button} style={{height:'100%', width:'100%'}} ></img>`;
+      }
     }
+    let inputWidth = input.scrollWidth;
+    let inputHeight = input.scrollHeight;
 
-    // pdf.addPage("l", "pt", "a4", true);
-    // }
+    await html2canvas(input, {
+      x: input.offsetLeft,
+      y: input.offsetTop,
+      width: inputWidth,
+      height: inputHeight * 1.1,
+      allowTaint: true
+    }).then(canvas => {
+      const pdf = new jsPDF("p", "pt", [inputWidth / 4, inputHeight / 4], true);
+      // let pageHeight = 595;
+      // let imgWidth = 842;
+      // let heightLeft = input.scrollHeight;
+      // let imgHeight = (canvas.height * imgWidth) / canvas.width;
+      // let position = 15;
+      const imgData = canvas.toDataURL("image/jpeg");
+      pdf.addImage(
+        imgData,
+        "JPEG",
+        10,
+        10,
+        inputWidth / 4 - 20,
+        inputHeight / 4
+      );
+      // console.log(imgData);
+      // pdf.addImage(imgData, "JPEG", 15, position, imgWidth, imgHeight);
+      // heightLeft -= pageHeight;
+      // while (heightLeft >= 0) {
+      //   position += heightLeft - imgHeight;
+      //   pdf.addPage();
+      //   pdf.addImage(imgData, "JPEG", 15, position, imgWidth, imgHeight);
+      //   heightLeft -= pageHeight;
+      // }
 
-    pdf.save(`${skill.name}.pdf`);
+      for (let i = 0; i < originalTag.length; i++) {
+        svgElem[i].innerHTML = originalTag[i];
+      }
+
+      pdf.save(`${skill.name}.pdf`);
+      setIsPrinted(true);
+    });
   };
 
   return (
-    <Fragment>
-      <Grid id="print-main-block">
+    <Grid
+      container
+      // style={{ maxWidth: "1366px" }}
+      id={`to-print${parentIndex}`}
+    >
+      <Grid>
         <Fragment>{renderWording()}</Fragment>
         <Fragment>{renderTestType()}</Fragment>
-      </Grid>
+      </Grid>{" "}
       <div
         style={{
           width: "100%",
@@ -232,7 +247,7 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
           © Association Groupe Kedge Business School, 2019
         </div>
       </div>
-    </Fragment>
+    </Grid>
   );
 };
 

@@ -162,7 +162,7 @@ const radioButtons = ({
               <FormControlLabel
                 className={radioBlock}
                 value={answer.value.toString()}
-                control={<CustomRadio theme={theme} />}
+                control={<CustomRadio className="radioSVG" theme={theme} />}
               />
             </div>
           );
@@ -185,14 +185,7 @@ const radioButtons = ({
 );
 
 /* MAIN COMPONENT */
-const LikertForm = ({
-  handleSubmit,
-  pristine,
-  submitting,
-  test,
-  theme,
-  parentIndex
-}) => {
+const LikertForm = ({ handleSubmit, pristine, submitting, test, theme }) => {
   const {
     questions,
     answers,
@@ -501,10 +494,7 @@ const LikertForm = ({
 
   return (
     <Grid style={{ marginBottom: "30px" }}>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className={`to-print-${parentIndex}`}
-      >
+      <form onSubmit={handleSubmit(onSubmit)}>
         <Fragment>
           {topic && (
             <h4
@@ -532,7 +522,7 @@ const LikertForm = ({
           <Fragment>{renderSubmitButton()}</Fragment>
         </FormGroup>
       </form>
-      <Grid className="to-print">{renderResult()}</Grid>
+      <Grid>{renderResult()}</Grid>
     </Grid>
   );
 };
