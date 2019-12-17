@@ -376,7 +376,7 @@ const LikertForm = ({
   const renderSubmitButton = () => {
     return (
       <Fragment>
-        {result ? (
+        {!isCompleted && result ? (
           <SubmitButton disabled={pristine || submitting}>
             <Fragment>{button}</Fragment>
           </SubmitButton>
@@ -388,7 +388,7 @@ const LikertForm = ({
               height: "10px",
               backgroundColor: "#b71b53",
               borderRadius: "5px",
-              margin: "50px 0",
+              margin: "25px 0",
               opacity: "0.5"
             }}
           />
