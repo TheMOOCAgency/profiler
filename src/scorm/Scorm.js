@@ -16,11 +16,7 @@ let Scorm = {
   },
 
   async setSuspendData(data) {
-    console.log("will be sent");
     await SCORM.set("cmi.suspend_data", data);
-    SCORM.set("cmi.core.lesson_status", "incomplete");
-    console.log(data.length);
-    console.log("is sent");
   }
 };
 

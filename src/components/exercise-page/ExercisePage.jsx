@@ -20,27 +20,30 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
   const { topic, wording } = skills[parentIndex];
   const allResults = useSelector(state => state.form);
 
-  const setLocalStorage = async () => {
+  const setLocalStorage = () => {
     if (process.env.NODE_ENV === "development") {
       window.localStorage.setItem("initialValues", JSON.stringify(allResults));
+    } else {
+      Scorm.setSuspendData(Base64.encode(JSON.stringify(allResults)));
+      console.log(JSON.parse(Base64.decode(Scorm.getSuspendData())), "data");
     }
-
-    Scorm.setSuspendData(Base64.encode(JSON.stringify(allResults)));
   };
 
-  let scormData = null;
-  useEffect(() => {
+  useEffect(async () => {
     if (process.env.NODE_ENV === "development") {
-      let scormData = JSON.parse(window.localStorage.getItem("initialValues"));
+      let scormData = await JSON.parse(
+        window.localStorage.getItem("initialValues")
+      );
       setInitialValues(scormData);
     } else {
       Scorm.init();
-      if (!scormData) {
-        scormData = Scorm.getSuspendData();
-      }
-      if (scormData) {
-        setInitialValues(JSON.parse(Base64.decode(scormData)));
-        console.log(scormData, "scormdata");
+      let scormData = await Scorm.getSuspendData();
+      console.log("scormData");
+      if (scormData !== null) {
+        console.log("will be launched");
+        console.log(Base64.decode(scormData));
+        // setInitialValues(JSON.parse(Base64.decode(scormData)));
+        console.log("is launched");
       }
     }
 
