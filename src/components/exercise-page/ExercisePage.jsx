@@ -7,11 +7,11 @@ import FreeField from "../../components/forms/free-field/FreeField";
 import Grid from "@material-ui/core/Grid";
 import { FormName } from "redux-form";
 import logo from "../../assets/logo.jpeg";
-// import Scorm from "../../scorm/Scorm";
+import Scorm from "../../scorm/Scorm";
 import button from "../../assets/radioButton.png";
 import checkedButton from "../../assets/checkedRadioButton.png";
 import SubmitButton from "../forms/submit-button/SubmitButton";
-
+import { Base64 } from "js-base64";
 // import XYChart from "../results/xy-chart/XYChart";
 
 const ExercisePage = ({ skills, skill, parentIndex }) => {
@@ -20,19 +20,29 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
   const { topic, wording } = skills[parentIndex];
   const allResults = useSelector(state => state.form);
 
-  const setLocalStorage = () => {
-    // console.log("cookie will be set");
-    window.localStorage.setItem("initialValues", JSON.stringify(allResults));
-    // console.log("cookie set");
+  const setLocalStorage = async () => {
+    if (process.env.NODE_ENV === "development") {
+      window.localStorage.setItem("initialValues", JSON.stringify(allResults));
+    }
+
+    Scorm.setSuspendData(Base64.encode(JSON.stringify(allResults)));
   };
 
+  let scormData = null;
   useEffect(() => {
-    // Scorm.init();
-    // const scormData = Scorm.getSuspendData();
-    // console.log(scormData, "scormData");
-
-    let obj = JSON.parse(window.localStorage.getItem("initialValues"));
-    setInitialValues(obj);
+    if (process.env.NODE_ENV === "development") {
+      let scormData = JSON.parse(window.localStorage.getItem("initialValues"));
+      setInitialValues(scormData);
+    } else {
+      Scorm.init();
+      if (!scormData) {
+        scormData = Scorm.getSuspendData();
+      }
+      if (scormData) {
+        setInitialValues(JSON.parse(Base64.decode(scormData)));
+        console.log(scormData, "scormdata");
+      }
+    }
 
     // const renderInitialValues = () => {
     //   return skill.tests.map(test => {

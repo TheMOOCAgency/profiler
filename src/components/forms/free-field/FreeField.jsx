@@ -82,7 +82,7 @@ const FreeField = ({
   const renderInputs = () => {
     return questions.map((question, index) => {
       return (
-        <FormControl>
+        <FormControl key={question.id}>
           <Grid container key={question.id}>
             <div style={{ margin: "30px 0 10px 0" }}>
               {question.text && questions.length > 1
