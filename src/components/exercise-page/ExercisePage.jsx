@@ -22,6 +22,7 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
 
   const setLocalStorage = () => {
     if (process.env.NODE_ENV === "development") {
+      // STORE THE DATA IN LOCAL STORAGE IN PRODUCTION AS YOU CAN'T COMMUNICATE WITH SCORM API
       window.localStorage.setItem("initialValues", JSON.stringify(allResults));
     } else {
       Scorm.setSuspendData(Base64.encode(JSON.stringify(allResults)));
@@ -29,20 +30,18 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
     }
   };
 
-  useEffect(async () => {
+  useEffect(() => {
     if (process.env.NODE_ENV === "development") {
-      let scormData = await JSON.parse(
-        window.localStorage.getItem("initialValues")
-      );
+      let scormData = JSON.parse(window.localStorage.getItem("initialValues"));
       setInitialValues(scormData);
     } else {
       Scorm.init();
-      let scormData = await Scorm.getSuspendData();
+      let scormData = Scorm.getSuspendData();
       console.log("scormData");
       if (scormData !== null) {
         console.log("will be launched");
         console.log(Base64.decode(scormData));
-        // setInitialValues(JSON.parse(Base64.decode(scormData)));
+        setInitialValues(JSON.parse(Base64.decode(scormData)));
         console.log("is launched");
       }
     }
