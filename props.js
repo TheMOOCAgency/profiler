@@ -4,7 +4,8 @@ window.props = {
       {
         name: "Mes drivers",
         topic: "Mes drivers",
-        button: "VISUALISEZ VOS RESULTATS",
+        button1: "VISUALISEZ VOS RESULTATS",
+        button2: "ACTUALISEZ VOS RESULTATS",
         result: "histogram",
         wording:
           "Lisez avec attention chacun des énoncés et indiquez à quelle fréquence cela vous correspond. Essayez de répondre le plus spontanément possible. Ne répondez pas ce que vous croyez devoir répondre pour avoir de bons résultats à ce test, il n’y a pas de bonnes ou de mauvaises réponses, ni de bons ou de mauvais résultats.",
@@ -12,7 +13,8 @@ window.props = {
           {
             name: "likert1-1",
             type: "likert",
-            button: "VISUALISEZ VOS RESULTATS",
+            button1: "VISUALISEZ VOS RESULTATS",
+            button2: "ACTUALISEZ VOS RESULTATS",
             result: "histogram",
             drivers: {
               driver1: "Sois parfait",
@@ -21,251 +23,254 @@ window.props = {
               driver4: "Fais plaisir",
               driver5: "Fais des efforts"
             },
-            requiredForms: [{ id: "form1", name: "Test" }],
+            requiredForms: [{ id: "form2", name: "Test" }],
             dataForms: [
-              { id: "form1", name: "Test" },
               {
-                id: "form2",
+                id: "form1",
                 name: "Auto-positionnement"
               },
+              { id: "form2", name: "Test" },
+
               { id: "form3", name: "Evaluation par les pairs" }
             ],
             questions: [
-              { subTopic: "Déterminer mes drivers", id: "form1" },
-              {
-                text:
-                  "Pour prendre une décision, aimez-vous avoir beaucoup d’informations ?",
-                id: "question0",
-                driver: "driver1",
-                form: { id: "form1", coef: 1 }
-              },
-              {
-                text: "Vous reprochez-vous vos erreurs ?",
-                id: "question1",
-                driver: "driver1",
-                form: { id: "form1", coef: 1 }
-              },
-              {
-                text:
-                  "Vérifiez-vous plusieurs fois les paroles des autres de crainte d’une erreur de compréhension?",
-                id: "question2",
-                driver: "driver1",
-                form: { id: "form1", coef: 1 }
-              },
-              {
-                text: "Recherchez-vous la perfection ?",
-                id: "question3",
-                driver: "driver1",
-                form: { id: "form1", coef: 1 }
-              },
-              {
-                text:
-                  "Aimez-vous être particulièrement précis dans votre discours ?",
-                id: "question4",
-                driver: "driver1",
-                form: { id: "form1", coef: 1 }
-              },
-              {
-                text: "Avez-vous tendance à « pinailler » ?",
-                id: "question5",
-                driver: "driver1",
-                form: { id: "form1", coef: 1 }
-              },
-              {
-                text: "Il vaut mieux ne pas reconnaître ses faiblesses.",
-                id: "question6",
-                driver: "driver2",
-                form: { id: "form1", coef: 1 }
-              },
-              {
-                text: "Vous savez vous dégager du jugement de l’autre",
-                id: "question7",
-                driver: "driver2",
-                form: { id: "form1", coef: 1 }
-              },
-              {
-                text:
-                  "Dites-vous aux autres : « il n’y a pas de quoi se lamenter dans votre situation » ?",
-                id: "question8",
-                driver: "driver2",
-                form: { id: "form1", coef: 1 }
-              },
-              {
-                text: "Vous avez repéré vos lacunes… elles ne vous gênent pas",
-                id: "question9",
-                driver: "driver2",
-                form: { id: "form1", coef: 1 }
-              },
-              {
-                text: "Maîtrisez-vous vos sentiments, vos émotions ?",
-                id: "question10",
-                driver: "driver2",
-                form: { id: "form1", coef: 1 }
-              },
-              {
-                text:
-                  "Pouvez-vous réagir face à un problème en disant : « pas de commentaires » ou encore « ça n’a pas d’importance », « je m’en fous » ?",
-                id: "question11",
-                driver: "driver2",
-                form: { id: "form1", coef: 1 }
-              },
-              {
-                text:
-                  "Ressentez-vous de l’irritation lorsque votre interlocuteur est lent ?",
-                id: "question12",
-                driver: "driver3",
-                form: { id: "form1", coef: 1 }
-              },
-              {
-                text:
-                  "Arrivez-vous en retard même quand vous vous arrangez pour arriver à temps ?",
-                id: "question13",
-                driver: "driver3",
-                form: { id: "form1", coef: 1 }
-              },
-              {
-                text: "Pensez-vous que vous devriez vous dépêcher ?",
-                id: "question14",
-                driver: "driver3",
-                form: { id: "form1", coef: 1 }
-              },
-              {
-                text: "Etes-vous impatient lorsque vous devez attendre ?",
-                id: "question15",
-                driver: "driver3",
-                form: { id: "form1", coef: 1 }
-              },
-              {
-                text:
-                  "Remettez-vous à plus tard pour ensuite vous précipiter à la dernière minute ?",
-                id: "question16",
-                driver: "driver3",
-                form: { id: "form1", coef: 1 }
-              },
-              {
-                text: "Le silence vous met-il mal à l’aise ?",
-                id: "question17",
-                driver: "driver3",
-                form: { id: "form1", coef: 1 }
-              },
-              {
-                text: "Vous sentez-vous tenu de rendre service ?",
-                id: "question18",
-                driver: "driver4",
-                form: { id: "form1", coef: 1 }
-              },
-              {
-                text:
-                  "Offrez-vous de rendre service même si on ne vous le demande pas ?",
-                id: "question19",
-                driver: "driver4",
-                form: { id: "form1", coef: 1 }
-              },
-              {
-                text:
-                  "Utilisez-vous des expressions comme « vous savez… » « pourriez-vous… » « pouvez-vous… » « voudriez vous » ?",
-                id: "question20",
-                driver: "driver4",
-                form: { id: "form1", coef: 1 }
-              },
-              {
-                text:
-                  "Eprouvez-vous le besoin de vérifier si les autres sont contents de vous et de vos actes ?",
-                id: "question21",
-                driver: "driver4",
-                form: { id: "form1", coef: 1 }
-              },
-              {
-                text: "Pensez-vous que vous devez faire plaisir aux autres ?",
-                id: "question22",
-                driver: "driver4",
-                form: { id: "form1", coef: 1 }
-              },
-              {
-                text:
-                  "Pensez-vous que ce que vous faites n’a de valeur que si quelqu’un l’approuve ?",
-                id: "question23",
-                driver: "driver4",
-                form: { id: "form1", coef: 1 }
-              },
-              {
-                text: "Faites-vous des efforts pour atteindre vos objectifs ?",
-                id: "question24",
-                driver: "driver5",
-                form: { id: "form1", coef: 1 }
-              },
-              {
-                text:
-                  "Le plus souvent, vous réussissez en luttant et en surmontant les difficultés",
-                id: "question25",
-                driver: "driver5",
-                form: { id: "form1", coef: 1 }
-              },
-              {
-                text: "Au travail, vous n’avez pas le temps de vous détendre",
-                id: "question26",
-                driver: "driver5",
-                form: { id: "form1", coef: 1 }
-              },
-              {
-                text:
-                  "Utilisez-vous des tournures comme « j’essaierai, je n’y arrive pas, c’est difficile » ?",
-                id: "question27",
-                driver: "driver5",
-                form: { id: "form1", coef: 1 }
-              },
-              {
-                text:
-                  "Vous dites-vous ou dites-vous aux autres : « au moins j’ai essayé » ou des phrases semblables ?",
-                id: "question28",
-                driver: "driver5",
-                form: { id: "form1", coef: 1 }
-              },
-              {
-                text:
-                  "Etes-vous adepte de la maxime : « essayez, essayez, essayez encore, jusqu’à ce que vous réussissiez »",
-                id: "question29",
-                driver: "driver5",
-                form: { id: "form1", coef: 1 }
-              },
-              { subTopic: "Auto-positionnement", id: "form2" },
+              { subTopic: "Auto-positionnement", id: "form1" },
               {
                 text:
                   "J’ai l’impression que mon comportement correspond au driver « sois parfait »",
                 id: "question30",
                 driver: "driver1",
-                form: { id: "form2", coef: 6 }
+                form: { id: "form1", coef: 6 }
               },
               {
                 text:
                   "J’ai l’impression que mon comportement correspond au driver « sois fort »",
                 id: "question31",
                 driver: "driver2",
-                form: { id: "form2", coef: 6 }
+                form: { id: "form1", coef: 6 }
               },
               {
                 text:
                   "J’ai l’impression que mon comportement correspond au driver « dépêche-toi »",
                 id: "question32",
                 driver: "driver3",
-                form: { id: "form2", coef: 6 }
+                form: { id: "form1", coef: 6 }
               },
               {
                 text:
                   "J’ai l’impression que mon comportement correspond au driver « fais plaisir »",
                 id: "question33",
                 driver: "driver4",
-                form: { id: "form2", coef: 6 }
+                form: { id: "form1", coef: 6 }
               },
               {
                 text:
                   "J’ai l’impression que mon comportement correspond au driver « fais des efforts »",
                 id: "question34",
                 driver: "driver5",
-                form: { id: "form2", coef: 6 }
+                form: { id: "form1", coef: 6 }
+              },
+              { subTopic: "Déterminer mes drivers", id: "form2" },
+              {
+                text:
+                  "Pour prendre une décision, aimez-vous avoir beaucoup d’informations ?",
+                id: "question0",
+                driver: "driver1",
+                form: { id: "form2", coef: 1 }
+              },
+              {
+                text: "Vous reprochez-vous vos erreurs ?",
+                id: "question1",
+                driver: "driver1",
+                form: { id: "form2", coef: 1 }
+              },
+              {
+                text:
+                  "Vérifiez-vous plusieurs fois les paroles des autres de crainte d’une erreur de compréhension?",
+                id: "question2",
+                driver: "driver1",
+                form: { id: "form2", coef: 1 }
+              },
+              {
+                text: "Recherchez-vous la perfection ?",
+                id: "question3",
+                driver: "driver1",
+                form: { id: "form2", coef: 1 }
+              },
+              {
+                text:
+                  "Aimez-vous être particulièrement précis dans votre discours ?",
+                id: "question4",
+                driver: "driver1",
+                form: { id: "form2", coef: 1 }
+              },
+              {
+                text: "Avez-vous tendance à « pinailler » ?",
+                id: "question5",
+                driver: "driver1",
+                form: { id: "form2", coef: 1 }
+              },
+              {
+                text: "Il vaut mieux ne pas reconnaître ses faiblesses.",
+                id: "question6",
+                driver: "driver2",
+                form: { id: "form2", coef: 1 }
+              },
+              {
+                text: "Vous savez vous dégager du jugement de l’autre",
+                id: "question7",
+                driver: "driver2",
+                form: { id: "form2", coef: 1 }
+              },
+              {
+                text:
+                  "Dites-vous aux autres : « il n’y a pas de quoi se lamenter dans votre situation » ?",
+                id: "question8",
+                driver: "driver2",
+                form: { id: "form2", coef: 1 }
+              },
+              {
+                text: "Vous avez repéré vos lacunes… elles ne vous gênent pas",
+                id: "question9",
+                driver: "driver2",
+                form: { id: "form2", coef: 1 }
+              },
+              {
+                text: "Maîtrisez-vous vos sentiments, vos émotions ?",
+                id: "question10",
+                driver: "driver2",
+                form: { id: "form2", coef: 1 }
+              },
+              {
+                text:
+                  "Pouvez-vous réagir face à un problème en disant : « pas de commentaires » ou encore « ça n’a pas d’importance », « je m’en fous » ?",
+                id: "question11",
+                driver: "driver2",
+                form: { id: "form2", coef: 1 }
+              },
+              {
+                text:
+                  "Ressentez-vous de l’irritation lorsque votre interlocuteur est lent ?",
+                id: "question12",
+                driver: "driver3",
+                form: { id: "form2", coef: 1 }
+              },
+              {
+                text:
+                  "Arrivez-vous en retard même quand vous vous arrangez pour arriver à temps ?",
+                id: "question13",
+                driver: "driver3",
+                form: { id: "form2", coef: 1 }
+              },
+              {
+                text: "Pensez-vous que vous devriez vous dépêcher ?",
+                id: "question14",
+                driver: "driver3",
+                form: { id: "form2", coef: 1 }
+              },
+              {
+                text: "Etes-vous impatient lorsque vous devez attendre ?",
+                id: "question15",
+                driver: "driver3",
+                form: { id: "form2", coef: 1 }
+              },
+              {
+                text:
+                  "Remettez-vous à plus tard pour ensuite vous précipiter à la dernière minute ?",
+                id: "question16",
+                driver: "driver3",
+                form: { id: "form2", coef: 1 }
+              },
+              {
+                text: "Le silence vous met-il mal à l’aise ?",
+                id: "question17",
+                driver: "driver3",
+                form: { id: "form2", coef: 1 }
+              },
+              {
+                text: "Vous sentez-vous tenu de rendre service ?",
+                id: "question18",
+                driver: "driver4",
+                form: { id: "form2", coef: 1 }
+              },
+              {
+                text:
+                  "Offrez-vous de rendre service même si on ne vous le demande pas ?",
+                id: "question19",
+                driver: "driver4",
+                form: { id: "form2", coef: 1 }
+              },
+              {
+                text:
+                  "Utilisez-vous des expressions comme « vous savez… » « pourriez-vous… » « pouvez-vous… » « voudriez vous » ?",
+                id: "question20",
+                driver: "driver4",
+                form: { id: "form2", coef: 1 }
+              },
+              {
+                text:
+                  "Eprouvez-vous le besoin de vérifier si les autres sont contents de vous et de vos actes ?",
+                id: "question21",
+                driver: "driver4",
+                form: { id: "form2", coef: 1 }
+              },
+              {
+                text: "Pensez-vous que vous devez faire plaisir aux autres ?",
+                id: "question22",
+                driver: "driver4",
+                form: { id: "form2", coef: 1 }
+              },
+              {
+                text:
+                  "Pensez-vous que ce que vous faites n’a de valeur que si quelqu’un l’approuve ?",
+                id: "question23",
+                driver: "driver4",
+                form: { id: "form2", coef: 1 }
+              },
+              {
+                text: "Faites-vous des efforts pour atteindre vos objectifs ?",
+                id: "question24",
+                driver: "driver5",
+                form: { id: "form2", coef: 1 }
+              },
+              {
+                text:
+                  "Le plus souvent, vous réussissez en luttant et en surmontant les difficultés",
+                id: "question25",
+                driver: "driver5",
+                form: { id: "form2", coef: 1 }
+              },
+              {
+                text: "Au travail, vous n’avez pas le temps de vous détendre",
+                id: "question26",
+                driver: "driver5",
+                form: { id: "form2", coef: 1 }
+              },
+              {
+                text:
+                  "Utilisez-vous des tournures comme « j’essaierai, je n’y arrive pas, c’est difficile » ?",
+                id: "question27",
+                driver: "driver5",
+                form: { id: "form2", coef: 1 }
+              },
+              {
+                text:
+                  "Vous dites-vous ou dites-vous aux autres : « au moins j’ai essayé » ou des phrases semblables ?",
+                id: "question28",
+                driver: "driver5",
+                form: { id: "form2", coef: 1 }
+              },
+              {
+                text:
+                  "Etes-vous adepte de la maxime : « essayez, essayez, essayez encore, jusqu’à ce que vous réussissiez »",
+                id: "question29",
+                driver: "driver5",
+                form: { id: "form2", coef: 1 }
               },
               {
                 subTopic: "Evaluation par les pairs",
+                additionalText:
+                  "( L'évaluation par les pairs est à remplir lors d'une activité en présentiel. Ne remplissez pas ces champs si vous êtes à distance )",
                 id: "form3"
               },
               {
@@ -360,7 +365,8 @@ window.props = {
       {
         name: "Mon cadre de référence",
         topic: "Mon cadre de référence",
-        button: "VISUALISEZ VOS RESULTATS",
+        button1: "VISUALISEZ VOS RESULTATS",
+        button2: "ACTUALISEZ VOS RESULTATS",
         result: "histogram",
         wording: "",
         tests: [
@@ -368,9 +374,12 @@ window.props = {
             name: "likert3-1",
             type: "likert",
             topic: "Mes filtres de perception",
-            button: "VISUALISEZ VOS RESULTATS",
+            button1: "VISUALISEZ VOS RESULTATS",
+            button2: "ACTUALISEZ VOS RESULTATS",
             result: "histogram",
-            wording: "",
+            interpretation:
+              "Ce test vous indique votre filtre de perception privilégié. Les filtres de perception sont des portes d'entrée de l'information, à travers lesquels nous interprétons nos perceptions. ils sont au nombre de trois : Savoir, Faire et Être. Dans cet histogramme, votre filtre privilégié correspond à la barre la plus élevée. Plus cette barre est éloignée des autres, plus votre filtre est marqué.",
+            wording: `Lisez avec attention chacun des énoncés et indiquez si vous êtes en accord ou en désaccord avec. Essayez de répondre le plus spontanément possible et évitez de trop répondre "ni en désaccord ni en accord". Ne répondez pas ce que vous croyez devoir répondre pour avoir de bons résultats à ce test, il n’y a pas de bonnes ou de mauvaises réponses, ni de bons ou de mauvais résultats.`,
             drivers: {
               driver1: "Savoir",
               driver2: "Faire",
@@ -567,9 +576,14 @@ window.props = {
             name: "likert3-3",
             type: "likert",
             topic: "Mes besoins",
-            button: "VISUALISEZ VOS RESULTATS",
+            button1: "VISUALISEZ VOS RESULTATS",
+            button2: "ACTUALISEZ VOS RESULTATS",
             result: "histogram",
-            wording: "",
+            multiColor: false,
+            interpretation:
+              "Ce test vous permet de voir comment vous hiérarchisez vos besoin. Même si tous ces besoins sont importants, chaque individu à des besoins qu'il considère comme plus importants que d'autres.",
+            wording:
+              "Lisez avec attention chacun des énoncés et indiquez à quel ce besoin est important pour vous ou non. Essayez de répondre le plus spontanément possible. Ne répondez pas ce que vous croyez devoir répondre pour avoir de bons résultats à ce test, il n’y a pas de bonnes ou de mauvaises réponses, ni de bons ou de mauvais résultats.",
             drivers: {
               driver1: "Subsistance",
               driver2: "Protection",
@@ -729,16 +743,19 @@ window.props = {
       },
       {
         name: "Mon profil émotionnel",
-        topic: "VRAI OU FAUX",
+        topic: "Mon profil émotionnel",
         wording:
-          "Lisez avec attention chacun des énoncés et indiquez si cet énoncé est vrai ou faux pour vous. Essayez de répondre le plus spontanément possible. Ne répondez pas ce que vous croyez devoir répondre pour avoir de bons résultats à ce test, il n’y a pas de bonnes ou de mauvaises réponses, ni de bons ou de mauvais résultats.",
+          "Lisez avec attention chacun des énoncés et indiquez à quelle fréquence cet énoncé est vrai pour vous. Essayez de répondre le plus spontanément possible. Ne répondez pas ce que vous croyez devoir répondre pour avoir de bons résultats à ce test, il n’y a pas de bonnes ou de mauvaises réponses, ni de bons ou de mauvais résultats.",
         tests: [
           {
             type: "true-or-false",
             topic: "Résilience",
             name: "trueorfalse4-1",
-            button: "VISUALISEZ VOS RESULTATS",
+            button1: "VISUALISEZ VOS RESULTATS",
+            button2: "ACTUALISEZ VOS RESULTATS",
             result: "stackedBarChart",
+            interpretation:
+              "Ce test mesure votre résilience. Si vous avez un score en dessous de 30, vous êtes très résilient. En revanche si vous avez un score supérieur à 70, vous êtes mettez du temps à récupérer.",
             wording: "",
             questions: [
               {
@@ -821,8 +838,11 @@ window.props = {
             type: "true-or-false",
             topic: "Perspective",
             name: "trueorfalse4-2",
-            button: "VISUALISEZ VOS RESULTATS",
+            button1: "VISUALISEZ VOS RESULTATS",
+            button2: "ACTUALISEZ VOS RESULTATS",
             result: "stackedBarChart",
+            interpretation:
+              "Ce test mesure votre perspective. Si vous avez un score supérieur à 70, vous êtes quelqu'un de très positif. En revanche si vous avez un score inférieur à 30, vous êtes quelqu'un de plutôt négatif.",
             wording: "",
             questions: [
               {
@@ -905,8 +925,11 @@ window.props = {
             type: "true-or-false",
             topic: "Intuition sociale",
             name: "trueorfalse4-3",
-            button: "VISUALISEZ VOS RESULTATS",
+            button1: "VISUALISEZ VOS RESULTATS",
+            button2: "ACTUALISEZ VOS RESULTATS",
             result: "stackedBarChart",
+            interpretation:
+              "Ce test mesure votre intuition sociale. Si vous avez un score supérieur à 80, vous êtes socialement intuitif. En revanche si vous avez un score inférieur à 30, vous n'êtes pas très socialement intuitif.",
             wording: "",
             questions: [
               {
@@ -989,8 +1012,11 @@ window.props = {
             type: "true-or-false",
             topic: "Conscience de soi",
             name: "trueorfalse4-4",
-            button: "VISUALISEZ VOS RESULTATS",
+            button1: "VISUALISEZ VOS RESULTATS",
+            button2: "ACTUALISEZ VOS RESULTATS",
             result: "stackedBarChart",
+            interpretation:
+              "Ce test mesure votre conscience de soi. Si vous avez un score supérieur à 80, vous avez une bonne conscience de vous même. En revanche si vous avez un score inférieur à 30, vous êtes opaque à vous même.",
             wording: "",
             questions: [
               {
@@ -1073,8 +1099,11 @@ window.props = {
             type: "true-or-false",
             topic: "Sensibilité au contexte",
             name: "trueorfalse4-5",
-            button: "VISUALISEZ VOS RESULTATS",
+            button1: "VISUALISEZ VOS RESULTATS",
+            button2: "ACTUALISEZ VOS RESULTATS",
             result: "stackedBarChart",
+            interpretation:
+              "Ce test mesure votre sensibilité au contexte. Si vous avez un score supérieur à 80, vous êtes très connectés à votre contexte. En revanche si vous avez un score inférieur à 30, vous êtes plutôt déconnecté.",
             wording: "",
             questions: [
               {
@@ -1157,8 +1186,11 @@ window.props = {
             type: "true-or-false",
             topic: "Attention",
             name: "trueorfalse4-6",
-            button: "VISUALISEZ VOS RESULTATS",
+            button1: "VISUALISEZ VOS RESULTATS",
+            button2: "ACTUALISEZ VOS RESULTATS",
             result: "stackedBarChart",
+            interpretation:
+              "Ce test mesure votre attention. Si vous avez un score supérieur à 80, vous avez une bonne capacité d'attention. En revanche si vous avez un score inférieur à 30, vous vous déconcentrez facilement.",
             wording: "",
             questions: [
               {
@@ -1243,8 +1275,11 @@ window.props = {
             topic: "Testez votre intelligence émotionnelle",
             wording:
               "Ne répondez pas ce que vous croyez devoir répondre pour avoir de bons résultats à ce test, cela ne vous donnerait pas une vision fiable de la réalité. Lisez avec attention chacun des énoncés et indiquez s’il s’applique ou non à vous (encerclez la réponse). Le but est de vous donner une idée générale de vos manières de vivre vos émotions. Il se peut que vous sentiez que certaines questions ne sont pas pertinentes et ne décrivent pas des situations que vous vivez. Si c’est le cas, ne répondez pas et retranchez quatre points du chiffre maximum présenté dans l’interprétation (à la fin) pour chaque question à laquelle vous n’aurez pas répondu.",
-            button: "VISUALISEZ VOS RESULTATS",
+            button1: "VISUALISEZ VOS RESULTATS",
+            button2: "ACTUALISEZ VOS RESULTATS",
             result: "stackedBarChart",
+            interpretation:
+              "Ce test mesure votre intelligence émotionnelle. L'intelligence émotionnelle est la capacité de reconnaître, comprendre et maîtriser vos propres émotions, et de composer avec celle des autres. Plus votre score est élevé (proche de 120), meilleures sont vos aptitudes à l'intelligence émotionnelle.",
             drivers: {
               driver1: "Score"
             },
@@ -1431,7 +1466,7 @@ window.props = {
             answers: [
               { name: "Souvent", value: 1 },
               { name: "Parfois", value: 2 },
-              { name: "Occasionnellement", value: 3 },
+              { name: "De temps en temps", value: 3 },
               { name: "Rarement", value: 4 }
             ]
           }
@@ -1446,6 +1481,8 @@ window.props = {
             name: "freeField5-1",
             topic: "Gestion des conflits",
             button: "ENREGISTRER MA REPONSE",
+            wording:
+              "Lisez avec attention chacun des énoncés et indiquez la probabilité que vous adoptiez ce comportement. Essayez de répondre le plus spontanément possible. Ne répondez pas ce que vous croyez devoir répondre pour avoir de bons résultats à ce test, il n’y a pas de bonnes ou de mauvaises réponses, ni de bons ou de mauvais résultats.",
             questions: [
               {
                 id: "field0",
@@ -1475,10 +1512,13 @@ window.props = {
             name: "likert5-2",
             type: "likert",
             result: "histogram",
+            interpretation:
+              "Ce test vous indique l'importance des différents modes de gestions de conflits dans votre comportement. Le mode ayant le plus grand score est votre mode de gestion privilégié. Il est possible que vous utilisiez plusieurs modes selon le contexte.",
             topic: "Mon mode de gestion des conflits",
-            button: "VISUALISEZ VOS RESULTATS",
+            button1: "VISUALISEZ VOS RESULTATS",
+            button2: "ACTUALISEZ VOS RESULTATS",
             wording:
-              "Réfléchissez à votre façon d'agir en situation de conflit, c'est à dire lorsqu'une ou plusieurs personnes vont à l'encontre de ce que vous désirez. Pour chacune des affirmations ci-dessous, inscrivez dans l'espace prévu à cette fin le chiffre qui correspond le mieux à la probabilité que vous adoptiez la réaction mentionnée, dans une situation de conflit.z",
+              "Réfléchissez à votre façon d'agir en situation de conflit, c'est à dire lorsqu'une ou plusieurs personnes vont à l'encontre de ce que vous désirez. Pour chacune des affirmations ci-dessous, inscrivez dans l'espace prévu à cette fin le chiffre qui correspond le mieux à la probabilité que vous adoptiez la réaction mentionnée, dans une situation de conflit.",
             drivers: {
               driver1: "Compromis",
               driver2: "Evitement",
@@ -1630,10 +1670,14 @@ window.props = {
             name: "likert6-2",
             type: "likert",
             result: "xyChart",
+            interpretation:
+              "Ce test vous permet de connaître votre style de leadership privilégié, c'est à dire votre manière naturelle d'aborder le management.",
             topic:
               "Déterminer mon style de leadership <-- Remarque dev. : 'le rendu sera intégré dans les prochains jours' -->",
-            button: "VISUALISEZ VOS RESULTATS",
-            wording: "",
+            button1: "VISUALISEZ VOS RESULTATS",
+            button2: "ACTUALISEZ VOS RESULTATS",
+            wording:
+              "Lisez avec attention chacun des énoncés et indiquez à quelle fréquence cet énoncé est vrai pour vous. Essayez de répondre le plus spontanément possible. Ne répondez pas ce que vous croyez devoir répondre pour avoir de bons résultats à ce test, il n’y a pas de bonnes ou de mauvaises réponses, ni de bons ou de mauvais résultats.",
             drivers: {
               driver1: "x",
               driver2: "y"
