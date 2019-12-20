@@ -6,7 +6,7 @@ window.props = {
         topic: "Mes drivers",
         button1: "VISUALISEZ VOS RESULTATS",
         button2: "ACTUALISEZ VOS RESULTATS",
-        result: "histogram",
+        result: { type: "histogram", legend: true, interpretation: "" },
         wording:
           "Lisez avec attention chacun des énoncés et indiquez à quelle fréquence cela vous correspond. Essayez de répondre le plus spontanément possible. Ne répondez pas ce que vous croyez devoir répondre pour avoir de bons résultats à ce test, il n’y a pas de bonnes ou de mauvaises réponses, ni de bons ou de mauvais résultats.",
         tests: [
@@ -15,7 +15,7 @@ window.props = {
             type: "likert",
             button1: "VISUALISEZ VOS RESULTATS",
             button2: "ACTUALISEZ VOS RESULTATS",
-            result: "histogram",
+            result: { type: "histogram", legend: true },
             drivers: {
               driver1: "Sois parfait",
               driver2: "Sois fort",
@@ -367,7 +367,7 @@ window.props = {
         topic: "Mon cadre de référence",
         button1: "VISUALISEZ VOS RESULTATS",
         button2: "ACTUALISEZ VOS RESULTATS",
-        result: "histogram",
+        result: { type: "histogram", legend: true },
         wording: "",
         tests: [
           {
@@ -376,9 +376,12 @@ window.props = {
             topic: "Mes filtres de perception",
             button1: "VISUALISEZ VOS RESULTATS",
             button2: "ACTUALISEZ VOS RESULTATS",
-            result: "histogram",
-            interpretation:
-              "Ce test vous indique votre filtre de perception privilégié. Les filtres de perception sont des portes d'entrée de l'information, à travers lesquels nous interprétons nos perceptions. ils sont au nombre de trois : Savoir, Faire et Être. Dans cet histogramme, votre filtre privilégié correspond à la barre la plus élevée. Plus cette barre est éloignée des autres, plus votre filtre est marqué.",
+            result: {
+              type: "histogram",
+              legend: false,
+              interpretation:
+                "Ce test vous indique votre filtre de perception privilégié. Les filtres de perception sont des portes d'entrée de l'information, à travers lesquels nous interprétons nos perceptions. ils sont au nombre de trois : Savoir, Faire et Être. Dans cet histogramme, votre filtre privilégié correspond à la barre la plus élevée. Plus cette barre est éloignée des autres, plus votre filtre est marqué."
+            },
             wording: `Lisez avec attention chacun des énoncés et indiquez si vous êtes en accord ou en désaccord avec. Essayez de répondre le plus spontanément possible et évitez de trop répondre "ni en désaccord ni en accord". Ne répondez pas ce que vous croyez devoir répondre pour avoir de bons résultats à ce test, il n’y a pas de bonnes ou de mauvaises réponses, ni de bons ou de mauvais résultats.`,
             drivers: {
               driver1: "Savoir",
@@ -563,7 +566,8 @@ window.props = {
               },
               {
                 id: "field2",
-                text: "Quelles sont les compétences que vous pensez posséder ?"
+                html:
+                  "Lisez attentivement cette seconde liste de valeur :<br><br>AUTONOME (ne compter que sur soi, auto suffisant)<br>MODÉRÉ (évitant les extrêmes dans les sentiments et les actions)<br>LOYAL (fidèle à ses amis, au groupe des proches)<br>AMBITIEUX (travaillant dur, volontaire)<br>LARGE D'ESPRIT (tolérant les croyances et idées différentes)<br>HUMBLE (modeste, effacé)<br>AUDACIEUX (cherchant l'aventure, le risque)<br>PROTÉGEANT L'ENVIRONNEMENT (préserver la nature)<br>INFLUANT (exercer un impact sur les gens et les événements)<br>HONORANT SES PARENTS ET LES ANCIENS (montrant du respect)<br>CHOISISSANT SES PROPRES BUTS (sélectionnant ses propres objectifs)<br>EN BONNE SANTÉ (ne pas être malade physiquement ou mentalement)<br>COMPÉTENT (capable, efficace)<br>ACCEPTANT MA PART DANS LA VIE (se soumettre aux circonstances de la vie)<br>HONNÊTE (authentique, sincère)<br>PRÉSERVANT MON IMAGE PUBLIQUE (soucieux de ne pas perdre la \"face\")<br>OBÉISSANT (remplissant ses obligations, ayant le sens du devoir)<br>INTELLIGENT (logique, réfléchi)<br>SECOURABLE (travaillant en vue du bien-être d'autrui)<br>SACHANT JOUIR DE LA VIE (aimant la nourriture, le sexe, les loisirs, etc...)<br>RELIGIEUX (attaché aux croyances et à la foi religieuse)<br>RESPONSABLE (sur qui l'on peut compter)<br>CURIEUX (intéressé en toutes choses, explorateur)<br>CLÉMENT (désireux de pardonner aux autres)<br>ORIENTÉ VERS LE SUCCÈS (objectif : réussir)<br>PROPRE (net, soigné)<br>ÊTRE BON AVEC SOI-MÊME (faire des choses agréables)<br><br>Selon vous, parmi cette seconde liste, quelle est la valeur la plus importante ? Donnez un exemple de situation personnelle ou vous avez appliqué cette valeur."
               },
               {
                 id: "field3",
@@ -578,10 +582,13 @@ window.props = {
             topic: "Mes besoins",
             button1: "VISUALISEZ VOS RESULTATS",
             button2: "ACTUALISEZ VOS RESULTATS",
-            result: "histogram",
-            multiColor: false,
-            interpretation:
-              "Ce test vous permet de voir comment vous hiérarchisez vos besoin. Même si tous ces besoins sont importants, chaque individu à des besoins qu'il considère comme plus importants que d'autres.",
+            result: {
+              type: "histogram",
+              legend: true,
+              interpretation:
+                "Ce test vous permet de voir comment vous hiérarchisez vos besoin. Même si tous ces besoins sont importants, chaque individu à des besoins qu'il considère comme plus importants que d'autres.",
+              multiColor: false
+            },
             wording:
               "Lisez avec attention chacun des énoncés et indiquez à quel ce besoin est important pour vous ou non. Essayez de répondre le plus spontanément possible. Ne répondez pas ce que vous croyez devoir répondre pour avoir de bons résultats à ce test, il n’y a pas de bonnes ou de mauvaises réponses, ni de bons ou de mauvais résultats.",
             drivers: {
@@ -753,9 +760,12 @@ window.props = {
             name: "trueorfalse4-1",
             button1: "VISUALISEZ VOS RESULTATS",
             button2: "ACTUALISEZ VOS RESULTATS",
-            result: "stackedBarChart",
-            interpretation:
-              "Ce test mesure votre résilience. Si vous avez un score en dessous de 30, vous êtes très résilient. En revanche si vous avez un score supérieur à 70, vous êtes mettez du temps à récupérer.",
+            result: {
+              type: "stackedBarChart",
+              legend: true,
+              interpretation:
+                "Ce test mesure votre résilience. Si vous avez un score en dessous de 30, vous êtes très résilient. En revanche si vous avez un score supérieur à 70, vous êtes mettez du temps à récupérer."
+            },
             wording: "",
             questions: [
               {
@@ -840,9 +850,12 @@ window.props = {
             name: "trueorfalse4-2",
             button1: "VISUALISEZ VOS RESULTATS",
             button2: "ACTUALISEZ VOS RESULTATS",
-            result: "stackedBarChart",
-            interpretation:
-              "Ce test mesure votre perspective. Si vous avez un score supérieur à 70, vous êtes quelqu'un de très positif. En revanche si vous avez un score inférieur à 30, vous êtes quelqu'un de plutôt négatif.",
+            result: {
+              type: "stackedBarChart",
+              legend: true,
+              interpretation:
+                "Ce test mesure votre perspective. Si vous avez un score supérieur à 70, vous êtes quelqu'un de très positif. En revanche si vous avez un score inférieur à 30, vous êtes quelqu'un de plutôt négatif."
+            },
             wording: "",
             questions: [
               {
@@ -927,9 +940,12 @@ window.props = {
             name: "trueorfalse4-3",
             button1: "VISUALISEZ VOS RESULTATS",
             button2: "ACTUALISEZ VOS RESULTATS",
-            result: "stackedBarChart",
-            interpretation:
-              "Ce test mesure votre intuition sociale. Si vous avez un score supérieur à 80, vous êtes socialement intuitif. En revanche si vous avez un score inférieur à 30, vous n'êtes pas très socialement intuitif.",
+            result: {
+              type: "stackedBarChart",
+              legend: true,
+              interpretation:
+                "Ce test mesure votre intuition sociale. Si vous avez un score supérieur à 80, vous êtes socialement intuitif. En revanche si vous avez un score inférieur à 30, vous n'êtes pas très socialement intuitif."
+            },
             wording: "",
             questions: [
               {
@@ -1014,9 +1030,12 @@ window.props = {
             name: "trueorfalse4-4",
             button1: "VISUALISEZ VOS RESULTATS",
             button2: "ACTUALISEZ VOS RESULTATS",
-            result: "stackedBarChart",
-            interpretation:
-              "Ce test mesure votre conscience de soi. Si vous avez un score supérieur à 80, vous avez une bonne conscience de vous même. En revanche si vous avez un score inférieur à 30, vous êtes opaque à vous même.",
+            result: {
+              type: "stackedBarChart",
+              legend: true,
+              interpretation:
+                "Ce test mesure votre conscience de soi. Si vous avez un score supérieur à 80, vous avez une bonne conscience de vous même. En revanche si vous avez un score inférieur à 30, vous êtes opaque à vous même."
+            },
             wording: "",
             questions: [
               {
@@ -1101,9 +1120,12 @@ window.props = {
             name: "trueorfalse4-5",
             button1: "VISUALISEZ VOS RESULTATS",
             button2: "ACTUALISEZ VOS RESULTATS",
-            result: "stackedBarChart",
-            interpretation:
-              "Ce test mesure votre sensibilité au contexte. Si vous avez un score supérieur à 80, vous êtes très connectés à votre contexte. En revanche si vous avez un score inférieur à 30, vous êtes plutôt déconnecté.",
+            result: {
+              type: "stackedBarChart",
+              legend: true,
+              interpretation:
+                "Ce test mesure votre sensibilité au contexte. Si vous avez un score supérieur à 80, vous êtes très connectés à votre contexte. En revanche si vous avez un score inférieur à 30, vous êtes plutôt déconnecté."
+            },
             wording: "",
             questions: [
               {
@@ -1188,9 +1210,12 @@ window.props = {
             name: "trueorfalse4-6",
             button1: "VISUALISEZ VOS RESULTATS",
             button2: "ACTUALISEZ VOS RESULTATS",
-            result: "stackedBarChart",
-            interpretation:
-              "Ce test mesure votre attention. Si vous avez un score supérieur à 80, vous avez une bonne capacité d'attention. En revanche si vous avez un score inférieur à 30, vous vous déconcentrez facilement.",
+            result: {
+              type: "stackedBarChart",
+              legend: true,
+              interpretation:
+                "Ce test mesure votre attention. Si vous avez un score supérieur à 80, vous avez une bonne capacité d'attention. En revanche si vous avez un score inférieur à 30, vous vous déconcentrez facilement."
+            },
             wording: "",
             questions: [
               {
@@ -1277,9 +1302,12 @@ window.props = {
               "Ne répondez pas ce que vous croyez devoir répondre pour avoir de bons résultats à ce test, cela ne vous donnerait pas une vision fiable de la réalité. Lisez avec attention chacun des énoncés et indiquez s’il s’applique ou non à vous (encerclez la réponse). Le but est de vous donner une idée générale de vos manières de vivre vos émotions. Il se peut que vous sentiez que certaines questions ne sont pas pertinentes et ne décrivent pas des situations que vous vivez. Si c’est le cas, ne répondez pas et retranchez quatre points du chiffre maximum présenté dans l’interprétation (à la fin) pour chaque question à laquelle vous n’aurez pas répondu.",
             button1: "VISUALISEZ VOS RESULTATS",
             button2: "ACTUALISEZ VOS RESULTATS",
-            result: "stackedBarChart",
-            interpretation:
-              "Ce test mesure votre intelligence émotionnelle. L'intelligence émotionnelle est la capacité de reconnaître, comprendre et maîtriser vos propres émotions, et de composer avec celle des autres. Plus votre score est élevé (proche de 120), meilleures sont vos aptitudes à l'intelligence émotionnelle.",
+            result: {
+              type: "stackedBarChart",
+              legend: true,
+              interpretation:
+                "Ce test mesure votre intelligence émotionnelle. L'intelligence émotionnelle est la capacité de reconnaître, comprendre et maîtriser vos propres émotions, et de composer avec celle des autres. Plus votre score est élevé (proche de 120), meilleures sont vos aptitudes à l'intelligence émotionnelle."
+            },
             drivers: {
               driver1: "Score"
             },
@@ -1511,9 +1539,12 @@ window.props = {
           {
             name: "likert5-2",
             type: "likert",
-            result: "histogram",
-            interpretation:
-              "Ce test vous indique l'importance des différents modes de gestions de conflits dans votre comportement. Le mode ayant le plus grand score est votre mode de gestion privilégié. Il est possible que vous utilisiez plusieurs modes selon le contexte.",
+            result: {
+              type: "histogram",
+              legend: true,
+              interpretation:
+                "Ce test vous indique l'importance des différents modes de gestions de conflits dans votre comportement. Le mode ayant le plus grand score est votre mode de gestion privilégié. Il est possible que vous utilisiez plusieurs modes selon le contexte."
+            },
             topic: "Mon mode de gestion des conflits",
             button1: "VISUALISEZ VOS RESULTATS",
             button2: "ACTUALISEZ VOS RESULTATS",
@@ -1669,9 +1700,11 @@ window.props = {
           {
             name: "likert6-2",
             type: "likert",
-            result: "xyChart",
-            interpretation:
-              "Ce test vous permet de connaître votre style de leadership privilégié, c'est à dire votre manière naturelle d'aborder le management.",
+            result: {
+              type: "xyChart",
+              interpretation:
+                "Ce test vous permet de connaître votre style de leadership privilégié, c'est à dire votre manière naturelle d'aborder le management."
+            },
             topic:
               "Déterminer mon style de leadership <-- Remarque dev. : 'le rendu sera intégré dans les prochains jours' -->",
             button1: "VISUALISEZ VOS RESULTATS",
