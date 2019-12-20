@@ -21,26 +21,31 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
   const allResults = useSelector(state => state.form);
 
   const setLocalStorage = () => {
-    if (process.env.NODE_ENV === "development") {
+    if (
+      process.env.NODE_ENV === "development" ||
+      window.location.href === "https://themoocagency.github.io/profiler/"
+    ) {
       // STORE THE DATA IN LOCAL STORAGE IN PRODUCTION AS YOU CAN'T COMMUNICATE WITH SCORM API
       window.localStorage.setItem("initialValues", JSON.stringify(allResults));
     } else {
       Scorm.setSuspendData(Base64.encode(JSON.stringify(allResults)));
-      console.log(JSON.parse(Base64.decode(Scorm.getSuspendData())), "data");
+      // console.log(JSON.parse(Base64.decode(Scorm.getSuspendData())), "data");
     }
   };
 
   useEffect(() => {
-    if (process.env.NODE_ENV === "development") {
+    if (
+      process.env.NODE_ENV === "development" ||
+      window.location.href === "https://themoocagency.github.io/profiler/"
+    ) {
       let scormData = JSON.parse(window.localStorage.getItem("initialValues"));
       setInitialValues(scormData);
     } else {
       Scorm.init();
       let scormData = Scorm.getSuspendData();
-      console.log("scormData");
-      if (scormData !== null) {
+      if (scormData) {
         console.log("will be launched");
-        console.log(Base64.decode(scormData));
+        console.log(scormData, "scorrrrm");
         setInitialValues(JSON.parse(Base64.decode(scormData)));
         console.log("is launched");
       }
@@ -275,6 +280,7 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
       container
       // style={{ maxWidth: "1366px" }}
       id={`to-print${parentIndex}`}
+      // onClick={() => Scorm.exit()}
     >
       <Grid>
         <Fragment>{renderWording()}</Fragment>
