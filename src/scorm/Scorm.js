@@ -3,8 +3,10 @@ import { SCORM } from "pipwerks-scorm-api-wrapper";
 let Scorm = {
   init() {
     let lmsConnected = SCORM.init();
-
     if (lmsConnected) {
+      // SET CMI.EXIT TO SUSPEND PREVENTS DATA RESET
+      SCORM.set("cmi.exit", "suspend");
+      SCORM.get("cmi.entry");
       SCORM.set("cmi.completion_status", "incomplete");
       SCORM.set("cmi.core.lesson_status", "incomplete");
       SCORM.set("cmi.success_status", "failed");
@@ -12,15 +14,12 @@ let Scorm = {
     }
   },
   getSuspendData() {
-    return SCORM.get("cmi.suspend_data");
+    SCORM.get("cmi.suspend_data");
   },
 
-  async setSuspendData(data) {
-    console.log("will be sent");
-    await SCORM.set("cmi.suspend_data", data);
-    SCORM.set("cmi.core.lesson_status", "incomplete");
-    console.log(data.length);
-    console.log("is sent");
+  setSuspendData(data) {
+    SCORM.set("cmi.suspend_data", data);
+    SCORM.save();
   }
 };
 

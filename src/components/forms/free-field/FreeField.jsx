@@ -58,7 +58,7 @@ const FreeField = ({
   submitting,
   setLocalStorage
 }) => {
-  const { questions, button, topic } = test;
+  const { questions, button, topic, wording } = test;
 
   const createMarkup = element => {
     return { __html: element };
@@ -128,6 +128,22 @@ const FreeField = ({
             {topic.toUpperCase()}
           </h4>
         )}
+        <Fragment>
+          {wording && (
+            <h4
+              style={{
+                margin: "0",
+                fontStyle: "italic",
+                fontWeight: "400",
+                padding: "10px 0",
+                fontSize: "14px",
+                textAlign: "justify"
+              }}
+            >
+              {wording}
+            </h4>
+          )}
+        </Fragment>
         <Fragment>{renderInputs()}</Fragment>
         <SubmitButton disabled={pristine || submitting}>
           <Fragment>{button}</Fragment>

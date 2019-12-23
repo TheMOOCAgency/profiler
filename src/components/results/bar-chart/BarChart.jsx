@@ -12,14 +12,14 @@ import {
 import Grid from "@material-ui/core/Grid";
 
 const BarChart = ({ data, test }) => {
-  const { dataForms, topic } = test;
+  const { dataForms, topic, multiColor, result } = test;
   const [chartHeight, setChartHeight] = useState(200);
 
   useEffect(() => {
     if (dataForms) {
       setChartHeight(200 + dataForms.length * 100);
     } else {
-      setChartHeight(200);
+      setChartHeight(300);
     }
   }, [chartHeight, dataForms]);
 
@@ -53,7 +53,11 @@ const BarChart = ({ data, test }) => {
       return (
         <Bar dataKey="testTotal" name={topic}>
           {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={colors[index]} />
+            <Cell
+              style={{ opacity: "0.8" }}
+              key={`cell-${index}`}
+              fill={!multiColor ? colors[0] : colors[index]}
+            />
           ))}
         </Bar>
       );
@@ -64,10 +68,10 @@ const BarChart = ({ data, test }) => {
     <Grid container mt={5} justify="center">
       <ResponsiveContainer width="100%" height={chartHeight}>
         <Chart data={data} layout="vertical" style={{ fontSize: "12px" }}>
-          <XAxis type="number" />
+          <XAxis type="number" ticks={[""]} />
           {renderBars()}
-          <YAxis dataKey="name" reversed type="category" />
-          <Legend />
+          <YAxis dataKey="name" reversed type="category" width={100} />
+          {result.legend && <Legend />}
         </Chart>
       </ResponsiveContainer>
     </Grid>

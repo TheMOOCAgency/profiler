@@ -197,14 +197,16 @@ const LikertForm = ({
   const {
     questions,
     answers,
-    button,
+    button1,
+    button2,
     type,
     result,
     name,
     drivers,
     requiredForms,
     topic,
-    dataForms
+    dataForms,
+    wording
   } = test;
 
   const [isCompleted, setCompletion] = useState(false);
@@ -348,17 +350,24 @@ const LikertForm = ({
                   }}
                 >
                   {question.subTopic.toUpperCase()}
+                  <span
+                    style={{
+                      fontStyle: "italic",
+                      fontSize: "10px",
+                      marginLeft: "5px"
+                    }}
+                  >
+                    {question.additionalText}
+                  </span>
                 </h4>
               </Grid>
               <Grid
                 item
-                md={7}
                 sm={12}
                 style={{
                   textAlign: "justify",
                   fontStyle: "italic",
-                  fontSize: "14px",
-                  paddingLeft: "10px"
+                  fontSize: "14px"
                 }}
               >
                 {question.wording}
@@ -378,43 +387,91 @@ const LikertForm = ({
       <Fragment>
         {!isCompleted && result ? (
           <SubmitButton disabled={pristine || submitting}>
-            <Fragment>{button}</Fragment>
+            <Fragment>{button1}</Fragment>
           </SubmitButton>
         ) : (
-          <Grid
-            item
-            md={12}
-            style={{
-              height: "10px",
-              backgroundColor: "#b71b53",
-              borderRadius: "5px",
-              margin: "25px 0",
-              opacity: "0.5"
-            }}
-          />
+          <SubmitButton>
+            <Fragment>{button2}</Fragment>
+          </SubmitButton>
+          // <Grid
+          //   item
+          //   md={12}
+          //   style={{
+          //     height: "10px",
+          //     backgroundColor: "#b71b53",
+          //     borderRadius: "5px",
+          //     margin: "25px 0",
+          //     opacity: "0.5"
+          //   }}
+          // />
         )}
       </Fragment>
     );
   };
 
   const renderResult = () => {
-    if (result === "histogram") {
+    if (result.type === "histogram") {
       return (
-        <Fragment>
-          {isCompleted && result && <BarChart test={test} data={data} />}
-        </Fragment>
+        isCompleted &&
+        result && (
+          <Fragment>
+            <BarChart test={test} data={data} />
+            <Grid
+              item
+              sm={12}
+              style={{
+                margin: "0",
+                fontStyle: "italic",
+                padding: "10px 0",
+                fontSize: "14px"
+              }}
+            >
+              {result.interpretation}
+            </Grid>
+          </Fragment>
+        )
       );
-    } else if (result === "stackedBarChart") {
+    } else if (result.type === "stackedBarChart") {
       return (
-        <Fragment>
-          {isCompleted && result && <StackedBarChart test={test} data={data} />}
-        </Fragment>
+        isCompleted &&
+        result && (
+          <Fragment>
+            <StackedBarChart test={test} data={data} />
+            <Grid
+              item
+              sm={12}
+              style={{
+                margin: "0",
+                fontStyle: "italic",
+                padding: "10px 0",
+                fontSize: "14px"
+              }}
+            >
+              {result.interpretation}
+            </Grid>
+          </Fragment>
+        )
       );
-    } else if (result === "xyChart") {
+    } else if (result.type === "xyChart") {
       return (
-        <Fragment>
-          {isCompleted && result && <XYChart test={test} data={data} />}
-        </Fragment>
+        isCompleted &&
+        result && (
+          <Fragment>
+            <XYChart test={test} data={data} />
+            <Grid
+              item
+              sm={12}
+              style={{
+                margin: "0",
+                fontStyle: "italic",
+                padding: "10px 0",
+                fontSize: "14px"
+              }}
+            >
+              {result.interpretation}
+            </Grid>
+          </Fragment>
+        )
       );
     }
   };
@@ -524,6 +581,22 @@ const LikertForm = ({
               }}
             >
               {topic.toUpperCase()}
+            </h4>
+          )}
+        </Fragment>
+        <Fragment>
+          {wording && (
+            <h4
+              style={{
+                margin: "0",
+                fontStyle: "italic",
+                fontWeight: "400",
+                padding: "10px 0",
+                fontSize: "14px",
+                textAlign: "justify"
+              }}
+            >
+              {wording}
             </h4>
           )}
         </Fragment>
