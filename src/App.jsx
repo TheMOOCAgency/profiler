@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ProfilerApp from "./container/profiler-app/ProfilerApp";
+import Scorm from "./scorm/Scorm";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import { useSelector } from "react-redux";
+import { Base64 } from "js-base64";
 
 const theme = createMuiTheme({
   palette: {
@@ -55,20 +58,66 @@ const theme = createMuiTheme({
 });
 
 const App = () => {
-  return (
-    <ThemeProvider theme={theme}>
-      <div
-        className="App"
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          width: "100vw"
-        }}
-      >
-        <ProfilerApp />
-      </div>
-    </ThemeProvider>
-  );
+  const [isLoading, setLoading] = useState(true);
+  const [initialValues, setInitialValues] = useState({});
+  const allResults = useSelector(state => state.form);
+
+  const setScormData = () => {
+    if (
+      process.env.NODE_ENV === "development" ||
+      window.location.href === "https://themoocagency.github.io/profiler/"
+    ) {
+      // STORE THE DATA IN LOCAL STORAGE IN PRODUCTION AS YOU CAN'T COMMUNICATE WITH SCORM API
+      window.localStorage.setItem("initialValues", JSON.stringify(allResults));
+    } else {
+      Scorm.setSuspendData(Base64.encode(JSON.stringify(allResults)));
+      // console.log(JSON.parse(Base64.decode(Scorm.getSuspendData())), "data");
+    }
+  };
+
+  useEffect(() => {
+    if (
+      process.env.NODE_ENV === "development" ||
+      window.location.href === "https://themoocagency.github.io/profiler/"
+    ) {
+      let scormData = JSON.parse(window.localStorage.getItem("initialValues"));
+      setInitialValues(scormData);
+      setLoading(false);
+    } else {
+      Scorm.init();
+      let scormData = Scorm.getSuspendData();
+      console.log(scormData, "dataaa");
+      if (scormData !== undefined) {
+        console.log("will be launched");
+        setInitialValues(JSON.parse(Base64.decode(scormData)));
+        console.log("is launched");
+        setLoading(false);
+      } else {
+        setLoading(false);
+      }
+    }
+  }, []);
+
+  if (!isLoading) {
+    return (
+      <ThemeProvider theme={theme}>
+        <div
+          className="App"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            width: "100vw"
+          }}
+        >
+          <ProfilerApp
+            setScormData={setScormData}
+            initialValues={initialValues}
+          />
+        </div>
+      </ThemeProvider>
+    );
+  }
+  return null;
 };
 
 export default App;

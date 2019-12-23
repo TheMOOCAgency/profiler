@@ -191,7 +191,7 @@ const LikertForm = ({
   submitting,
   test,
   theme,
-  setLocalStorage,
+  setScormData,
   initialValues
 }) => {
   const {
@@ -559,7 +559,7 @@ const LikertForm = ({
     // no need e.preventdefault as handleSubmit handles it
     await formatResults();
     Scorm.setSuspendData(allResults);
-    setLocalStorage();
+    setScormData();
     setCompletion(true);
     return formValues;
   };

@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 /* MAIN COMPONENT */
-const ProfilerApp = () => {
+const ProfilerApp = ({ setScormData, initialValues }) => {
   const { skills } = window.props[language];
   const classes = useStyles();
   const [value, setValue] = useState(0);
@@ -78,7 +78,13 @@ const ProfilerApp = () => {
         <TabPanel value={value} index={index} key={index}>
           <Grid style={{ paddingTop: "40px" }}>
             <Paper className={classes.paper}>
-              <ExercisePage skill={skill} skills={skills} parentIndex={index} />
+              <ExercisePage
+                skill={skill}
+                skills={skills}
+                parentIndex={index}
+                initialValues={initialValues}
+                setScormData={setScormData}
+              />
             </Paper>
           </Grid>
         </TabPanel>

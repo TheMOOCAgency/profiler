@@ -1,5 +1,4 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import LikertForm from "../../components/forms/likert-form/LikertForm";
@@ -7,84 +6,54 @@ import FreeField from "../../components/forms/free-field/FreeField";
 import Grid from "@material-ui/core/Grid";
 import { FormName } from "redux-form";
 import logo from "../../assets/logo.jpeg";
-import Scorm from "../../scorm/Scorm";
 import button from "../../assets/radioButton.png";
 import checkedButton from "../../assets/checkedRadioButton.png";
 import SubmitButton from "../forms/submit-button/SubmitButton";
-import { Base64 } from "js-base64";
 // import XYChart from "../results/xy-chart/XYChart";
 
-const ExercisePage = ({ skills, skill, parentIndex }) => {
-  const [initialValues, setInitialValues] = useState({});
+const ExercisePage = ({
+  skills,
+  skill,
+  parentIndex,
+  setScormData,
+  initialValues
+}) => {
   const [isPrinted, setIsPrinted] = useState(false);
   const { topic, wording } = skills[parentIndex];
-  const allResults = useSelector(state => state.form);
 
-  const setLocalStorage = () => {
-    if (
-      process.env.NODE_ENV === "development" ||
-      window.location.href === "https://themoocagency.github.io/profiler/"
-    ) {
-      // STORE THE DATA IN LOCAL STORAGE IN PRODUCTION AS YOU CAN'T COMMUNICATE WITH SCORM API
-      window.localStorage.setItem("initialValues", JSON.stringify(allResults));
-    } else {
-      Scorm.setSuspendData(Base64.encode(JSON.stringify(allResults)));
-      // console.log(JSON.parse(Base64.decode(Scorm.getSuspendData())), "data");
-    }
-  };
-
-  useEffect(() => {
-    if (
-      process.env.NODE_ENV === "development" ||
-      window.location.href === "https://themoocagency.github.io/profiler/"
-    ) {
-      let scormData = JSON.parse(window.localStorage.getItem("initialValues"));
-      setInitialValues(scormData);
-    } else {
-      Scorm.init();
-      let scormData = Scorm.getSuspendData();
-      if (scormData) {
-        console.log("will be launched");
-        console.log(scormData, "scorrrrm");
-        setInitialValues(JSON.parse(Base64.decode(scormData)));
-        console.log("is launched");
-      }
-    }
-
-    // const renderInitialValues = () => {
-    //   return skill.tests.map(test => {
-    //     initialValues[test.name] = {};
-    //     if (test.type === "likert") {
-    //       test.questions.map(question => {
-    //         if (!question.subTopic) {
-    //           setInitialValues(prevState => ({
-    //             ...prevState,
-    //             [test.name]: {
-    //               ...prevState[test.name],
-    //               [question.id]: "3"
-    //             }
-    //           }));
-    //         }
-    //         return null;
-    //       });
-    //       // console.log(initialValues);
-    //     } else if (test.type === "true-or-false") {
-    //       test.questions.map(question => {
-    //         setInitialValues(prevState => ({
-    //           ...prevState,
-    //           [test.name]: {
-    //             ...prevState[test.name],
-    //             [question.id]: "true"
-    //           }
-    //         }));
-    //         return null;
-    //       });
-    //     }
-    //     return null;
-    //   });
-    // };
-    // renderInitialValues();
-  }, []);
+  // const renderInitialValues = () => {
+  //   return skill.tests.map(test => {
+  //     initialValues[test.name] = {};
+  //     if (test.type === "likert") {
+  //       test.questions.map(question => {
+  //         if (!question.subTopic) {
+  //           setInitialValues(prevState => ({
+  //             ...prevState,
+  //             [test.name]: {
+  //               ...prevState[test.name],
+  //               [question.id]: "3"
+  //             }
+  //           }));
+  //         }
+  //         return null;
+  //       });
+  //       // console.log(initialValues);
+  //     } else if (test.type === "true-or-false") {
+  //       test.questions.map(question => {
+  //         setInitialValues(prevState => ({
+  //           ...prevState,
+  //           [test.name]: {
+  //             ...prevState[test.name],
+  //             [question.id]: "true"
+  //           }
+  //         }));
+  //         return null;
+  //       });
+  //     }
+  //     return null;
+  //   });
+  // };
+  // renderInitialValues();
 
   useEffect(() => {
     if (isPrinted === true) {
@@ -147,7 +116,7 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
                   initialValues[test.name] &&
                   initialValues[test.name].values
                 }
-                setLocalStorage={setLocalStorage}
+                setScormData={setScormData}
               />
             )}
           </FormName>
@@ -165,7 +134,7 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
                   initialValues[test.name] &&
                   initialValues[test.name].values
                 }
-                setLocalStorage={setLocalStorage}
+                setScormData={setScormData}
               />
             )}
           </FormName>
@@ -183,7 +152,7 @@ const ExercisePage = ({ skills, skill, parentIndex }) => {
                   initialValues[test.name] &&
                   initialValues[test.name].values
                 }
-                setLocalStorage={setLocalStorage}
+                setScormData={setScormData}
               />
             )}
           </FormName>
