@@ -56,7 +56,7 @@ const FreeField = ({
   handleSubmit,
   pristine,
   submitting,
-  setLocalStorage
+  setScormData
 }) => {
   const { questions, button, topic, wording } = test;
 
@@ -105,9 +105,9 @@ const FreeField = ({
 
   const onSubmit = formValues => {
     // SEND TO API
-    setLocalStorage();
-    let values = { name: test.name, values: formValues };
-    console.log(values);
+    setScormData();
+    // let values = { name: test.name, values: formValues };
+    // console.log(values);
   };
 
   return (

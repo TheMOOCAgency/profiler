@@ -12,7 +12,6 @@ import SubmitButton from "../submit-button/SubmitButton";
 import BarChart from "../../results/bar-chart/BarChart";
 import StackedBarChart from "../../results/stacked-bar-chart/StackedBarChart";
 import XYChart from "../../results/xy-chart/XYChart";
-import Scorm from "../../../scorm/Scorm";
 
 const CustomRadio = withStyles({
   root: {
@@ -191,7 +190,7 @@ const LikertForm = ({
   submitting,
   test,
   theme,
-  setLocalStorage,
+  setScormData,
   initialValues
 }) => {
   const {
@@ -212,7 +211,6 @@ const LikertForm = ({
   const [isCompleted, setCompletion] = useState(false);
   const [size, setSize] = useState({});
   const [data, setData] = useState([]);
-  const allResults = useSelector(state => state.form);
 
   // REACT-REDUX WITH HOOKS, REPLACE MAPSTATETOPROPS
   const { results } = useSelector(state => ({
@@ -558,8 +556,8 @@ const LikertForm = ({
   const onSubmit = async formValues => {
     // no need e.preventdefault as handleSubmit handles it
     await formatResults();
-    Scorm.setSuspendData(allResults);
-    setLocalStorage();
+    // Scorm.setSuspendData(allResults);
+    setScormData();
     setCompletion(true);
     return formValues;
   };

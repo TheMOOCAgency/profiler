@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
@@ -7,7 +8,8 @@ import Grid from "@material-ui/core/Grid";
 import TabPanel from "../../components/tab-panel/TabPanel";
 import Paper from "@material-ui/core/Grid";
 import ExercisePage from "../../components/exercise-page/ExercisePage";
-import "./temporary.css";
+import Scorm from "../../scorm/Scorm";
+import { Base64 } from "js-base64";
 
 const a11yProps = index => {
   return {
@@ -37,6 +39,44 @@ const ProfilerApp = () => {
   const { skills } = window.props[language];
   const classes = useStyles();
   const [value, setValue] = useState(0);
+  const [initialValues, setInitialValues] = useState({});
+  const allResults = useSelector(state => state.form);
+
+  const setScormData = () => {
+    if (
+      process.env.NODE_ENV === "development" ||
+      window.location.href === "https://themoocagency.github.io/profiler/"
+    ) {
+      // STORE THE DATA IN LOCAL STORAGE IN PRODUCTION AS YOU CAN'T COMMUNICATE WITH SCORM API
+      window.localStorage.setItem("initialValues", JSON.stringify(allResults));
+    } else {
+      Scorm.setSuspendData(Base64.encode(JSON.stringify(allResults)));
+      // console.log(JSON.parse(Base64.decode(Scorm.getSuspendData())), "data");
+    }
+  };
+
+  useEffect(() => {
+    let scormData = null;
+    if (
+      process.env.NODE_ENV === "development" ||
+      window.location.href === "https://themoocagency.github.io/profiler/"
+    ) {
+      scormData = JSON.parse(window.localStorage.getItem("initialValues"));
+      setInitialValues(scormData);
+    } else {
+      if (!scormData) {
+        Scorm.init();
+        scormData = Scorm.getSuspendData();
+        console.log(scormData, "scormdata");
+      }
+      if (scormData) {
+        console.log("will be launched");
+        console.log(scormData, "scorrrrm");
+        setInitialValues(JSON.parse(Base64.decode(scormData)));
+        console.log("is launched");
+      }
+    }
+  }, [initialValues]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -78,7 +118,13 @@ const ProfilerApp = () => {
         <TabPanel value={value} index={index} key={index}>
           <Grid style={{ paddingTop: "40px" }}>
             <Paper className={classes.paper}>
-              <ExercisePage skill={skill} skills={skills} parentIndex={index} />
+              <ExercisePage
+                skill={skill}
+                skills={skills}
+                parentIndex={index}
+                initialValues={initialValues}
+                setScormData={setScormData}
+              />
             </Paper>
           </Grid>
         </TabPanel>
