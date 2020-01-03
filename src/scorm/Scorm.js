@@ -14,12 +14,11 @@ let Scorm = {
     }
   },
   getSuspendData() {
-    SCORM.get("cmi.suspend_data");
+    return SCORM.get("cmi.suspend_data");
   },
 
   setSuspendData(data) {
     SCORM.set("cmi.suspend_data", data);
-    SCORM.save();
   }
 };
 

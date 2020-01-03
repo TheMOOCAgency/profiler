@@ -64,19 +64,17 @@ const ProfilerApp = () => {
       scormData = JSON.parse(window.localStorage.getItem("initialValues"));
       setInitialValues(scormData);
     } else {
-      if (!scormData) {
-        Scorm.init();
-        scormData = Scorm.getSuspendData();
-        console.log(scormData, "scormdata");
-      }
+      // if (!scormData) {
+      Scorm.init();
+      scormData = Scorm.getSuspendData();
       if (scormData) {
-        console.log("will be launched");
         console.log(scormData, "scorrrrm");
         setInitialValues(JSON.parse(Base64.decode(scormData)));
         console.log("is launched");
       }
+      // }
     }
-  }, [initialValues]);
+  }, []);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
