@@ -1866,6 +1866,7 @@ window.props = {
           {
             type: "free-field",
             name: "freeField7-3",
+            topic: "Mes atouts",
             button: "ENREGISTRER MA REPONSE",
             questions: [
               {
@@ -1883,15 +1884,24 @@ window.props = {
                 text:
                   "Quelles compétences managériales souhaitez-vous acquérir ? "
               },
+
               {
                 id: "field3",
                 text:
-                  "Définissez un plan d’action à mettre en œuvre pour la suite en entreprise sur le modèle QQOQCCP (Qui ? Quoi ? Ou ? Quand ? Comment ? Combien ? Pourquoi ? )"
-              },
-              {
-                id: "field4",
-                text:
                   "Quels sont les atouts dont vous avez pris conscience et sur lesquels vous pouvez vous appuyer ?"
+              }
+            ]
+          },
+          {
+            type: "free-field",
+            name: "freeField7-4",
+            topic: "Mon plan d'action",
+            button: "ENREGISTRER MA REPONSE",
+            questions: [
+              {
+                id: "field0",
+                text:
+                  "Définissez un plan d’action à mettre en œuvre pour la suite en entreprise sur le modèle QQOQCCP (Qui ? Quoi ? Ou ? Quand ? Comment ? Combien ? Pourquoi ? )"
               }
             ]
           }

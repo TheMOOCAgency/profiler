@@ -5,11 +5,13 @@ import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Grid from "@material-ui/core/Grid";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import TabPanel from "../../components/tab-panel/TabPanel";
 import Paper from "@material-ui/core/Grid";
 import ExercisePage from "../../components/exercise-page/ExercisePage";
 import Scorm from "../../scorm/Scorm";
 import { Base64 } from "js-base64";
+import WelcomePage from "../../components/welcome-page/WelcomePage";
 
 const a11yProps = index => {
   return {
@@ -40,18 +42,34 @@ const ProfilerApp = () => {
   const classes = useStyles();
   const [value, setValue] = useState(0);
   const [initialValues, setInitialValues] = useState({});
+  const [hasStarted, setHasStarted] = useState();
+  const [pageIndex, setPageIndex] = useState(0);
+  const [isLoading, setLoader] = useState(true);
   const allResults = useSelector(state => state.form);
 
   const setScormData = () => {
+    let dataToSuspend = {
+      status: true,
+      index: pageIndex,
+      results: allResults
+    };
     if (
       process.env.NODE_ENV === "development" ||
       window.location.href === "https://themoocagency.github.io/profiler/"
     ) {
       // STORE THE DATA IN LOCAL STORAGE IN PRODUCTION AS YOU CAN'T COMMUNICATE WITH SCORM API
-      window.localStorage.setItem("initialValues", JSON.stringify(allResults));
+      window.localStorage.setItem(
+        "initialValues",
+        JSON.stringify(dataToSuspend)
+      );
     } else {
-      Scorm.setSuspendData(Base64.encode(JSON.stringify(allResults)));
+      Scorm.setSuspendData(Base64.encode(JSON.stringify(dataToSuspend)));
     }
+  };
+
+  const startCourse = async () => {
+    await setHasStarted(true);
+    setScormData();
   };
 
   useEffect(() => {
@@ -61,14 +79,21 @@ const ProfilerApp = () => {
       window.location.href === "https://themoocagency.github.io/profiler/"
     ) {
       scormData = JSON.parse(window.localStorage.getItem("initialValues"));
-      setInitialValues(scormData);
+      if (scormData) {
+        setInitialValues(scormData.results);
+        setPageIndex(Number(scormData.index));
+        setHasStarted(scormData.status);
+      }
     } else {
       Scorm.init();
       scormData = Scorm.getSuspendData();
       if (scormData) {
-        setInitialValues(JSON.parse(Base64.decode(scormData)));
+        setInitialValues(JSON.parse(Base64.decode(scormData)).results);
+        setPageIndex(JSON.parse(Base64.decode(scormData)).index);
+        setHasStarted(JSON.parse(Base64.decode(scormData)).status);
       }
     }
+    setLoader(false);
   }, []);
 
   const handleChange = (event, newValue) => {
@@ -124,17 +149,39 @@ const ProfilerApp = () => {
       );
     });
   };
-
-  return (
-    <Grid container className={classes.root} justify="center" id="app">
-      <Grid item>{renderTabs()}</Grid>
-      <Grid item lg={9} md={12} sm={12} xs={12}>
-        <Grid item lg={12} md={12} sm={12} xs={12}>
-          {renderPanel()}
-        </Grid>
+  if (isLoading) {
+    return (
+      <Grid
+        container
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          width: "100vw",
+          height: "100vh",
+          padding: "20px"
+        }}
+      >
+        <CircularProgress size={300} />
       </Grid>
-    </Grid>
-  );
+    );
+  } else {
+    if (hasStarted) {
+      return (
+        <Grid container className={classes.root} justify="center" id="app">
+          <Grid item>{renderTabs()}</Grid>
+          <Grid item lg={9} md={12} sm={12} xs={12}>
+            <Grid item lg={12} md={12} sm={12} xs={12}>
+              {renderPanel()}
+            </Grid>
+          </Grid>
+        </Grid>
+      );
+    }
+    // WELCOME PAGE
+    return <WelcomePage startCourse={startCourse} />;
+  }
 };
 
 export default ProfilerApp;

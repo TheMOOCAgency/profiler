@@ -16,7 +16,6 @@ let Scorm = {
   setSuspendData(data) {
     SCORM.set("cmi.suspend_data", data);
     SCORM.set("cmi.exit", "suspend");
-    SCORM.quit();
   }
 };
 
