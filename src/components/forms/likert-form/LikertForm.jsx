@@ -172,7 +172,7 @@ const radioButtons = ({
           color: "#b71b53",
           fontSize: "14px",
           margin: 0,
-          fontStyle: "italic",
+          // fontStyle: "italic",
           position: "absolute",
           right: "-20px"
         }}
@@ -340,7 +340,7 @@ const LikertForm = ({
                 <h4
                   style={{
                     margin: "0 0 10px 0",
-                    fontStyle: "italic",
+                    // fontStyle: "italic",
                     padding: "10px",
                     backgroundColor: "#b71b60",
                     color: "white",
@@ -351,7 +351,7 @@ const LikertForm = ({
                   {question.subTopic.toUpperCase()}
                   <span
                     style={{
-                      fontStyle: "italic",
+                      // fontStyle: "italic",
                       fontSize: "10px",
                       marginLeft: "5px"
                     }}
@@ -365,7 +365,7 @@ const LikertForm = ({
                 sm={12}
                 style={{
                   textAlign: "justify",
-                  fontStyle: "italic",
+                  // fontStyle: "italic",
                   fontSize: "14px"
                 }}
               >
@@ -462,7 +462,7 @@ const LikertForm = ({
               sm={12}
               style={{
                 margin: "0",
-                fontStyle: "italic",
+                // fontStyle: "italic",
                 padding: "10px 0",
                 fontSize: "14px"
               }}
@@ -571,7 +571,7 @@ const LikertForm = ({
             <h4
               style={{
                 margin: "0",
-                fontStyle: "italic",
+                // fontStyle: "italic",
                 padding: "10px",
                 backgroundColor: "#b71b60",
                 color: "white",
@@ -582,7 +582,7 @@ const LikertForm = ({
               {topic.toUpperCase()}
               <span
                 style={{
-                  fontStyle: "italic",
+                  // fontStyle: "italic",
                   fontSize: "10px",
                   marginLeft: "5px"
                 }}
@@ -597,7 +597,7 @@ const LikertForm = ({
             <h4
               style={{
                 margin: "0",
-                fontStyle: "italic",
+                // fontStyle: "italic",
                 fontWeight: "400",
                 padding: "10px 0",
                 fontSize: "14px",

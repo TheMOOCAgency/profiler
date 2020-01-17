@@ -54,7 +54,7 @@ const ExercisePage = ({
                 sm={12}
                 style={{
                   textAlign: "justify",
-                  fontStyle: "italic",
+                  // fontStyle: "italic",
                   fontSize: "14px",
                   margin: "20px 0"
                 }}

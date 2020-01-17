@@ -7,9 +7,8 @@ const WelcomePage = ({ startCourse }) => {
   return (
     <Grid
       container
+      direction="column"
       style={{
-        display: "flex",
-        flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
         width: "100vw",
@@ -17,16 +16,15 @@ const WelcomePage = ({ startCourse }) => {
         padding: "20px"
       }}
     >
-      <img
+      {/* <img
         src={logo}
         alt="logo"
         style={{ height: "100px", marginBottom: "50px" }}
-      />
+      /> */}
       <Grid item lg={7} md={12} sm={12} xs={12}>
-        <div style={{ textAlign: "justify" }}>
-          {" "}
+        <div style={{ textAlign: "justify" }} style={{ marginTop: "50px" }}>
           Bienvenue dans votre carnet de bord.
-        </div>{" "}
+        </div>
         <br />
         <div style={{ textAlign: "justify" }}>
           Ce carnet est un outil qui vous est dédié, il a pour but de vous aider
@@ -50,7 +48,7 @@ const WelcomePage = ({ startCourse }) => {
         <br />
         <div style={{ textAlign: "justify" }}>
           Comment fonctionne ce carnet de bord ?
-        </div>{" "}
+        </div>
         <br />
         <div style={{ textAlign: "justify" }}>
           Au fur et à mesure de votre progression dans le cours, vous accèderez

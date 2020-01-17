@@ -115,7 +115,7 @@ const FreeField = ({
           <h4
             style={{
               margin: "0",
-              fontStyle: "italic",
+              // fontStyle: "italic",
               padding: "10px",
               backgroundColor: "#b71b60",
               color: "white",
@@ -131,7 +131,7 @@ const FreeField = ({
             <h4
               style={{
                 margin: "0",
-                fontStyle: "italic",
+                // fontStyle: "italic",
                 fontWeight: "400",
                 padding: "10px 0",
                 fontSize: "14px",
