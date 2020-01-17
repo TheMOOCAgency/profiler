@@ -46,7 +46,6 @@ const XYChart = ({ test, data }) => {
               className={`result result-${index} ${
                 testResult === index ? "is-result" : "is-not-result"
               }`}
-              onClick={() => console.log(x, y)}
             >
               {category.text}
             </div>

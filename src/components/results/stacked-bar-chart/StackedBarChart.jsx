@@ -14,6 +14,7 @@ const StackedBarChart = ({ data }) => {
 
   useEffect(() => {
     const renderTicks = () => {
+      console.log(data, "data");
       let total = data[0].mark + data[0].rest;
       let ticksArray = [];
       for (let i = 0; i <= total; i++) {

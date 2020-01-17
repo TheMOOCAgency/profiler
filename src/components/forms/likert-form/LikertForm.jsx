@@ -491,6 +491,7 @@ const LikertForm = ({
         rawData.rest -= question[results[question.id]] * 10;
         return rawData;
       });
+      formatedData.push(rawData);
       setData(formatedData);
       // LIKERT - SINGLE FORM CASE - STACKED BAR
     } else if (type === "likert" && result === "stackedBarChart") {

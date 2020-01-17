@@ -1712,8 +1712,7 @@ window.props = {
               interpretation:
                 "Ce test vous permet de connaître votre style de leadership privilégié, c'est à dire votre manière naturelle d'aborder le management."
             },
-            topic:
-              "Déterminer mon style de leadership <-- Remarque dev. : 'le rendu sera intégré dans les prochains jours' -->",
+            topic: "Déterminer mon style de leadership",
             button1: "VISUALISEZ VOS RESULTATS",
             button2: "ACTUALISEZ VOS RESULTATS",
             wording:
