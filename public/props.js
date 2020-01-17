@@ -111,7 +111,7 @@ window.props = {
                 form: { id: "form2", coef: 1 }
               },
               {
-                text: "Il vaut mieux ne pas reconnaître ses faiblesses.",
+                text: "Il vaut mieux ne pas reconnaître ses faiblesses",
                 id: "question6",
                 driver: "driver2",
                 form: { id: "form2", coef: 1 }
@@ -380,7 +380,7 @@ window.props = {
               type: "histogram",
               legend: false,
               interpretation:
-                "Ce test vous indique votre filtre de perception privilégié. Les filtres de perception sont des portes d'entrée de l'information, à travers lesquels nous interprétons nos perceptions. ils sont au nombre de trois : Savoir, Faire et Être. Dans cet histogramme, votre filtre privilégié correspond à la barre la plus élevée. Plus cette barre est éloignée des autres, plus votre filtre est marqué."
+                "Ce test vous indique votre filtre de perception privilégié. Les filtres de perception sont des portes d'entrée de l'information, à travers lesquels nous interprétons nos perceptions. Ils sont au nombre de trois : Savoir, Faire et Être. Dans cet histogramme, votre filtre privilégié correspond à la barre la plus élevée. Plus cette barre est éloignée des autres, plus votre filtre est marqué."
             },
             wording: `Lisez avec attention chacun des énoncés et indiquez si vous êtes en accord ou en désaccord avec. Essayez de répondre le plus spontanément possible et évitez de trop répondre "ni en désaccord ni en accord". Ne répondez pas ce que vous croyez devoir répondre pour avoir de bons résultats à ce test, il n’y a pas de bonnes ou de mauvaises réponses, ni de bons ou de mauvais résultats.`,
             drivers: {
@@ -557,22 +557,22 @@ window.props = {
               {
                 id: "field0",
                 html:
-                  "Lisez attentivement cette liste de valeurs : <br><br>ÉGALITÉ (opportunités égales pour tous)<br>HARMONIE INTÉRIEURE (en paix avec soi-même)<br>POUVOIR SOCIAL (contrôle d'autrui, dominance)<br>PLAISIR (satisfaction des désirs)<br>LIBERTÉ (liberté de pensée et d'action)<br>UNE VIE SPIRITUELLE (accent mis sur les aspects spirituels et non matériels)<br>SENTIMENT DE NE PAS ÊTRE ISOLÉ (sentiment que les autres se soucient de moi)<br>ORDRE SOCIAL (stabilité de la société)<br>UNE VIE EXCITANTE (expériences stimulantes)<br>SENS DE LA VIE (un objectif dans la vie)<br>POLITESSE (courtoisie, bonnes manières)<br>RICHESSE (biens matériels, argent)<br>SÉCURITÉ NATIONALE (protection de mon pays contre ses ennemis)<br>RESPECT DE SOI (croyance en sa propre valeur)<br>RÉCIPROCITÉ DES FAVEURS (éviter d'être en dettes)<br>CRÉATIVITÉ (originalité, imagination)<br>UN MONDE EN PAIX (libéré des guerres et des conflits)<br>RESPECT DE LA TRADITION (préserver les coutumes consacrées par le temps)<br>AMOUR ADULTE (intimité profonde, émotionnelle et spirituelle)<br>AUTO DISCIPLINE (auto limitation, résistance aux tentations)<br>DROIT A UNE VIE PRIVÉE (non exposée aux regards indiscrets)<br>SÉCURITÉ FAMILIALE (sécurité pour ceux que l'on aime)<br>RECONNAISSANCE SOCIALE (respect, approbation émanant des autres)<br>UNITÉ AVEC LA NATURE (adéquation à la nature)<br>UNE VIE VARIÉE (remplie de défis, de nouveautés, de changements)<br>SAGESSE (compréhension adulte de la vie)<br>AUTORITÉ (le droit de diriger ou de commander)<br>AMITIÉ VRAIE (des amis proches et sur qui l'on peut compter)<br>UN MONDE DE BEAUTÉ (beauté de la nature et des arts)<br>JUSTICE SOCIALE (corriger les injustices, secourir les faibles)<br><br>Selon vous, parmi cette liste, quelle est la valeur la plus importante ? Donnez un exemple de situation personnelle ou vous avez appliqué cette valeur."
+                  "Lisez attentivement cette liste de valeurs : <br><br>ÉGALITÉ (opportunités égales pour tous)<br>HARMONIE INTÉRIEURE (en paix avec soi-même)<br>POUVOIR SOCIAL (contrôle d'autrui, dominance)<br>PLAISIR (satisfaction des désirs)<br>LIBERTÉ (liberté de pensée et d'action)<br>UNE VIE SPIRITUELLE (accent mis sur les aspects spirituels et non matériels)<br>SENTIMENT DE NE PAS ÊTRE ISOLÉ (sentiment que les autres se soucient de moi)<br>ORDRE SOCIAL (stabilité de la société)<br>UNE VIE EXCITANTE (expériences stimulantes)<br>SENS DE LA VIE (un objectif dans la vie)<br>POLITESSE (courtoisie, bonnes manières)<br>RICHESSE (biens matériels, argent)<br>SÉCURITÉ NATIONALE (protection de mon pays contre ses ennemis)<br>RESPECT DE SOI (croyance en sa propre valeur)<br>RÉCIPROCITÉ DES FAVEURS (éviter d'être en dettes)<br>CRÉATIVITÉ (originalité, imagination)<br>UN MONDE EN PAIX (libéré des guerres et des conflits)<br>RESPECT DE LA TRADITION (préserver les coutumes consacrées par le temps)<br>AMOUR ADULTE (intimité profonde, émotionnelle et spirituelle)<br>AUTO DISCIPLINE (auto limitation, résistance aux tentations)<br>DROIT A UNE VIE PRIVÉE (non exposée aux regards indiscrets)<br>SÉCURITÉ FAMILIALE (sécurité pour ceux que l'on aime)<br>RECONNAISSANCE SOCIALE (respect, approbation émanant des autres)<br>UNITÉ AVEC LA NATURE (adéquation à la nature)<br>UNE VIE VARIÉE (remplie de défis, de nouveautés, de changements)<br>SAGESSE (compréhension adulte de la vie)<br>AUTORITÉ (le droit de diriger ou de commander)<br>AMITIÉ VRAIE (des amis proches et sur qui l'on peut compter)<br>UN MONDE DE BEAUTÉ (beauté de la nature et des arts)<br>JUSTICE SOCIALE (corriger les injustices, secourir les faibles)<br><br>Selon vous, parmi cette liste, quelle est la valeur la plus importante ? Donnez un exemple de situation personnelle où vous avez appliqué cette valeur."
               },
               {
                 id: "field1",
                 text:
-                  "Selon vous, parmi cette liste, quelle est la valeur la moins importante ? Donnez un exemple de situation personnelle ou vous n’avez pas appliqué cette valeur."
+                  "Selon vous, parmi cette liste, quelle est la valeur la moins importante ? Donnez un exemple de situation personnelle où vous n’avez pas appliqué cette valeur."
               },
               {
                 id: "field2",
                 html:
-                  "Lisez attentivement cette seconde liste de valeur :<br><br>AUTONOME (ne compter que sur soi, auto suffisant)<br>MODÉRÉ (évitant les extrêmes dans les sentiments et les actions)<br>LOYAL (fidèle à ses amis, au groupe des proches)<br>AMBITIEUX (travaillant dur, volontaire)<br>LARGE D'ESPRIT (tolérant les croyances et idées différentes)<br>HUMBLE (modeste, effacé)<br>AUDACIEUX (cherchant l'aventure, le risque)<br>PROTÉGEANT L'ENVIRONNEMENT (préserver la nature)<br>INFLUANT (exercer un impact sur les gens et les événements)<br>HONORANT SES PARENTS ET LES ANCIENS (montrant du respect)<br>CHOISISSANT SES PROPRES BUTS (sélectionnant ses propres objectifs)<br>EN BONNE SANTÉ (ne pas être malade physiquement ou mentalement)<br>COMPÉTENT (capable, efficace)<br>ACCEPTANT MA PART DANS LA VIE (se soumettre aux circonstances de la vie)<br>HONNÊTE (authentique, sincère)<br>PRÉSERVANT MON IMAGE PUBLIQUE (soucieux de ne pas perdre la \"face\")<br>OBÉISSANT (remplissant ses obligations, ayant le sens du devoir)<br>INTELLIGENT (logique, réfléchi)<br>SECOURABLE (travaillant en vue du bien-être d'autrui)<br>SACHANT JOUIR DE LA VIE (aimant la nourriture, le sexe, les loisirs, etc...)<br>RELIGIEUX (attaché aux croyances et à la foi religieuse)<br>RESPONSABLE (sur qui l'on peut compter)<br>CURIEUX (intéressé en toutes choses, explorateur)<br>CLÉMENT (désireux de pardonner aux autres)<br>ORIENTÉ VERS LE SUCCÈS (objectif : réussir)<br>PROPRE (net, soigné)<br>ÊTRE BON AVEC SOI-MÊME (faire des choses agréables)<br><br>Selon vous, parmi cette seconde liste, quelle est la valeur la plus importante ? Donnez un exemple de situation personnelle ou vous avez appliqué cette valeur."
+                  "Lisez attentivement cette seconde liste de valeur :<br><br>AUTONOME (ne compter que sur soi, auto suffisant)<br>MODÉRÉ (évitant les extrêmes dans les sentiments et les actions)<br>LOYAL (fidèle à ses amis, au groupe des proches)<br>AMBITIEUX (travaillant dur, volontaire)<br>LARGE D'ESPRIT (tolérant les croyances et idées différentes)<br>HUMBLE (modeste, effacé)<br>AUDACIEUX (cherchant l'aventure, le risque)<br>PROTÉGEANT L'ENVIRONNEMENT (préserver la nature)<br>INFLUANT (exercer un impact sur les gens et les événements)<br>HONORANT SES PARENTS ET LES ANCIENS (montrant du respect)<br>CHOISISSANT SES PROPRES BUTS (sélectionnant ses propres objectifs)<br>EN BONNE SANTÉ (ne pas être malade physiquement ou mentalement)<br>COMPÉTENT (capable, efficace)<br>ACCEPTANT MA PART DANS LA VIE (se soumettre aux circonstances de la vie)<br>HONNÊTE (authentique, sincère)<br>PRÉSERVANT MON IMAGE PUBLIQUE (soucieux de ne pas perdre la \"face\")<br>OBÉISSANT (remplissant ses obligations, ayant le sens du devoir)<br>INTELLIGENT (logique, réfléchi)<br>SECOURABLE (travaillant en vue du bien-être d'autrui)<br>SACHANT JOUIR DE LA VIE (aimant la nourriture, le sexe, les loisirs, etc...)<br>RELIGIEUX (attaché aux croyances et à la foi religieuse)<br>RESPONSABLE (sur qui l'on peut compter)<br>CURIEUX (intéressé en toutes choses, explorateur)<br>CLÉMENT (désireux de pardonner aux autres)<br>ORIENTÉ VERS LE SUCCÈS (objectif : réussir)<br>PROPRE (net, soigné)<br>ÊTRE BON AVEC SOI-MÊME (faire des choses agréables)<br><br>Selon vous, parmi cette seconde liste, quelle est la valeur la plus importante ? Donnez un exemple de situation personnelle où vous avez appliqué cette valeur."
               },
               {
                 id: "field3",
                 text:
-                  "Selon vous, parmi cette seconde liste, quelle est la valeur la moins importante ? Donnez un exemple de situation personnelle ou vous n’avez pas appliqué cette valeur."
+                  "Selon vous, parmi cette seconde liste, quelle est la valeur la moins importante ? Donnez un exemple de situation personnelle où vous n’avez pas appliqué cette valeur."
               }
             ]
           },
@@ -682,6 +682,8 @@ window.props = {
             type: "free-field",
             name: "freeField3-5",
             topic: "Mes croyances",
+            additionalText:
+              "( Le bloc 'Mes Croyances' est à remplir lors d'une activité en présentiel. Ne remplissez pas ces champs si vous êtes à distance )",
             button: "ENREGISTRER MA REPONSE",
             questions: [
               {
@@ -764,7 +766,7 @@ window.props = {
               type: "stackedBarChart",
               legend: true,
               interpretation:
-                "Ce test mesure votre résilience. Si vous avez un score en dessous de 30, vous êtes très résilient. En revanche si vous avez un score supérieur à 70, vous êtes mettez du temps à récupérer."
+                "Ce test mesure votre résilience. Si vous avez un score en dessous de 30, vous êtes très résilient. En revanche si vous avez un score supérieur à 70, vous mettez du temps à récupérer."
             },
             wording: "",
             questions: [
@@ -799,7 +801,7 @@ window.props = {
               {
                 id: "question4",
                 text:
-                  "Si j'essaye un nouveau restaurant où le repas est infect ct le service détestable, cela gâche toute ma soirée.",
+                  "Si j'essaye un nouveau restaurant où le repas est infect et le service détestable, cela gâche toute ma soirée.",
                 true: 1,
                 false: 0
               },
@@ -820,7 +822,7 @@ window.props = {
               {
                 id: "question7",
                 text:
-                  "Si je rencontre un homme/une femme formidable avec lui j'ai très envie de sortir, une réponse négative me met en général de mauvaise humeur pendant plusieurs heures, ou même plusieurs jours.",
+                  "Si je rencontre un homme/une femme formidable avec qui j'ai très envie de sortir, une réponse négative me met en général de mauvaise humeur pendant plusieurs heures, ou même plusieurs jours.",
                 true: 1,
                 false: 0
               },
@@ -868,7 +870,7 @@ window.props = {
               {
                 id: "question1",
                 text:
-                  "Quand j'évalue un collègue, je mc focalise sur les détails sur lesquels il doit s'améliorer, plutôt que sur sa performance globalement positive.",
+                  "Quand j'évalue un collègue, je me focalise sur les détails sur lesquels il doit s'améliorer, plutôt que sur sa performance globalement positive.",
                 true: 0,
                 false: 1
               },
@@ -896,7 +898,7 @@ window.props = {
               {
                 id: "question5",
                 text:
-                  "Quand je suis invité(e) à une fête ct que je me sens bien au départ, ce sentiment positif a tendance à durer toute la soirée.",
+                  "Quand je suis invité(e) à une fête et que je me sens bien au départ, ce sentiment positif a tendance à durer toute la soirée.",
                 true: 1,
                 false: 0
               },
@@ -910,7 +912,7 @@ window.props = {
               {
                 id: "question7",
                 text:
-                  "Quand je me réveille le matin, je pense à une activité agréable que j'ai prévue, et cela mc met de bonne humeur pour toute la journée.",
+                  "Quand je me réveille le matin, je pense à une activité agréable que j'ai prévue, et cela me met de bonne humeur pour toute la journée.",
                 true: 1,
                 false: 0
               },
@@ -951,14 +953,14 @@ window.props = {
               {
                 id: "question0",
                 text:
-                  "Quand je parle à des gens, je remarque souvent de subtils indices sociaux concernant leurs émotions la gêne ou la colère, par exemple- avant qu'ils ne prennent eux-mêmes.",
+                  "Quand je parle à des gens, je remarque souvent de subtils indices sociaux concernant leurs émotions -la gêne ou la colère, par exemple- avant qu'ils ne prennent eux-mêmes.",
                 true: 1,
                 false: 0
               },
               {
                 id: "question1",
                 text:
-                  "Je me surprends, ou vent à noter les expressions faciales ct le langage du corps.",
+                  "Je me surprends, souvent à noter les expressions faciales ct le langage du corps.",
                 true: 1,
                 false: 0
               },
@@ -979,7 +981,7 @@ window.props = {
               {
                 id: "question4",
                 text:
-                  "Je suis souvent surpris(e) quanti mon interlocuteur est énervé ou contrarié par cc que j'ai dit, sans raison apparente.",
+                  "Je suis souvent surpris(e) quand mon interlocuteur est énervé ou contrarié par ce que j'ai dit, sans raison apparente.",
                 true: 0,
                 false: 1
               },
@@ -1007,7 +1009,7 @@ window.props = {
               {
                 id: "question8",
                 text:
-                  "Je suis mal à l'aise quand quelqu'un que je connais à peine mc regarde droit dans les yeux pendant une conversation.",
+                  "Je suis mal à l'aise quand quelqu'un que je connais à peine me regarde droit dans les yeux pendant une conversation.",
                 true: 0,
                 false: 1
               },
@@ -1069,7 +1071,7 @@ window.props = {
               {
                 id: "question4",
                 text:
-                  "En général, je sais de façon certaine cc que je ressens et je peux traduire mes émotions en mots.",
+                  "En général, je sais de façon certaine ce que je ressens et je peux traduire mes émotions en mots.",
                 true: 1,
                 false: 0
               },
@@ -1090,7 +1092,7 @@ window.props = {
               {
                 id: "question7",
                 text:
-                  "Je crois que j'habite bien mon corps ct je m'y sens chez moi, à l'aise.",
+                  "Je crois que j'habite bien mon corps et je m'y sens chez moi, à l'aise.",
                 true: 1,
                 false: 0
               },
@@ -1159,7 +1161,7 @@ window.props = {
               {
                 id: "question4",
                 text:
-                  "Si je reste immobile ne serait-ce que quelques instants, un flux de pensées mc vient à l'esprit ct je me mets à suivre plusieurs fils, souvent sans savoir comment chacun a commencé.",
+                  "Si je reste immobile ne serait-ce que quelques instants, un flux de pensées me vient à l'esprit et je me mets à suivre plusieurs fils, souvent sans savoir comment chacun a commencé.",
                 true: 1,
                 false: 0
               },
@@ -1249,7 +1251,7 @@ window.props = {
               {
                 id: "question4",
                 text:
-                  "Je me surprends souvent à me censurer parce que je sens que ce que j'allais dire aurait été malvenu étant donné la situation (par exemple, avant de répondre à la question: «Mon chéri, tu me trouves grosse dans cc pantalon ? »).",
+                  "Je me surprends souvent à me censurer parce que je sens que ce que j'allais dire aurait été malvenu étant donné la situation (par exemple, avant de répondre à la question: «Mon chéri, tu me trouves grosse dans ce pantalon ? »).",
                 true: 0,
                 false: 1
               },
@@ -1284,7 +1286,7 @@ window.props = {
               {
                 id: "question9",
                 text:
-                  "Mes proches me disent que je me conduis toujours très bien avec les inconnus ct dans les situations peu familières.",
+                  "Mes proches me disent que je me conduis toujours très bien avec les inconnus et dans les situations peu familières.",
                 true: 1,
                 false: 0
               }
@@ -1299,7 +1301,7 @@ window.props = {
             type: "likert",
             topic: "Testez votre intelligence émotionnelle",
             wording:
-              "Ne répondez pas ce que vous croyez devoir répondre pour avoir de bons résultats à ce test, cela ne vous donnerait pas une vision fiable de la réalité. Lisez avec attention chacun des énoncés et indiquez s’il s’applique ou non à vous (encerclez la réponse). Le but est de vous donner une idée générale de vos manières de vivre vos émotions. Il se peut que vous sentiez que certaines questions ne sont pas pertinentes et ne décrivent pas des situations que vous vivez. Si c’est le cas, ne répondez pas et retranchez quatre points du chiffre maximum présenté dans l’interprétation (à la fin) pour chaque question à laquelle vous n’aurez pas répondu.",
+              "Lisez avec attention chacun des énoncés et indiquez à quelle fréquence cet énoncé est vrai pour vous. Essayez de répondre le plus spontanément possible. Ne répondez pas ce que vous croyez devoir répondre pour avoir de bons résultats à ce test, il n’y a pas de bonnes ou de mauvaises réponses, ni de bons ou de mauvais résultats.",
             button1: "VISUALISEZ VOS RESULTATS",
             button2: "ACTUALISEZ VOS RESULTATS",
             result: {
@@ -1509,8 +1511,6 @@ window.props = {
             name: "freeField5-1",
             topic: "Gestion des conflits",
             button: "ENREGISTRER MA REPONSE",
-            wording:
-              "Lisez avec attention chacun des énoncés et indiquez la probabilité que vous adoptiez ce comportement. Essayez de répondre le plus spontanément possible. Ne répondez pas ce que vous croyez devoir répondre pour avoir de bons résultats à ce test, il n’y a pas de bonnes ou de mauvaises réponses, ni de bons ou de mauvais résultats.",
             questions: [
               {
                 id: "field0",
@@ -1519,7 +1519,7 @@ window.props = {
               {
                 id: "field1",
                 text:
-                  "Selon vous quel est votre mode de gestion des conflits ? Donnez un exemple de situation ou vous avez utilisé ce mode de gestion."
+                  "Selon vous quel est votre mode de gestion des conflits ? Donnez un exemple de situation où vous avez utilisé ce mode de gestion."
               },
               {
                 id: "field2",
@@ -1532,7 +1532,7 @@ window.props = {
               {
                 id: "field4",
                 text:
-                  "Quels sont vos mécanismes de défenses privilégiés ? Donner des exemples de situations ou vous avez mis en œuvre ces mécanismes"
+                  "Quels sont vos mécanismes de défenses privilégiés ? Donner des exemples de situation où vous avez mis en œuvre ces mécanismes"
               }
             ]
           },
@@ -1842,7 +1842,8 @@ window.props = {
               },
               {
                 id: "field1",
-                text: "Êtes-vous surpris par les résultats ?"
+                text:
+                  "Selon vous, quels sont les points forts de votre style de management ?"
               },
               {
                 id: "field2",

@@ -205,7 +205,8 @@ const LikertForm = ({
     requiredForms,
     topic,
     dataForms,
-    wording
+    wording,
+    additionalText
   } = test;
 
   const [isCompleted, setCompletion] = useState(false);
@@ -579,6 +580,15 @@ const LikertForm = ({
               }}
             >
               {topic.toUpperCase()}
+              <span
+                style={{
+                  fontStyle: "italic",
+                  fontSize: "10px",
+                  marginLeft: "5px"
+                }}
+              >
+                {additionalText}
+              </span>
             </h4>
           )}
         </Fragment>
@@ -614,6 +624,9 @@ const LikertForm = ({
 };
 
 // FORM NAME IS DEFINED IN FORMNAME PARENT ON EXERCISE PAGE
-export default reduxForm({ form: "", enableReinitialize: true, validate })(
-  LikertForm
-);
+export default reduxForm({
+  form: "",
+  enableReinitialize: true,
+
+  validate
+})(LikertForm);
