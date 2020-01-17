@@ -112,7 +112,6 @@ const ExercisePage = ({
               <FreeField
                 test={test}
                 form={test.name}
-                parentIndex={parentIndex}
                 initialValues={
                   initialValues &&
                   initialValues[test.name] &&

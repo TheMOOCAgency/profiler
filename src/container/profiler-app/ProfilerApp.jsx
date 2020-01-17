@@ -149,6 +149,7 @@ const ProfilerApp = () => {
       );
     });
   };
+  // COMPONENT RENDER
   if (isLoading) {
     return (
       <Grid

@@ -66,16 +66,14 @@ const FreeField = ({
 
   const renderCustomInput = ({ input }) => {
     return (
-      <Fragment>
-        <CssTextField
-          id="outlined-multiline-static"
-          multiline
-          rows="6"
-          variant="outlined"
-          autoComplete="off"
-          {...input}
-        />
-      </Fragment>
+      <CssTextField
+        id="outlined-multiline-static"
+        multiline
+        rows="6"
+        variant="outlined"
+        autoComplete="off"
+        {...input}
+      />
     );
   };
 

@@ -1702,6 +1702,13 @@ window.props = {
             type: "likert",
             result: {
               type: "xyChart",
+              score: [
+                { text: "Style 'intermédiaire'", maxX: 3, maxY: 3 },
+                { text: "Style 'laisser faire'", maxX: 3, maxY: 3 },
+                { text: "Style 'social'", maxX: 3, maxY: 6 },
+                { text: "Style 'centré sur la tâche'", maxX: 6, maxY: 3 },
+                { text: "Style intégrateur'", maxX: 6, maxY: 6 }
+              ],
               interpretation:
                 "Ce test vous permet de connaître votre style de leadership privilégié, c'est à dire votre manière naturelle d'aborder le management."
             },
