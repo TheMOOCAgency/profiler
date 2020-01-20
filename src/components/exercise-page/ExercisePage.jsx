@@ -196,13 +196,8 @@ const ExercisePage = ({
   };
 
   return (
-    <Grid
-      container
-      // style={{ maxWidth: "1366px" }}
-      id={`to-print${parentIndex}`}
-      // onClick={() => Scorm.exit()}
-    >
-      <Grid>
+    <Grid container id={`to-print${parentIndex}`}>
+      <Grid item xs={12}>
         <Fragment>{renderWording()}</Fragment>
         <Fragment>{renderTestType()}</Fragment>
         <SubmitButton onClick={() => printPdf()}>

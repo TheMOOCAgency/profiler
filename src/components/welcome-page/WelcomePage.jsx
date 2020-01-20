@@ -6,23 +6,21 @@ import Grid from "@material-ui/core/Grid";
 const WelcomePage = ({ startCourse }) => {
   return (
     <Grid
-      container
-      direction="column"
       style={{
+        display: "flex",
+        flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
         width: "100vw",
-        height: "100vh",
         padding: "20px"
       }}
     >
-      {/* <img
-        src={logo}
-        alt="logo"
-        style={{ height: "100px", marginBottom: "50px" }}
-      /> */}
+      <img src={logo} alt="logo" style={{ height: "100px" }} />
       <Grid item lg={7} md={12} sm={12} xs={12}>
-        <div style={{ textAlign: "justify" }} style={{ marginTop: "50px" }}>
+        <div
+          style={{ textAlign: "justify" }}
+          style={{ marginTop: "50px", fontWeight: 600 }}
+        >
           Bienvenue dans votre carnet de bord.
         </div>
         <br />
@@ -46,7 +44,7 @@ const WelcomePage = ({ startCourse }) => {
           vous puissiez répondre librement à certaines questions.
         </div>
         <br />
-        <div style={{ textAlign: "justify" }}>
+        <div style={{ textAlign: "justify", fontWeight: 600 }}>
           Comment fonctionne ce carnet de bord ?
         </div>
         <br />

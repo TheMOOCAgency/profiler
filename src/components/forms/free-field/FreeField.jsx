@@ -62,7 +62,7 @@ const renderCustomInput = ({ input }) => {
       autoComplete="off"
       {...input}
       inputProps={{
-        maxLength: 500
+        maxLength: 1000
       }}
     />
   );
@@ -75,7 +75,7 @@ const FreeField = ({
   submitting,
   setScormData
 }) => {
-  const { questions, button, topic, wording } = test;
+  const { questions, button, topic, wording, additionalText } = test;
 
   const createMarkup = element => {
     return { __html: element };
@@ -102,7 +102,11 @@ const FreeField = ({
                 />
               )}
             </div>
-            <Field name={question.id} component={renderCustomInput} />
+            <Field
+              name={question.id}
+              component={renderCustomInput}
+              style={{ width: "100%" }}
+            />
           </Grid>
         </FormControl>
       );
@@ -132,6 +136,15 @@ const FreeField = ({
             }}
           >
             {topic.toUpperCase()}
+            <span
+              style={{
+                // fontStyle: "italic",
+                fontSize: "10px",
+                marginLeft: "5px"
+              }}
+            >
+              {additionalText}
+            </span>
           </h4>
         )}
         <Fragment>

@@ -45,28 +45,33 @@ const ProfilerApp = () => {
   const [hasStarted, setHasStarted] = useState();
   const [pageIndex, setPageIndex] = useState(0);
   const [isLoading, setLoader] = useState(true);
-  const [isFinished, setFinish] = useState(false);
+  // const [isFinished, setFinish] = useState(false);
   const allResults = useSelector(state => state.form);
 
-  const checkCompletion = () => {
-    console.log(allResults);
-    let errors = [];
-    Object.keys(allResults).map(x => {
-      console.log(x);
-      if (allResults[x].syncErrors) {
-        errors.push(true);
-      } else {
-        errors.push(false);
-      }
-    });
-    console.log(errors);
-  };
+  // const checkCompletion = () => {
+  //   console.log(allResults);
+  //   let errors = [];
+  //   Object.keys(allResults).map(x => {
+  //     console.log(x);
+  //     if (allResults[x].syncErrors) {
+  //       errors.push(true);
+  //     } else {
+  //       errors.push(false);
+  //     }
+  //   });
+  //   console.log(errors);
+  // };
 
   const setScormData = () => {
+    let values = {};
+    Object.keys(allResults).map(key => {
+      values[key] = {};
+      values[key].values = allResults[key].values;
+    });
     let dataToSuspend = {
       status: true,
       index: pageIndex,
-      results: allResults
+      results: values
     };
     if (
       process.env.NODE_ENV === "development" ||
@@ -153,7 +158,10 @@ const ProfilerApp = () => {
       return (
         <TabPanel value={value} index={index} key={index}>
           <Grid style={{ paddingTop: "40px" }}>
-            <Paper className={classes.paper} onClick={() => checkCompletion()}>
+            <Paper
+              className={classes.paper}
+              onClick={() => console.log(allResults)}
+            >
               <ExercisePage
                 skill={skill}
                 skills={skills}
