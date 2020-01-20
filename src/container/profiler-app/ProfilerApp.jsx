@@ -66,7 +66,7 @@ const ProfilerApp = () => {
     let values = {};
     Object.keys(allResults).map(key => {
       values[key] = {};
-      values[key].values = allResults[key].values;
+      return (values[key].values = allResults[key].values);
     });
     let dataToSuspend = {
       status: true,
@@ -120,14 +120,14 @@ const ProfilerApp = () => {
   }, []);
 
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    setValue(newValue - 1);
   };
 
   const renderTabs = () => {
     return (
       <AppBar position="fixed" color="default">
         <Tabs
-          value={value}
+          value={value + 1}
           onChange={handleChange}
           variant="scrollable"
           scrollButtons="auto"
@@ -138,12 +138,13 @@ const ProfilerApp = () => {
             }
           }}
         >
+          <Tab label="ACCUEIL" onClick={() => setHasStarted(false)} />
           {skills.map((skill, index) => {
             return (
               <Tab
                 key={index}
                 label={skill.name}
-                {...a11yProps(index)}
+                {...a11yProps(index + 1)}
                 className={classes.tab}
               />
             );
@@ -158,10 +159,7 @@ const ProfilerApp = () => {
       return (
         <TabPanel value={value} index={index} key={index}>
           <Grid style={{ paddingTop: "40px" }}>
-            <Paper
-              className={classes.paper}
-              onClick={() => console.log(allResults)}
-            >
+            <Paper className={classes.paper}>
               <ExercisePage
                 skill={skill}
                 skills={skills}

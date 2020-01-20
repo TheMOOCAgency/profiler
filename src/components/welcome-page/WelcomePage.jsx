@@ -18,8 +18,7 @@ const WelcomePage = ({ startCourse }) => {
       <img src={logo} alt="logo" style={{ height: "100px" }} />
       <Grid item lg={7} md={12} sm={12} xs={12}>
         <div
-          style={{ textAlign: "justify" }}
-          style={{ marginTop: "50px", fontWeight: 600 }}
+          style={{ marginTop: "50px", fontWeight: 600, textAlign: "justify" }}
         >
           Bienvenue dans votre carnet de bord.
         </div>

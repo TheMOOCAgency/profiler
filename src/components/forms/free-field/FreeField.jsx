@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment } from "react";
 import { reduxForm, Field } from "redux-form";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -62,7 +62,7 @@ const renderCustomInput = ({ input }) => {
       autoComplete="off"
       {...input}
       inputProps={{
-        maxLength: 1000
+        maxLength: 500
       }}
     />
   );
@@ -80,10 +80,6 @@ const FreeField = ({
   const createMarkup = element => {
     return { __html: element };
   };
-
-  // useEffect(() => {
-  //   console.log(initialValues);
-  // }, []);
 
   const renderInputs = () => {
     return questions.map((question, index) => {
