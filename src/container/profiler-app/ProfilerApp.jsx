@@ -123,6 +123,11 @@ const ProfilerApp = () => {
     setValue(newValue - 1);
   };
 
+  const goToStartPage = () => {
+    setValue(0);
+    setHasStarted(false);
+  };
+
   const renderTabs = () => {
     return (
       <AppBar position="fixed" color="default">
@@ -138,7 +143,7 @@ const ProfilerApp = () => {
             }
           }}
         >
-          <Tab label="ACCUEIL" onClick={() => setHasStarted(false)} />
+          <Tab label="ACCUEIL" onClick={() => goToStartPage()} />
           {skills.map((skill, index) => {
             return (
               <Tab
