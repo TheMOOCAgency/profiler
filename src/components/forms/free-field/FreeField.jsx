@@ -1,5 +1,5 @@
-import React, { Fragment } from "react";
-import { Field, reduxForm } from "redux-form";
+import React, { Fragment, useEffect } from "react";
+import { reduxForm, Field } from "redux-form";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
@@ -51,6 +51,19 @@ const validate = (formValues, props) => {
   return errors;
 };
 
+// THIS COMPONENT HAS TO BE OUT OF THE MAIN COMPONENT, OTHERWISE IT WILL RE-RENDER AT ANY TEXT CHANGE AND LOSE FOCUS
+const renderCustomInput = ({ input }) => {
+  return (
+    <CssTextField
+      id="outlined-multiline-static"
+      multiline
+      rows="6"
+      variant="outlined"
+      autoComplete="off"
+      {...input}
+    />
+  );
+};
 const FreeField = ({
   test,
   handleSubmit,
@@ -64,18 +77,9 @@ const FreeField = ({
     return { __html: element };
   };
 
-  const renderCustomInput = ({ input }) => {
-    return (
-      <CssTextField
-        id="outlined-multiline-static"
-        multiline
-        rows="6"
-        variant="outlined"
-        autoComplete="off"
-        {...input}
-      />
-    );
-  };
+  // useEffect(() => {
+  //   console.log(initialValues);
+  // }, []);
 
   const renderInputs = () => {
     return questions.map((question, index) => {
@@ -153,6 +157,6 @@ const FreeField = ({
 
 export default reduxForm({
   form: "",
-  enableReinitialize: true,
+  // enableReinitialize: true,
   validate
 })(FreeField);

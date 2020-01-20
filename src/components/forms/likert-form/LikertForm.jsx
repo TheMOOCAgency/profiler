@@ -229,6 +229,7 @@ const LikertForm = ({
   } = useStyles(theme);
 
   useEffect(() => {
+    console.log(initialValues);
     if (initialValues && initialValues.question0) {
       formatResults();
       setCompletion(true);
