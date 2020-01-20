@@ -93,9 +93,9 @@ const ProfilerApp = () => {
   };
 
   useEffect(() => {
-    console.log(
-      Base64.encode(window.localStorage.getItem("initialValues")).length
-    );
+    // console.log(
+    //   Base64.encode(window.localStorage.getItem("initialValues")).length
+    // );
     let scormData = null;
     if (
       process.env.NODE_ENV === "development" ||

@@ -494,7 +494,7 @@ const LikertForm = ({
       formatedData.push(rawData);
       setData(formatedData);
       // LIKERT - SINGLE FORM CASE - STACKED BAR
-    } else if (type === "likert" && result === "stackedBarChart") {
+    } else if (type === "likert" && result.type === "stackedBarChart") {
       rawData = {
         name: test.drivers.driver1,
         mark: 0,
