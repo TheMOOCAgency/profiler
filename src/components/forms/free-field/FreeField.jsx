@@ -61,9 +61,13 @@ const renderCustomInput = ({ input }) => {
       variant="outlined"
       autoComplete="off"
       {...input}
+      inputProps={{
+        maxLength: 500
+      }}
     />
   );
 };
+
 const FreeField = ({
   test,
   handleSubmit,

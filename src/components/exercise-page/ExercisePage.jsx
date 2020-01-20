@@ -140,10 +140,10 @@ const ExercisePage = ({
     let inputElem = [];
     if (process.env.NODE_ENV === "development") {
       inputElem = [
-        ...input.getElementsByClassName("PrivateSwitchBase-input-232")
+        ...input.getElementsByClassName("PrivateSwitchBase-input-244")
       ];
     } else {
-      inputElem = [...input.getElementsByClassName("jss232")];
+      inputElem = [...input.getElementsByClassName("jss244")];
     }
 
     // GET ALL RADIO BUTTONS IN ORDER TO REPLACE THEM
@@ -176,11 +176,6 @@ const ExercisePage = ({
       allowTaint: true
     }).then(canvas => {
       const pdf = new jsPDF("p", "pt", [inputWidth / 4, inputHeight / 4], true);
-      // let pageHeight = 595;
-      // let imgWidth = 842;
-      // let heightLeft = input.scrollHeight;
-      // let imgHeight = (canvas.height * imgWidth) / canvas.width;
-      // let position = 15;
       const imgData = canvas.toDataURL("image/jpeg");
       pdf.addImage(
         imgData,
@@ -190,15 +185,6 @@ const ExercisePage = ({
         inputWidth / 4 - 20,
         inputHeight / 4
       );
-      // console.log(imgData);
-      // pdf.addImage(imgData, "JPEG", 15, position, imgWidth, imgHeight);
-      // heightLeft -= pageHeight;
-      // while (heightLeft >= 0) {
-      //   position += heightLeft - imgHeight;
-      //   pdf.addPage();
-      //   pdf.addImage(imgData, "JPEG", 15, position, imgWidth, imgHeight);
-      //   heightLeft -= pageHeight;
-      // }
 
       for (let i = 0; i < originalTag.length; i++) {
         svgElem[i].innerHTML = originalTag[i];

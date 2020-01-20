@@ -45,7 +45,22 @@ const ProfilerApp = () => {
   const [hasStarted, setHasStarted] = useState();
   const [pageIndex, setPageIndex] = useState(0);
   const [isLoading, setLoader] = useState(true);
+  const [isFinished, setFinish] = useState(false);
   const allResults = useSelector(state => state.form);
+
+  const checkCompletion = () => {
+    console.log(allResults);
+    let errors = [];
+    Object.keys(allResults).map(x => {
+      console.log(x);
+      if (allResults[x].syncErrors) {
+        errors.push(true);
+      } else {
+        errors.push(false);
+      }
+    });
+    console.log(errors);
+  };
 
   const setScormData = () => {
     let dataToSuspend = {
@@ -73,6 +88,9 @@ const ProfilerApp = () => {
   };
 
   useEffect(() => {
+    console.log(
+      Base64.encode(window.localStorage.getItem("initialValues")).length
+    );
     let scormData = null;
     if (
       process.env.NODE_ENV === "development" ||
@@ -135,7 +153,7 @@ const ProfilerApp = () => {
       return (
         <TabPanel value={value} index={index} key={index}>
           <Grid style={{ paddingTop: "40px" }}>
-            <Paper className={classes.paper}>
+            <Paper className={classes.paper} onClick={() => checkCompletion()}>
               <ExercisePage
                 skill={skill}
                 skills={skills}
