@@ -22,15 +22,17 @@ const useStyles = makeStyles(theme => ({
 const SubmitButton = ({ children, onClick, disabled }) => {
   const classes = useStyles();
   return (
-    <Button
-      variant="outlined"
-      onClick={onClick}
-      className={classes.root}
-      type="submit"
-      disabled={disabled}
-    >
-      {children}
-    </Button>
+    <div className="button-parent">
+      <Button
+        variant="outlined"
+        onClick={onClick}
+        className={classes.root}
+        type="submit"
+        disabled={disabled}
+      >
+        {children}
+      </Button>
+    </div>
   );
 };
 

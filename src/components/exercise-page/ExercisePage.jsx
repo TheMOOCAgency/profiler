@@ -138,6 +138,8 @@ const ExercisePage = ({
     // CONVERT ALL SVG IN PICTURES
     // GET ALL RADIO BUTTONS INPUT IN ORDER TO GET THEIR STATUS
     let inputElem = [];
+    let textElem = [...input.getElementsByClassName("MuiInputBase-multiline")];
+    let buttonElem = [...input.getElementsByClassName("button-parent")];
     if (process.env.NODE_ENV === "development") {
       inputElem = [
         ...input.getElementsByClassName("PrivateSwitchBase-input-244")
@@ -149,6 +151,19 @@ const ExercisePage = ({
     // GET ALL RADIO BUTTONS IN ORDER TO REPLACE THEM
     let svgElem = [...input.getElementsByClassName("radioSVG")];
     let originalTag = [];
+    let originalTextArea = [];
+    let originalButton = [];
+
+    for (let i = 0; i < textElem.length; i++) {
+      originalTextArea.push(textElem[i].innerHTML);
+      textElem[i].innerHTML = `<div>${textElem[i].textContent}</div>`;
+    }
+
+    for (let i = 0; i < buttonElem.length; i++) {
+      originalButton.push(buttonElem[i].innerHTML);
+      buttonElem[i].innerHTML = `<div/>`;
+    }
+
     for (let i = 0; i < svgElem.length; i++) {
       if (inputElem[i].checked) {
         // STORE ORIGINAL HTML IN ORDER TO RE-USE IT
@@ -188,6 +203,14 @@ const ExercisePage = ({
 
       for (let i = 0; i < originalTag.length; i++) {
         svgElem[i].innerHTML = originalTag[i];
+      }
+
+      for (let i = 0; i < originalTextArea.length; i++) {
+        textElem[i].innerHTML = originalTextArea[i];
+      }
+
+      for (let i = 0; i < originalButton.length; i++) {
+        buttonElem[i].innerHTML = originalButton[i];
       }
 
       pdf.save(`${skill.name}.pdf`);
