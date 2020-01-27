@@ -148,38 +148,39 @@ const ExercisePage = ({
     } else {
       inputElem = [...input.getElementsByClassName("jss244")];
     }
-    setLoader(true);
+    // setLoader(true);
     // GET ALL RADIO BUTTONS IN ORDER TO REPLACE THEM
     let svgElem = [...input.getElementsByClassName("radioSVG")];
-    let originalTag = [];
-    let originalTextArea = [];
-    let originalButton = [];
+    let originalRadioButtons = [];
+    let originalTextAreas = [];
+    let originalButtons = [];
 
     for (let i = 0; i < textElem.length; i++) {
-      originalTextArea.push(textElem[i].innerHTML);
+      originalTextAreas.push(textElem[i].innerHTML);
       textElem[i].innerHTML = `<div>${textElem[i].textContent}</div>`;
     }
 
     for (let i = 0; i < buttonElem.length; i++) {
-      originalButton.push(buttonElem[i].innerHTML);
+      originalButtons.push(buttonElem[i].innerHTML);
       buttonElem[i].innerHTML = `<div/>`;
     }
 
     for (let i = 0; i < svgElem.length; i++) {
-      if (svgElem.length > 0 && inputElem[i].checked) {
+      if (inputElem[i] && inputElem[i].checked) {
         // STORE ORIGINAL HTML IN ORDER TO RE-USE IT
-        originalTag.push(svgElem[i].innerHTML);
+        originalRadioButtons.push(svgElem[i].innerHTML);
         // REPLACE ORIGINAL HTML WITH BUTTON PICTURE
         svgElem[
           i
         ].innerHTML = `<img src=${checkedButton} style={{height:'100%', width:'100%'}} ></img>`;
       } else {
-        originalTag.push(svgElem[i].innerHTML);
+        originalRadioButtons.push(svgElem[i].innerHTML);
         svgElem[
           i
         ].innerHTML = `<img src=${button} style={{height:'100%', width:'100%'}} ></img>`;
       }
     }
+    console.log(input.scrollWidth);
     let inputWidth = input.scrollWidth;
     let inputHeight = input.scrollHeight;
 
@@ -202,20 +203,20 @@ const ExercisePage = ({
         inputHeight / 4
       );
 
-      for (let i = 0; i < originalTag.length; i++) {
-        svgElem[i].innerHTML = originalTag[i];
+      for (let i = 0; i < originalRadioButtons.length; i++) {
+        svgElem[i].innerHTML = originalRadioButtons[i];
       }
 
-      for (let i = 0; i < originalTextArea.length; i++) {
-        textElem[i].innerHTML = originalTextArea[i];
+      for (let i = 0; i < originalTextAreas.length; i++) {
+        textElem[i].innerHTML = originalTextAreas[i];
       }
 
-      for (let i = 0; i < originalButton.length; i++) {
-        buttonElem[i].innerHTML = originalButton[i];
+      for (let i = 0; i < originalButtons.length; i++) {
+        buttonElem[i].innerHTML = originalButtons[i];
       }
 
       pdf.save(`${skill.name}.pdf`);
-      setLoader(false);
+      // setLoader(false);
       setIsPrinted(true);
     });
   };

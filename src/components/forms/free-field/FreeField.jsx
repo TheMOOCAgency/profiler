@@ -55,7 +55,7 @@ const validate = (formValues, props) => {
 const renderCustomInput = ({ input }) => {
   return (
     <CssTextField
-      id="outlined-multiline-static"
+      // id="outlined-multiline-static"
       multiline
       rows="6"
       variant="outlined"
@@ -85,7 +85,7 @@ const FreeField = ({
     return questions.map((question, index) => {
       return (
         <FormControl key={question.id}>
-          <Grid container key={question.id}>
+          <Grid container>
             <div style={{ margin: "30px 0 10px 0" }}>
               {question.text && questions.length > 1
                 ? index + 1 + ". " + question.text
