@@ -89,7 +89,6 @@ const ProfilerApp = () => {
 
   const startCourse = async () => {
     await setHasStarted(true);
-    setScormData();
   };
 
   useEffect(() => {
@@ -114,6 +113,7 @@ const ProfilerApp = () => {
         setInitialValues(JSON.parse(Base64.decode(scormData)).results);
         setPageIndex(JSON.parse(Base64.decode(scormData)).index);
         setHasStarted(JSON.parse(Base64.decode(scormData)).status);
+        Scorm.setSuspendData(scormData);
       }
     }
     setLoader(false);
@@ -171,6 +171,7 @@ const ProfilerApp = () => {
                 parentIndex={index}
                 initialValues={initialValues}
                 setScormData={setScormData}
+                setLoader={setLoader}
               />
             </Paper>
           </Grid>

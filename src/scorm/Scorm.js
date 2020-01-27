@@ -10,12 +10,13 @@ let Scorm = {
     }
   },
   getSuspendData() {
-    return SCORM.get("cmi.suspend_data");
+    let result = SCORM.get("cmi.suspend_data");
+    return result;
   },
-
-  setSuspendData(data) {
-    SCORM.set("cmi.suspend_data", data);
+  async setSuspendData(data) {
+    await SCORM.set("cmi.suspend_data", data);
     SCORM.set("cmi.exit", "suspend");
+    SCORM.save();
   }
 };
 

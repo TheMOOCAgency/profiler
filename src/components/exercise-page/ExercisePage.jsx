@@ -16,7 +16,8 @@ const ExercisePage = ({
   skill,
   parentIndex,
   initialValues,
-  setScormData
+  setScormData,
+  setLoader
 }) => {
   const [isPrinted, setIsPrinted] = useState(false);
   const { topic, wording } = skills[parentIndex];
@@ -147,7 +148,7 @@ const ExercisePage = ({
     } else {
       inputElem = [...input.getElementsByClassName("jss244")];
     }
-
+    setLoader(true);
     // GET ALL RADIO BUTTONS IN ORDER TO REPLACE THEM
     let svgElem = [...input.getElementsByClassName("radioSVG")];
     let originalTag = [];
@@ -165,7 +166,7 @@ const ExercisePage = ({
     }
 
     for (let i = 0; i < svgElem.length; i++) {
-      if (inputElem[i].checked) {
+      if (svgElem.length > 0 && inputElem[i].checked) {
         // STORE ORIGINAL HTML IN ORDER TO RE-USE IT
         originalTag.push(svgElem[i].innerHTML);
         // REPLACE ORIGINAL HTML WITH BUTTON PICTURE
@@ -214,6 +215,7 @@ const ExercisePage = ({
       }
 
       pdf.save(`${skill.name}.pdf`);
+      setLoader(false);
       setIsPrinted(true);
     });
   };

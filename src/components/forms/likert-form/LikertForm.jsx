@@ -184,15 +184,18 @@ const radioButtons = ({
 );
 
 /* MAIN COMPONENT */
-const LikertForm = ({
-  handleSubmit,
-  pristine,
-  submitting,
-  test,
-  theme,
-  setScormData,
-  initialValues
-}) => {
+const LikertForm = props => {
+  const {
+    handleSubmit,
+    pristine,
+    submitting,
+    test,
+    theme,
+    setScormData,
+    initialValues,
+    valid,
+    anyTouched
+  } = props;
   const {
     questions,
     answers,
@@ -206,8 +209,10 @@ const LikertForm = ({
     topic,
     dataForms,
     wording,
-    additionalText
+    additionalText,
+    validationError
   } = test;
+  // console.log(errors);
 
   const [isCompleted, setCompletion] = useState(false);
   const [size, setSize] = useState({});
@@ -385,13 +390,33 @@ const LikertForm = ({
     return (
       <Fragment>
         {!isCompleted && result ? (
-          <SubmitButton disabled={pristine || submitting}>
-            <Fragment>{button1}</Fragment>
-          </SubmitButton>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              fontSize: "12px",
+              color: "#b71b60"
+            }}
+          >
+            {anyTouched && !valid && validationError}
+            <SubmitButton disabled={pristine || submitting}>
+              <Fragment>{button1}</Fragment>
+            </SubmitButton>
+          </div>
         ) : (
-          <SubmitButton>
-            <Fragment>{button2}</Fragment>
-          </SubmitButton>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              fontSize: "12px",
+              color: "#b71b60"
+            }}
+          >
+            {anyTouched && !valid && validationError}
+            <SubmitButton>
+              <Fragment>{button2}</Fragment>
+            </SubmitButton>
+          </div>
           // <Grid
           //   item
           //   md={12}

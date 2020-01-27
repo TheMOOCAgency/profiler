@@ -13,6 +13,7 @@ window.props = {
           {
             name: "likert1-1",
             type: "likert",
+            validationError: "Vous n'avez pas répondu à tous les énoncés.",
             button1: "VISUALISEZ VOS RESULTATS",
             button2: "ACTUALISEZ VOS RESULTATS",
             result: { type: "histogram", legend: true },
@@ -327,7 +328,7 @@ window.props = {
           {
             type: "free-field",
             name: "freeField2-1",
-            button: "ENREGISTRER MA REPONSE",
+            button: "ENREGISTRER MES REPONSES",
             questions: [
               {
                 id: "field0",
@@ -373,6 +374,7 @@ window.props = {
           {
             name: "likert3-1",
             type: "likert",
+            validationError: "Vous n'avez pas répondu à tous les énoncés.",
             topic: "Mes filtres de perception",
             button1: "VISUALISEZ VOS RESULTATS",
             button2: "ACTUALISEZ VOS RESULTATS",
@@ -552,7 +554,7 @@ window.props = {
             type: "free-field",
             name: "freeField3-2",
             topic: "Mes valeurs",
-            button: "ENREGISTRER MA REPONSE",
+            button: "ENREGISTRER MES REPONSES",
             questions: [
               {
                 id: "field0",
@@ -579,6 +581,7 @@ window.props = {
           {
             name: "likert3-3",
             type: "likert",
+            validationError: "Vous n'avez pas répondu à tous les énoncés.",
             topic: "Mes besoins",
             button1: "VISUALISEZ VOS RESULTATS",
             button2: "ACTUALISEZ VOS RESULTATS",
@@ -586,11 +589,11 @@ window.props = {
               type: "histogram",
               legend: true,
               interpretation:
-                "Ce test vous permet de voir comment vous hiérarchisez vos besoin. Même si tous ces besoins sont importants, chaque individu à des besoins qu'il considère comme plus importants que d'autres.",
+                "Ce test vous permet de voir comment vous hiérarchisez vos besoins : plus une barre est longue sur l’histogramme, plus le besoin correspondant est important pour vous. En effet, même si tous ces besoins sont importants, chaque individu à des besoins qu'il considère comme plus importants que d'autres.",
               multiColor: false
             },
             wording:
-              "Lisez avec attention chacun des énoncés et indiquez à quel ce besoin est important pour vous ou non. Essayez de répondre le plus spontanément possible. Ne répondez pas ce que vous croyez devoir répondre pour avoir de bons résultats à ce test, il n’y a pas de bonnes ou de mauvaises réponses, ni de bons ou de mauvais résultats.",
+              "Lisez avec attention chacun des énoncés et indiquez à quel point ce besoin est important pour vous ou non. Essayez de répondre le plus spontanément possible. Ne répondez pas ce que vous croyez devoir répondre pour avoir de bons résultats à ce test, il n’y a pas de bonnes ou de mauvaises réponses, ni de bons ou de mauvais résultats.",
             drivers: {
               driver1: "Subsistance",
               driver2: "Protection",
@@ -669,7 +672,7 @@ window.props = {
           {
             type: "free-field",
             name: "freeField3-4",
-            button: "ENREGISTRER MA REPONSE",
+            button: "ENREGISTRER MES REPONSES",
             questions: [
               {
                 id: "field0",
@@ -684,7 +687,7 @@ window.props = {
             topic: "Mes croyances",
             additionalText:
               "( Le bloc 'Mes Croyances' est à remplir lors d'une activité en présentiel. Ne remplissez pas ces champs si vous êtes à distance )",
-            button: "ENREGISTRER MA REPONSE",
+            button: "ENREGISTRER MES REPONSES",
             questions: [
               {
                 id: "field0",
@@ -712,7 +715,7 @@ window.props = {
             type: "free-field",
             name: "freeField3-6",
             topic: "Mes émotions",
-            button: "ENREGISTRER MA REPONSE",
+            button: "ENREGISTRER MES REPONSES",
             questions: [
               {
                 id: "field0",
@@ -730,7 +733,7 @@ window.props = {
             type: "free-field",
             name: "freeField3-7",
             topic: "Synthèse",
-            button: "ENREGISTRER MA REPONSE",
+            button: "ENREGISTRER MES REPONSES",
             questions: [
               {
                 id: "field0",
@@ -758,6 +761,7 @@ window.props = {
         tests: [
           {
             type: "true-or-false",
+            validationError: "Vous n'avez pas répondu à tous les énoncés.",
             topic: "Résilience",
             name: "trueorfalse4-1",
             button1: "VISUALISEZ VOS RESULTATS",
@@ -848,6 +852,7 @@ window.props = {
           },
           {
             type: "true-or-false",
+            validationError: "Vous n'avez pas répondu à tous les énoncés.",
             topic: "Perspective",
             name: "trueorfalse4-2",
             button1: "VISUALISEZ VOS RESULTATS",
@@ -938,6 +943,7 @@ window.props = {
           },
           {
             type: "true-or-false",
+            validationError: "Vous n'avez pas répondu à tous les énoncés.",
             topic: "Intuition sociale",
             name: "trueorfalse4-3",
             button1: "VISUALISEZ VOS RESULTATS",
@@ -1028,6 +1034,7 @@ window.props = {
           },
           {
             type: "true-or-false",
+            validationError: "Vous n'avez pas répondu à tous les énoncés.",
             topic: "Conscience de soi",
             name: "trueorfalse4-4",
             button1: "VISUALISEZ VOS RESULTATS",
@@ -1118,6 +1125,7 @@ window.props = {
           },
           {
             type: "true-or-false",
+            validationError: "Vous n'avez pas répondu à tous les énoncés.",
             topic: "Sensibilité au contexte",
             name: "trueorfalse4-5",
             button1: "VISUALISEZ VOS RESULTATS",
@@ -1208,6 +1216,7 @@ window.props = {
           },
           {
             type: "true-or-false",
+            validationError: "Vous n'avez pas répondu à tous les énoncés.",
             topic: "Attention",
             name: "trueorfalse4-6",
             button1: "VISUALISEZ VOS RESULTATS",
@@ -1299,6 +1308,7 @@ window.props = {
           {
             name: "likert4-7",
             type: "likert",
+            validationError: "Vous n'avez pas répondu à tous les énoncés.",
             topic: "Testez votre intelligence émotionnelle",
             wording:
               "Lisez avec attention chacun des énoncés et indiquez à quelle fréquence cet énoncé est vrai pour vous. Essayez de répondre le plus spontanément possible. Ne répondez pas ce que vous croyez devoir répondre pour avoir de bons résultats à ce test, il n’y a pas de bonnes ou de mauvaises réponses, ni de bons ou de mauvais résultats.",
@@ -1510,7 +1520,7 @@ window.props = {
             type: "free-field",
             name: "freeField5-1",
             topic: "Gestion des conflits",
-            button: "ENREGISTRER MA REPONSE",
+            button: "ENREGISTRER MES REPONSES",
             questions: [
               {
                 id: "field0",
@@ -1539,6 +1549,7 @@ window.props = {
           {
             name: "likert5-2",
             type: "likert",
+            validationError: "Vous n'avez pas répondu à tous les énoncés.",
             result: {
               type: "histogram",
               legend: true,
@@ -1549,7 +1560,7 @@ window.props = {
             button1: "VISUALISEZ VOS RESULTATS",
             button2: "ACTUALISEZ VOS RESULTATS",
             wording:
-              "Réfléchissez à votre façon d'agir en situation de conflit, c'est à dire lorsqu'une ou plusieurs personnes vont à l'encontre de ce que vous désirez. Pour chacune des affirmations ci-dessous, inscrivez dans l'espace prévu à cette fin le chiffre qui correspond le mieux à la probabilité que vous adoptiez la réaction mentionnée, dans une situation de conflit.",
+              "Pour chacune des affirmations ci-dessous, inscrivez dans l'espace prévu à cette fin le chiffre qui correspond le mieux à la probabilité que vous adoptiez la réaction mentionnée, dans une situation de conflit.",
             drivers: {
               driver1: "Compromis",
               driver2: "Evitement",
@@ -1657,7 +1668,7 @@ window.props = {
             type: "free-field",
             topic: "Gestion du stress",
             name: "freeField5-3",
-            button: "ENREGISTRER MA REPONSE",
+            button: "ENREGISTRER MES REPONSES",
             questions: [
               {
                 id: "field0",
@@ -1679,7 +1690,7 @@ window.props = {
           {
             type: "free-field",
             name: "freeField6-1",
-            button: "ENREGISTRER MA REPONSE",
+            button: "ENREGISTRER MES REPONSES",
             questions: [
               {
                 id: "field0",
@@ -1700,6 +1711,7 @@ window.props = {
           {
             name: "likert6-2",
             type: "likert",
+            validationError: "Vous n'avez pas répondu à tous les énoncés.",
             result: {
               type: "xyChart",
               score: [
@@ -1840,7 +1852,7 @@ window.props = {
           {
             type: "free-field",
             name: "freeField6-3",
-            button: "ENREGISTRER MA REPONSE",
+            button: "ENREGISTRER MES REPONSES",
             questions: [
               {
                 id: "field0",
@@ -1874,7 +1886,7 @@ window.props = {
             type: "free-field",
             name: "freeField7-3",
             topic: "Mes atouts",
-            button: "ENREGISTRER MA REPONSE",
+            button: "ENREGISTRER MES REPONSES",
             questions: [
               {
                 id: "field0",
@@ -1903,7 +1915,7 @@ window.props = {
             type: "free-field",
             name: "freeField7-4",
             topic: "Mon plan d'action",
-            button: "ENREGISTRER MA REPONSE",
+            button: "ENREGISTRER MES REPONSES",
             questions: [
               {
                 id: "field0",
@@ -1923,7 +1935,7 @@ window.props = {
           {
             type: "free-field",
             name: "freeField8-1",
-            button: "ENREGISTRER MA REPONSE",
+            button: "ENREGISTRER MES REPONSES",
             questions: [
               {
                 id: "field0",
