@@ -18,6 +18,9 @@ const CssTextField = withStyles({
       borderBottomColor: "#b71b60"
     },
     "& .MuiOutlinedInput-root": {
+      // width: "100%",
+      // whiteSpace: "pre-wrap",
+      // overflowWrap: "break-word",
       "& fieldset": {
         borderColor: "#b71b60"
       },
@@ -55,9 +58,8 @@ const validate = (formValues, props) => {
 const renderCustomInput = ({ input }) => {
   return (
     <CssTextField
-      // id="outlined-multiline-static"
       multiline
-      rows="6"
+      rows="4"
       variant="outlined"
       autoComplete="off"
       {...input}

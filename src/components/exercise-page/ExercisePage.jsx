@@ -6,8 +6,6 @@ import FreeField from "../../components/forms/free-field/FreeField";
 import Grid from "@material-ui/core/Grid";
 import { FormName } from "redux-form";
 import logo from "../../assets/logo.jpeg";
-import button from "../../assets/radioButton.png";
-import checkedButton from "../../assets/checkedRadioButton.png";
 import SubmitButton from "../forms/submit-button/SubmitButton";
 // import XYChart from "../results/xy-chart/XYChart";
 
@@ -16,10 +14,10 @@ const ExercisePage = ({
   skill,
   parentIndex,
   initialValues,
-  setScormData,
-  setLoader
+  setScormData
 }) => {
   const [isPrinted, setIsPrinted] = useState(false);
+
   const { topic, wording } = skills[parentIndex];
 
   useEffect(() => {
@@ -128,59 +126,61 @@ const ExercisePage = ({
     });
   };
 
-  // const newData = { name: "style", x: 32, y: 24 };
-
-  // const tests = {
-  //   questions: ["", "", "", "", "", "", ""]
-  // };
-
   const printPdf = () => {
+    setScormData();
     const input = document.getElementById(`to-print${parentIndex}`);
     // CONVERT ALL SVG IN PICTURES
     // GET ALL RADIO BUTTONS INPUT IN ORDER TO GET THEIR STATUS
-    let inputElem = [];
-    let textElem = [...input.getElementsByClassName("MuiInputBase-multiline")];
-    let buttonElem = [...input.getElementsByClassName("button-parent")];
-    if (process.env.NODE_ENV === "development") {
-      inputElem = [
-        ...input.getElementsByClassName("PrivateSwitchBase-input-244")
-      ];
-    } else {
-      inputElem = [...input.getElementsByClassName("jss244")];
-    }
-    // setLoader(true);
+    // let inputElem = [];
+    // let textElem = [...input.getElementsByClassName("MuiInputBase-multiline")];
+    // if (process.env.NODE_ENV === "development") {
+    //   inputElem = [
+    //     ...input.getElementsByClassName("PrivateSwitchBase-input-244")
+    //   ];
+    // } else {
+    //   inputElem = [...input.getElementsByClassName("jss244")];
+    // }
     // GET ALL RADIO BUTTONS IN ORDER TO REPLACE THEM
-    let svgElem = [...input.getElementsByClassName("radioSVG")];
-    let originalRadioButtons = [];
-    let originalTextAreas = [];
-    let originalButtons = [];
+    // let svgElem = [...input.getElementsByClassName("radioSVG")];
+    // let originalRadioButtons = [];
+    // let originalTextAreas = [];
+    // let originalButtons = [];
 
-    for (let i = 0; i < textElem.length; i++) {
-      originalTextAreas.push(textElem[i].innerHTML);
-      textElem[i].innerHTML = `<div>${textElem[i].textContent}</div>`;
-    }
+    // for (let i = 0; i < textElem.length; i++) {
+    //   originalTextAreas.push(textElem[i].innerHTML);
+    //   textElem[
+    //     i
+    //   ].innerHTML = `<div contenteditable="true">${textElem[i].textContent}</div>`;
+    // }
 
-    for (let i = 0; i < buttonElem.length; i++) {
-      originalButtons.push(buttonElem[i].innerHTML);
-      buttonElem[i].innerHTML = `<div/>`;
-    }
+    // for (let i = 0; i < svgElem.length; i++) {
+    //   if (inputElem[i] && inputElem[i].checked) {
+    //     // STORE ORIGINAL HTML IN ORDER TO RE-USE IT
+    //     originalRadioButtons.push(svgElem[i].innerHTML);
+    //     // REPLACE ORIGINAL HTML WITH BUTTON PICTURE
+    //     svgElem[
+    //       i
+    //     ].innerHTML = `<img src=${checkedButton} style={{height:'100%', width:'100%'}} ></img>`;
+    //   } else {
+    //     originalRadioButtons.push(svgElem[i].innerHTML);
+    //     svgElem[
+    //       i
+    //     ].innerHTML = `<img src=${button} style={{height:'100%', width:'100%'}} ></img>`;
+    //   }
+    // }
 
-    for (let i = 0; i < svgElem.length; i++) {
-      if (inputElem[i] && inputElem[i].checked) {
-        // STORE ORIGINAL HTML IN ORDER TO RE-USE IT
-        originalRadioButtons.push(svgElem[i].innerHTML);
-        // REPLACE ORIGINAL HTML WITH BUTTON PICTURE
-        svgElem[
-          i
-        ].innerHTML = `<img src=${checkedButton} style={{height:'100%', width:'100%'}} ></img>`;
-      } else {
-        originalRadioButtons.push(svgElem[i].innerHTML);
-        svgElem[
-          i
-        ].innerHTML = `<img src=${button} style={{height:'100%', width:'100%'}} ></img>`;
-      }
-    }
-    console.log(input.scrollWidth);
+    const svgElements = document.body.querySelectorAll("svg");
+    svgElements.forEach(function(item) {
+      item.setAttribute("width", item.getBoundingClientRect().width);
+      item.style.width = null;
+    });
+    const textElements = document.body.querySelectorAll("textarea");
+    console.log(textElements[0].style);
+    textElements.forEach(function(item) {
+      item.setAttribute("height", item.getBoundingClientRect().height);
+      item.setAttribute("overflowWrap", "break-word");
+      item.style.overflowWrap = "break-word";
+    });
     let inputWidth = input.scrollWidth;
     let inputHeight = input.scrollHeight;
 
@@ -203,17 +203,13 @@ const ExercisePage = ({
         inputHeight / 4
       );
 
-      for (let i = 0; i < originalRadioButtons.length; i++) {
-        svgElem[i].innerHTML = originalRadioButtons[i];
-      }
+      // for (let i = 0; i < originalRadioButtons.length; i++) {
+      //   svgElem[i].innerHTML = originalRadioButtons[i];
+      // }
 
-      for (let i = 0; i < originalTextAreas.length; i++) {
-        textElem[i].innerHTML = originalTextAreas[i];
-      }
-
-      for (let i = 0; i < originalButtons.length; i++) {
-        buttonElem[i].innerHTML = originalButtons[i];
-      }
+      // for (let i = 0; i < originalTextAreas.length; i++) {
+      //   textElem[i].innerHTML = originalTextAreas[i];
+      // }
 
       pdf.save(`${skill.name}.pdf`);
       // setLoader(false);
