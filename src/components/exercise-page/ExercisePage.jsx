@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useState } from "react";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import LikertForm from "../../components/forms/likert-form/LikertForm";
@@ -7,6 +7,8 @@ import Grid from "@material-ui/core/Grid";
 import { FormName } from "redux-form";
 import logo from "../../assets/logo.jpeg";
 import SubmitButton from "../forms/submit-button/SubmitButton";
+import CircularProgress from "@material-ui/core/CircularProgress";
+
 // import XYChart from "../results/xy-chart/XYChart";
 
 const ExercisePage = ({
@@ -16,16 +18,15 @@ const ExercisePage = ({
   initialValues,
   setScormData
 }) => {
-  const [isPrinted, setIsPrinted] = useState(false);
+  const [isPrinted, setIsPrinted] = useState(true);
 
   const { topic, wording } = skills[parentIndex];
 
-  useEffect(() => {
-    if (isPrinted === true) {
-      setIsPrinted(false);
-      console.log("isprinted");
-    }
-  }, [isPrinted]);
+  // useEffect(() => {
+  //   if (isPrinted === true) {
+  //     setIsPrinted(false);
+  //   }
+  // }, [isPrinted]);
 
   const renderWording = () => {
     return (
@@ -128,59 +129,37 @@ const ExercisePage = ({
 
   const printPdf = () => {
     setScormData();
-    const input = document.getElementById(`to-print${parentIndex}`);
+    const inputToClone = document.getElementById(`to-print${parentIndex}`);
+    setIsPrinted(false);
+    window.scrollTo(0, 0);
+    const input = document
+      .getElementById("clone")
+      .appendChild(inputToClone.cloneNode(true));
     // CONVERT ALL SVG IN PICTURES
     // GET ALL RADIO BUTTONS INPUT IN ORDER TO GET THEIR STATUS
-    // let inputElem = [];
-    // let textElem = [...input.getElementsByClassName("MuiInputBase-multiline")];
-    // if (process.env.NODE_ENV === "development") {
-    //   inputElem = [
-    //     ...input.getElementsByClassName("PrivateSwitchBase-input-244")
-    //   ];
-    // } else {
-    //   inputElem = [...input.getElementsByClassName("jss244")];
-    // }
-    // GET ALL RADIO BUTTONS IN ORDER TO REPLACE THEM
-    // let svgElem = [...input.getElementsByClassName("radioSVG")];
-    // let originalRadioButtons = [];
-    // let originalTextAreas = [];
-    // let originalButtons = [];
+    let textsElem = [...input.getElementsByClassName("MuiInputBase-multiline")];
+    let buttonsElem = [...input.getElementsByClassName("button-parent")];
+    let originalTextAreas = [];
+    let originalButtons = [];
 
-    // for (let i = 0; i < textElem.length; i++) {
-    //   originalTextAreas.push(textElem[i].innerHTML);
-    //   textElem[
-    //     i
-    //   ].innerHTML = `<div contenteditable="true">${textElem[i].textContent}</div>`;
-    // }
+    for (let i = 0; i < textsElem.length; i++) {
+      originalTextAreas.push(textsElem[i].innerHTML);
+      textsElem[
+        i
+      ].innerHTML = `<div contenteditable="true">${textsElem[i].textContent}</div>`;
+    }
 
-    // for (let i = 0; i < svgElem.length; i++) {
-    //   if (inputElem[i] && inputElem[i].checked) {
-    //     // STORE ORIGINAL HTML IN ORDER TO RE-USE IT
-    //     originalRadioButtons.push(svgElem[i].innerHTML);
-    //     // REPLACE ORIGINAL HTML WITH BUTTON PICTURE
-    //     svgElem[
-    //       i
-    //     ].innerHTML = `<img src=${checkedButton} style={{height:'100%', width:'100%'}} ></img>`;
-    //   } else {
-    //     originalRadioButtons.push(svgElem[i].innerHTML);
-    //     svgElem[
-    //       i
-    //     ].innerHTML = `<img src=${button} style={{height:'100%', width:'100%'}} ></img>`;
-    //   }
-    // }
+    for (let i = 0; i < buttonsElem.length; i++) {
+      originalButtons.push(buttonsElem[i].innerHTML);
+      buttonsElem[i].innerHTML = `<div/>`;
+    }
 
     const svgElements = document.body.querySelectorAll("svg");
     svgElements.forEach(function(item) {
       item.setAttribute("width", item.getBoundingClientRect().width);
       item.style.width = null;
     });
-    const textElements = document.body.querySelectorAll("textarea");
-    console.log(textElements[0].style);
-    textElements.forEach(function(item) {
-      item.setAttribute("height", item.getBoundingClientRect().height);
-      item.setAttribute("overflowWrap", "break-word");
-      item.style.overflowWrap = "break-word";
-    });
+
     let inputWidth = input.scrollWidth;
     let inputHeight = input.scrollHeight;
 
@@ -203,22 +182,61 @@ const ExercisePage = ({
         inputHeight / 4
       );
 
-      // for (let i = 0; i < originalRadioButtons.length; i++) {
-      //   svgElem[i].innerHTML = originalRadioButtons[i];
-      // }
+      for (let i = 0; i < originalTextAreas.length; i++) {
+        textsElem[i].innerHTML = originalTextAreas[i];
+      }
 
-      // for (let i = 0; i < originalTextAreas.length; i++) {
-      //   textElem[i].innerHTML = originalTextAreas[i];
-      // }
+      for (let i = 0; i < originalButtons.length; i++) {
+        buttonsElem[i].innerHTML = originalButtons[i];
+      }
 
+      input.innerHTML = "<div/>";
       pdf.save(`${skill.name}.pdf`);
-      // setLoader(false);
       setIsPrinted(true);
     });
   };
-
+  // if (!isPrinted) {
+  //   return (
+  //     <Grid
+  //       container
+  //       style={{
+  //         display: "flex",
+  //         flexDirection: "column",
+  //         alignItems: "center",
+  //         justifyContent: "center",
+  //         width: "100%",
+  //         height: "100%",
+  //         padding: "20px"
+  //       }}
+  //     >
+  //       <CircularProgress size={300} />
+  //     </Grid>
+  //   );
+  // }
   return (
-    <Grid container id={`to-print${parentIndex}`}>
+    <Grid
+      container
+      id={`to-print${parentIndex}`}
+      style={{ position: "relative" }}
+    >
+      {!isPrinted && (
+        <Grid
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            position: "absolute",
+            width: document.getElementById(`to-print${parentIndex}`)
+              .scrollWidth,
+            height: "100vh",
+            backgroundColor: "white",
+            zIndex: 1000
+          }}
+        >
+          <CircularProgress id="circular-loader" size={300} />
+        </Grid>
+      )}
       <Grid item xs={12}>
         <Fragment>{renderWording()}</Fragment>
         <Fragment>{renderTestType()}</Fragment>

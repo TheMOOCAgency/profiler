@@ -206,6 +206,7 @@ const ProfilerApp = () => {
             <Grid item lg={12} md={12} sm={12} xs={12}>
               {renderPanel()}
             </Grid>
+            <Grid id="clone"></Grid>
           </Grid>
         </Grid>
       );
