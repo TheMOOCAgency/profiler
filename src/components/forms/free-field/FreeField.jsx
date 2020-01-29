@@ -87,7 +87,7 @@ const FreeField = ({
     return questions.map((question, index) => {
       return (
         <FormControl key={question.id}>
-          <Grid container>
+          <Grid container className="reveal">
             <div style={{ margin: "30px 0 10px 0" }}>
               {question.text && questions.length > 1
                 ? index + 1 + ". " + question.text
@@ -121,48 +121,50 @@ const FreeField = ({
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="to-print">
       <FormGroup>
-        {topic && (
-          <h4
-            style={{
-              margin: "0",
-              // fontStyle: "italic",
-              padding: "10px",
-              backgroundColor: "#b71b60",
-              color: "white",
-              borderRadius: "5px",
-              fontSize: "14px"
-            }}
-          >
-            {topic.toUpperCase()}
-            <span
-              style={{
-                // fontStyle: "italic",
-                fontSize: "10px",
-                marginLeft: "5px"
-              }}
-            >
-              {additionalText}
-            </span>
-          </h4>
-        )}
-        <Fragment>
-          {wording && (
+        <div className="reveal">
+          {topic && (
             <h4
               style={{
                 margin: "0",
                 // fontStyle: "italic",
-                fontWeight: "400",
-                padding: "10px 0",
-                fontSize: "14px",
-                textAlign: "justify"
+                padding: "10px",
+                backgroundColor: "#b71b60",
+                color: "white",
+                borderRadius: "5px",
+                fontSize: "14px"
               }}
             >
-              {wording}
+              {topic.toUpperCase()}
+              <span
+                style={{
+                  // fontStyle: "italic",
+                  fontSize: "10px",
+                  marginLeft: "5px"
+                }}
+              >
+                {additionalText}
+              </span>
             </h4>
           )}
-        </Fragment>
+          <Fragment>
+            {wording && (
+              <h4
+                style={{
+                  margin: "0",
+                  // fontStyle: "italic",
+                  fontWeight: "400",
+                  padding: "10px 0",
+                  fontSize: "14px",
+                  textAlign: "justify"
+                }}
+              >
+                {wording}
+              </h4>
+            )}
+          </Fragment>
+        </div>
         <Fragment>{renderInputs()}</Fragment>
-        <SubmitButton disabled={pristine || submitting}>
+        <SubmitButton disabled={pristine || submitting} className="reveal">
           <Fragment>{button}</Fragment>
         </SubmitButton>
       </FormGroup>

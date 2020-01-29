@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import LikertForm from "../../components/forms/likert-form/LikertForm";
@@ -8,6 +8,7 @@ import { FormName } from "redux-form";
 import logo from "../../assets/logo.jpeg";
 import SubmitButton from "../forms/submit-button/SubmitButton";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import ScrollReveal from "scrollreveal";
 
 // import XYChart from "../results/xy-chart/XYChart";
 
@@ -28,9 +29,30 @@ const ExercisePage = ({
   //   }
   // }, [isPrinted]);
 
+  useEffect(() => {
+    ScrollReveal().reveal(".reveal-slow", {
+      delay: 1000,
+      useDelay: "onload",
+      distance: "20px",
+      easing: "cubic-bezier(0.5, 0, 0, 1)",
+      opacity: 0,
+      scale: 0.8,
+      interval: 0.5
+    });
+    ScrollReveal().reveal(".reveal", {
+      delay: 500,
+      useDelay: "onload",
+      distance: "20px",
+      easing: "cubic-bezier(0.5, 0, 0, 1)",
+      opacity: 0,
+      scale: 0.8,
+      interval: 0.5
+    });
+  });
+
   const renderWording = () => {
     return (
-      <Grid id={`print-wording-${parentIndex}`}>
+      <Grid id={`print-wording-${parentIndex}`} className="reveal">
         {(topic || wording) && (
           <Fragment>
             {topic && (

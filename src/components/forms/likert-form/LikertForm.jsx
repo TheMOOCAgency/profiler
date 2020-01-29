@@ -591,7 +591,7 @@ const LikertForm = props => {
   return (
     <Grid style={{ marginBottom: "30px" }}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Fragment>
+        <div className="reveal">
           {topic && (
             <h4
               style={{
@@ -616,8 +616,8 @@ const LikertForm = props => {
               </span>
             </h4>
           )}
-        </Fragment>
-        <Fragment>
+        </div>
+        <div className="reveal-slow">
           {wording && (
             <h4
               style={{
@@ -632,18 +632,20 @@ const LikertForm = props => {
               {wording}
             </h4>
           )}
-        </Fragment>
+        </div>
         <Fragment>
           {!requiredForms && (
-            <div style={{ marginTop: "10px" }}>{renderHeader()}</div>
+            <div style={{ marginTop: "10px" }} className="reveal-slow">
+              {renderHeader()}
+            </div>
           )}
         </Fragment>
         <FormGroup>
-          <Fragment>{renderQuestions(theme)}</Fragment>
-          <Fragment>{renderSubmitButton()}</Fragment>
+          <Grid className="reveal-slow">{renderQuestions(theme)}</Grid>
+          <Grid className="reveal-slow">{renderSubmitButton()}</Grid>
         </FormGroup>
       </form>
-      <Grid>{renderResult()}</Grid>
+      <Grid className="reveal">{renderResult()}</Grid>
     </Grid>
   );
 };
