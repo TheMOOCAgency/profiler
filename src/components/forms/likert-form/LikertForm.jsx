@@ -437,7 +437,19 @@ const LikertForm = props => {
       return (
         isCompleted &&
         result && (
-          <Fragment>
+          <Grid style={{ marginBottom: "40px" }}>
+            <Grid
+              item
+              sm={12}
+              style={{
+                margin: "0",
+                fontStyle: "italic",
+                padding: "10px 0",
+                fontSize: "14px"
+              }}
+            >
+              {result.interpretation}
+            </Grid>
             <BarChart test={test} data={data} />
             <Grid
               item
@@ -451,15 +463,14 @@ const LikertForm = props => {
             >
               {result.interpretation}
             </Grid>
-          </Fragment>
+          </Grid>
         )
       );
     } else if (result.type === "stackedBarChart") {
       return (
         isCompleted &&
         result && (
-          <Fragment>
-            <StackedBarChart test={test} data={data} />
+          <Grid style={{ marginBottom: "40px" }}>
             <Grid
               item
               sm={12}
@@ -472,15 +483,15 @@ const LikertForm = props => {
             >
               {result.interpretation}
             </Grid>
-          </Fragment>
+            <StackedBarChart test={test} data={data} />
+          </Grid>
         )
       );
     } else if (result.type === "xyChart") {
       return (
         isCompleted &&
         result && (
-          <Fragment>
-            <XYChart test={test} data={data} />
+          <Grid style={{ marginBottom: "40px" }}>
             <Grid
               item
               sm={12}
@@ -492,7 +503,8 @@ const LikertForm = props => {
             >
               <div style={{ textAlign: "center" }}>{result.interpretation}</div>
             </Grid>
-          </Fragment>
+            <XYChart test={test} data={data} />
+          </Grid>
         )
       );
     }

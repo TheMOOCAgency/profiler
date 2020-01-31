@@ -18,8 +18,6 @@ const ExercisePage = ({
   initialValues,
   setScormData
 }) => {
-  const [isPrinted, setIsPrinted] = useState(true);
-
   const { topic, wording } = skills[parentIndex];
 
   useEffect(() => {
@@ -32,20 +30,11 @@ const ExercisePage = ({
       scale: 0.8,
       interval: 0.5
     });
-    // ScrollReveal().reveal(".reveal", {
-    //   delay: 500,
-    //   useDelay: "onload",
-    //   distance: "20px",
-    //   easing: "cubic-bezier(0.5, 0, 0, 1)",
-    //   opacity: 0,
-    //   scale: 0.8,
-    //   interval: 0.5
-    // });
   });
 
   const renderWording = () => {
     return (
-      <Grid id={`print-wording-${parentIndex}`} className="reveal">
+      <Grid id={`print-wording-${parentIndex}`}>
         {(topic || wording) && (
           <Fragment>
             {topic && (
@@ -147,7 +136,6 @@ const ExercisePage = ({
 
     // GET EXERCISE PAGE HTML CONTENT
     const inputToClone = document.getElementById(`to-print${parentIndex}`);
-    setIsPrinted(false);
     window.scrollTo(0, 0);
 
     // CLONE HTML IN ORDER TO APPLY TEXTAREA CHANGES WITHOUT MESSING WITH REACT RENDER
@@ -163,7 +151,7 @@ const ExercisePage = ({
     for (let i = 0; i < textsElem.length; i++) {
       textsElem[
         i
-      ].innerHTML = `<div contenteditable="true">${textsElem[i].textContent}</div>`;
+      ].innerHTML = `<div contenteditable="true" style=text-align:justify; >${textsElem[i].textContent}</div>`;
     }
 
     // REMOVE SUBMIT BUTTONS FROM HTML
@@ -186,7 +174,7 @@ const ExercisePage = ({
       x: input.offsetLeft,
       y: input.offsetTop,
       width: inputWidth * 4,
-      height: inputHeight * 4 * 1.13
+      height: inputHeight * 4 * 1.1
       // allowTaint: true
     }).then(canvas => {
       const pdf = new jsPDF("p", "pt", [inputWidth, inputHeight], true);
@@ -196,7 +184,6 @@ const ExercisePage = ({
       // MAKE CLONE DIV EMPTY
       input.innerHTML = "<div/>";
       pdf.save(`${skill.name}.pdf`);
-      setIsPrinted(true);
     });
   };
 
