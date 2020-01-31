@@ -23,15 +23,15 @@ const ExercisePage = ({
   const { topic, wording } = skills[parentIndex];
 
   useEffect(() => {
-    // ScrollReveal().reveal(".reveal-slow", {
-    //   delay: 1000,
-    //   useDelay: "onload",
-    //   distance: "20px",
-    //   easing: "cubic-bezier(0.5, 0, 0, 1)",
-    //   opacity: 0,
-    //   scale: 0.8,
-    //   interval: 0.5
-    // });
+    ScrollReveal().reveal(".smooth-reveal", {
+      delay: 1000,
+      useDelay: "onload",
+      distance: "20px",
+      easing: "cubic-bezier(0.5, 0, 0, 1)",
+      opacity: 0,
+      scale: 0.8,
+      interval: 0.5
+    });
     // ScrollReveal().reveal(".reveal", {
     //   delay: 500,
     //   useDelay: "onload",
@@ -205,6 +205,7 @@ const ExercisePage = ({
       container
       style={{ position: "relative" }}
       id={`to-print${parentIndex}`}
+      className="smooth-reveal"
     >
       <Grid item xs={12}>
         <Grid item xs={12}>
@@ -213,7 +214,11 @@ const ExercisePage = ({
         <Grid item xs={12}>
           {renderTestType()}
         </Grid>
-        <SubmitButton onClick={() => printPdf()} className="reveal-slow">
+        <SubmitButton
+          onClick={() => printPdf()}
+          className="reveal-slow"
+          role="download"
+        >
           <Fragment>Télécharger en PDF</Fragment>
         </SubmitButton>
       </Grid>

@@ -12,6 +12,8 @@ import SubmitButton from "../submit-button/SubmitButton";
 import BarChart from "../../results/bar-chart/BarChart";
 import StackedBarChart from "../../results/stacked-bar-chart/StackedBarChart";
 import XYChart from "../../results/xy-chart/XYChart";
+import likert from "../../../assets/pictos/likert.png";
+import trueOrFalse from "../../../assets/pictos/true-or-false.png";
 
 const CustomRadio = withStyles({
   root: {
@@ -345,18 +347,27 @@ const LikertForm = props => {
                 <h4
                   style={{
                     margin: "0 0 10px 0",
-                    // fontStyle: "italic",
-                    padding: "10px",
+                    position: "relative",
+                    padding: "10px 0 10px 33px",
                     backgroundColor: "#b71b60",
                     color: "white",
                     borderRadius: "5px",
                     fontSize: "14px"
                   }}
                 >
+                  <img
+                    src={likert}
+                    alt="likert-logo"
+                    style={{
+                      position: "absolute",
+                      left: "10px",
+                      top: "12px",
+                      height: "40%"
+                    }}
+                  />
                   {question.subTopic.toUpperCase()}
                   <span
                     style={{
-                      // fontStyle: "italic",
                       fontSize: "10px",
                       marginLeft: "5px"
                     }}
@@ -370,7 +381,6 @@ const LikertForm = props => {
                 sm={12}
                 style={{
                   textAlign: "justify",
-                  // fontStyle: "italic",
                   fontSize: "14px"
                 }}
               >
@@ -399,7 +409,7 @@ const LikertForm = props => {
             }}
           >
             {anyTouched && !valid && validationError}
-            <SubmitButton disabled={pristine || submitting}>
+            <SubmitButton disabled={pristine || submitting} role="save">
               <Fragment>{button1}</Fragment>
             </SubmitButton>
           </div>
@@ -413,21 +423,10 @@ const LikertForm = props => {
             }}
           >
             {anyTouched && !valid && validationError}
-            <SubmitButton>
+            <SubmitButton role="save">
               <Fragment>{button2}</Fragment>
             </SubmitButton>
           </div>
-          // <Grid
-          //   item
-          //   md={12}
-          //   style={{
-          //     height: "10px",
-          //     backgroundColor: "#b71b53",
-          //     borderRadius: "5px",
-          //     margin: "25px 0",
-          //     opacity: "0.5"
-          //   }}
-          // />
         )}
       </Fragment>
     );
@@ -487,7 +486,6 @@ const LikertForm = props => {
               sm={12}
               style={{
                 margin: "0",
-                // fontStyle: "italic",
                 padding: "10px 0",
                 fontSize: "14px"
               }}
@@ -589,25 +587,47 @@ const LikertForm = props => {
   };
 
   return (
-    <Grid style={{ marginBottom: "30px" }}>
+    <Grid>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="reveal">
+        <div>
           {topic && (
             <h4
               style={{
                 margin: "0",
-                // fontStyle: "italic",
-                padding: "10px",
+                position: "relative",
+                padding: "10px 0 10px 33px",
                 backgroundColor: "#b71b60",
                 color: "white",
                 borderRadius: "5px",
                 fontSize: "14px"
               }}
             >
+              {type === "likert" ? (
+                <img
+                  src={likert}
+                  alt="likert-logo"
+                  style={{
+                    position: "absolute",
+                    left: "10px",
+                    top: "12px",
+                    height: "40%"
+                  }}
+                />
+              ) : (
+                <img
+                  src={trueOrFalse}
+                  alt="true-or-false-logo"
+                  style={{
+                    position: "absolute",
+                    left: "10px",
+                    top: "12px",
+                    height: "40%"
+                  }}
+                />
+              )}
               {topic.toUpperCase()}
               <span
                 style={{
-                  // fontStyle: "italic",
                   fontSize: "10px",
                   marginLeft: "5px"
                 }}
@@ -617,12 +637,11 @@ const LikertForm = props => {
             </h4>
           )}
         </div>
-        <div className="reveal-slow">
+        <div>
           {wording && (
             <h4
               style={{
                 margin: "0",
-                // fontStyle: "italic",
                 fontWeight: "400",
                 padding: "10px 0",
                 fontSize: "14px",
@@ -635,17 +654,15 @@ const LikertForm = props => {
         </div>
         <Fragment>
           {!requiredForms && (
-            <div style={{ marginTop: "10px" }} className="reveal-slow">
-              {renderHeader()}
-            </div>
+            <div style={{ marginTop: "10px" }}>{renderHeader()}</div>
           )}
         </Fragment>
         <FormGroup>
-          <Grid className="reveal-slow">{renderQuestions(theme)}</Grid>
-          <Grid className="reveal-slow">{renderSubmitButton()}</Grid>
+          <Fragment>{renderQuestions(theme)}</Fragment>
+          <Fragment>{renderSubmitButton()}</Fragment>
         </FormGroup>
       </form>
-      <Grid className="reveal">{renderResult()}</Grid>
+      <Grid>{renderResult()}</Grid>
     </Grid>
   );
 };

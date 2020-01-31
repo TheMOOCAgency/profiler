@@ -6,7 +6,7 @@ import TextField from "@material-ui/core/TextField";
 import SubmitButton from "../submit-button/SubmitButton";
 import FormGroup from "@material-ui/core/FormGroup";
 import { FormControl } from "@material-ui/core";
-import LikertForm from "../likert-form/LikertForm";
+import freeField from "../../../assets/pictos/free-field.png";
 
 const CssTextField = withStyles({
   root: {
@@ -73,8 +73,7 @@ const FreeField = ({
   handleSubmit,
   pristine,
   submitting,
-  setScormData,
-  skills
+  setScormData
 }) => {
   const { questions, button, topic, wording, additionalText } = test;
 
@@ -86,7 +85,7 @@ const FreeField = ({
     return questions.map((question, index) => {
       return (
         <FormControl key={question.id}>
-          <Grid container className="reveal">
+          <Grid container>
             <div style={{ margin: "30px 0 10px 0" }}>
               {question.text && questions.length > 1
                 ? index + 1 + ". " + question.text
@@ -115,23 +114,33 @@ const FreeField = ({
   };
 
   return (
-    <Grid>
+    <Grid item xs={12}>
       <form onSubmit={handleSubmit(onSubmit)} className="to-print">
         <FormGroup>
-          <div className="reveal">
+          <div>
             {topic ? (
               <h4
                 style={{
                   margin: "0",
-                  // fontStyle: "italic",
-                  width: "100%",
-                  padding: "10px",
+                  width: "calc(100% - 33px)",
+                  position: "relative",
+                  padding: "10px 0 10px 33px",
                   backgroundColor: "#b71b60",
                   color: "white",
                   borderRadius: "5px",
                   fontSize: "14px"
                 }}
               >
+                <img
+                  src={freeField}
+                  alt="likert-logo"
+                  style={{
+                    position: "absolute",
+                    left: "10px",
+                    top: "12px",
+                    height: "40%"
+                  }}
+                />
                 {topic.toUpperCase()}
                 <span
                   style={{
@@ -173,6 +182,7 @@ const FreeField = ({
 
           <Fragment>{renderInputs()}</Fragment>
           <SubmitButton
+            role="save"
             disabled={pristine || submitting}
             className="reveal-slow"
           >
