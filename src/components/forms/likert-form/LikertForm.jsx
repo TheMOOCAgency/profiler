@@ -236,8 +236,7 @@ const LikertForm = props => {
   } = useStyles(theme);
 
   useEffect(() => {
-    console.log(initialValues[questions[1].id]);
-    if (initialValues && initialValues[questions[1].id]) {
+    if (initialValues && initialValues[questions && questions[1].id]) {
       formatResults();
       setCompletion(true);
     }
