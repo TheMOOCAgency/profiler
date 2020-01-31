@@ -192,10 +192,11 @@ const ProfilerApp = () => {
             <Grid item lg={12} md={12} sm={12} xs={12}>
               {renderPanel()}
             </Grid>
+            {/* <div id="blank" style={{ visibility: "hidden" }} /> */}
             <Grid
               // THE IDEA IS TO CLONE THE HTML IN CONTENT IN THIS DIV IN ORDER TO OPERATE CHANGES FOR PDF CONVERSION WITHOUT MESSING WITH REAL CONTENT
               id="clone"
-              style={{ maxWidth: "900px" }}
+              style={{ width: "900px" }}
             ></Grid>
           </Grid>
         </Grid>

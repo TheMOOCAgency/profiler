@@ -58,7 +58,7 @@ const WelcomePage = ({ startCourse }) => {
           Enfin, sachez que vos réponses ne sont pas définitives, vous pouvez
           les modifier à volonté.
         </div>
-        <SubmitButton onClick={() => startCourse()}>
+        <SubmitButton onClick={() => startCourse()} type="play">
           <Fragment>Démarrer</Fragment>
         </SubmitButton>
       </Grid>

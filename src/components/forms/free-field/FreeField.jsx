@@ -114,11 +114,11 @@ const FreeField = ({
   };
 
   return (
-    <Grid item xs={12}>
+    <Grid item xs={12} md={12} xl={12}>
       <form onSubmit={handleSubmit(onSubmit)} className="to-print">
         <FormGroup>
           <div>
-            {topic ? (
+            {topic && (
               <h4
                 style={{
                   margin: "0",
@@ -151,16 +151,6 @@ const FreeField = ({
                   {additionalText}
                 </span>
               </h4>
-            ) : (
-              <div
-                style={{
-                  margin: "0",
-                  width: "100%",
-                  padding: "0px",
-                  backgroundColor: "white",
-                  color: "white"
-                }}
-              />
             )}
             <Fragment>
               {wording && (

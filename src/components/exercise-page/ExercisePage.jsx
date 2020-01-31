@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useEffect, useRef } from "react";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import LikertForm from "../../components/forms/likert-form/LikertForm";
@@ -20,7 +20,16 @@ const ExercisePage = ({
 }) => {
   const { topic, wording } = skills[parentIndex];
 
+  // CALL SCROLL REVEAL ANYTIME PARENT INDEX IS MUTATED
+  const prevIndexRef = useRef();
+
   useEffect(() => {
+    prevIndexRef.current = parentIndex;
+  }, [parentIndex]);
+
+  const prevIndex = prevIndexRef.current;
+
+  if (prevIndex !== parentIndex) {
     ScrollReveal().reveal(".smooth-reveal", {
       delay: 1000,
       useDelay: "onload",
@@ -30,7 +39,7 @@ const ExercisePage = ({
       scale: 0.8,
       interval: 0.5
     });
-  });
+  }
 
   const renderWording = () => {
     return (
@@ -133,9 +142,9 @@ const ExercisePage = ({
 
   const printPdf = () => {
     setScormData();
-
     // GET EXERCISE PAGE HTML CONTENT
     const inputToClone = document.getElementById(`to-print${parentIndex}`);
+
     window.scrollTo(0, 0);
 
     // CLONE HTML IN ORDER TO APPLY TEXTAREA CHANGES WITHOUT MESSING WITH REACT RENDER
@@ -165,8 +174,9 @@ const ExercisePage = ({
       item.style.width = null;
     });
 
-    let inputWidth = input.offsetWidth / 4;
+    let inputWidth = 900 / 4;
     let inputHeight = input.offsetHeight / 4;
+
     console.log(inputHeight);
 
     // CONVERT HTML TO PNG
@@ -177,9 +187,22 @@ const ExercisePage = ({
       height: inputHeight * 4 * 1.1
       // allowTaint: true
     }).then(canvas => {
-      const pdf = new jsPDF("p", "pt", [inputWidth, inputHeight], true);
+      let pdf = null;
+      // IF WIDTH IS BIGGER THAN HEIGHT, JSPDF WONT UNDERSTAND IF YOU REQUIRE A PORTRAIT
+      if (inputWidth <= inputHeight) {
+        pdf = new jsPDF("p", "pt", [inputWidth * 2, inputHeight * 2], true);
+      } else {
+        pdf = new jsPDF("l", "pt", [inputWidth * 2, inputHeight * 2], true);
+      }
       const imgData = canvas.toDataURL("image/jpeg");
-      pdf.addImage(imgData, "JPEG", 10, 10, inputWidth - 20, inputHeight);
+      pdf.addImage(
+        imgData,
+        "JPEG",
+        10,
+        10,
+        inputWidth * 2 - 20,
+        inputHeight * 2
+      );
 
       // MAKE CLONE DIV EMPTY
       input.innerHTML = "<div/>";
@@ -201,11 +224,7 @@ const ExercisePage = ({
         <Grid item xs={12}>
           {renderTestType()}
         </Grid>
-        <SubmitButton
-          onClick={() => printPdf()}
-          className="reveal-slow"
-          role="download"
-        >
+        <SubmitButton onClick={() => printPdf()} role="download">
           <Fragment>Télécharger en PDF</Fragment>
         </SubmitButton>
       </Grid>

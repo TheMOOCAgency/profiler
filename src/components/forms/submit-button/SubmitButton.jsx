@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import save from "../../../assets/pictos/save.png";
 import download from "../../../assets/pictos/download.png";
+import play from "../../../assets/pictos/play.png";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -41,7 +42,7 @@ const SubmitButton = ({ children, onClick, disabled, role }) => {
       >
         <img
           className={classes.picto}
-          src={role === "save" ? save : role === "download" ? download : save}
+          src={role === "save" ? save : role === "download" ? download : play}
           alt="button-picto"
         />
         {children}
