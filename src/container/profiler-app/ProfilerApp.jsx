@@ -106,7 +106,29 @@ const ProfilerApp = () => {
   }, []);
 
   const handleChange = (event, newValue) => {
-    setValue(newValue - 1);
+    if (value < newValue - 1) {
+      let isAllowedToContinue = [];
+      skills[value].tests.map(test => {
+        test.questions.map(question => {
+          // CHECK IF EXERCISE FORM HAS ERRORS, IF NOT, YOU CAN SWITCH TO NEXT EXERCISE
+          if (
+            allResults[test.name]["syncErrors"][question.id] === "" ||
+            allResults[test.name]["syncErrors"][question.id] === "*"
+          ) {
+            isAllowedToContinue.push(false);
+          } else {
+            isAllowedToContinue.push(true);
+          }
+        });
+      });
+      if (isAllowedToContinue.includes(false)) {
+        setValue(value);
+      } else {
+        setValue(newValue - 1);
+      }
+    } else {
+      setValue(newValue - 1);
+    }
   };
 
   const goToStartPage = () => {

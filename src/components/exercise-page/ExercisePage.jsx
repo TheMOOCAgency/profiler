@@ -160,7 +160,7 @@ const ExercisePage = ({
     for (let i = 0; i < textsElem.length; i++) {
       textsElem[
         i
-      ].innerHTML = `<div contenteditable="true" style=text-align:justify; >${textsElem[i].textContent}</div>`;
+      ].innerHTML = `<div contenteditable="true" style=text-align:justify;white-space:pre-wrap; >${textsElem[i].textContent}</div>`;
     }
 
     // REMOVE SUBMIT BUTTONS FROM HTML

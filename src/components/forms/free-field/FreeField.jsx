@@ -31,7 +31,6 @@ const CssTextField = withStyles({
     }
   }
 })(TextField);
-
 let requiredFields = [];
 
 const validate = (formValues, props) => {
