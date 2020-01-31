@@ -7,7 +7,6 @@ import Grid from "@material-ui/core/Grid";
 import { FormName } from "redux-form";
 import logo from "../../assets/logo.jpeg";
 import SubmitButton from "../forms/submit-button/SubmitButton";
-import CircularProgress from "@material-ui/core/CircularProgress";
 import ScrollReveal from "scrollreveal";
 
 // import XYChart from "../results/xy-chart/XYChart";
@@ -23,31 +22,25 @@ const ExercisePage = ({
 
   const { topic, wording } = skills[parentIndex];
 
-  // useEffect(() => {
-  //   if (isPrinted === true) {
-  //     setIsPrinted(false);
-  //   }
-  // }, [isPrinted]);
-
   useEffect(() => {
-    ScrollReveal().reveal(".reveal-slow", {
-      delay: 1000,
-      useDelay: "onload",
-      distance: "20px",
-      easing: "cubic-bezier(0.5, 0, 0, 1)",
-      opacity: 0,
-      scale: 0.8,
-      interval: 0.5
-    });
-    ScrollReveal().reveal(".reveal", {
-      delay: 500,
-      useDelay: "onload",
-      distance: "20px",
-      easing: "cubic-bezier(0.5, 0, 0, 1)",
-      opacity: 0,
-      scale: 0.8,
-      interval: 0.5
-    });
+    // ScrollReveal().reveal(".reveal-slow", {
+    //   delay: 1000,
+    //   useDelay: "onload",
+    //   distance: "20px",
+    //   easing: "cubic-bezier(0.5, 0, 0, 1)",
+    //   opacity: 0,
+    //   scale: 0.8,
+    //   interval: 0.5
+    // });
+    // ScrollReveal().reveal(".reveal", {
+    //   delay: 500,
+    //   useDelay: "onload",
+    //   distance: "20px",
+    //   easing: "cubic-bezier(0.5, 0, 0, 1)",
+    //   opacity: 0,
+    //   scale: 0.8,
+    //   interval: 0.5
+    // });
   });
 
   const renderWording = () => {
@@ -76,7 +69,6 @@ const ExercisePage = ({
                 sm={12}
                 style={{
                   textAlign: "justify",
-                  // fontStyle: "italic",
                   fontSize: "14px",
                   margin: "20px 0"
                 }}
@@ -132,6 +124,7 @@ const ExercisePage = ({
           <FormName key={index}>
             {() => (
               <FreeField
+                skills={skills}
                 test={test}
                 form={test.name}
                 initialValues={
@@ -151,118 +144,76 @@ const ExercisePage = ({
 
   const printPdf = () => {
     setScormData();
+
+    // GET EXERCISE PAGE HTML CONTENT
     const inputToClone = document.getElementById(`to-print${parentIndex}`);
     setIsPrinted(false);
     window.scrollTo(0, 0);
+
+    // CLONE HTML IN ORDER TO APPLY TEXTAREA CHANGES WITHOUT MESSING WITH REACT RENDER
     const input = document
       .getElementById("clone")
       .appendChild(inputToClone.cloneNode(true));
-    // CONVERT ALL SVG IN PICTURES
-    // GET ALL RADIO BUTTONS INPUT IN ORDER TO GET THEIR STATUS
+
+    // GET TEXTAREA TO MODIFY AND BUTTONS TO REMOVE FROM THE PRINT
     let textsElem = [...input.getElementsByClassName("MuiInputBase-multiline")];
     let buttonsElem = [...input.getElementsByClassName("button-parent")];
-    let originalTextAreas = [];
-    let originalButtons = [];
 
+    // REPLACE TEXTAREAS BY REGULAR DIV SO IT APPEARS ON THE PRINTSs
     for (let i = 0; i < textsElem.length; i++) {
-      originalTextAreas.push(textsElem[i].innerHTML);
       textsElem[
         i
       ].innerHTML = `<div contenteditable="true">${textsElem[i].textContent}</div>`;
     }
 
+    // REMOVE SUBMIT BUTTONS FROM HTML
     for (let i = 0; i < buttonsElem.length; i++) {
-      originalButtons.push(buttonsElem[i].innerHTML);
       buttonsElem[i].innerHTML = `<div/>`;
     }
-
+    // FORCE SVG WIDTH SO IT'S PRINTED
     const svgElements = document.body.querySelectorAll("svg");
     svgElements.forEach(function(item) {
       item.setAttribute("width", item.getBoundingClientRect().width);
       item.style.width = null;
     });
 
-    let inputWidth = input.scrollWidth;
-    let inputHeight = input.scrollHeight;
+    let inputWidth = input.offsetWidth / 4;
+    let inputHeight = input.offsetHeight / 4;
+    console.log(inputHeight);
 
-    // CONVERT ELEMENT TO CANVAS THEM
+    // CONVERT HTML TO PNG
     html2canvas(input, {
       x: input.offsetLeft,
       y: input.offsetTop,
-      width: inputWidth,
-      height: inputHeight * 1.13,
-      allowTaint: true
+      width: inputWidth * 4,
+      height: inputHeight * 4 * 1.13
+      // allowTaint: true
     }).then(canvas => {
-      const pdf = new jsPDF("p", "pt", [inputWidth / 4, inputHeight / 4], true);
+      const pdf = new jsPDF("p", "pt", [inputWidth, inputHeight], true);
       const imgData = canvas.toDataURL("image/jpeg");
-      pdf.addImage(
-        imgData,
-        "JPEG",
-        10,
-        10,
-        inputWidth / 4 - 20,
-        inputHeight / 4
-      );
+      pdf.addImage(imgData, "JPEG", 10, 10, inputWidth - 20, inputHeight);
 
-      for (let i = 0; i < originalTextAreas.length; i++) {
-        textsElem[i].innerHTML = originalTextAreas[i];
-      }
-
-      for (let i = 0; i < originalButtons.length; i++) {
-        buttonsElem[i].innerHTML = originalButtons[i];
-      }
-
+      // MAKE CLONE DIV EMPTY
       input.innerHTML = "<div/>";
       pdf.save(`${skill.name}.pdf`);
       setIsPrinted(true);
     });
   };
-  // if (!isPrinted) {
-  //   return (
-  //     <Grid
-  //       container
-  //       style={{
-  //         display: "flex",
-  //         flexDirection: "column",
-  //         alignItems: "center",
-  //         justifyContent: "center",
-  //         width: "100%",
-  //         height: "100%",
-  //         padding: "20px"
-  //       }}
-  //     >
-  //       <CircularProgress size={300} />
-  //     </Grid>
-  //   );
-  // }
+
   return (
     <Grid
       container
-      id={`to-print${parentIndex}`}
       style={{ position: "relative" }}
+      id={`to-print${parentIndex}`}
     >
-      {!isPrinted && (
-        <Grid
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            position: "absolute",
-            width: document.getElementById(`to-print${parentIndex}`)
-              .scrollWidth,
-            height: "100vh",
-            backgroundColor: "white",
-            zIndex: 1000
-          }}
-        >
-          <CircularProgress id="circular-loader" size={300} />
-        </Grid>
-      )}
       <Grid item xs={12}>
-        <Fragment>{renderWording()}</Fragment>
-        <Fragment>{renderTestType()}</Fragment>
-        <SubmitButton onClick={() => printPdf()}>
+        <Grid item xs={12}>
+          {renderWording()}
+        </Grid>
+        <Grid item xs={12}>
+          {renderTestType()}
+        </Grid>
+        <SubmitButton onClick={() => printPdf()} className="reveal-slow">
           <Fragment>Télécharger en PDF</Fragment>
         </SubmitButton>
       </Grid>

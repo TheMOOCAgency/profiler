@@ -6,6 +6,7 @@ import TextField from "@material-ui/core/TextField";
 import SubmitButton from "../submit-button/SubmitButton";
 import FormGroup from "@material-ui/core/FormGroup";
 import { FormControl } from "@material-ui/core";
+import LikertForm from "../likert-form/LikertForm";
 
 const CssTextField = withStyles({
   root: {
@@ -18,9 +19,6 @@ const CssTextField = withStyles({
       borderBottomColor: "#b71b60"
     },
     "& .MuiOutlinedInput-root": {
-      // width: "100%",
-      // whiteSpace: "pre-wrap",
-      // overflowWrap: "break-word",
       "& fieldset": {
         borderColor: "#b71b60"
       },
@@ -75,7 +73,8 @@ const FreeField = ({
   handleSubmit,
   pristine,
   submitting,
-  setScormData
+  setScormData,
+  skills
 }) => {
   const { questions, button, topic, wording, additionalText } = test;
 
@@ -111,64 +110,77 @@ const FreeField = ({
     });
   };
 
-  const onSubmit = formValues => {
-    // SEND TO API
+  const onSubmit = () => {
     setScormData();
-    // let values = { name: test.name, values: formValues };
-    // console.log(values);
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="to-print">
-      <FormGroup>
-        <div className="reveal">
-          {topic && (
-            <h4
-              style={{
-                margin: "0",
-                // fontStyle: "italic",
-                padding: "10px",
-                backgroundColor: "#b71b60",
-                color: "white",
-                borderRadius: "5px",
-                fontSize: "14px"
-              }}
-            >
-              {topic.toUpperCase()}
-              <span
-                style={{
-                  // fontStyle: "italic",
-                  fontSize: "10px",
-                  marginLeft: "5px"
-                }}
-              >
-                {additionalText}
-              </span>
-            </h4>
-          )}
-          <Fragment>
-            {wording && (
+    <Grid>
+      <form onSubmit={handleSubmit(onSubmit)} className="to-print">
+        <FormGroup>
+          <div className="reveal">
+            {topic ? (
               <h4
                 style={{
                   margin: "0",
                   // fontStyle: "italic",
-                  fontWeight: "400",
-                  padding: "10px 0",
-                  fontSize: "14px",
-                  textAlign: "justify"
+                  width: "100%",
+                  padding: "10px",
+                  backgroundColor: "#b71b60",
+                  color: "white",
+                  borderRadius: "5px",
+                  fontSize: "14px"
                 }}
               >
-                {wording}
+                {topic.toUpperCase()}
+                <span
+                  style={{
+                    fontSize: "10px",
+                    marginLeft: "5px"
+                  }}
+                >
+                  {additionalText}
+                </span>
               </h4>
+            ) : (
+              <div
+                style={{
+                  margin: "0",
+                  width: "100%",
+                  padding: "0px",
+                  backgroundColor: "white",
+                  color: "white"
+                }}
+              />
             )}
-          </Fragment>
-        </div>
-        <Fragment>{renderInputs()}</Fragment>
-        <SubmitButton disabled={pristine || submitting} className="reveal">
-          <Fragment>{button}</Fragment>
-        </SubmitButton>
-      </FormGroup>
-    </form>
+            <Fragment>
+              {wording && (
+                <h4
+                  style={{
+                    margin: "0",
+                    fontWeight: "400",
+                    width: "100%",
+                    padding: "10px 0",
+                    fontSize: "14px",
+                    textAlign: "justify"
+                  }}
+                >
+                  {wording}
+                </h4>
+              )}
+            </Fragment>
+          </div>
+
+          <Fragment>{renderInputs()}</Fragment>
+          <SubmitButton
+            disabled={pristine || submitting}
+            className="reveal-slow"
+          >
+            <Fragment>{button}</Fragment>
+          </SubmitButton>
+        </FormGroup>
+      </form>
+    </Grid>
   );
 };
 

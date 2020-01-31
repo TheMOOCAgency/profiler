@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
       color: "#b71b53"
     }
   },
-  paper: { margin: "0", width: "100%", overflowX: "auto", padding: "20px 0" }
+  paper: { margin: "0", width: "100%", padding: "20px 0" }
 }));
 
 /* MAIN COMPONENT */
@@ -47,20 +47,6 @@ const ProfilerApp = () => {
   const [isLoading, setLoader] = useState(true);
   // const [isFinished, setFinish] = useState(false);
   const allResults = useSelector(state => state.form);
-
-  // const checkCompletion = () => {
-  //   console.log(allResults);
-  //   let errors = [];
-  //   Object.keys(allResults).map(x => {
-  //     console.log(x);
-  //     if (allResults[x].syncErrors) {
-  //       errors.push(true);
-  //     } else {
-  //       errors.push(false);
-  //     }
-  //   });
-  //   console.log(errors);
-  // };
 
   const setScormData = () => {
     let values = {};
@@ -206,7 +192,11 @@ const ProfilerApp = () => {
             <Grid item lg={12} md={12} sm={12} xs={12}>
               {renderPanel()}
             </Grid>
-            <Grid id="clone"></Grid>
+            <Grid
+              // THE IDEA IS TO CLONE THE HTML IN CONTENT IN THIS DIV IN ORDER TO OPERATE CHANGES FOR PDF CONVERSION WITHOUT MESSING WITH REAL CONTENT
+              id="clone"
+              style={{ maxWidth: "900px" }}
+            ></Grid>
           </Grid>
         </Grid>
       );

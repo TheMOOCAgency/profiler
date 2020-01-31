@@ -5,4 +5,15 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: "353535" !important;
+  size: landscape;
 }
+
+/* @media print {
+  @page {
+    size: landscape;
+  }
+  body {
+    transform: scale(0.8);
+    -moz-transform: scale(0.8);
+  }
+} */
