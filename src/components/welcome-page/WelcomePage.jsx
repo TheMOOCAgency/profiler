@@ -3,7 +3,7 @@ import SubmitButton from "../forms/submit-button/SubmitButton";
 import logo from "../../assets/logo.jpeg";
 import Grid from "@material-ui/core/Grid";
 
-const WelcomePage = ({ startCourse }) => {
+const WelcomePage = ({ startCourse, value }) => {
   return (
     <Grid
       style={{
@@ -11,8 +11,7 @@ const WelcomePage = ({ startCourse }) => {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        width: "100vw",
-        padding: "20px"
+        padding: "80px"
       }}
     >
       <img src={logo} alt="logo" style={{ height: "100px" }} />
@@ -59,7 +58,11 @@ const WelcomePage = ({ startCourse }) => {
           les modifier à volonté.
         </div>
         <SubmitButton onClick={() => startCourse()} type="play">
-          <Fragment>Démarrer</Fragment>
+          {value === 0 ? (
+            <Fragment>Démarrer</Fragment>
+          ) : (
+            <Fragment>Reprendre</Fragment>
+          )}
         </SubmitButton>
       </Grid>
     </Grid>

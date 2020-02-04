@@ -7,7 +7,8 @@ import Tab from "@material-ui/core/Tab";
 import Grid from "@material-ui/core/Grid";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import TabPanel from "../../components/tab-panel/TabPanel";
-import Paper from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
+import Tooltip from "@material-ui/core/Tooltip";
 import ExercisePage from "../../components/exercise-page/ExercisePage";
 import Scorm from "../../scorm/Scorm";
 import { Base64 } from "js-base64";
@@ -33,7 +34,7 @@ const useStyles = makeStyles(theme => ({
       color: "#b71b53"
     }
   },
-  paper: { margin: "0", width: "100%", padding: "20px 0" }
+  paper: { margin: "0", width: "100%", padding: "20px" }
 }));
 
 /* MAIN COMPONENT */
@@ -109,12 +110,14 @@ const ProfilerApp = () => {
 
   const handleChange = (event, newValue) => {
     // GO BACKWARD ONCE AT BLOCK NOTES
-    if (value === 7 && newValue - 1 <= progressValue) {
+    if (newValue === 0) {
+      setValue(0);
+    } else if (value === 7 && newValue - 1 <= progressValue) {
       setValue(newValue - 1);
     } else if (value === 7 && newValue - 1 > progressValue && newValue !== 8) {
       setValue(progressValue);
       // ALLOW GOING TO BLOCK NOTES
-    } else if (newValue === 8 && progressValue < 6) {
+    } else if (newValue === 8 && progressValue < 7) {
       console.log(progressValue, value);
       setValue(newValue - 1);
       // GO FORWARD ONLY IF PROGRESSION IS VALID
@@ -154,7 +157,29 @@ const ProfilerApp = () => {
   };
 
   const goToStartPage = () => {
-    setValue(0);
+    console.log(value);
+    // AVOID NO RERENDER BUG WHEN GETTING BACK TO START PAGE
+    let scormData = null;
+    if (
+      process.env.NODE_ENV === "development" ||
+      window.location.href === "https://themoocagency.github.io/profiler/"
+    ) {
+      scormData = JSON.parse(window.localStorage.getItem("initialValues"));
+      if (scormData) {
+        setInitialValues(scormData.results);
+        setValue(Number(scormData.index));
+        setHasStarted(scormData.status);
+      }
+    } else {
+      Scorm.init();
+      scormData = Scorm.getSuspendData();
+      if (scormData) {
+        setInitialValues(JSON.parse(Base64.decode(scormData)).results);
+        setValue(JSON.parse(Base64.decode(scormData)).index);
+        setHasStarted(JSON.parse(Base64.decode(scormData)).status);
+        Scorm.setSuspendData(scormData);
+      }
+    }
     setHasStarted(false);
   };
 
@@ -247,7 +272,7 @@ const ProfilerApp = () => {
       );
     }
     // WELCOME PAGE
-    return <WelcomePage startCourse={startCourse} />;
+    return <WelcomePage startCourse={startCourse} value={value} />;
   }
 };
 

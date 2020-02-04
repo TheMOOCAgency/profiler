@@ -35,7 +35,14 @@ let requiredFields = [];
 const validate = (formValues, props) => {
   const errors = {};
   props.test.questions.map(question => {
-    if (requiredFields.indexOf(question.id) === -1) {
+    // REQUIRED FIELD DESACTIVATION TO IMPROVE
+    if (
+      requiredFields.indexOf(question.id) === -1 &&
+      question.id !== "field3-5-0" &&
+      question.id !== "field3-5-1" &&
+      question.id !== "field3-5-2" &&
+      question.id !== "field3-5-3"
+    ) {
       requiredFields.push(question.id);
     }
     return requiredFields;
