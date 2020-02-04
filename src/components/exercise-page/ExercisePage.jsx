@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useRef } from "react";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
+import { makeStyles } from "@material-ui/core/styles";
 import LikertForm from "../../components/forms/likert-form/LikertForm";
 import FreeField from "../../components/forms/free-field/FreeField";
 import Grid from "@material-ui/core/Grid";
@@ -9,7 +10,13 @@ import logo from "../../assets/logo.jpeg";
 import SubmitButton from "../forms/submit-button/SubmitButton";
 import ScrollReveal from "scrollreveal";
 
-// import XYChart from "../results/xy-chart/XYChart";
+const useStyles = makeStyles(theme => ({
+  dlButton: {
+    "@media (max-width: 700px)": {
+      display: "none"
+    }
+  }
+}));
 
 const ExercisePage = ({
   skills,
@@ -19,6 +26,7 @@ const ExercisePage = ({
   setScormData
 }) => {
   const { topic, wording } = skills[parentIndex];
+  const classes = useStyles();
 
   // CALL SCROLL REVEAL ANYTIME PARENT INDEX IS MUTATED
   const prevIndexRef = useRef();
@@ -174,8 +182,8 @@ const ExercisePage = ({
       item.style.width = null;
     });
 
-    let inputWidth = 1000 / 4;
-    let inputHeight = input.offsetHeight / 4;
+    let inputWidth = 1000;
+    let inputHeight = input.offsetHeight;
 
     console.log(inputHeight);
 
@@ -183,26 +191,19 @@ const ExercisePage = ({
     html2canvas(input, {
       x: input.offsetLeft,
       y: input.offsetTop,
-      width: inputWidth * 4,
-      height: inputHeight * 4 * 1.1
+      width: inputWidth,
+      height: inputHeight * 1.1
       // allowTaint: true
     }).then(canvas => {
       let pdf = null;
       // IF WIDTH IS BIGGER THAN HEIGHT, JSPDF WONT UNDERSTAND IF YOU REQUIRE A PORTRAIT
       if (inputWidth <= inputHeight) {
-        pdf = new jsPDF("p", "pt", [inputWidth * 2, inputHeight * 2], true);
+        pdf = new jsPDF("p", "pt", [inputWidth, inputHeight], true);
       } else {
-        pdf = new jsPDF("l", "pt", [inputWidth * 2, inputHeight * 2], true);
+        pdf = new jsPDF("l", "pt", [inputWidth, inputHeight], true);
       }
       const imgData = canvas.toDataURL("image/jpeg");
-      pdf.addImage(
-        imgData,
-        "JPEG",
-        10,
-        10,
-        inputWidth * 2 - 20,
-        inputHeight * 2
-      );
+      pdf.addImage(imgData, "JPEG", 10, 10, inputWidth - 20, inputHeight);
 
       // MAKE CLONE DIV EMPTY
       input.innerHTML = "<div/>";
@@ -224,9 +225,11 @@ const ExercisePage = ({
         <Grid item xs={12}>
           {renderTestType()}
         </Grid>
-        <SubmitButton onClick={() => printPdf()} role="download">
-          <Fragment>Télécharger en PDF</Fragment>
-        </SubmitButton>
+        <Grid className={classes.dlButton}>
+          <SubmitButton onClick={() => printPdf()} role="download">
+            <Fragment>Télécharger en PDF</Fragment>
+          </SubmitButton>
+        </Grid>
       </Grid>
       <div
         style={{

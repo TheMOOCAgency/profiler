@@ -16,7 +16,12 @@ window.props = {
             validationError: "Vous n'avez pas répondu à tous les énoncés.",
             button1: "VISUALISEZ VOS RESULTATS",
             button2: "ACTUALISEZ VOS RESULTATS",
-            result: { type: "histogram", legend: true },
+            result: {
+              type: "histogram",
+              legend: true,
+              interpretation:
+                "Ce test vous indique vos drivers dominants. Pour rappel, vos drivers sont des messages inconscients qui nous dictent des comportements et des interprétations, envers nous même et les autres. Ils sont au nombre de 5 : Sois fort, Sois parfait, Fais plaisir, Fais des efforts et Dépêche toi. La barre rose correspond à votre autopositionnement, soit à la manière dont vous vous percevez. La barre noire correspond aux résultats du test. La barre grise correspond à l'évaluation par les pairs, soit à la manière dont les autres vous perçoivent. Les différences entre les 3 barres vous permettent de voir la différence entre la façon dont vous vous percevez (autopositionnement), la façon dont les autres vous perçoivent (évaluation par les pairs) et la réalité de vos drivers telle que mesurée par le test."
+            },
             drivers: {
               driver1: "Sois parfait",
               driver2: "Sois fort",

@@ -79,3 +79,26 @@
   border-bottom: 1px solid white;
   border-left: 1px solid white;
 }
+
+@media only screen and (max-width: 700px) {
+  .xy-chart .container {
+    width: 100%;
+  }
+  .result-0 {
+    width: 50%;
+  }
+  .result-1 {
+    width: 50%;
+  }
+  .result-2 {
+    width: 50%;
+  }
+  .result-3 {
+    left: 50%;
+    width: 50%;
+  }
+  .result-4 {
+    left: 50%;
+    width: 50%;
+  }
+}

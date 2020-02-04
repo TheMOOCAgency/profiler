@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { useSelector } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -34,7 +34,15 @@ const useStyles = makeStyles(theme => ({
       color: "#b71b53"
     }
   },
-  paper: { margin: "0", width: "100%", padding: "20px" }
+  paper: {
+    margin: "0",
+    width: "100%",
+    padding: "20px",
+    "@media (max-width: 700px)": {
+      padding: "0px",
+      boxShadow: "none"
+    }
+  }
 }));
 
 /* MAIN COMPONENT */
@@ -201,12 +209,21 @@ const ProfilerApp = () => {
           <Tab label="ACCUEIL" onClick={() => goToStartPage()} />
           {skills.map((skill, index) => {
             return (
-              <Tab
-                key={index}
-                label={skill.name}
-                {...a11yProps(index + 1)}
-                className={classes.tab}
-              />
+              <Tooltip
+                title={
+                  index > progressValue && index !== 7
+                    ? "Veillez à bien compléter l'ensemble des exercices avant d'accéder à l'onglet suivant"
+                    : ""
+                }
+                aria-label="warning"
+              >
+                <Tab
+                  key={index}
+                  label={skill.name}
+                  {...a11yProps(index + 1)}
+                  className={classes.tab}
+                />
+              </Tooltip>
             );
           })}
         </Tabs>

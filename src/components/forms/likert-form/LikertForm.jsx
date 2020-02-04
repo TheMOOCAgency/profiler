@@ -447,7 +447,7 @@ const LikertForm = props => {
             >
               {result.interpretation}
             </Grid>
-            <Grid item xs={7}>
+            <Grid item xs={10} md={7}>
               <BarChart test={test} data={data} />
             </Grid>
             <Grid
@@ -480,7 +480,7 @@ const LikertForm = props => {
             >
               {result.interpretation}
             </Grid>
-            <Grid item xs={7}>
+            <Grid item xs={12} md={5}>
               <StackedBarChart test={test} data={data} />
             </Grid>
           </Grid>
@@ -500,9 +500,20 @@ const LikertForm = props => {
                 fontSize: "14px"
               }}
             >
-              <div style={{ textAlign: "center" }}>{result.interpretation}</div>
+              <Grid
+                item
+                sm={12}
+                style={{
+                  margin: "0",
+                  fontStyle: "italic",
+                  padding: "10px 0",
+                  fontSize: "14px"
+                }}
+              >
+                {result.interpretation}
+              </Grid>
             </Grid>
-            <Grid item xs={7}>
+            <Grid item xs={12} md={5}>
               <XYChart test={test} data={data} />
             </Grid>
           </Grid>
