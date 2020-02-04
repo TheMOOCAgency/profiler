@@ -43,7 +43,7 @@ const ProfilerApp = () => {
   const [value, setValue] = useState(0);
   const [initialValues, setInitialValues] = useState({});
   const [hasStarted, setHasStarted] = useState();
-  const [pageIndex, setPageIndex] = useState(0);
+  const [progressValue, setProgressValue] = useState(value);
   const [isLoading, setLoader] = useState(true);
   // const [isFinished, setFinish] = useState(false);
   const allResults = useSelector(state => state.form);
@@ -56,7 +56,7 @@ const ProfilerApp = () => {
     });
     let dataToSuspend = {
       status: true,
-      index: pageIndex,
+      index: value,
       results: values
     };
     if (
@@ -89,7 +89,8 @@ const ProfilerApp = () => {
       scormData = JSON.parse(window.localStorage.getItem("initialValues"));
       if (scormData) {
         setInitialValues(scormData.results);
-        setPageIndex(Number(scormData.index));
+        setValue(Number(scormData.index));
+        setProgressValue(Number(scormData.index));
         setHasStarted(scormData.status);
       }
     } else {
@@ -97,7 +98,8 @@ const ProfilerApp = () => {
       scormData = Scorm.getSuspendData();
       if (scormData) {
         setInitialValues(JSON.parse(Base64.decode(scormData)).results);
-        setPageIndex(JSON.parse(Base64.decode(scormData)).index);
+        setValue(JSON.parse(Base64.decode(scormData)).index);
+        setProgressValue(JSON.parse(Base64.decode(scormData)).index);
         setHasStarted(JSON.parse(Base64.decode(scormData)).status);
         Scorm.setSuspendData(scormData);
       }
@@ -106,9 +108,19 @@ const ProfilerApp = () => {
   }, []);
 
   const handleChange = (event, newValue) => {
-    if (value < newValue - 1) {
+    // GO BACKWARD ONCE AT BLOCK NOTES
+    if (value === 7 && newValue - 1 <= progressValue) {
+      setValue(newValue - 1);
+    } else if (value === 7 && newValue - 1 > progressValue && newValue !== 8) {
+      setValue(progressValue);
+      // ALLOW GOING TO BLOCK NOTES
+    } else if (newValue === 8 && progressValue < 6) {
+      console.log(progressValue, value);
+      setValue(newValue - 1);
+      // GO FORWARD ONLY IF PROGRESSION IS VALID
+    } else if (value < newValue - 1) {
       let isAllowedToContinue = [];
-      skills[value].tests.map(test => {
+      skills[newValue - 2].tests.map(test => {
         test.questions.map(question => {
           // CHECK IF EXERCISE FORM HAS ERRORS, IF NOT, YOU CAN SWITCH TO NEXT EXERCISE
           if (
@@ -121,12 +133,22 @@ const ProfilerApp = () => {
           }
         });
       });
-      if (isAllowedToContinue.includes(false)) {
-        setValue(value);
-      } else {
+      // IF NO COMPLETION ERROR, YOU CAN GO FORWARD
+      if (!isAllowedToContinue.includes(false)) {
         setValue(newValue - 1);
+        // TO AVOID PROGRESS VALUE TO BE LOWER THAN IT IS WHEN GOING A FEW TABS BACKWARD
+        if (progressValue < newValue - 1) {
+          setProgressValue(newValue - 1);
+          if (progressValue === 7) {
+            console.log("End");
+            Scorm.terminate();
+          }
+        }
+
+        // SET CMI COMPLETION IF EVERYTHING IS COMPLETED
       }
-    } else {
+      // GO BACKWARD
+    } else if (value > newValue - 1) {
       setValue(newValue - 1);
     }
   };
@@ -218,7 +240,7 @@ const ProfilerApp = () => {
             <Grid
               // THE IDEA IS TO CLONE THE HTML IN CONTENT IN THIS DIV IN ORDER TO OPERATE CHANGES FOR PDF CONVERSION WITHOUT MESSING WITH REAL CONTENT
               id="clone"
-              style={{ width: "900px" }}
+              style={{ width: "1000px" }}
             ></Grid>
           </Grid>
         </Grid>

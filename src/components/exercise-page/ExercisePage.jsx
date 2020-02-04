@@ -174,7 +174,7 @@ const ExercisePage = ({
       item.style.width = null;
     });
 
-    let inputWidth = 900 / 4;
+    let inputWidth = 1000 / 4;
     let inputHeight = input.offsetHeight / 4;
 
     console.log(inputHeight);

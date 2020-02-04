@@ -17,6 +17,11 @@ let Scorm = {
     await SCORM.set("cmi.suspend_data", data);
     SCORM.set("cmi.exit", "suspend");
     SCORM.save();
+  },
+  terminate() {
+    SCORM.set("cmi.completion_status", "completed");
+    SCORM.set("cmi.success_status", "passed");
+    SCORM.save();
   }
 };
 
