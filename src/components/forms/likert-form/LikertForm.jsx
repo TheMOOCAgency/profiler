@@ -12,8 +12,6 @@ import SubmitButton from "../submit-button/SubmitButton";
 import BarChart from "../../results/bar-chart/BarChart";
 import StackedBarChart from "../../results/stacked-bar-chart/StackedBarChart";
 import XYChart from "../../results/xy-chart/XYChart";
-import likert from "../../../assets/pictos/likert.png";
-import trueOrFalse from "../../../assets/pictos/true-or-false.png";
 
 const CustomRadio = withStyles({
   root: {
@@ -355,14 +353,13 @@ const LikertForm = props => {
                     fontSize: "14px"
                   }}
                 >
-                  <img
-                    src={likert}
-                    alt="likert-logo"
+                  <i
+                    className="fas fa-poll-h"
                     style={{
                       position: "absolute",
                       left: "10px",
-                      top: "12px",
-                      height: "40%"
+                      top: "10px",
+                      fontSize: "20px"
                     }}
                   />
                   {question.subTopic.toUpperCase()}
@@ -619,25 +616,23 @@ const LikertForm = props => {
               }}
             >
               {type === "likert" ? (
-                <img
-                  src={likert}
-                  alt="likert-logo"
+                <i
+                  className="fas fa-poll-h"
                   style={{
                     position: "absolute",
                     left: "10px",
-                    top: "12px",
-                    height: "40%"
+                    top: "10px",
+                    fontSize: "20px"
                   }}
                 />
               ) : (
-                <img
-                  src={trueOrFalse}
-                  alt="true-or-false-logo"
+                <i
+                  className="fas fa-poll-h"
                   style={{
                     position: "absolute",
                     left: "10px",
-                    top: "12px",
-                    height: "40%"
+                    top: "10px",
+                    fontSize: "20px"
                   }}
                 />
               )}

@@ -1529,7 +1529,7 @@ window.props = {
               {
                 id: "field5-1-1",
                 text:
-                  "Selon vous quel est votre mode de gestion des conflits ? Donnez un exemple de situation où vous avez utilisé ce mode de gestion."
+                  "Selon vous quel est votre mode de gestion des conflits ? Donnez un exemple de situation ou vous vous êtes retrouvés en situation de conflit."
               },
               {
                 id: "field5-1-2",

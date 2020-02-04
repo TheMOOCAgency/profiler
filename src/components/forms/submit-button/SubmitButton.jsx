@@ -1,9 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import save from "../../../assets/pictos/save.png";
-import download from "../../../assets/pictos/download.png";
-import play from "../../../assets/pictos/play.png";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -40,11 +37,43 @@ const SubmitButton = ({ children, onClick, disabled, role }) => {
         disabled={disabled}
         style={{ marginTop: role === "download" && "-40px" }}
       >
-        <img
+        {/* <img
           className={classes.picto}
           src={role === "save" ? save : role === "download" ? download : play}
           alt="button-picto"
-        />
+        /> */}
+        {role === "save" ? (
+          <i
+            className="fas fa-save"
+            style={{
+              position: "absolute",
+              left: "10px",
+              top: "7px",
+              fontSize: "20px"
+            }}
+          />
+        ) : role === "download" ? (
+          <i
+            className="fas fa-download"
+            style={{
+              position: "absolute",
+              left: "10px",
+              top: "7px",
+              fontSize: "20px"
+            }}
+          />
+        ) : (
+          <i
+            className="fas fa-play-circle"
+            style={{
+              position: "absolute",
+              left: "10px",
+              top: "7px",
+              fontSize: "20px"
+            }}
+          />
+        )}
+
         {children}
       </Button>
     </div>

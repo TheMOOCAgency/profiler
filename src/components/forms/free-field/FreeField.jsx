@@ -6,7 +6,6 @@ import TextField from "@material-ui/core/TextField";
 import SubmitButton from "../submit-button/SubmitButton";
 import FormGroup from "@material-ui/core/FormGroup";
 import { FormControl } from "@material-ui/core";
-import freeField from "../../../assets/pictos/free-field.png";
 
 const CssTextField = withStyles({
   root: {
@@ -130,7 +129,7 @@ const FreeField = ({
                   fontSize: "14px"
                 }}
               >
-                <img
+                {/* <img
                   src={freeField}
                   alt="likert-logo"
                   style={{
@@ -138,6 +137,16 @@ const FreeField = ({
                     left: "10px",
                     top: "12px",
                     height: "40%"
+                  }}
+                /> */}
+
+                <i
+                  className="fas fa-pen"
+                  style={{
+                    position: "absolute",
+                    left: "10px",
+                    top: "12px",
+                    fontSize: "15px"
                   }}
                 />
                 {topic.toUpperCase()}
