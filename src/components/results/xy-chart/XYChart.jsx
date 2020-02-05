@@ -43,6 +43,7 @@ const XYChart = ({ test, data }) => {
           return (
             <div
               key={index}
+              id={`result-${index}`}
               className={`result result-${index} ${
                 testResult === index ? "is-result" : "is-not-result"
               }`}

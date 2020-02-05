@@ -169,6 +169,8 @@ const ExercisePage = ({
     let textsElem = [...input.getElementsByClassName("MuiInputBase-multiline")];
     let buttonsElem = [...input.getElementsByClassName("button-parent")];
     let iconsElem = [...input.getElementsByClassName("fas")];
+    // let resultElem = document.getElementById("result-0");
+    // resultElem.style.zIndex = 2;
 
     for (let i = 0; i < svgElem.length; i++) {
       console.log(inputElem[i].checked);
