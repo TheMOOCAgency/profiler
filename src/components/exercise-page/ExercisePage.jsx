@@ -9,6 +9,8 @@ import { FormName } from "redux-form";
 import logo from "../../assets/logo.jpeg";
 import SubmitButton from "../forms/submit-button/SubmitButton";
 import ScrollReveal from "scrollreveal";
+import checkedButton from "../../assets/checkedRadioButton.png";
+import button from "../../assets/radioButton.png";
 
 const useStyles = makeStyles(theme => ({
   dlButton: {
@@ -161,8 +163,32 @@ const ExercisePage = ({
       .appendChild(inputToClone.cloneNode(true));
 
     // GET TEXTAREA TO MODIFY AND BUTTONS TO REMOVE FROM THE PRINT
+    let inputElem = [];
+    if (process.env.NODE_ENV === "development") {
+      inputElem = [
+        ...input.getElementsByClassName("PrivateSwitchBase-input-256")
+      ];
+    } else {
+      inputElem = [...input.getElementsByClassName("jss256")];
+    }
+    let svgElem = [...input.getElementsByClassName("radioSVG")];
     let textsElem = [...input.getElementsByClassName("MuiInputBase-multiline")];
     let buttonsElem = [...input.getElementsByClassName("button-parent")];
+    let iconsElem = [...input.getElementsByClassName("fas")];
+
+    for (let i = 0; i < svgElem.length; i++) {
+      console.log(inputElem[0]);
+      if (inputElem[i] && inputElem[i].checked) {
+        // REPLACE ORIGINAL HTML WITH BUTTON PICTURE
+        svgElem[
+          i
+        ].innerHTML = `<img src=${checkedButton} style={{height:'100%', width:'100%'}} ></img>`;
+      } else {
+        svgElem[
+          i
+        ].innerHTML = `<img src=${button} style={{height:'100%', width:'100%'}} ></img>`;
+      }
+    }
 
     // REPLACE TEXTAREAS BY REGULAR DIV SO IT APPEARS ON THE PRINTSs
     for (let i = 0; i < textsElem.length; i++) {
@@ -175,12 +201,20 @@ const ExercisePage = ({
     for (let i = 0; i < buttonsElem.length; i++) {
       buttonsElem[i].innerHTML = `<div/>`;
     }
+
+    // REMOVE PICTOS FROM TITLES AS THEY DONT SHOW UP IN CHROME WHILE GENERATING PDF
+    for (let i = 0; i < iconsElem.length; i++) {
+      iconsElem[i].outerHTML = `<div/>`;
+    }
+
     // FORCE SVG WIDTH SO IT'S PRINTED
-    const svgElements = document.body.querySelectorAll("svg");
-    svgElements.forEach(function(item) {
-      item.setAttribute("width", item.getBoundingClientRect().width);
-      item.style.width = null;
-    });
+    // const svgElements = document.body.querySelectorAll("svg");
+    // svgElements.forEach(function(item) {
+    //   item.setAttribute("width", item.getBoundingClientRect().width);
+    //   item.setAttribute("heigth", item.getBoundingClientRect().heigth);
+    //   item.style.width = null;
+    //   item.style.height = null;
+    // });
 
     let inputWidth = 1000;
     let inputHeight = input.offsetHeight;

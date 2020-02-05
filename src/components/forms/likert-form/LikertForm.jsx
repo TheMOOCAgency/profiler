@@ -480,7 +480,7 @@ const LikertForm = props => {
             >
               {result.interpretation}
             </Grid>
-            <Grid item xs={12} md={5}>
+            <Grid item xs={12} md={9}>
               <StackedBarChart test={test} data={data} />
             </Grid>
           </Grid>

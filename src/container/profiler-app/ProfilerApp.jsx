@@ -210,6 +210,7 @@ const ProfilerApp = () => {
           {skills.map((skill, index) => {
             return (
               <Tooltip
+                key={index}
                 title={
                   index > progressValue && index !== 7
                     ? "Veillez à bien compléter l'ensemble des exercices avant d'accéder à l'onglet suivant"
@@ -218,7 +219,6 @@ const ProfilerApp = () => {
                 aria-label="warning"
               >
                 <Tab
-                  key={index}
                   label={skill.name}
                   {...a11yProps(index + 1)}
                   className={classes.tab}
