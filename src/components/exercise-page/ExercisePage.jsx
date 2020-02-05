@@ -163,21 +163,15 @@ const ExercisePage = ({
       .appendChild(inputToClone.cloneNode(true));
 
     // GET TEXTAREA TO MODIFY AND BUTTONS TO REMOVE FROM THE PRINT
-    let inputElem = [];
-    if (process.env.NODE_ENV === "development") {
-      inputElem = [
-        ...input.getElementsByClassName("PrivateSwitchBase-input-256")
-      ];
-    } else {
-      inputElem = [...input.getElementsByClassName("jss256")];
-    }
+
+    let inputElem = [...input.getElementsByTagName("INPUT")];
     let svgElem = [...input.getElementsByClassName("radioSVG")];
     let textsElem = [...input.getElementsByClassName("MuiInputBase-multiline")];
     let buttonsElem = [...input.getElementsByClassName("button-parent")];
     let iconsElem = [...input.getElementsByClassName("fas")];
 
     for (let i = 0; i < svgElem.length; i++) {
-      console.log(inputElem[0]);
+      console.log(inputElem[i].checked);
       if (inputElem[i] && inputElem[i].checked) {
         // REPLACE ORIGINAL HTML WITH BUTTON PICTURE
         svgElem[
@@ -207,7 +201,7 @@ const ExercisePage = ({
       iconsElem[i].outerHTML = `<div/>`;
     }
 
-    // FORCE SVG WIDTH SO IT'S PRINTED
+    // FORCE SVG WIDTH SO IT'S PRINTED, WORKS WITH CHROME BUT NOT FIREFOX
     // const svgElements = document.body.querySelectorAll("svg");
     // svgElements.forEach(function(item) {
     //   item.setAttribute("width", item.getBoundingClientRect().width);
@@ -218,8 +212,6 @@ const ExercisePage = ({
 
     let inputWidth = 1000;
     let inputHeight = input.offsetHeight;
-
-    console.log(inputHeight);
 
     // CONVERT HTML TO PNG
     html2canvas(input, {

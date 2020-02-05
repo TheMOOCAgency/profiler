@@ -22,22 +22,46 @@ const BarChart = ({ data, test }) => {
       setChartHeight(300);
     }
   }, [chartHeight, dataForms]);
+  const colors = [
+    "#b71b60",
+    "#353535",
+    "#949b9f",
+    "#b71b60",
+    "#353535",
+    "#949b9f",
+    "#b71b60",
+    "#353535",
+    "#949b9f",
+    "#b71b60",
+    "#353535",
+    "#949b9f"
+  ];
+  const renderLegend = props => {
+    const { payload } = props;
+
+    return (
+      <ul style={{ listStyle: "none" }}>
+        {payload.map((entry, index) => (
+          <div
+            style={{ display: "flex", alignItems: "center" }}
+            key={`item-${index}`}
+          >
+            <div
+              style={{
+                width: "10px",
+                height: "10px",
+                backgroundColor: colors[index],
+                marginRight: "5px"
+              }}
+            />
+            <li>{entry.value}</li>
+          </div>
+        ))}
+      </ul>
+    );
+  };
 
   const renderBars = () => {
-    const colors = [
-      "#b71b60",
-      "#353535",
-      "#949b9f",
-      "#b71b60",
-      "#353535",
-      "#949b9f",
-      "#b71b60",
-      "#353535",
-      "#949b9f",
-      "#b71b60",
-      "#353535",
-      "#949b9f"
-    ];
     if (dataForms) {
       // MULTIPLE FORMS CASE
       return dataForms.map((form, index) => (
@@ -71,7 +95,7 @@ const BarChart = ({ data, test }) => {
           <XAxis type="number" ticks={[""]} />
           {renderBars()}
           <YAxis dataKey="name" reversed type="category" width={100} />
-          {result.legend && <Legend />}
+          {result.legend && <Legend content={renderLegend} />}
         </Chart>
       </ResponsiveContainer>
     </Grid>
