@@ -20,7 +20,7 @@ const WelcomePage = ({ startCourse, value }) => {
         position: "relative"
       }}
     >
-      <div className="waveWrapper waveAnimation">
+      <div className="waveWrapper waveAnimation animated fadeIn delay-3s">
         <div className="waveWrapperInner bgTop">
           <div
             className="wave waveTop"
