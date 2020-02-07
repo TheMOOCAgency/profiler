@@ -1,14 +1,14 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Grid from "@material-ui/core/Grid";
-import CircularProgress from "@material-ui/core/CircularProgress";
 import TabPanel from "../../components/tab-panel/TabPanel";
 import Paper from "@material-ui/core/Paper";
 import Tooltip from "@material-ui/core/Tooltip";
+import Loader from "react-loader-spinner";
 import ExercisePage from "../../components/exercise-page/ExercisePage";
 import Scorm from "../../scorm/Scorm";
 import { Base64 } from "js-base64";
@@ -35,7 +35,7 @@ const useStyles = makeStyles(theme => ({
     }
   },
   paper: {
-    margin: "0",
+    margin: "20px 0 0 0",
     width: "100%",
     padding: "20px",
     "@media (max-width: 700px)": {
@@ -213,7 +213,7 @@ const ProfilerApp = () => {
                 key={index}
                 title={
                   index > progressValue && index !== 7
-                    ? "Veillez à bien compléter l'ensemble des exercices avant d'accéder à l'onglet suivant"
+                    ? "Veillez à bien compléter l'ensemble des exercices avant d'accéder à l'onglet suivant."
                     : ""
                 }
                 aria-label="warning"
@@ -266,7 +266,7 @@ const ProfilerApp = () => {
           padding: "20px"
         }}
       >
-        <CircularProgress size={300} />
+        <Loader type="Puff" color="#b71b53" height={300} width={300} />
       </Grid>
     );
   } else {

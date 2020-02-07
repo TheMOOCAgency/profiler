@@ -267,8 +267,10 @@ const ExercisePage = ({
           alignItems: "center"
         }}
       >
-        <img src={logo} alt="logo" style={{ height: "100px" }} />
-        <div style={{ fontSize: "8px", marginTop: "8px" }}>
+        <img src={logo} alt="logo" style={{ height: "50px" }} />
+        <div
+          style={{ fontSize: "8px", marginTop: "8px", marginBottom: "30px" }}
+        >
           © Association Groupe Kedge Business School, 2019
         </div>
       </div>

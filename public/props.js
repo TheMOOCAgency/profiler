@@ -43,35 +43,35 @@ window.props = {
               { subTopic: "Auto-positionnement", id: "form1" },
               {
                 text:
-                  "J’ai l’impression que mon comportement correspond au driver « sois parfait »",
+                  "J’ai l’impression que mon comportement correspond au driver « sois parfait ».",
                 id: "question1-1-30",
                 driver: "driver1",
                 form: { id: "form1", coef: 6 }
               },
               {
                 text:
-                  "J’ai l’impression que mon comportement correspond au driver « sois fort »",
+                  "J’ai l’impression que mon comportement correspond au driver « sois fort ».",
                 id: "question1-1-31",
                 driver: "driver2",
                 form: { id: "form1", coef: 6 }
               },
               {
                 text:
-                  "J’ai l’impression que mon comportement correspond au driver « dépêche-toi »",
+                  "J’ai l’impression que mon comportement correspond au driver « dépêche-toi ».",
                 id: "question1-1-32",
                 driver: "driver3",
                 form: { id: "form1", coef: 6 }
               },
               {
                 text:
-                  "J’ai l’impression que mon comportement correspond au driver « fais plaisir »",
+                  "J’ai l’impression que mon comportement correspond au driver « fais plaisir ».",
                 id: "question1-1-33",
                 driver: "driver4",
                 form: { id: "form1", coef: 6 }
               },
               {
                 text:
-                  "J’ai l’impression que mon comportement correspond au driver « fais des efforts »",
+                  "J’ai l’impression que mon comportement correspond au driver « fais des efforts ».",
                 id: "question1-1-34",
                 driver: "driver5",
                 form: { id: "form1", coef: 6 }
@@ -92,7 +92,7 @@ window.props = {
               },
               {
                 text:
-                  "Vérifiez-vous plusieurs fois les paroles des autres de crainte d’une erreur de compréhension?",
+                  "Vérifiez-vous plusieurs fois les paroles des autres de crainte d’une erreur de compréhension ?",
                 id: "question1-1-2",
                 driver: "driver1",
                 form: { id: "form2", coef: 1 }
@@ -117,13 +117,13 @@ window.props = {
                 form: { id: "form2", coef: 1 }
               },
               {
-                text: "Il vaut mieux ne pas reconnaître ses faiblesses",
+                text: "Il vaut mieux ne pas reconnaître ses faiblesses.",
                 id: "question1-1-6",
                 driver: "driver2",
                 form: { id: "form2", coef: 1 }
               },
               {
-                text: "Vous savez vous dégager du jugement de l’autre",
+                text: "Vous savez vous dégager du jugement de l’autre.",
                 id: "question1-1-7",
                 driver: "driver2",
                 form: { id: "form2", coef: 1 }
@@ -136,7 +136,7 @@ window.props = {
                 form: { id: "form2", coef: 1 }
               },
               {
-                text: "Vous avez repéré vos lacunes… elles ne vous gênent pas",
+                text: "Vous avez repéré vos lacunes… elles ne vous gênent pas.",
                 id: "question1-1-9",
                 driver: "driver2",
                 form: { id: "form2", coef: 1 }
@@ -241,13 +241,13 @@ window.props = {
               },
               {
                 text:
-                  "Le plus souvent, vous réussissez en luttant et en surmontant les difficultés",
+                  "Le plus souvent, vous réussissez en luttant et en surmontant les difficultés.",
                 id: "question1-1-25",
                 driver: "driver5",
                 form: { id: "form2", coef: 1 }
               },
               {
-                text: "Au travail, vous n’avez pas le temps de vous détendre",
+                text: "Au travail, vous n’avez pas le temps de vous détendre.",
                 id: "question1-1-26",
                 driver: "driver5",
                 form: { id: "form2", coef: 1 }
@@ -268,7 +268,7 @@ window.props = {
               },
               {
                 text:
-                  "Etes-vous adepte de la maxime : « essayez, essayez, essayez encore, jusqu’à ce que vous réussissiez »",
+                  "Etes-vous adepte de la maxime : « essayez, essayez, essayez encore, jusqu’à ce que vous réussissiez » ?",
                 id: "question1-1-29",
                 driver: "driver5",
                 form: { id: "form2", coef: 1 }
@@ -281,35 +281,35 @@ window.props = {
               },
               {
                 text:
-                  "Mes camarades perçoivent mon comportement comme correspondant au driver « sois parfait »",
+                  "Mes camarades perçoivent mon comportement comme correspondant au driver « sois parfait ».",
                 id: "question1-1-35",
                 driver: "driver1",
                 form: { id: "form3", coef: 6 }
               },
               {
                 text:
-                  "Mes camarades perçoivent mon comportement comme correspondant au driver « sois fort »",
+                  "Mes camarades perçoivent mon comportement comme correspondant au driver « sois fort ».",
                 id: "question1-1-36",
                 driver: "driver2",
                 form: { id: "form3", coef: 6 }
               },
               {
                 text:
-                  "Mes camarades perçoivent mon comportement comme correspondant au driver « dépêche-toi »",
+                  "Mes camarades perçoivent mon comportement comme correspondant au driver « dépêche-toi ».",
                 id: "question1-1-37",
                 driver: "driver3",
                 form: { id: "form3", coef: 6 }
               },
               {
                 text:
-                  "Mes camarades perçoivent mon comportement comme correspondant au driver « fais plaisir »",
+                  "Mes camarades perçoivent mon comportement comme correspondant au driver « fais plaisir ».",
                 id: "question1-1-38",
                 driver: "driver4",
                 form: { id: "form3", coef: 6 }
               },
               {
                 text:
-                  "Mes camarades perçoivent mon comportement comme correspondant au driver « fais des efforts »",
+                  "Mes camarades perçoivent mon comportement comme correspondant au driver « fais des efforts ».",
                 id: "question1-1-39",
                 driver: "driver5",
                 form: { id: "form3", coef: 6 }
@@ -387,7 +387,7 @@ window.props = {
               type: "histogram",
               legend: false,
               interpretation:
-                "Ce test vous indique votre filtre de perception privilégié. Les filtres de perception sont des portes d'entrée de l'information, à travers lesquels nous interprétons nos perceptions. Ils sont au nombre de trois : Savoir, Faire et Être. Dans cet histogramme, votre filtre privilégié correspond à la barre la plus élevée. Plus cette barre est éloignée des autres, plus votre filtre est marqué."
+                "Ce test vous indique votre filtre de perception privilégié. Les filtres de perception sont des portes d'entrée de l'information, à travers lesquels nous interprétons nos perceptions. Ils sont au nombre de trois : Savoir, Faire et Être. Savoir correspond au filtre mental, qui est orienté vers le futur et associé avec une intelligence logique, qui se base sur des faits. Faire correspond au filtre physique qui est orienté vers le présent et est associé à une intelligence intuitive. Être est orientée vers le passé et est associé à une intelligence analogique. Dans cet histogramme, votre filtre privilégié correspond à la barre la plus élevée. Plus cette barre est éloignée des autres, plus votre filtre est marqué."
             },
             wording: `Lisez avec attention chacun des énoncés et indiquez si vous êtes en accord ou en désaccord avec. Essayez de répondre le plus spontanément possible et évitez de trop répondre "ni en désaccord ni en accord". Ne répondez pas ce que vous croyez devoir répondre pour avoir de bons résultats à ce test, il n’y a pas de bonnes ou de mauvaises réponses, ni de bons ou de mauvais résultats.`,
             drivers: {
@@ -691,7 +691,7 @@ window.props = {
             name: "freeField3-5",
             topic: "Mes croyances",
             additionalText:
-              "( Le bloc 'Mes Croyances' est à remplir lors d'une activité en présentiel. Ne remplissez pas ces champs si vous êtes à distance )",
+              "( Le bloc 'Mes Croyances' est à remplir lors d'une activité en présentiel. Ne remplissez pas ces champs si vous êtes à distance. )",
             button: "ENREGISTRER MES REPONSES",
             questions: [
               {
@@ -845,7 +845,7 @@ window.props = {
               {
                 id: "question4-1-9",
                 text:
-                  "Lors d'une soirée, au cours d'une conversation avec un(e) passionnant(e) inconnu(e), si je garde le silence lorsqu'il/elle m'interroge à mon sujet, j'ai tendance à me rejouer mentalement tout l'entretien - en imaginant cette fois ce que j'aurais dû dire- pendant des heures ct des heures, et même des jours entiers.",
+                  "Lors d'une soirée, au cours d'une conversation avec un(e) passionnant(e) inconnu(e), si je garde le silence lorsqu'il/elle m'interroge à mon sujet, j'ai tendance à me rejouer mentalement tout l'entretien - en imaginant cette fois ce que j'aurais dû dire - pendant des heures et des heures, et même des jours entiers.",
                 true: 1,
                 false: 0
               }
@@ -901,7 +901,7 @@ window.props = {
               {
                 id: "question4-2-4",
                 text:
-                  "Quand il m'arrive le matin un petit événement inattendu mais positif- par exemple, si j'ai un conversation formidable avec un inconnu-, cette humeur positive se dissipe en quelques minutes.",
+                  "Quand il m'arrive le matin un petit événement inattendu mais positif par exemple, si j'ai un conversation formidable avec un inconnu, cette humeur positive se dissipe en quelques minutes.",
                 true: 0,
                 false: 1
               },
@@ -964,14 +964,14 @@ window.props = {
               {
                 id: "question4-3-0",
                 text:
-                  "Quand je parle à des gens, je remarque souvent de subtils indices sociaux concernant leurs émotions -la gêne ou la colère, par exemple- avant qu'ils ne prennent eux-mêmes.",
+                  "Quand je parle à des gens, je remarque souvent de subtils indices sociaux concernant leurs émotions la gêne ou la colère, par exemple avant qu'ils n'en prennent conscience eux-mêmes.",
                 true: 1,
                 false: 0
               },
               {
                 id: "question4-3-1",
                 text:
-                  "Je me surprends, souvent à noter les expressions faciales ct le langage du corps.",
+                  "Je me surprends, souvent à noter les expressions faciales et le langage du corps.",
                 true: 1,
                 false: 0
               },
@@ -1055,7 +1055,7 @@ window.props = {
               {
                 id: "question4-4-0",
                 text:
-                  "Souvent, quand on me demande pourquoi je suis triste ou en colère, je réponds (ou je pense): « Mais pas du tout!»",
+                  "Souvent, quand on me demande pourquoi je suis triste ou en colère, je réponds (ou je pense): « Mais pas du tout !»",
                 true: 0,
                 false: 1
               },
@@ -1181,7 +1181,7 @@ window.props = {
               {
                 id: "question4-5-5",
                 text:
-                  "Si je suis perturbé(c) par un événement imprévu, je suis capable de reconcentrer mon attention sur ce que je faisais avant d'être interrompu(e).",
+                  "Si je suis perturbé(e) par un événement imprévu, je suis capable de reconcentrer mon attention sur ce que je faisais avant d'être interrompu(e).",
                 true: 1,
                 false: 0
               },
@@ -1244,7 +1244,7 @@ window.props = {
               {
                 id: "question4-6-1",
                 text:
-                  "On m'a parfois dit que je m'étais conduit(e) de manière , socialement inadaptée, ce qui m'a surpris(e).",
+                  "On m'a parfois dit que je m'étais conduit(e) de manière socialement inadaptée, ce qui m'a surpris(e).",
                 true: 1,
                 false: 0
               },
@@ -1265,7 +1265,7 @@ window.props = {
               {
                 id: "question4-6-4",
                 text:
-                  "Je me surprends souvent à me censurer parce que je sens que ce que j'allais dire aurait été malvenu étant donné la situation (par exemple, avant de répondre à la question: «Mon chéri, tu me trouves grosse dans ce pantalon ? »).",
+                  "Je me surprends souvent à me censurer parce que je sens que ce que j'allais dire aurait été malvenu étant donné la situation (par exemple, avant de répondre à la question: « Mon chéri, tu me trouves grosse dans ce pantalon ? »).",
                 true: 0,
                 false: 1
               },
@@ -1403,7 +1403,7 @@ window.props = {
               },
               {
                 text:
-                  "Quand j’échoue quelque chose, je me tiens un discours intérieur autodénigrant (ex.: « Je ne réussirai jamais. »)",
+                  "Quand j’échoue quelque chose, je me tiens un discours intérieur auto-dénigrant (ex : « Je ne réussirai jamais. »)",
                 id: "question4-7-12",
                 driver: "driver1"
               },
@@ -1565,7 +1565,7 @@ window.props = {
             button1: "VISUALISEZ VOS RESULTATS",
             button2: "ACTUALISEZ VOS RESULTATS",
             wording:
-              "Pour chacune des affirmations ci-dessous, inscrivez dans l'espace prévu à cette fin le chiffre qui correspond le mieux à la probabilité que vous adoptiez la réaction mentionnée, dans une situation de conflit.",
+              "Pour chacune des affirmations ci-dessous, cochez la case qui correspond le mieux à la probabilité que vous adoptiez la réaction mentionnée, dans une situation de conflit.",
             drivers: {
               driver1: "Compromis",
               driver2: "Evitement",
@@ -1576,7 +1576,7 @@ window.props = {
             questions: [
               {
                 text:
-                  "Je me montre généralement ferme dans la poursuite de mes objectifs",
+                  "Je me montre généralement ferme dans la poursuite de mes objectifs.",
                 id: "question5-2-0",
                 driver: "driver4"
               },
@@ -1788,7 +1788,7 @@ window.props = {
               },
               {
                 text:
-                  "J’aime lire articles, livres et revues spécialisées sur la formation, le leadership et la psychologie, et ensuite appliquer mes connaissances nouvellement acquises",
+                  "J’aime lire articles, livres et revues spécialisées sur la formation, le leadership et la psychologie, et ensuite appliquer mes connaissances nouvellement acquises.",
                 id: "question6-2-8",
                 driver: "driver2"
               },
