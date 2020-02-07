@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import "./welcome-page.css";
 import SubmitButton from "../forms/submit-button/SubmitButton";
-import logo from "../../assets/logo.jpeg";
+import logo from "../../assets/logo.png";
 import Grid from "@material-ui/core/Grid";
 import bgTop from "../../assets/welcome-page/wave-top.png";
 import bgMid from "../../assets/welcome-page/wave-mid.png";
@@ -139,6 +139,7 @@ const WelcomePage = ({ startCourse, value }) => {
         <Grid style={{ display: "flex", justifyContent: "center" }}>
           <img
             src={logo}
+            crossOrigin="Anonymous"
             alt="logo"
             style={{ height: "45px", marginBottom: "50px" }}
             className="animated bounceInRight delay-1s"

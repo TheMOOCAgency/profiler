@@ -6,7 +6,7 @@ import LikertForm from "../../components/forms/likert-form/LikertForm";
 import FreeField from "../../components/forms/free-field/FreeField";
 import Grid from "@material-ui/core/Grid";
 import { FormName } from "redux-form";
-import logo from "../../assets/logo.jpeg";
+import logo from "../../assets/logo.png";
 import SubmitButton from "../forms/submit-button/SubmitButton";
 import ScrollReveal from "scrollreveal";
 import checkedButton from "../../assets/checkedRadioButton.png";

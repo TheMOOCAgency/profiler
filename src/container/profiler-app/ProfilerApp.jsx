@@ -266,7 +266,7 @@ const ProfilerApp = () => {
           padding: "20px"
         }}
       >
-        <Loader type="Puff" color="#b71b53" height={300} width={300} />
+        <Loader type="Puff" color="#b71b53" height={100} width={100} />
       </Grid>
     );
   } else {
