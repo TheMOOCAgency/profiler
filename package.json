@@ -9,7 +9,7 @@
     "canvas2image": "^1.0.5",
     "html2canvas": "^1.0.0-rc.5",
     "js-base64": "^2.5.1",
-    "jspdf": "^1.5.3",
+    "jspdf": "^2.3.1",
     "pipwerks-scorm-api-wrapper": "^0.1.2",
     "print-js": "^1.0.63",
     "react": "^16.12.0",
